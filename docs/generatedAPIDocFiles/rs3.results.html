@@ -1,0 +1,708 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>rs3.results package &#8212; RS3 Scripting Reference Manual  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.results';</script>
+    <link rel="icon" href="../_static/rocscience_favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="rs3.results.BeamResults module" href="rs3.results.BeamResults.html" />
+    <link rel="prev" title="rs3.properties.SnowdenStrengthFunction module" href="rs3.properties.SnowdenStrengthFunction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/rocscience-logo-primary.png" class="logo__image only-light" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+    <img src="../_static/rocscience-logo-primary.png" class="logo__image only-dark pst-js-only" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.loadings.html">rs3.loadings package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.loadings.fieldStress.html">rs3.loadings.fieldStress package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.AdvancedConstant.html">rs3.loadings.fieldStress.AdvancedConstant module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.AdvancedGravity.html">rs3.loadings.fieldStress.AdvancedGravity module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.Constant.html">rs3.loadings.fieldStress.Constant module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.FieldStress.html">rs3.loadings.fieldStress.FieldStress module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.Gravity.html">rs3.loadings.fieldStress.Gravity module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.loadings.LoadingEnums.html">rs3.loadings.LoadingEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.loadings.Loadings.html">rs3.loadings.Loadings module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.mesh.html">rs3.mesh package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.mesh.Graded.html">rs3.mesh.Graded module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.mesh.Mesh.html">rs3.mesh.Mesh module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.mesh.MeshEnums.html">rs3.mesh.MeshEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.mesh.Uniform.html">rs3.mesh.Uniform module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.projectSettings.html">rs3.projectSettings package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.Dynamic.html">rs3.projectSettings.Dynamic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.Groundwater.html">rs3.projectSettings.Groundwater module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.ProjectSettingEnums.html">rs3.projectSettings.ProjectSettingEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.ProjectSettings.html">rs3.projectSettings.ProjectSettings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.ShearStrengthReduction.html">rs3.projectSettings.ShearStrengthReduction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.SolverOptions.html">rs3.projectSettings.SolverOptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.Stages.html">rs3.projectSettings.Stages module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.StressAnalysis.html">rs3.projectSettings.StressAnalysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.Units.html">rs3.projectSettings.Units module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.properties.html">rs3.properties package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.beam.html">rs3.properties.beam package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.beam.Beam.html">rs3.properties.beam.Beam module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.beam.BeamCommon.html">rs3.properties.beam.BeamCommon module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.beam.Standard.html">rs3.properties.beam.Standard module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.beam.Truss.html">rs3.properties.beam.Truss module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.bolt.html">rs3.properties.bolt package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.Bolt.html">rs3.properties.bolt.Bolt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.EndAnchored.html">rs3.properties.bolt.EndAnchored module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.FullyBonded.html">rs3.properties.bolt.FullyBonded module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.PlainStrandCable.html">rs3.properties.bolt.PlainStrandCable module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.Swellex.html">rs3.properties.bolt.Swellex module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.Tieback.html">rs3.properties.bolt.Tieback module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.groundwater.html">rs3.properties.groundwater package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.groundwater.WaterByLocation.html">rs3.properties.groundwater.WaterByLocation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.groundwater.WaterGrid.html">rs3.properties.groundwater.WaterGrid module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.joint.html">rs3.properties.joint package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.BartonBandis.html">rs3.properties.joint.BartonBandis module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.GeosyntheticHyperbolic.html">rs3.properties.joint.GeosyntheticHyperbolic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.Joint.html">rs3.properties.joint.Joint module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.MaterialDependent.html">rs3.properties.joint.MaterialDependent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.MohrCoulomb.html">rs3.properties.joint.MohrCoulomb module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.NoneSlip.html">rs3.properties.joint.NoneSlip module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.liner.html">rs3.properties.liner package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liner.Geosynthetic.html">rs3.properties.liner.Geosynthetic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liner.Liner.html">rs3.properties.liner.Liner module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liner.ReinforcedConcrete.html">rs3.properties.liner.ReinforcedConcrete module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liner.Standard.html">rs3.properties.liner.Standard module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.liningComposition.html">rs3.properties.liningComposition package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liningComposition.LiningComposition.html">rs3.properties.liningComposition.LiningComposition module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.material.html">rs3.properties.material package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.constitutiveModel.html">rs3.properties.material.constitutiveModel package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.jointOption.html">rs3.properties.material.constitutiveModel.jointOption package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.stiffness.html">rs3.properties.material.constitutiveModel.stiffness package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.AnisotropicLinear.html">rs3.properties.material.constitutiveModel.AnisotropicLinear module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase.html">rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.BarcelonaBasic.html">rs3.properties.material.constitutiveModel.BarcelonaBasic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.BartonBandis.html">rs3.properties.material.constitutiveModel.BartonBandis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.BaseConstitutiveModel.html">rs3.properties.material.constitutiveModel.BaseConstitutiveModel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.BoundingSurfacePlasticity.html">rs3.properties.material.constitutiveModel.BoundingSurfacePlasticity module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.CamClay.html">rs3.properties.material.constitutiveModel.CamClay module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ChSoil.html">rs3.properties.material.constitutiveModel.ChSoil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ConstitutiveModel.html">rs3.properties.material.constitutiveModel.ConstitutiveModel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.CySoil.html">rs3.properties.material.constitutiveModel.CySoil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.DiscreteFunction.html">rs3.properties.material.constitutiveModel.DiscreteFunction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.DoubleYield.html">rs3.properties.material.constitutiveModel.DoubleYield module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.DruckerPrager.html">rs3.properties.material.constitutiveModel.DruckerPrager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.GeneralizedAnisotropic.html">rs3.properties.material.constitutiveModel.GeneralizedAnisotropic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.html">rs3.properties.material.constitutiveModel.GeneralizedHoekBrown module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.HardeningSoil.html">rs3.properties.material.constitutiveModel.HardeningSoil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.HardeningSoilWithSmallStrain.html">rs3.properties.material.constitutiveModel.HardeningSoilWithSmallStrain module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.HoekBrown.html">rs3.properties.material.constitutiveModel.HoekBrown module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.Hyperbolic.html">rs3.properties.material.constitutiveModel.Hyperbolic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.JointedGeneralizedHoekBrown.html">rs3.properties.material.constitutiveModel.JointedGeneralizedHoekBrown module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.JointedMohrCoulomb.html">rs3.properties.material.constitutiveModel.JointedMohrCoulomb module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ManzariAndDafalias.html">rs3.properties.material.constitutiveModel.ManzariAndDafalias module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ModifiedCamClay.html">rs3.properties.material.constitutiveModel.ModifiedCamClay module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.MohrCoulomb.html">rs3.properties.material.constitutiveModel.MohrCoulomb module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.MohrCoulombUnsaturatedZoneCalculations.html">rs3.properties.material.constitutiveModel.MohrCoulombUnsaturatedZoneCalculations module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.MohrCoulombWithCap.html">rs3.properties.material.constitutiveModel.MohrCoulombWithCap module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.Norsand.html">rs3.properties.material.constitutiveModel.Norsand module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.PowerCurve.html">rs3.properties.material.constitutiveModel.PowerCurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.Shansep.html">rs3.properties.material.constitutiveModel.Shansep module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ShearNormalFunction.html">rs3.properties.material.constitutiveModel.ShearNormalFunction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SnowdenAnisotropicLinear.html">rs3.properties.material.constitutiveModel.SnowdenAnisotropicLinear module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SoftSoil.html">rs3.properties.material.constitutiveModel.SoftSoil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SoftSoilCreep.html">rs3.properties.material.constitutiveModel.SoftSoilCreep module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SofteningHardening.html">rs3.properties.material.constitutiveModel.SofteningHardening module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SwellingRock.html">rs3.properties.material.constitutiveModel.SwellingRock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.UnsaturatedZoneCalculations.html">rs3.properties.material.constitutiveModel.UnsaturatedZoneCalculations module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.VerticalStressRatio.html">rs3.properties.material.constitutiveModel.VerticalStressRatio module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.datum.html">rs3.properties.material.datum package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.datum.CohesionDatumDependency.html">rs3.properties.material.datum.CohesionDatumDependency module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.datum.Datum.html">rs3.properties.material.datum.Datum module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.datum.FrictionAngleDatumDependency.html">rs3.properties.material.datum.FrictionAngleDatumDependency module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.datum.YoungsModulusDatumDependency.html">rs3.properties.material.datum.YoungsModulusDatumDependency module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.hydraulic.html">rs3.properties.material.hydraulic package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.FEAGroundwater.html">rs3.properties.material.hydraulic.FEAGroundwater package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.Hydraulic.html">rs3.properties.material.hydraulic.Hydraulic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.PhreaticConditions.html">rs3.properties.material.hydraulic.PhreaticConditions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.StaticGroundwater.html">rs3.properties.material.hydraulic.StaticGroundwater module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.WaterConditions.html">rs3.properties.material.hydraulic.WaterConditions module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.initialConditions.html">rs3.properties.material.initialConditions package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.initialConditions.InitialConditions.html">rs3.properties.material.initialConditions.InitialConditions module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.stageFactors.html">rs3.properties.material.stageFactors package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.stageFactors.StageFactors.html">rs3.properties.material.stageFactors.StageFactors module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.material.Material.html">rs3.properties.material.Material module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.pile.html">rs3.properties.pile package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.EndCondition.html">rs3.properties.pile.EndCondition module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.Linear.html">rs3.properties.pile.Linear module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.MohrCoulomb.html">rs3.properties.pile.MohrCoulomb module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.MultiLinear.html">rs3.properties.pile.MultiLinear module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.Pile.html">rs3.properties.pile.Pile module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.PileCommon.html">rs3.properties.pile.PileCommon module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.stageFactors.html">rs3.properties.stageFactors package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.stageFactors.IStageFactorBase.html">rs3.properties.stageFactors.IStageFactorBase module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.stageFactors.StageFactorBaseInterfaces.html">rs3.properties.stageFactors.StageFactorBaseInterfaces module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.stageFactors.StageFactorInterfaces.html">rs3.properties.stageFactors.StageFactorInterfaces module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.SnowdenStrengthFunction.html">rs3.properties.SnowdenStrengthFunction module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">rs3.results package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BeamResults.html">rs3.results.BeamResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BoltResults.html">rs3.results.BoltResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.CompositeLinerResults.html">rs3.results.CompositeLinerResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.JointResults.html">rs3.results.JointResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.PileForepoleResults.html">rs3.results.PileForepoleResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html">rs3.results.ResultEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.Results.html">rs3.results.Results module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidElementResults.html">rs3.results.SolidElementResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidNodalResults.html">rs3.results.SolidNodalResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidResults.html">rs3.results.SolidResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.YieldedElement.html">rs3.results.YieldedElement module</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="rs3.ApplicationManager.html">rs3.ApplicationManager module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.ColorPicker.html">rs3.ColorPicker module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.CommonEnums.html">rs3.CommonEnums module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Compute.html">rs3.Compute module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.ExternalVolume.html">rs3.ExternalVolume module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Geometry.html">rs3.Geometry module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Model.html">rs3.Model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.ModelEnums.html">rs3.ModelEnums module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.RS3Modeler.html">rs3.RS3Modeler module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Restraints.html">rs3.Restraints module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Selection.html">rs3.Selection module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="rs3.html" class="nav-link">rs3 package</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">rs3.results package</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="rs3-results-package">
+<h1>rs3.results package<a class="headerlink" href="#rs3-results-package" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.BeamResults.html">rs3.results.BeamResults module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BeamResults.html#rs3.results.BeamResults.BeamNodeResults"><code class="docutils literal notranslate"><span class="pre">BeamNodeResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BeamResults.html#rs3.results.BeamResults.BeamElementResults"><code class="docutils literal notranslate"><span class="pre">BeamElementResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BeamResults.html#rs3.results.BeamResults.BeamResults"><code class="docutils literal notranslate"><span class="pre">BeamResults</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.BoltResults.html">rs3.results.BoltResults module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BoltResults.html#rs3.results.BoltResults.BoltNodeResult"><code class="docutils literal notranslate"><span class="pre">BoltNodeResult</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BoltResults.html#rs3.results.BoltResults.BoltElementResults"><code class="docutils literal notranslate"><span class="pre">BoltElementResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BoltResults.html#rs3.results.BoltResults.BoltResults"><code class="docutils literal notranslate"><span class="pre">BoltResults</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.CompositeLinerResults.html">rs3.results.CompositeLinerResults module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.CompositeLinerResults.html#rs3.results.CompositeLinerResults.LinerNodalResults"><code class="docutils literal notranslate"><span class="pre">LinerNodalResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.CompositeLinerResults.html#rs3.results.CompositeLinerResults.LinerElementResults"><code class="docutils literal notranslate"><span class="pre">LinerElementResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.CompositeLinerResults.html#rs3.results.CompositeLinerResults.InterfaceNodalResults"><code class="docutils literal notranslate"><span class="pre">InterfaceNodalResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.CompositeLinerResults.html#rs3.results.CompositeLinerResults.InterfaceElementResults"><code class="docutils literal notranslate"><span class="pre">InterfaceElementResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.CompositeLinerResults.html#rs3.results.CompositeLinerResults.CompositeLinerResults"><code class="docutils literal notranslate"><span class="pre">CompositeLinerResults</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.JointResults.html">rs3.results.JointResults module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.JointResults.html#rs3.results.JointResults.JointNodalResults"><code class="docutils literal notranslate"><span class="pre">JointNodalResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.JointResults.html#rs3.results.JointResults.JointElementResults"><code class="docutils literal notranslate"><span class="pre">JointElementResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.JointResults.html#rs3.results.JointResults.JointResults"><code class="docutils literal notranslate"><span class="pre">JointResults</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.PileForepoleResults.html">rs3.results.PileForepoleResults module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.PileForepoleResults.html#rs3.results.PileForepoleResults.PileNodeResults"><code class="docutils literal notranslate"><span class="pre">PileNodeResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.PileForepoleResults.html#rs3.results.PileForepoleResults.PileForepoleElementResults"><code class="docutils literal notranslate"><span class="pre">PileForepoleElementResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.PileForepoleResults.html#rs3.results.PileForepoleResults.PileForepoleResults"><code class="docutils literal notranslate"><span class="pre">PileForepoleResults</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.ResultEnums.html">rs3.results.ResultEnums module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.SolidsDataType"><code class="docutils literal notranslate"><span class="pre">SolidsDataType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.BeamsDataType"><code class="docutils literal notranslate"><span class="pre">BeamsDataType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.PileInterfaceDataType"><code class="docutils literal notranslate"><span class="pre">PileInterfaceDataType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.BeamForepolePileGaussPointFailureType"><code class="docutils literal notranslate"><span class="pre">BeamForepolePileGaussPointFailureType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.LinerResultTypes"><code class="docutils literal notranslate"><span class="pre">LinerResultTypes</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.InterfaceResultTypes"><code class="docutils literal notranslate"><span class="pre">InterfaceResultTypes</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.LinerGaussPointFailureCombinations"><code class="docutils literal notranslate"><span class="pre">LinerGaussPointFailureCombinations</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.JointGaussPointFailureCombinations"><code class="docutils literal notranslate"><span class="pre">JointGaussPointFailureCombinations</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.BoltDataType"><code class="docutils literal notranslate"><span class="pre">BoltDataType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html#rs3.results.ResultEnums.BoltGaussPointFailureType"><code class="docutils literal notranslate"><span class="pre">BoltGaussPointFailureType</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.Results.html">rs3.results.Results module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.Results.html#rs3.results.Results.NodeInformation"><code class="docutils literal notranslate"><span class="pre">NodeInformation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.Results.html#rs3.results.Results.ElementInformation"><code class="docutils literal notranslate"><span class="pre">ElementInformation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.Results.html#rs3.results.Results.PileForepoleElementInformation"><code class="docutils literal notranslate"><span class="pre">PileForepoleElementInformation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.Results.html#rs3.results.Results.SRFValue"><code class="docutils literal notranslate"><span class="pre">SRFValue</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.Results.html#rs3.results.Results.Results"><code class="docutils literal notranslate"><span class="pre">Results</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.SolidElementResults.html">rs3.results.SolidElementResults module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidElementResults.html#rs3.results.SolidElementResults.NodeUserDataResult"><code class="docutils literal notranslate"><span class="pre">NodeUserDataResult</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidElementResults.html#rs3.results.SolidElementResults.UserDataResults"><code class="docutils literal notranslate"><span class="pre">UserDataResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidElementResults.html#rs3.results.SolidElementResults.UserDataResultsCollection"><code class="docutils literal notranslate"><span class="pre">UserDataResultsCollection</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidElementResults.html#rs3.results.SolidElementResults.FailurePoint"><code class="docutils literal notranslate"><span class="pre">FailurePoint</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidElementResults.html#rs3.results.SolidElementResults.YieldingResults"><code class="docutils literal notranslate"><span class="pre">YieldingResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidElementResults.html#rs3.results.SolidElementResults.SolidElementResults"><code class="docutils literal notranslate"><span class="pre">SolidElementResults</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.SolidNodalResults.html">rs3.results.SolidNodalResults module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidNodalResults.html#rs3.results.SolidNodalResults.SolidNodalResults"><code class="docutils literal notranslate"><span class="pre">SolidNodalResults</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidNodalResults.html#rs3.results.SolidNodalResults.SolidsDataAlias"><code class="docutils literal notranslate"><span class="pre">SolidsDataAlias</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.SolidResults.html">rs3.results.SolidResults module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidResults.html#rs3.results.SolidResults.SolidResults"><code class="docutils literal notranslate"><span class="pre">SolidResults</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.results.YieldedElement.html">rs3.results.YieldedElement module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.YieldedElement.html#rs3.results.YieldedElement.GaussPointFailure"><code class="docutils literal notranslate"><span class="pre">GaussPointFailure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.YieldedElement.html#rs3.results.YieldedElement.YieldedElement"><code class="docutils literal notranslate"><span class="pre">YieldedElement</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<span class="target" id="module-rs3.results"></span></section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rs3.properties.SnowdenStrengthFunction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">rs3.properties.SnowdenStrengthFunction module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rs3.results.BeamResults.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">rs3.results.BeamResults module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generatedAPIDocFiles/rs3.results.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Rocscience Inc..
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

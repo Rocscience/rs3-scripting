@@ -1,0 +1,14 @@
+rs3.properties.material.initialConditions package
+=================================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.initialConditions.InitialConditions
+
+
+.. automodule:: rs3.properties.material.initialConditions
+   :members:
+   :undoc-members:
+   :show-inheritance:

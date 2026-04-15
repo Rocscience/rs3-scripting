@@ -1,0 +1,1044 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>External Volume and Selection Script Examples &#8212; RS3 Scripting Reference Manual  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'example_code/model/external_volume_and_selection_example';</script>
+    <link rel="icon" href="../../_static/rocscience_favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Field Stress Script Examples" href="field_stress_example.html" />
+    <link rel="prev" title="Project Settings Script Examples" href="project_settings_example.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/rocscience-logo-primary.png" class="logo__image only-light" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+    <img src="../../_static/rocscience-logo-primary.png" class="logo__image only-dark pst-js-only" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../generatedAPIDocFiles/rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../generatedAPIDocFiles/rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="model_example.html">Model Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open_and_close_model_example.html">Open and Close Model Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_settings_example.html">Project Settings Script Examples</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">External Volume and Selection Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="field_stress_example.html">Field Stress Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restraints_example.html">Restraints Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_example.html">Mesh Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute_example.html">Compute Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../material/initial_conditions_example.html">Material Initial Conditions Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/constitutive_models_example.html">Material Constitutive Models Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/hydraulic_example.html">Material Hydraulic Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/datum_example.html">Material Datum Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/material_stage_factors_example.html">Material Stage Factors Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supports/beam_example.html">Beam Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/bolt_example.html">Bolt Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/joint_example.html">Joint Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/liner_example.html">Liner Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/pile_example.html">Pile Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/composite_liner_example.html">Composite Liner Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../groundwater/water_by_location_example.html">Water By Location Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groundwater/water_grid_example.html">Water Grid Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../results/solid_result_example.html">Solid Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/beam_result_example.html">Beam Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/bolt_result_example.html">Bolt Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/joint_result_example.html">Joint Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/pile_result_example.html">Pile Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/composite_liner_result_example.html">Composite Liner Result Script Example</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../examples.html" class="nav-link">Python Script Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">External Volume and Selection Script Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="external-volume-and-selection-script-examples">
+<span id="external-volume-and-selection-example"></span><h1>External Volume and Selection Script Examples<a class="headerlink" href="#external-volume-and-selection-script-examples" title="Link to this heading">#</a></h1>
+<p>Download the <a class="reference external" href="https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3">blankModel.rs3v3</a> for this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rs3.RS3Modeler</span> <span class="kn">import</span> <span class="n">RS3Modeler</span>
+<span class="kn">from</span> <span class="nn">rs3.properties.PropertyEnums</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">rs3.Geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polyline</span><span class="p">,</span> <span class="n">Cube</span><span class="p">,</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">Sphere</span>
+<span class="kn">from</span> <span class="nn">rs3.CommonEnums</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get the current folder directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Specify a port number that is not in use and start the RS3 program.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="mi">60104</span>
+<span class="n">RS3Modeler</span><span class="o">.</span><span class="n">startApplication</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 16:48:13,673 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60104...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Connect with the RS3 Modeler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modeler</span> <span class="o">=</span> <span class="n">RS3Modeler</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blankModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\blankModel.rs3v3&quot;</span>
+<span class="n">copiedModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\copiedModel.rs3v3&quot;</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">blankModelPath</span><span class="p">,</span> <span class="n">copiedModelPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Open the copied model file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="n">copiedModelPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="select-external-volumes">
+<h2>1. Select External Volumes<a class="headerlink" href="#select-external-volumes" title="Link to this heading">#</a></h2>
+<section id="select-volumes-by-defining-a-point">
+<h3>1.1 Select Volumes by Defining a Point<a class="headerlink" href="#select-volumes-by-defining-a-point" title="Link to this heading">#</a></h3>
+<p>Select the foundation by defining a point on foundation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectByPoint</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+<span class="n">selectByPoint</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Foundation&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-volumes-by-definiing-a-polyline">
+<h3>1.2 Select Volumes by Definiing a Polyline<a class="headerlink" href="#select-volumes-by-definiing-a-polyline" title="Link to this heading">#</a></h3>
+<p>Select tunnel, foundation and soil by create a polyline going through all three volumes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polyline</span> <span class="o">=</span> <span class="n">Polyline</span><span class="p">([</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectByPolyline</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">polyline</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByPolyline</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+Soil
+Foundation
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-volumes-by-defining-a-cube">
+<h3>1.3 Select Volumes by Defining a Cube<a class="headerlink" href="#select-volumes-by-defining-a-cube" title="Link to this heading">#</a></h3>
+<p>Define a cube which is slightly larger than the tunnel to include some tolerance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube</span> <span class="o">=</span> <span class="n">Cube</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.5</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">11.5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get external volumes within a defined volume, include intersecting can be defined. If include intersecting is True, volumes that attach the defining volume will be selected. Otherwise, intersecting volumes will not be included.</p>
+<p>If intersecting volumes are included, both underground tunnel and soil volumes will be chosen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectByCube</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByCube</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+Soil
+</pre></div>
+</div>
+</div>
+</div>
+<p>If intersecting volumes are not included, only underground tunnel will be selected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectByCubeWithoutIntersection</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByCubeWithoutIntersection</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-volumes-by-defining-a-cylinder">
+<h3>1.4 Select Volumes by Defining a Cylinder<a class="headerlink" href="#select-volumes-by-defining-a-cylinder" title="Link to this heading">#</a></h3>
+<p>Create a cylinder which is slightly larger than the actual tunnel</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cylinder</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectByCylinder</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">cylinder</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByCylinder</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+Soil
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectByCylinderWithoutIntersection</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">cylinder</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByCylinderWithoutIntersection</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-volumes-by-defining-a-sphere">
+<h3>1.5 Select Volumes by Defining a Sphere<a class="headerlink" href="#select-volumes-by-defining-a-sphere" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sphere</span> <span class="o">=</span> <span class="n">Sphere</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mf">17.5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">5.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create a sphere that is slightly larger than the foundation and include intersecting volumes. Both foundation and soil will be selected.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectBySphere</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">sphere</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectBySphere</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Soil
+Foundation
+</pre></div>
+</div>
+</div>
+</div>
+<p>If exclude intersecting volumes, foundation will be the only one that’s fully inside the defined region.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectBySphereWithoutIntersection</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectBySphereWithoutIntersection</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Foundation
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="change-external-volume-properties">
+<h2>2. Change External Volume Properties<a class="headerlink" href="#change-external-volume-properties" title="Link to this heading">#</a></h2>
+<p>Once external volume is selected, external volume properties can be changed. Let’s first select the soil volume.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soil</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">soil</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Soil&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Change the external volume name to “Material 3 Soil”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soil</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Material 4 Soil&quot;</span><span class="p">)</span>
+<span class="n">soil</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Material 4 Soil&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get material 4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">material4</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllMaterialProperties</span><span class="p">()[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">material4Name</span> <span class="o">=</span> <span class="n">material4</span><span class="o">.</span><span class="n">getMaterialName</span><span class="p">()</span>
+<span class="n">material4Name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Material 4&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the soil model to Material 4 since stage 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soil</span><span class="o">.</span><span class="n">setAppliedMaterialProperty</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">material4Name</span><span class="p">)</span>
+<span class="n">soil</span><span class="o">.</span><span class="n">getAppliedMaterialProperty</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Material 4&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the soil role to CONSTRUCTION.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soil</span><span class="o">.</span><span class="n">setRole</span><span class="p">(</span><span class="n">ExternalVolumeRoles</span><span class="o">.</span><span class="n">CONSTRUCTION</span><span class="p">)</span>
+<span class="n">soil</span><span class="o">.</span><span class="n">getRole</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ExternalVolumeRoles.CONSTRUCTION: &#39;Construction&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Change the soil role back to GEOLOGY.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soil</span><span class="o">.</span><span class="n">setRole</span><span class="p">(</span><span class="n">ExternalVolumeRoles</span><span class="o">.</span><span class="n">GEOLOGY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="attached-volumes">
+<h2>3. Attached Volumes<a class="headerlink" href="#attached-volumes" title="Link to this heading">#</a></h2>
+<p>This function is for selecting volumes attached to the given volumes for easier selection.</p>
+<p>You may provide an external volume object to look up attached volumes. For example, tunnel and foundation are attached to the soil.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attachedVolumesbyExternalVolume</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getAttachedExternalVolumes</span><span class="p">(</span><span class="n">soil</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">attachedVolumesbyExternalVolume</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+Foundation
+</pre></div>
+</div>
+</div>
+</div>
+<p>Without getting the external volume first, you may select the external volume by name as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attachedVolumesbyExternalVolumeName</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getAttachedExternalVolumesByVolumeName</span><span class="p">(</span><span class="n">soil</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">attachedVolumesbyExternalVolumeName</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+Foundation
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="volumes-and-areas">
+<h2>4. Volumes and Areas<a class="headerlink" href="#volumes-and-areas" title="Link to this heading">#</a></h2>
+<p>Get the volume and surface area of the tunnel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tunnel</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getExternalVolumeByName</span><span class="p">(</span><span class="s2">&quot;Underground Tunnel&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The volume of the tunnel is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">tunnel</span><span class="o">.</span><span class="n">getVolume</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> m^3.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The surface area of the tunnel is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">tunnel</span><span class="o">.</span><span class="n">getTotalSurfaceArea</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> m^2.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The volume of the tunnel is 93.26 m^3.
+The surface area of the tunnel is 194.22 m^2.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Save and close the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 16:49:01,882 - Rocscience.RS3 - INFO - Not saving changes for file &quot;C:\Users\GraceHu\source\repos\RS3Scripting_Compute\docs\example_code\example_models\copiedModel.rs3v3&quot;.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Close the program.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modeler</span><span class="o">.</span><span class="n">closeProgram</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="full-script">
+<h2>Full Script:<a class="headerlink" href="#full-script" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># External Volume and Selection Script Examples</span>
+<span class="c1"># Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.</span>
+<span class="kn">from</span> <span class="nn">rs3.RS3Modeler</span> <span class="kn">import</span> <span class="n">RS3Modeler</span>
+<span class="kn">from</span> <span class="nn">rs3.properties.PropertyEnums</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">rs3.Geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polyline</span><span class="p">,</span> <span class="n">Cube</span><span class="p">,</span> <span class="n">Cylinder</span><span class="p">,</span> <span class="n">Sphere</span>
+<span class="kn">from</span> <span class="nn">rs3.CommonEnums</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="c1"># Get the current folder directory.</span>
+<span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+<span class="c1"># Specify a port number that is not in use and start the RS3 program.</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">60104</span>
+<span class="n">RS3Modeler</span><span class="o">.</span><span class="n">startApplication</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+<span class="c1"># Connect with the RS3 Modeler.</span>
+<span class="n">modeler</span> <span class="o">=</span> <span class="n">RS3Modeler</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+<span class="c1"># For the demonstration purposes only, the model is copied for reuse. </span>
+<span class="c1"># You may change the model path to your own model path.</span>
+<span class="n">blankModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\blankModel.rs3v3&quot;</span>
+<span class="n">copiedModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\copiedModel.rs3v3&quot;</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">blankModelPath</span><span class="p">,</span> <span class="n">copiedModelPath</span><span class="p">)</span>
+<span class="c1"># Open the copied model file.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="n">copiedModelPath</span><span class="p">)</span>
+
+<span class="c1"># 1. Select External Volumes</span>
+
+<span class="c1"># 1.1 Select Volumes by Defining a Point</span>
+<span class="c1"># Select the foundation by defining a point on foundation.</span>
+<span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">selectByPoint</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+
+<span class="c1"># 1.2 Select Volumes by Definiing a Polyline</span>
+<span class="c1"># Select tunnel, foundation and soil by create a polyline going through all three volumes.</span>
+<span class="n">polyline</span> <span class="o">=</span> <span class="n">Polyline</span><span class="p">([</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">)])</span>
+<span class="n">selectByPolyline</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">polyline</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByPolyline</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    
+<span class="c1"># 1.3 Select Volumes by Defining a Cube</span>
+<span class="c1"># Define a cube which is slightly larger than the tunnel to include some tolerance.</span>
+<span class="n">cube</span> <span class="o">=</span> <span class="n">Cube</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">11.5</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mf">11.5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.5</span><span class="p">))</span>
+<span class="c1"># To get external volumes within a defined volume, include intersecting can be defined. </span>
+<span class="c1"># If include intersecting is True, volumes that attach the defining volume will be selected. </span>
+<span class="c1"># Otherwise, intersecting volumes will not be included.</span>
+<span class="c1"># If intersecting volumes are included, both underground tunnel and soil volumes will be chosen.</span>
+<span class="n">selectByCube</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">cube</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByCube</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<span class="c1"># If intersecting volumes are not included, only underground tunnel will be selected.</span>
+<span class="n">selectByCubeWithoutIntersection</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByCubeWithoutIntersection</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    
+<span class="c1"># 1.4 Select Volumes by Defining a Cylinder</span>
+<span class="c1"># Create a cylinder which is slightly larger than the actual tunnel</span>
+<span class="n">cylinder</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">selectByCylinder</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">cylinder</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByCylinder</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<span class="n">selectByCylinderWithoutIntersection</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span>
+    <span class="n">cylinder</span><span class="p">,</span> <span class="kc">False</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectByCylinderWithoutIntersection</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    
+<span class="c1"># 1.5 Select Volumes by Defining a Sphere</span>
+<span class="n">sphere</span> <span class="o">=</span> <span class="n">Sphere</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mf">17.5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">5.5</span><span class="p">)</span>
+<span class="c1"># Create a sphere that is slightly larger than the foundation and include intersecting volumes. </span>
+<span class="c1"># Both foundation and soil will be selected.</span>
+<span class="n">selectBySphere</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">sphere</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectBySphere</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<span class="c1"># If exclude intersecting volumes, foundation will be the only one that&#39;s fully inside the defined region.</span>
+<span class="n">selectBySphereWithoutIntersection</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">sphere</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">selectBySphereWithoutIntersection</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    
+<span class="c1"># 2. Change External Volume Properties</span>
+<span class="c1"># Once external volume is selected, external volume properties can be changed. </span>
+<span class="c1"># Let&#39;s first select the soil volume.</span>
+<span class="n">soil</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getExternalVolumes</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Change the external volume name to &quot;Material 3 Soil&quot;.</span>
+<span class="n">soil</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Material 4 Soil&quot;</span><span class="p">)</span>
+<span class="c1"># Get material 4.</span>
+<span class="n">material4</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllMaterialProperties</span><span class="p">()[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">material4Name</span> <span class="o">=</span> <span class="n">material4</span><span class="o">.</span><span class="n">getMaterialName</span><span class="p">()</span>
+<span class="c1"># Set the soil model to Material 4 since stage 1.</span>
+<span class="n">soil</span><span class="o">.</span><span class="n">setAppliedMaterialProperty</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">material4Name</span><span class="p">)</span>
+<span class="c1"># Set the soil role to CONSTRUCTION.</span>
+<span class="n">soil</span><span class="o">.</span><span class="n">setRole</span><span class="p">(</span><span class="n">ExternalVolumeRoles</span><span class="o">.</span><span class="n">CONSTRUCTION</span><span class="p">)</span>
+<span class="c1"># Change the soil role back to GEOLOGY.</span>
+<span class="n">soil</span><span class="o">.</span><span class="n">setRole</span><span class="p">(</span><span class="n">ExternalVolumeRoles</span><span class="o">.</span><span class="n">GEOLOGY</span><span class="p">)</span>
+
+<span class="c1"># 3. Attached Volumes</span>
+<span class="c1"># This function is for selecting volumes attached to the given volumes for easier selection.</span>
+<span class="c1"># You may provide an external volume object to look up attached volumes. For example, tunnel </span>
+<span class="c1"># and foundation are attached to the soil.</span>
+<span class="n">attachedVolumesbyExternalVolume</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getAttachedExternalVolumes</span><span class="p">(</span><span class="n">soil</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">attachedVolumesbyExternalVolume</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<span class="c1"># Without getting the external volume first, you may select the external volume by name as well.</span>
+<span class="n">attachedVolumesbyExternalVolumeName</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getAttachedExternalVolumesByVolumeName</span><span class="p">(</span><span class="n">soil</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">attachedVolumesbyExternalVolumeName</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+    
+<span class="c1"># 4. Volumes and Areas</span>
+<span class="c1"># Get the volume and surface area of the tunnel.</span>
+<span class="n">tunnel</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getExternalVolumeByName</span><span class="p">(</span><span class="s2">&quot;Underground Tunnel&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The volume of the tunnel is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">tunnel</span><span class="o">.</span><span class="n">getVolume</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> m^3.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;The surface area of the tunnel is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">tunnel</span><span class="o">.</span><span class="n">getTotalSurfaceArea</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2"> m^2.&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Save and close the model.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 16:49:07,784 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60104...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+Soil
+Foundation
+Underground Tunnel
+Soil
+Underground Tunnel
+Underground Tunnel
+Soil
+Underground Tunnel
+Soil
+Foundation
+Foundation
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Underground Tunnel
+Foundation
+Underground Tunnel
+Foundation
+The volume of the tunnel is 93.26 m^3.
+The surface area of the tunnel is 194.22 m^2.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 16:49:53,482 - Rocscience.RS3 - INFO - Not saving changes for file &quot;C:\Users\GraceHu\source\repos\RS3Scripting_Compute\docs\example_code\example_models\copiedModel.rs3v3&quot;.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="project_settings_example.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Project Settings Script Examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="field_stress_example.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Field Stress Script Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-external-volumes">1. Select External Volumes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-volumes-by-defining-a-point">1.1 Select Volumes by Defining a Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-volumes-by-definiing-a-polyline">1.2 Select Volumes by Definiing a Polyline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-volumes-by-defining-a-cube">1.3 Select Volumes by Defining a Cube</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-volumes-by-defining-a-cylinder">1.4 Select Volumes by Defining a Cylinder</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-volumes-by-defining-a-sphere">1.5 Select Volumes by Defining a Sphere</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-external-volume-properties">2. Change External Volume Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attached-volumes">3. Attached Volumes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volumes-and-areas">4. Volumes and Areas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-script">Full Script:</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/example_code/model/external_volume_and_selection_example.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Rocscience Inc..
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+rs3.projectSettings.StressAnalysis module
+=========================================
+
+.. automodule:: rs3.projectSettings.StressAnalysis
+   :members:
+   :undoc-members:
+   :show-inheritance:

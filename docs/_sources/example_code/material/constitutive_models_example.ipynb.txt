@@ -1,0 +1,1754 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010849,
+     "end_time": "2026-03-13T20:22:44.343186",
+     "exception": false,
+     "start_time": "2026-03-13T20:22:44.332337",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(material_constitutive_models_example)=\n",
+    "# Material Constitutive Models Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006287,
+     "end_time": "2026-03-13T20:22:44.355658",
+     "exception": false,
+     "start_time": "2026-03-13T20:22:44.349371",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:22:44.369322Z",
+     "iopub.status.busy": "2026-03-13T20:22:44.368789Z",
+     "iopub.status.idle": "2026-03-13T20:22:44.598960Z",
+     "shell.execute_reply": "2026-03-13T20:22:44.597776Z"
+    },
+    "papermill": {
+     "duration": 0.238222,
+     "end_time": "2026-03-13T20:22:44.600038",
+     "exception": false,
+     "start_time": "2026-03-13T20:22:44.361816",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005234,
+     "end_time": "2026-03-13T20:22:44.612582",
+     "exception": false,
+     "start_time": "2026-03-13T20:22:44.607348",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:22:44.627549Z",
+     "iopub.status.busy": "2026-03-13T20:22:44.627172Z",
+     "iopub.status.idle": "2026-03-13T20:22:44.631554Z",
+     "shell.execute_reply": "2026-03-13T20:22:44.630243Z"
+    },
+    "papermill": {
+     "duration": 0.014957,
+     "end_time": "2026-03-13T20:22:44.632454",
+     "exception": false,
+     "start_time": "2026-03-13T20:22:44.617497",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006104,
+     "end_time": "2026-03-13T20:22:44.644828",
+     "exception": false,
+     "start_time": "2026-03-13T20:22:44.638724",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "17cb2da7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:22:44.659317Z",
+     "iopub.status.busy": "2026-03-13T20:22:44.658977Z",
+     "iopub.status.idle": "2026-03-13T20:23:29.206344Z",
+     "shell.execute_reply": "2026-03-13T20:23:29.204348Z"
+    },
+    "papermill": {
+     "duration": 44.557469,
+     "end_time": "2026-03-13T20:23:29.208247",
+     "exception": false,
+     "start_time": "2026-03-13T20:22:44.650778",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:22:44,664 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60202...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60202\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b336c7f7",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012034,
+     "end_time": "2026-03-13T20:23:29.232223",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:29.220189",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "96a96c01",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:29.258731Z",
+     "iopub.status.busy": "2026-03-13T20:23:29.258236Z",
+     "iopub.status.idle": "2026-03-13T20:23:29.272843Z",
+     "shell.execute_reply": "2026-03-13T20:23:29.269196Z"
+    },
+    "papermill": {
+     "duration": 0.0309,
+     "end_time": "2026-03-13T20:23:29.275852",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:29.244952",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014515,
+     "end_time": "2026-03-13T20:23:29.304677",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:29.290162",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:29.343602Z",
+     "iopub.status.busy": "2026-03-13T20:23:29.342739Z",
+     "iopub.status.idle": "2026-03-13T20:23:29.379619Z",
+     "shell.execute_reply": "2026-03-13T20:23:29.376190Z"
+    },
+    "papermill": {
+     "duration": 0.062687,
+     "end_time": "2026-03-13T20:23:29.381688",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:29.319001",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010234,
+     "end_time": "2026-03-13T20:23:29.405179",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:29.394945",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:29.441547Z",
+     "iopub.status.busy": "2026-03-13T20:23:29.440236Z",
+     "iopub.status.idle": "2026-03-13T20:23:46.539621Z",
+     "shell.execute_reply": "2026-03-13T20:23:46.537187Z"
+    },
+    "papermill": {
+     "duration": 17.119688,
+     "end_time": "2026-03-13T20:23:46.543070",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:29.423382",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8178f89d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014486,
+     "end_time": "2026-03-13T20:23:46.569721",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:46.555235",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create and Get Material"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "91094ee0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011437,
+     "end_time": "2026-03-13T20:23:46.592300",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:46.580863",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the first material in the list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "ab017b80",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:46.618463Z",
+     "iopub.status.busy": "2026-03-13T20:23:46.618013Z",
+     "iopub.status.idle": "2026-03-13T20:23:47.556751Z",
+     "shell.execute_reply": "2026-03-13T20:23:47.553818Z"
+    },
+    "papermill": {
+     "duration": 0.955037,
+     "end_time": "2026-03-13T20:23:47.559206",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:46.604169",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Soil'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1 = model.getAllMaterialProperties()[0]\n",
+    "material1.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "ecc0192e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:47.587211Z",
+     "iopub.status.busy": "2026-03-13T20:23:47.586642Z",
+     "iopub.status.idle": "2026-03-13T20:23:48.350656Z",
+     "shell.execute_reply": "2026-03-13T20:23:48.348184Z"
+    },
+    "papermill": {
+     "duration": 0.779835,
+     "end_time": "2026-03-13T20:23:48.352440",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:47.572605",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'New Material'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newMaterialName = \"New Material\"\n",
+    "model.createNewMaterialProperty(newMaterialName)\n",
+    "newMaterial = model.getMaterialPropertyByName(newMaterialName)\n",
+    "newMaterial.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2c63f598",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013776,
+     "end_time": "2026-03-13T20:23:48.380074",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:48.366298",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Set Constitutive Model"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2198a5d7",
+   "metadata": {
+    "papermill": {
+     "duration": 0.017063,
+     "end_time": "2026-03-13T20:23:48.414225",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:48.397162",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.1 Mohr Coulomb"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "f04d1d5e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:48.481497Z",
+     "iopub.status.busy": "2026-03-13T20:23:48.480722Z",
+     "iopub.status.idle": "2026-03-13T20:23:48.640119Z",
+     "shell.execute_reply": "2026-03-13T20:23:48.636950Z"
+    },
+    "papermill": {
+     "duration": 0.20577,
+     "end_time": "2026-03-13T20:23:48.643849",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:48.438079",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<ConstitutiveModelTypes.MOHR_COULOMB: 'MOHR_COULOMB'>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.MOHR_COULOMB)\n",
+    "material1.ConstitutiveModel.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "b2553801",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:48.679747Z",
+     "iopub.status.busy": "2026-03-13T20:23:48.678898Z",
+     "iopub.status.idle": "2026-03-13T20:23:48.686431Z",
+     "shell.execute_reply": "2026-03-13T20:23:48.684194Z"
+    },
+    "papermill": {
+     "duration": 0.030544,
+     "end_time": "2026-03-13T20:23:48.688999",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:48.658455",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "mohrCoulomb = material1.ConstitutiveModel.MohrCoulomb"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "93303b46",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:48.719567Z",
+     "iopub.status.busy": "2026-03-13T20:23:48.718474Z",
+     "iopub.status.idle": "2026-03-13T20:23:48.852112Z",
+     "shell.execute_reply": "2026-03-13T20:23:48.850012Z"
+    },
+    "papermill": {
+     "duration": 0.152268,
+     "end_time": "2026-03-13T20:23:48.854046",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:48.701778",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MaterialType.PLASTIC: True>"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mohrCoulomb.setMaterialType(MaterialType.PLASTIC)\n",
+    "mohrCoulomb.getMaterialType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "ae0e4f05",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:48.886085Z",
+     "iopub.status.busy": "2026-03-13T20:23:48.885376Z",
+     "iopub.status.idle": "2026-03-13T20:23:49.104520Z",
+     "shell.execute_reply": "2026-03-13T20:23:49.101443Z"
+    },
+    "papermill": {
+     "duration": 0.238219,
+     "end_time": "2026-03-13T20:23:49.107775",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:48.869556",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MaterialElasticityTypes.ORTHOTROPIC: 'ORTHOTROPIC'>"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mohrCoulomb.setElasticType(MaterialElasticityTypes.ORTHOTROPIC)\n",
+    "mohrCoulomb.getElasticType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "dc6c7420",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:49.170820Z",
+     "iopub.status.busy": "2026-03-13T20:23:49.169484Z",
+     "iopub.status.idle": "2026-03-13T20:23:49.332379Z",
+     "shell.execute_reply": "2026-03-13T20:23:49.330113Z"
+    },
+    "papermill": {
+     "duration": 0.198022,
+     "end_time": "2026-03-13T20:23:49.333993",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:49.135971",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(1.0, 1.0, 0.0)"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mohrCoulomb.OrthotropicStiffness.setDirection1((1, 1, 0))\n",
+    "mohrCoulomb.OrthotropicStiffness.getDirection1()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "c271f25f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:49.364657Z",
+     "iopub.status.busy": "2026-03-13T20:23:49.363942Z",
+     "iopub.status.idle": "2026-03-13T20:23:49.459620Z",
+     "shell.execute_reply": "2026-03-13T20:23:49.456930Z"
+    },
+    "papermill": {
+     "duration": 0.115769,
+     "end_time": "2026-03-13T20:23:49.461842",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:49.346073",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mohrCoulomb.OrthotropicStiffness.setUseUnloadingCondition(True)\n",
+    "mohrCoulomb.OrthotropicStiffness.getUseUnloadingCondition()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "acc2cc6e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:49.490451Z",
+     "iopub.status.busy": "2026-03-13T20:23:49.489726Z",
+     "iopub.status.idle": "2026-03-13T20:23:49.523041Z",
+     "shell.execute_reply": "2026-03-13T20:23:49.521233Z"
+    },
+    "papermill": {
+     "duration": 0.05298,
+     "end_time": "2026-03-13T20:23:49.526593",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:49.473613",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ShearModulusG12': 8333.33,\n",
+       " 'ShearModulusG13': 8333.33,\n",
+       " 'ShearModulusG23': 8333.33,\n",
+       " 'YoungsModulusE1': 20000.0,\n",
+       " 'YoungsModulusE2': 20000.0,\n",
+       " 'YoungsModulusE3': 20000.0,\n",
+       " 'PoissonsRatioV12': 0.2,\n",
+       " 'PoissonsRatioV13': 0.2,\n",
+       " 'PoissonsRatioV23': 0.2,\n",
+       " 'UnloadingShearModulusG12': 8333.33,\n",
+       " 'UnloadingShearModulusG13': 8333.33,\n",
+       " 'UnloadingShearModulusG23': 8333.33,\n",
+       " 'UnloadingYoungsModulusE1': 20000.0,\n",
+       " 'UnloadingYoungsModulusE2': 20000.0,\n",
+       " 'UnloadingYoungsModulusE3': 20000.0,\n",
+       " 'UnloadingPoissonsRatioV12': 0.2,\n",
+       " 'UnloadingPoissonsRatioV13': 0.2,\n",
+       " 'UnloadingPoissonsRatioV23': 0.2}"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mohrCoulomb.OrthotropicStiffness.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "ab18bed4",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:49.562616Z",
+     "iopub.status.busy": "2026-03-13T20:23:49.562171Z",
+     "iopub.status.idle": "2026-03-13T20:23:49.811627Z",
+     "shell.execute_reply": "2026-03-13T20:23:49.807908Z"
+    },
+    "papermill": {
+     "duration": 0.267001,
+     "end_time": "2026-03-13T20:23:49.814491",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:49.547490",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ShearModulusG12': 45000.0,\n",
+       " 'ShearModulusG13': 8333.33,\n",
+       " 'ShearModulusG23': 8333.33,\n",
+       " 'YoungsModulusE1': 20000.0,\n",
+       " 'YoungsModulusE2': 20000.0,\n",
+       " 'YoungsModulusE3': 20000.0,\n",
+       " 'PoissonsRatioV12': 0.2,\n",
+       " 'PoissonsRatioV13': 0.2,\n",
+       " 'PoissonsRatioV23': 0.2,\n",
+       " 'UnloadingShearModulusG12': 4000.0,\n",
+       " 'UnloadingShearModulusG13': 8333.33,\n",
+       " 'UnloadingShearModulusG23': 8333.33,\n",
+       " 'UnloadingYoungsModulusE1': 20000.0,\n",
+       " 'UnloadingYoungsModulusE2': 20000.0,\n",
+       " 'UnloadingYoungsModulusE3': 20000.0,\n",
+       " 'UnloadingPoissonsRatioV12': 0.2,\n",
+       " 'UnloadingPoissonsRatioV13': 0.2,\n",
+       " 'UnloadingPoissonsRatioV23': 0.2}"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mohrCoulomb.OrthotropicStiffness.setProperties(ShearModulusG12=45000, UnloadingShearModulusG12=4000)\n",
+    "mohrCoulomb.OrthotropicStiffness.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f6699240",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014998,
+     "end_time": "2026-03-13T20:23:49.844059",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:49.829061",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.2 Generalized Hoek Brown"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "57cb52b8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:49.873557Z",
+     "iopub.status.busy": "2026-03-13T20:23:49.872723Z",
+     "iopub.status.idle": "2026-03-13T20:23:50.013910Z",
+     "shell.execute_reply": "2026-03-13T20:23:50.009052Z"
+    },
+    "papermill": {
+     "duration": 0.156177,
+     "end_time": "2026-03-13T20:23:50.016332",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:49.860155",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<ConstitutiveModelTypes.GENERALIZED_HOEK_BROWN: 'GENERALIZED_HOEK_BROWN'>"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.GENERALIZED_HOEK_BROWN)\n",
+    "material1.ConstitutiveModel.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "11950903",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:50.053440Z",
+     "iopub.status.busy": "2026-03-13T20:23:50.052571Z",
+     "iopub.status.idle": "2026-03-13T20:23:50.064073Z",
+     "shell.execute_reply": "2026-03-13T20:23:50.061121Z"
+    },
+    "papermill": {
+     "duration": 0.034001,
+     "end_time": "2026-03-13T20:23:50.066462",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:50.032461",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "generalizedHoekBrown = material1.ConstitutiveModel.GeneralizedHoekBrown"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "21a6f8f1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:50.098267Z",
+     "iopub.status.busy": "2026-03-13T20:23:50.097327Z",
+     "iopub.status.idle": "2026-03-13T20:23:50.683517Z",
+     "shell.execute_reply": "2026-03-13T20:23:50.681834Z"
+    },
+    "papermill": {
+     "duration": 0.603977,
+     "end_time": "2026-03-13T20:23:50.685813",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:50.081836",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'UCSOfIntactRock': 150000.0,\n",
+       " 'MbParameter': 1.402560337259652,\n",
+       " 'SParameter': 0.002218084904320257,\n",
+       " 'AParameter': 0.5080857390944207,\n",
+       " 'ResidualMbParameter': 0.0,\n",
+       " 'ResidualSParameter': 0.0,\n",
+       " 'ResidualAParameter': 0.0,\n",
+       " 'GSI': 45.0,\n",
+       " 'Mi': 10.0,\n",
+       " 'D': 0.0,\n",
+       " 'ResidualToPeak': False,\n",
+       " 'ResidualGSI': 50.0,\n",
+       " 'ResidualMi': 10.0,\n",
+       " 'ResidualD': 0.0,\n",
+       " 'DilationParameter': 0.0,\n",
+       " 'TensileCutoff': 0.0,\n",
+       " 'ApplySSRShearStrengthReduction': False}"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "generalizedHoekBrown.setUsingGSIMIDCalc(True)\n",
+    "generalizedHoekBrown.setProperties(UCSOfIntactRock=150000, GSI=45)\n",
+    "generalizedHoekBrown.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "d4039a8e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:50.707093Z",
+     "iopub.status.busy": "2026-03-13T20:23:50.706597Z",
+     "iopub.status.idle": "2026-03-13T20:23:51.123247Z",
+     "shell.execute_reply": "2026-03-13T20:23:51.120157Z"
+    },
+    "papermill": {
+     "duration": 0.429442,
+     "end_time": "2026-03-13T20:23:51.125992",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:50.696550",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'UCSOfIntactRock': 150000.0,\n",
+       " 'MbParameter': 0.8,\n",
+       " 'SParameter': 0.002218084904320257,\n",
+       " 'AParameter': 0.5080857390944207,\n",
+       " 'ResidualMbParameter': 0.0,\n",
+       " 'ResidualSParameter': 0.0,\n",
+       " 'ResidualAParameter': 0.0,\n",
+       " 'GSI': 45.0,\n",
+       " 'Mi': 10.0,\n",
+       " 'D': 0.0,\n",
+       " 'ResidualToPeak': False,\n",
+       " 'ResidualGSI': 50.0,\n",
+       " 'ResidualMi': 10.0,\n",
+       " 'ResidualD': 0.0,\n",
+       " 'DilationParameter': 0.0,\n",
+       " 'TensileCutoff': 0.0,\n",
+       " 'ApplySSRShearStrengthReduction': False}"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "generalizedHoekBrown.setUsingGSIMIDCalc(False)\n",
+    "generalizedHoekBrown.setProperties(MbParameter=0.8)\n",
+    "generalizedHoekBrown.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "5c4d7f7d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:51.182916Z",
+     "iopub.status.busy": "2026-03-13T20:23:51.181714Z",
+     "iopub.status.idle": "2026-03-13T20:23:51.547259Z",
+     "shell.execute_reply": "2026-03-13T20:23:51.544529Z"
+    },
+    "papermill": {
+     "duration": 0.396845,
+     "end_time": "2026-03-13T20:23:51.549466",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:51.152621",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.34"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "generalizedHoekBrown.setElasticType(MaterialElasticityTypes.LINEAR_ISOTROPIC)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.setPoissonsRatio(0.34)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.getPoissonsRatio()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "46a97972",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:51.600137Z",
+     "iopub.status.busy": "2026-03-13T20:23:51.599360Z",
+     "iopub.status.idle": "2026-03-13T20:23:52.076106Z",
+     "shell.execute_reply": "2026-03-13T20:23:52.072412Z"
+    },
+    "papermill": {
+     "duration": 0.508383,
+     "end_time": "2026-03-13T20:23:52.080566",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:51.572183",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "350.0"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "generalizedHoekBrown.LinearIsotropicStiffness.GeneralizedHoekBrownEstimation.setEstimationMethod(GeneralizedHoekBrownEstimationMethodType.GENERALIZED_HOEK_DIEDERICHS)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.GeneralizedHoekBrownEstimation.setUsingEI(False)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.GeneralizedHoekBrownEstimation.setMR(350)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.GeneralizedHoekBrownEstimation.getMR()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d12ea0d5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.026383,
+     "end_time": "2026-03-13T20:23:52.136218",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:52.109835",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(generalized_anisotropic_function_example)=\n",
+    "### 2.3 Generalized Anisotropic"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "f4ccd1d8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:52.195562Z",
+     "iopub.status.busy": "2026-03-13T20:23:52.194041Z",
+     "iopub.status.idle": "2026-03-13T20:23:52.343989Z",
+     "shell.execute_reply": "2026-03-13T20:23:52.340929Z"
+    },
+    "papermill": {
+     "duration": 0.183536,
+     "end_time": "2026-03-13T20:23:52.347112",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:52.163576",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<ConstitutiveModelTypes.GENERALIZED_ANISOTROPIC: 'GENERALIZED_ANISOTROPIC'>"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.GENERALIZED_ANISOTROPIC)\n",
+    "material1.ConstitutiveModel.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f1ff67e9",
+   "metadata": {
+    "papermill": {
+     "duration": 0.019842,
+     "end_time": "2026-03-13T20:23:52.386881",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:52.367039",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Base material and function points are mandetory fields. They have to be set for model to run."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "23d3e4e2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:52.474899Z",
+     "iopub.status.busy": "2026-03-13T20:23:52.473413Z",
+     "iopub.status.idle": "2026-03-13T20:23:53.232045Z",
+     "shell.execute_reply": "2026-03-13T20:23:53.230280Z"
+    },
+    "papermill": {
+     "duration": 0.826565,
+     "end_time": "2026-03-13T20:23:53.233869",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:52.407304",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(13.4, 51.2, 1.2, 0.2, 'Material 5'), (12.1, 34.4, 0.8, 0.1, 'New Material')]"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "generalizedAnisotropicFunctionName = \"Generalized Anisotropic Function\"\n",
+    "model.createNewGeneralizedAnisotropicFunction(generalizedAnisotropicFunctionName)\n",
+    "generalizedAnisotropicFunction = model.getGeneralizedAnisotropicFunctionByName(generalizedAnisotropicFunctionName)\n",
+    "\n",
+    "allMaterials = model.getAllMaterialProperties()\n",
+    "generalizedAnisotropicFunction.setBaseMaterial(allMaterials[3].getMaterialName())\n",
+    "generalizedAnisotropicFunction.setDipDipDirectionFunctionPoints([(13.4, 51.2, 1.2, 0.2, allMaterials[4].getMaterialName()), (12.1, 34.4, 0.8, 0.1, allMaterials[5].getMaterialName())])\n",
+    "generalizedAnisotropicFunction.getDipDipDirectionFunctionPoints()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c978c548",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018167,
+     "end_time": "2026-03-13T20:23:53.267610",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:53.249443",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(joint_control_examples)=\n",
+    "### 2.4 Jointed Mohr Coulomb"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "e753857a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:53.299643Z",
+     "iopub.status.busy": "2026-03-13T20:23:53.298667Z",
+     "iopub.status.idle": "2026-03-13T20:23:53.403309Z",
+     "shell.execute_reply": "2026-03-13T20:23:53.401184Z"
+    },
+    "papermill": {
+     "duration": 0.121991,
+     "end_time": "2026-03-13T20:23:53.405906",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:53.283915",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<ConstitutiveModelTypes.JOINTED_MOHR_COULOMB: 'JOINTED_MOHR_COULOMB'>"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.JOINTED_MOHR_COULOMB)\n",
+    "material1.ConstitutiveModel.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "17180d1b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:53.444315Z",
+     "iopub.status.busy": "2026-03-13T20:23:53.443033Z",
+     "iopub.status.idle": "2026-03-13T20:23:53.452007Z",
+     "shell.execute_reply": "2026-03-13T20:23:53.450158Z"
+    },
+    "papermill": {
+     "duration": 0.032855,
+     "end_time": "2026-03-13T20:23:53.455481",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:53.422626",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "jointedMohrCoulomb = material1.ConstitutiveModel.JointedMohrCoulomb"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "e58a0a00",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:53.503163Z",
+     "iopub.status.busy": "2026-03-13T20:23:53.502293Z",
+     "iopub.status.idle": "2026-03-13T20:23:53.607544Z",
+     "shell.execute_reply": "2026-03-13T20:23:53.605828Z"
+    },
+    "papermill": {
+     "duration": 0.137914,
+     "end_time": "2026-03-13T20:23:53.609270",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:53.471356",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "jointOptions = jointedMohrCoulomb.getJointOptions()\n",
+    "jointOptions.setNumberOfJoint(3)\n",
+    "jointOptions.getNumberOfJoint()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "0e5f036b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:53.646797Z",
+     "iopub.status.busy": "2026-03-13T20:23:53.645930Z",
+     "iopub.status.idle": "2026-03-13T20:23:53.788718Z",
+     "shell.execute_reply": "2026-03-13T20:23:53.786506Z"
+    },
+    "papermill": {
+     "duration": 0.164114,
+     "end_time": "2026-03-13T20:23:53.790711",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:53.626597",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MaterialJointSlipCriterionType.HYPERBOLIC_SIMPLE: 'HYPERBOLIC_SIMPLE'>"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Use the index of joints here. The second joint has index 1.\n",
+    "joint2 = jointOptions.getJoint(1)\n",
+    "joint2.setSlipCriterion(MaterialJointSlipCriterionType.HYPERBOLIC_SIMPLE)\n",
+    "joint2.getSlipCriterion()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "65a178ee",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:53.831777Z",
+     "iopub.status.busy": "2026-03-13T20:23:53.830826Z",
+     "iopub.status.idle": "2026-03-13T20:23:53.864518Z",
+     "shell.execute_reply": "2026-03-13T20:23:53.861318Z"
+    },
+    "papermill": {
+     "duration": 0.057522,
+     "end_time": "2026-03-13T20:23:53.866980",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:53.809458",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'DilationAngle': 0.0,\n",
+       " 'Adhesion': 0.0,\n",
+       " 'FrictionAngle': 20.0,\n",
+       " 'ResidualAdhesion': 0.0,\n",
+       " 'ResidualFrictionAngle': 10.0}"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "joint2.SimpleHyperbolic.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "52ce28f8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:53.900110Z",
+     "iopub.status.busy": "2026-03-13T20:23:53.899414Z",
+     "iopub.status.idle": "2026-03-13T20:23:54.215286Z",
+     "shell.execute_reply": "2026-03-13T20:23:54.211583Z"
+    },
+    "papermill": {
+     "duration": 0.341082,
+     "end_time": "2026-03-13T20:23:54.220541",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:53.879459",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'DilationAngle': 12.5,\n",
+       " 'Adhesion': 1.2,\n",
+       " 'FrictionAngle': 20.0,\n",
+       " 'ResidualAdhesion': 0.0,\n",
+       " 'ResidualFrictionAngle': 10.0}"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "joint2.SimpleHyperbolic.setProperties(DilationAngle=12.5, Adhesion=1.2)\n",
+    "joint2.SimpleHyperbolic.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "99f33818",
+   "metadata": {
+    "papermill": {
+     "duration": 0.019345,
+     "end_time": "2026-03-13T20:23:54.267382",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:54.248037",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.5 Cam Clay"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "95bb0475",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:54.311346Z",
+     "iopub.status.busy": "2026-03-13T20:23:54.310278Z",
+     "iopub.status.idle": "2026-03-13T20:23:54.466194Z",
+     "shell.execute_reply": "2026-03-13T20:23:54.462300Z"
+    },
+    "papermill": {
+     "duration": 0.184516,
+     "end_time": "2026-03-13T20:23:54.471019",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:54.286503",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<ConstitutiveModelTypes.CAM_CLAY: 'CAM_CLAY'>"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.CAM_CLAY)\n",
+    "material1.ConstitutiveModel.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "32fd2cf5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:54.537358Z",
+     "iopub.status.busy": "2026-03-13T20:23:54.535864Z",
+     "iopub.status.idle": "2026-03-13T20:23:54.590126Z",
+     "shell.execute_reply": "2026-03-13T20:23:54.584986Z"
+    },
+    "papermill": {
+     "duration": 0.092963,
+     "end_time": "2026-03-13T20:23:54.592550",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:54.499587",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ShearModulus': 8333.33,\n",
+       " 'PoissonsRatio': 0.0,\n",
+       " 'CriticalStateSlope': 1.3,\n",
+       " 'Lambda': 0.15,\n",
+       " 'Kappa': 0.025,\n",
+       " 'NParameter': 2.61,\n",
+       " 'Gamma': 0.0,\n",
+       " 'OverconsolidationRatio': 2.0,\n",
+       " 'PreconsolidationStress': 0.0}"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.CamClay.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "132a7c85",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:54.640783Z",
+     "iopub.status.busy": "2026-03-13T20:23:54.639783Z",
+     "iopub.status.idle": "2026-03-13T20:23:54.918808Z",
+     "shell.execute_reply": "2026-03-13T20:23:54.914394Z"
+    },
+    "papermill": {
+     "duration": 0.306254,
+     "end_time": "2026-03-13T20:23:54.921533",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:54.615279",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ShearModulus': 6500.0,\n",
+       " 'PoissonsRatio': 0.0,\n",
+       " 'CriticalStateSlope': 1.3,\n",
+       " 'Lambda': 0.15,\n",
+       " 'Kappa': 0.025,\n",
+       " 'NParameter': 1.5,\n",
+       " 'Gamma': 0.0,\n",
+       " 'OverconsolidationRatio': 2.0,\n",
+       " 'PreconsolidationStress': 0.0}"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.CamClay.setNParameter(1.5)\n",
+    "material1.ConstitutiveModel.CamClay.setShearModulus(6500)\n",
+    "material1.ConstitutiveModel.CamClay.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bbd0153f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.022082,
+     "end_time": "2026-03-13T20:23:54.963678",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:54.941596",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "bbe1419c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:55.018615Z",
+     "iopub.status.busy": "2026-03-13T20:23:55.017764Z",
+     "iopub.status.idle": "2026-03-13T20:23:59.194582Z",
+     "shell.execute_reply": "2026-03-13T20:23:59.193202Z"
+    },
+    "papermill": {
+     "duration": 4.212951,
+     "end_time": "2026-03-13T20:23:59.195877",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:54.982926",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "142f9c83",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01107,
+     "end_time": "2026-03-13T20:23:59.217665",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:59.206595",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "d7fb65f8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:23:59.241798Z",
+     "iopub.status.busy": "2026-03-13T20:23:59.241437Z",
+     "iopub.status.idle": "2026-03-13T20:24:04.302903Z",
+     "shell.execute_reply": "2026-03-13T20:24:04.296690Z"
+    },
+    "papermill": {
+     "duration": 5.075735,
+     "end_time": "2026-03-13T20:24:04.305788",
+     "exception": false,
+     "start_time": "2026-03-13T20:23:59.230053",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1407920a",
+   "metadata": {
+    "papermill": {
+     "duration": 0.019079,
+     "end_time": "2026-03-13T20:24:04.354689",
+     "exception": false,
+     "start_time": "2026-03-13T20:24:04.335610",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "a33ea282",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:24:04.400646Z",
+     "iopub.status.busy": "2026-03-13T20:24:04.399691Z",
+     "iopub.status.idle": "2026-03-13T20:25:16.923878Z",
+     "shell.execute_reply": "2026-03-13T20:25:16.922368Z"
+    },
+    "papermill": {
+     "duration": 72.549409,
+     "end_time": "2026-03-13T20:25:16.925050",
+     "exception": false,
+     "start_time": "2026-03-13T20:24:04.375641",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:24:04,425 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60202...\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Material Constitutive Models Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60202\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create and Get Material\n",
+    "# Get the first material in the list.\n",
+    "material1 = model.getAllMaterialProperties()[0]\n",
+    "material1.getMaterialName()\n",
+    "newMaterialName = \"New Material\"\n",
+    "model.createNewMaterialProperty(newMaterialName)\n",
+    "newMaterial = model.getMaterialPropertyByName(newMaterialName)\n",
+    "\n",
+    "# 2. Set Constitutive Model\n",
+    "# 2.1 Mohr Coulomb\n",
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.MOHR_COULOMB)\n",
+    "mohrCoulomb = material1.ConstitutiveModel.MohrCoulomb\n",
+    "mohrCoulomb.setMaterialType(MaterialType.PLASTIC)\n",
+    "mohrCoulomb.setElasticType(MaterialElasticityTypes.ORTHOTROPIC)\n",
+    "mohrCoulomb.OrthotropicStiffness.setDirection1((1, 1, 0))\n",
+    "mohrCoulomb.OrthotropicStiffness.setUseUnloadingCondition(True)\n",
+    "mohrCoulomb.OrthotropicStiffness.setProperties(ShearModulusG12=45000, UnloadingShearModulusG12=4000)\n",
+    "\n",
+    "# 2.2 Generalized Hoek Brown\n",
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.GENERALIZED_HOEK_BROWN)\n",
+    "generalizedHoekBrown = material1.ConstitutiveModel.GeneralizedHoekBrown\n",
+    "generalizedHoekBrown.setUsingGSIMIDCalc(True)\n",
+    "generalizedHoekBrown.setProperties(UCSOfIntactRock=150000, GSI=45)\n",
+    "generalizedHoekBrown.setUsingGSIMIDCalc(False)\n",
+    "generalizedHoekBrown.setProperties(MbParameter=0.8)\n",
+    "generalizedHoekBrown.setElasticType(MaterialElasticityTypes.LINEAR_ISOTROPIC)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.setPoissonsRatio(0.34)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.GeneralizedHoekBrownEstimation.setEstimationMethod(GeneralizedHoekBrownEstimationMethodType.GENERALIZED_HOEK_DIEDERICHS)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.GeneralizedHoekBrownEstimation.setUsingEI(False)\n",
+    "generalizedHoekBrown.LinearIsotropicStiffness.GeneralizedHoekBrownEstimation.setMR(350)\n",
+    "\n",
+    "# 2.3 Generalized Anisotropic\n",
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.GENERALIZED_ANISOTROPIC)\n",
+    "# Base material and function points are mandetory fields. They have to be set for model to run.\n",
+    "generalizedAnisotropicFunctionName = \"Generalized Anisotropic Function\"\n",
+    "model.createNewGeneralizedAnisotropicFunction(generalizedAnisotropicFunctionName)\n",
+    "generalizedAnisotropicFunction = model.getGeneralizedAnisotropicFunctionByName(generalizedAnisotropicFunctionName)\n",
+    "allMaterials = model.getAllMaterialProperties()\n",
+    "generalizedAnisotropicFunction.setBaseMaterial(allMaterials[3].getMaterialName())\n",
+    "generalizedAnisotropicFunction.setDipDipDirectionFunctionPoints([(13.4, 51.2, 1.2, 0.2, allMaterials[4].getMaterialName()), (12.1, 34.4, 0.8, 0.1, allMaterials[5].getMaterialName())])\n",
+    "\n",
+    "# 2.4 Jointed Mohr Coulomb\n",
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.JOINTED_MOHR_COULOMB)\n",
+    "jointedMohrCoulomb = material1.ConstitutiveModel.JointedMohrCoulomb\n",
+    "jointOptions = jointedMohrCoulomb.getJointOptions()\n",
+    "jointOptions.setNumberOfJoint(3)\n",
+    "# Use the index of joints here. The second joint has index 1.\n",
+    "joint2 = jointOptions.getJoint(1)\n",
+    "joint2.setSlipCriterion(MaterialJointSlipCriterionType.HYPERBOLIC_SIMPLE)\n",
+    "joint2.SimpleHyperbolic.setProperties(DilationAngle=12.5, Adhesion=1.2)\n",
+    "\n",
+    "# 2.5 Cam Clay\n",
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.CAM_CLAY)\n",
+    "material1.ConstitutiveModel.CamClay.setNParameter(1.5)\n",
+    "material1.ConstitutiveModel.CamClay.setShearModulus(6500)\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 156.932072,
+   "end_time": "2026-03-13T20:25:19.577807",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\material\\constitutive_models_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\material\\constitutive_models_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:22:42.645735",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

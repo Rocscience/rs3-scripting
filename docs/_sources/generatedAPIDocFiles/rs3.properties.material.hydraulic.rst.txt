@@ -1,0 +1,23 @@
+rs3.properties.material.hydraulic package
+=========================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.hydraulic.FEAGroundwater
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.hydraulic.Hydraulic
+   rs3.properties.material.hydraulic.PhreaticConditions
+   rs3.properties.material.hydraulic.StaticGroundwater
+   rs3.properties.material.hydraulic.WaterConditions
+
+
+.. automodule:: rs3.properties.material.hydraulic
+   :members:
+   :undoc-members:
+   :show-inheritance:

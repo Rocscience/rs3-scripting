@@ -1,0 +1,1216 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "3953d19e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008559,
+     "end_time": "2026-03-13T21:13:03.861877",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:03.853318",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(solid_result_example)=\n",
+    "# Solid Result Script Example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f80cb5cc",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007602,
+     "end_time": "2026-03-13T21:13:03.878838",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:03.871236",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "0d48abd5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:03.891451Z",
+     "iopub.status.busy": "2026-03-13T21:13:03.891050Z",
+     "iopub.status.idle": "2026-03-13T21:13:04.140917Z",
+     "shell.execute_reply": "2026-03-13T21:13:04.139600Z"
+    },
+    "papermill": {
+     "duration": 0.258831,
+     "end_time": "2026-03-13T21:13:04.142123",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:03.883292",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import SolidsDataType\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6375a745",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005364,
+     "end_time": "2026-03-13T21:13:04.152901",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:04.147537",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "01397a19",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:04.165806Z",
+     "iopub.status.busy": "2026-03-13T21:13:04.165345Z",
+     "iopub.status.idle": "2026-03-13T21:13:04.170238Z",
+     "shell.execute_reply": "2026-03-13T21:13:04.168593Z"
+    },
+    "papermill": {
+     "duration": 0.012619,
+     "end_time": "2026-03-13T21:13:04.171481",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:04.158862",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2810d692",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00533,
+     "end_time": "2026-03-13T21:13:04.182757",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:04.177427",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "d4f42a65",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:04.196481Z",
+     "iopub.status.busy": "2026-03-13T21:13:04.196121Z",
+     "iopub.status.idle": "2026-03-13T21:13:35.482505Z",
+     "shell.execute_reply": "2026-03-13T21:13:35.480965Z"
+    },
+    "papermill": {
+     "duration": 31.295209,
+     "end_time": "2026-03-13T21:13:35.483534",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:04.188325",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:13:04,201 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60501...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60501\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5604753a",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003818,
+     "end_time": "2026-03-13T21:13:35.492545",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:35.488727",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "c46c8ce5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:35.505973Z",
+     "iopub.status.busy": "2026-03-13T21:13:35.505527Z",
+     "iopub.status.idle": "2026-03-13T21:13:35.512887Z",
+     "shell.execute_reply": "2026-03-13T21:13:35.511515Z"
+    },
+    "papermill": {
+     "duration": 0.015485,
+     "end_time": "2026-03-13T21:13:35.514099",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:35.498614",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fa1ba63d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004619,
+     "end_time": "2026-03-13T21:13:35.524328",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:35.519709",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "68a779ea",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:35.536298Z",
+     "iopub.status.busy": "2026-03-13T21:13:35.535973Z",
+     "iopub.status.idle": "2026-03-13T21:13:48.156558Z",
+     "shell.execute_reply": "2026-03-13T21:13:48.154617Z"
+    },
+    "papermill": {
+     "duration": 12.629185,
+     "end_time": "2026-03-13T21:13:48.158239",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:35.529054",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "77e01601",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007649,
+     "end_time": "2026-03-13T21:13:48.175391",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:48.167742",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Get Node Results"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "584e11ac",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010187,
+     "end_time": "2026-03-13T21:13:48.194555",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:48.184368",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.1 Decide which data types you need (optional)\n",
+    "\n",
+    "If you know the data types you want to query, we highly recommend you to specify the data types to optimize the data loading speed. If no data type is specified, all solid data types will be queried. \n",
+    "\n",
+    "Here we request Sigma 1 Effective and Total Displacement."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "0a1cc35b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:48.212315Z",
+     "iopub.status.busy": "2026-03-13T21:13:48.211855Z",
+     "iopub.status.idle": "2026-03-13T21:13:48.217642Z",
+     "shell.execute_reply": "2026-03-13T21:13:48.215593Z"
+    },
+    "papermill": {
+     "duration": 0.015741,
+     "end_time": "2026-03-13T21:13:48.219308",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:48.203567",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "required_data_types = set([\n",
+    "    SolidsDataType.SIGMA_1_EFFECTIVE,\n",
+    "    SolidsDataType.TOTAL_DISPLACEMENT,\n",
+    "])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3dfa67c3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007579,
+     "end_time": "2026-03-13T21:13:48.234066",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:48.226487",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.2 Define a box region (optional)\n",
+    "\n",
+    "A cube region is defined by two corners. Only mesh nodes inside or intersecting the box will be returned. If you omit the region in the next step, all nodes in the model would be returned."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "c3a02dcd",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:48.249107Z",
+     "iopub.status.busy": "2026-03-13T21:13:48.248681Z",
+     "iopub.status.idle": "2026-03-13T21:13:48.254302Z",
+     "shell.execute_reply": "2026-03-13T21:13:48.252776Z"
+    },
+    "papermill": {
+     "duration": 0.015465,
+     "end_time": "2026-03-13T21:13:48.255787",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:48.240322",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "solid_query_region = Cube(\n",
+    "    corner1=Point(x=17.0, y=14.5, z=-12.0),\n",
+    "    corner2=Point(x=18.0, y=15.5, z=1.0),\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0c52ef31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006963,
+     "end_time": "2026-03-13T21:13:48.270107",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:48.263144",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.3 Get the solid results object for a given stage\n",
+    "\n",
+    "getMeshResults returns a list of \"SolidResults\" (one per stage). Pass the stage number list (e.g. [3, 4, 5]) and the set of data types you need. Then use mesh_results[0], mesh_results[1], mesh_results[2] for each stage."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "e1bf1c47",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:48.290170Z",
+     "iopub.status.busy": "2026-03-13T21:13:48.289737Z",
+     "iopub.status.idle": "2026-03-13T21:13:51.149429Z",
+     "shell.execute_reply": "2026-03-13T21:13:51.146177Z"
+    },
+    "papermill": {
+     "duration": 2.872373,
+     "end_time": "2026-03-13T21:13:51.151234",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:48.278861",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "mesh_results = model.Results.getMeshResults(\n",
+    "    stageNumber=[3, 4, 5],\n",
+    "    requiredDataTypes=required_data_types,\n",
+    ")\n",
+    "mesh_results_stage_3 = mesh_results[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "90d686fd",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012515,
+     "end_time": "2026-03-13T21:13:51.170855",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:51.158340",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.4 Get node results within the region\n",
+    "\n",
+    "getMeshNodeResults returns a list of node result objects. Each object holds coordinates and the requested result values for one mesh node. includeIntersecting=True means nodes that lie inside OR touch the box are included."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "992d3346",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:51.196732Z",
+     "iopub.status.busy": "2026-03-13T21:13:51.195328Z",
+     "iopub.status.idle": "2026-03-13T21:13:51.574663Z",
+     "shell.execute_reply": "2026-03-13T21:13:51.573076Z"
+    },
+    "papermill": {
+     "duration": 0.393392,
+     "end_time": "2026-03-13T21:13:51.576158",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:51.182766",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "node_results_stage_3 = mesh_results_stage_3.getMeshNodeResults(\n",
+    "    region=solid_query_region,\n",
+    "    includeIntersecting=True,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ada3fc8",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007599,
+     "end_time": "2026-03-13T21:13:51.593062",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:51.585463",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.5 Read values from one node (by position in the list)\n",
+    "\n",
+    "The list is indexed from 0. Here we take the first node (index 0) and read its coordinates and the two requested result types."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "3e5170a9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:51.607847Z",
+     "iopub.status.busy": "2026-03-13T21:13:51.607440Z",
+     "iopub.status.idle": "2026-03-13T21:13:51.615686Z",
+     "shell.execute_reply": "2026-03-13T21:13:51.613146Z"
+    },
+    "papermill": {
+     "duration": 0.018601,
+     "end_time": "2026-03-13T21:13:51.618509",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:51.599908",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Solid Stage 3, node ID 4186: \n",
+      "(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 6.675997053055459, 0.002066942381766267)\n"
+     ]
+    }
+   ],
+   "source": [
+    "node_index = 0\n",
+    "one_node_s3 = node_results_stage_3[node_index]\n",
+    "node_id_s3 = one_node_s3.NodeID\n",
+    "x_coord_s3 = one_node_s3.XCoordinate\n",
+    "y_coord_s3 = one_node_s3.YCoordinate\n",
+    "z_coord_s3 = one_node_s3.ZCoordinate\n",
+    "sigma1_s3 = one_node_s3.getResult(SolidsDataType.SIGMA_1_EFFECTIVE)\n",
+    "total_disp_s3 = one_node_s3.getResult(SolidsDataType.TOTAL_DISPLACEMENT)\n",
+    "print(f\"Solid Stage 3, node ID {node_id_s3}: \\n\"\n",
+    "      f\"(x, y, z, Sigma1 Effective, Total Displacement) = \"\n",
+    "      f\"({x_coord_s3}, {y_coord_s3}, {z_coord_s3}, {sigma1_s3}, {total_disp_s3})\"\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8f00176",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007538,
+     "end_time": "2026-03-13T21:13:51.636413",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:51.628875",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.6 Repeat the same pattern for other stages if needed\n",
+    "get MeshResults for that stage, then getMeshNodeResults (with the same or different region)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1aac0004",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:51.655743Z",
+     "iopub.status.busy": "2026-03-13T21:13:51.655218Z",
+     "iopub.status.idle": "2026-03-13T21:13:51.873812Z",
+     "shell.execute_reply": "2026-03-13T21:13:51.872226Z"
+    },
+    "papermill": {
+     "duration": 0.232022,
+     "end_time": "2026-03-13T21:13:51.875318",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:51.643296",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Solid Stage 4, node index 4186: \n",
+      "(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 16.424762113798238, 0.003212314938373181)\n"
+     ]
+    }
+   ],
+   "source": [
+    "mesh_results_stage_4 = mesh_results[1]\n",
+    "node_results_stage_4 = mesh_results_stage_4.getMeshNodeResults(\n",
+    "    region=solid_query_region,\n",
+    "    includeIntersecting=True,\n",
+    ")\n",
+    "one_node_s4 = node_results_stage_4[node_index]\n",
+    "node_id_s4  = one_node_s4.NodeID\n",
+    "print(\n",
+    "    f\"Solid Stage 4, node index {node_id_s4}: \\n\"\n",
+    "    f\"(x, y, z, Sigma1 Effective, Total Displacement) = \"\n",
+    "    f\"({one_node_s4.XCoordinate}, {one_node_s4.YCoordinate}, {one_node_s4.ZCoordinate}, \"\n",
+    "    f\"{one_node_s4.getResult(SolidsDataType.SIGMA_1_EFFECTIVE)}, \"\n",
+    "    f\"{one_node_s4.getResult(SolidsDataType.TOTAL_DISPLACEMENT)})\"\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "725f2635",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:51.896069Z",
+     "iopub.status.busy": "2026-03-13T21:13:51.895196Z",
+     "iopub.status.idle": "2026-03-13T21:13:52.107937Z",
+     "shell.execute_reply": "2026-03-13T21:13:52.106561Z"
+    },
+    "papermill": {
+     "duration": 0.223515,
+     "end_time": "2026-03-13T21:13:52.109082",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:51.885567",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Solid Stage 5, node index 4186: \n",
+      "(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 254.35987140434497, 0.06947488469160908)\n"
+     ]
+    }
+   ],
+   "source": [
+    "mesh_results_stage_5 = mesh_results[2]\n",
+    "node_results_stage_5 = mesh_results_stage_5.getMeshNodeResults(\n",
+    "    region=solid_query_region,\n",
+    "    includeIntersecting=True,\n",
+    ")\n",
+    "one_node_s5 = node_results_stage_5[node_index]\n",
+    "node_id_s5  = one_node_s5.NodeID\n",
+    "print(\n",
+    "    f\"Solid Stage 5, node index {node_id_s5}: \\n\"\n",
+    "    f\"(x, y, z, Sigma1 Effective, Total Displacement) = \"\n",
+    "    f\"({one_node_s5.XCoordinate}, {one_node_s5.YCoordinate}, {one_node_s5.ZCoordinate}, \"\n",
+    "    f\"{one_node_s5.getResult(SolidsDataType.SIGMA_1_EFFECTIVE)}, \"\n",
+    "    f\"{one_node_s5.getResult(SolidsDataType.TOTAL_DISPLACEMENT)})\"\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9b1ea7b3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008476,
+     "end_time": "2026-03-13T21:13:52.127283",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.118807",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Element Results"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b5bdfec1",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005411,
+     "end_time": "2026-03-13T21:13:52.141091",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.135680",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.1 Define a box region (optional)\n",
+    "\n",
+    "Create a box region near the tunnel by defining two corners."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "5c05b28e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:52.158757Z",
+     "iopub.status.busy": "2026-03-13T21:13:52.158340Z",
+     "iopub.status.idle": "2026-03-13T21:13:52.164903Z",
+     "shell.execute_reply": "2026-03-13T21:13:52.162703Z"
+    },
+    "papermill": {
+     "duration": 0.019589,
+     "end_time": "2026-03-13T21:13:52.166850",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.147261",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "solid_tunnel_query_region = Cube(\n",
+    "    corner1=Point(x=10.5, y=5.0, z=-10.0),\n",
+    "    corner2=Point(x=11.0, y=6.0, z=-9.0),\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "783e7ccf",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006564,
+     "end_time": "2026-03-13T21:13:52.180383",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.173819",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.2 Get element results within the region\n",
+    "\n",
+    "getMeshElementResults returns a list of element result objects. Each object holds attached node IDs and yield element information"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "4f65e675",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:52.202004Z",
+     "iopub.status.busy": "2026-03-13T21:13:52.201587Z",
+     "iopub.status.idle": "2026-03-13T21:13:52.700139Z",
+     "shell.execute_reply": "2026-03-13T21:13:52.697120Z"
+    },
+    "papermill": {
+     "duration": 0.510782,
+     "end_time": "2026-03-13T21:13:52.702129",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.191347",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "element_results_stage_3 = mesh_results_stage_3.getMeshElementResults(\n",
+    "    region=solid_tunnel_query_region,\n",
+    "    includeIntersecting=True,\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7d572b63",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011161,
+     "end_time": "2026-03-13T21:13:52.721954",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.710793",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.3 Get all yielded elements that have failure points."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "3a95661b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:52.747738Z",
+     "iopub.status.busy": "2026-03-13T21:13:52.746985Z",
+     "iopub.status.idle": "2026-03-13T21:13:52.757849Z",
+     "shell.execute_reply": "2026-03-13T21:13:52.754997Z"
+    },
+    "papermill": {
+     "duration": 0.030743,
+     "end_time": "2026-03-13T21:13:52.759871",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.729128",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "yield_elements_s3 = [item for item in element_results_stage_3 if item.YieldingResults.getFailurePoints()]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "24ba5683",
+   "metadata": {
+    "papermill": {
+     "duration": 0.0068,
+     "end_time": "2026-03-13T21:13:52.776379",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.769579",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.4 Get the first yielded element in the list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "735193e0",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:52.796161Z",
+     "iopub.status.busy": "2026-03-13T21:13:52.795747Z",
+     "iopub.status.idle": "2026-03-13T21:13:52.803370Z",
+     "shell.execute_reply": "2026-03-13T21:13:52.801549Z"
+    },
+    "papermill": {
+     "duration": 0.018681,
+     "end_time": "2026-03-13T21:13:52.804966",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.786285",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "yield_element_index = 0\n",
+    "one_element_s3 = yield_elements_s3[yield_element_index]\n",
+    "element_id_s3 = one_element_s3.ElementID\n",
+    "attached_node_ids_s3 = one_element_s3.AttachedNodes\n",
+    "failure_point_s3 = one_element_s3.YieldingResults.getFailurePoints()\n",
+    "num_failure_points_s3 = len(failure_point_s3)\n",
+    "yield_percent_s3 = one_element_s3.YieldPercent"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "c6f28d07",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:52.824547Z",
+     "iopub.status.busy": "2026-03-13T21:13:52.824074Z",
+     "iopub.status.idle": "2026-03-13T21:13:52.831327Z",
+     "shell.execute_reply": "2026-03-13T21:13:52.829832Z"
+    },
+    "papermill": {
+     "duration": 0.020389,
+     "end_time": "2026-03-13T21:13:52.832456",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.812067",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Solid Stage 3, element ID 20156 with attached node ids [7415, 2586, 2822, 2821] has 1 failure point(s):\n",
+      "1. Coord=(10.777270646187649, 5.379069880695322, -9.257446873668833), Type=['Shear', 'Tension'], Yield Percentage=100.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "failure_info = []\n",
+    "\n",
+    "for i, fp in enumerate(failure_point_s3, start=1):\n",
+    "    failure_info.append(\n",
+    "        f\"{i}. \"\n",
+    "        f\"Coord=({fp.XCoordinate}, {fp.YCoordinate}, {fp.ZCoordinate}), \"\n",
+    "        f\"Type={fp.FailureTypes}, \"\n",
+    "        f\"Yield Percentage={yield_percent_s3}\"\n",
+    "    )\n",
+    "\n",
+    "print(\n",
+    "    f\"Solid Stage 3, element ID {element_id_s3} \"\n",
+    "    f\"with attached node ids {attached_node_ids_s3} \"\n",
+    "    f\"has {num_failure_points_s3} failure point(s):\\n\"\n",
+    "    + \"\\n\".join(failure_info)\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "649242e3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006114,
+     "end_time": "2026-03-13T21:13:52.846401",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.840287",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Since accessing results doesn't change the model, close the model without saving."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "358e8f69",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:52.862969Z",
+     "iopub.status.busy": "2026-03-13T21:13:52.862583Z",
+     "iopub.status.idle": "2026-03-13T21:13:54.426129Z",
+     "shell.execute_reply": "2026-03-13T21:13:54.425003Z"
+    },
+    "papermill": {
+     "duration": 1.573627,
+     "end_time": "2026-03-13T21:13:54.428177",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:52.854550",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "10072526",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007245,
+     "end_time": "2026-03-13T21:13:54.443591",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:54.436346",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "611f6f7b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:13:54.460287Z",
+     "iopub.status.busy": "2026-03-13T21:13:54.459799Z",
+     "iopub.status.idle": "2026-03-13T21:14:00.085961Z",
+     "shell.execute_reply": "2026-03-13T21:14:00.083913Z"
+    },
+    "papermill": {
+     "duration": 5.637866,
+     "end_time": "2026-03-13T21:14:00.088616",
+     "exception": false,
+     "start_time": "2026-03-13T21:13:54.450750",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "97343023",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008394,
+     "end_time": "2026-03-13T21:14:00.105534",
+     "exception": false,
+     "start_time": "2026-03-13T21:14:00.097140",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "7cd2d2d8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:14:00.124513Z",
+     "iopub.status.busy": "2026-03-13T21:14:00.123780Z",
+     "iopub.status.idle": "2026-03-13T21:14:48.289365Z",
+     "shell.execute_reply": "2026-03-13T21:14:48.287421Z"
+    },
+    "papermill": {
+     "duration": 48.177796,
+     "end_time": "2026-03-13T21:14:48.291813",
+     "exception": false,
+     "start_time": "2026-03-13T21:14:00.114017",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:14:00,140 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60501...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Solid Stage 3, node ID 4186: \n",
+      "(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 6.675997053055459, 0.002066942381766267)\n",
+      "Solid Stage 4, node index 4186: \n",
+      "(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 16.424762113798238, 0.003212314938373181)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Solid Stage 5, node index 4186: \n",
+      "(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 254.35987140434497, 0.06947488469160908)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Solid Stage 3, element ID 20156 with attached node ids [7415, 2586, 2822, 2821] has 1 failure point(s):\n",
+      "1. Coord=(10.777270646187649, 5.379069880695322, -9.257446873668833), Type=['Shear', 'Tension'], Yield Percentage=100.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Solid Result Script Example\n",
+    "# Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import SolidsDataType\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60501\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")\n",
+    "\n",
+    "# 1. Get Node Results\n",
+    "# 1.1 Decide which data types you need (optional)\n",
+    "# If you know the data types you want to query, we highly recommend you to specify \n",
+    "# the data types to optimize the data loading speed. If no data type is specified, \n",
+    "# all solid data types will be queried. \n",
+    "# Here we request Sigma 1 Effective and Total Displacement.\n",
+    "required_data_types = set([\n",
+    "    SolidsDataType.SIGMA_1_EFFECTIVE,\n",
+    "    SolidsDataType.TOTAL_DISPLACEMENT,\n",
+    "])\n",
+    "\n",
+    "# 1.2 Define a box region (optional)\n",
+    "# A cube region is defined by two corners. Only mesh nodes inside or intersecting \n",
+    "# the box will be returned. If you omit the region in the next step, all nodes in \n",
+    "# the model would be returned.\n",
+    "solid_query_region = Cube(\n",
+    "    corner1=Point(x=17.0, y=14.5, z=-12.0),\n",
+    "    corner2=Point(x=18.0, y=15.5, z=1.0),\n",
+    ")\n",
+    "\n",
+    "# 1.3 Get the solid results object for a given stage\n",
+    "# getMeshResults returns a list of \"SolidResults\" (one per stage). Pass the stage \n",
+    "# number list (e.g. [3, 4, 5]) and the set of data types you need. Then use \n",
+    "# mesh_results[0], mesh_results[1], mesh_results[2] for each stage.\n",
+    "mesh_results = model.Results.getMeshResults(\n",
+    "    stageNumber=[3, 4, 5],\n",
+    "    requiredDataTypes=required_data_types,\n",
+    ")\n",
+    "mesh_results_stage_3 = mesh_results[0]\n",
+    "\n",
+    "# 1.4 Get node results within the region\n",
+    "# getMeshNodeResults returns a list of node result objects. Each object holds \n",
+    "# coordinates and the requested result values for one mesh node. \n",
+    "# includeIntersecting=True means nodes that lie inside OR touch the box are included.\n",
+    "node_results_stage_3 = mesh_results_stage_3.getMeshNodeResults(\n",
+    "    region=solid_query_region,\n",
+    "    includeIntersecting=True,\n",
+    ")\n",
+    "\n",
+    "# 1.5 Read values from one node (by position in the list)\n",
+    "# The list is indexed from 0. Here we take the first node (index 0) and read \n",
+    "# its coordinates and the two requested result types.\n",
+    "node_index = 0\n",
+    "one_node_s3 = node_results_stage_3[node_index]\n",
+    "node_id_s3 = one_node_s3.NodeID\n",
+    "x_coord_s3 = one_node_s3.XCoordinate\n",
+    "y_coord_s3 = one_node_s3.YCoordinate\n",
+    "z_coord_s3 = one_node_s3.ZCoordinate\n",
+    "sigma1_s3 = one_node_s3.getResult(SolidsDataType.SIGMA_1_EFFECTIVE)\n",
+    "total_disp_s3 = one_node_s3.getResult(SolidsDataType.TOTAL_DISPLACEMENT)\n",
+    "print(f\"Solid Stage 3, node ID {node_id_s3}: \\n\"\n",
+    "      f\"(x, y, z, Sigma1 Effective, Total Displacement) = \"\n",
+    "      f\"({x_coord_s3}, {y_coord_s3}, {z_coord_s3}, {sigma1_s3}, {total_disp_s3})\"\n",
+    ")\n",
+    "\n",
+    "# 1.6 Repeat the same pattern for other stages if needed\n",
+    "# get MeshResults for that stage, then getMeshNodeResults (with the same or different region).\n",
+    "mesh_results_stage_4 = mesh_results[1]\n",
+    "node_results_stage_4 = mesh_results_stage_4.getMeshNodeResults(\n",
+    "    region=solid_query_region,\n",
+    "    includeIntersecting=True,\n",
+    ")\n",
+    "one_node_s4 = node_results_stage_4[node_index]\n",
+    "node_id_s4  = one_node_s4.NodeID\n",
+    "print(\n",
+    "    f\"Solid Stage 4, node index {node_id_s4}: \\n\"\n",
+    "    f\"(x, y, z, Sigma1 Effective, Total Displacement) = \"\n",
+    "    f\"({one_node_s4.XCoordinate}, {one_node_s4.YCoordinate}, {one_node_s4.ZCoordinate}, \"\n",
+    "    f\"{one_node_s4.getResult(SolidsDataType.SIGMA_1_EFFECTIVE)}, \"\n",
+    "    f\"{one_node_s4.getResult(SolidsDataType.TOTAL_DISPLACEMENT)})\"\n",
+    ")\n",
+    "mesh_results_stage_5 = mesh_results[2]\n",
+    "node_results_stage_5 = mesh_results_stage_5.getMeshNodeResults(\n",
+    "    region=solid_query_region,\n",
+    "    includeIntersecting=True,\n",
+    ")\n",
+    "one_node_s5 = node_results_stage_5[node_index]\n",
+    "node_id_s5  = one_node_s5.NodeID\n",
+    "print(\n",
+    "    f\"Solid Stage 5, node index {node_id_s5}: \\n\"\n",
+    "    f\"(x, y, z, Sigma1 Effective, Total Displacement) = \"\n",
+    "    f\"({one_node_s5.XCoordinate}, {one_node_s5.YCoordinate}, {one_node_s5.ZCoordinate}, \"\n",
+    "    f\"{one_node_s5.getResult(SolidsDataType.SIGMA_1_EFFECTIVE)}, \"\n",
+    "    f\"{one_node_s5.getResult(SolidsDataType.TOTAL_DISPLACEMENT)})\"\n",
+    ")\n",
+    "\n",
+    "# 2. Element Results\n",
+    "# 2.1 Define a box region (optional)\n",
+    "# Create a box region near the tunnel by defining two corners.\n",
+    "solid_tunnel_query_region = Cube(\n",
+    "    corner1=Point(x=10.5, y=5.0, z=-10.0),\n",
+    "    corner2=Point(x=11.0, y=6.0, z=-9.0),\n",
+    ")\n",
+    "\n",
+    "# 2.2 Get element results within the region\n",
+    "# getMeshElementResults returns a list of element result objects. Each object holds \n",
+    "# attached node IDs and yield element information\n",
+    "element_results_stage_3 = mesh_results_stage_3.getMeshElementResults(\n",
+    "    region=solid_tunnel_query_region,\n",
+    "    includeIntersecting=True,\n",
+    ")\n",
+    "\n",
+    "# 2.3 Get all yielded elements that have failure points.\n",
+    "yield_elements_s3 = [item for item in element_results_stage_3 if item.YieldingResults.getFailurePoints()]\n",
+    "\n",
+    "# 2.4 Get the first yielded element in the list.\n",
+    "yield_element_index = 0\n",
+    "one_element_s3 = yield_elements_s3[yield_element_index]\n",
+    "element_id_s3 = one_element_s3.ElementID\n",
+    "attached_node_ids_s3 = one_element_s3.AttachedNodes\n",
+    "failure_point_s3 = one_element_s3.YieldingResults.getFailurePoints()\n",
+    "num_failure_points_s3 = len(failure_point_s3)\n",
+    "yield_percent_s3 = one_element_s3.YieldPercent\n",
+    "failure_info = []\n",
+    "for i, fp in enumerate(failure_point_s3, start=1):\n",
+    "    failure_info.append(\n",
+    "        f\"{i}. \"\n",
+    "        f\"Coord=({fp.XCoordinate}, {fp.YCoordinate}, {fp.ZCoordinate}), \"\n",
+    "        f\"Type={fp.FailureTypes}, \"\n",
+    "        f\"Yield Percentage={yield_percent_s3}\"\n",
+    "    )\n",
+    "print(\n",
+    "    f\"Solid Stage 3, element ID {element_id_s3} \"\n",
+    "    f\"with attached node ids {attached_node_ids_s3} \"\n",
+    "    f\"has {num_failure_points_s3} failure point(s):\\n\"\n",
+    "    + \"\\n\".join(failure_info)\n",
+    ")\n",
+    "\n",
+    "# Since accessing results doesn't change the model, close the model without saving.\n",
+    "model.close(False)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": ".venv",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 107.464626,
+   "end_time": "2026-03-13T21:14:50.032005",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\solid_result_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\solid_result_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:13:02.567379",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

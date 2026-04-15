@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.ChSoil module
+=======================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.ChSoil
+   :members:
+   :undoc-members:
+   :show-inheritance:

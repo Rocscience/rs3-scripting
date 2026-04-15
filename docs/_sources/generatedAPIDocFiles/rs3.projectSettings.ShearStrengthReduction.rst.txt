@@ -1,0 +1,7 @@
+rs3.projectSettings.ShearStrengthReduction module
+=================================================
+
+.. automodule:: rs3.projectSettings.ShearStrengthReduction
+   :members:
+   :undoc-members:
+   :show-inheritance:

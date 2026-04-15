@@ -1,0 +1,15 @@
+rs3.properties.groundwater package
+==================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.groundwater.WaterByLocation
+   rs3.properties.groundwater.WaterGrid
+
+
+.. automodule:: rs3.properties.groundwater
+   :members:
+   :undoc-members:
+   :show-inheritance:

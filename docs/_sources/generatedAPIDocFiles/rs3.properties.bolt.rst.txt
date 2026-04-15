@@ -1,0 +1,19 @@
+rs3.properties.bolt package
+===========================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.bolt.Bolt
+   rs3.properties.bolt.EndAnchored
+   rs3.properties.bolt.FullyBonded
+   rs3.properties.bolt.PlainStrandCable
+   rs3.properties.bolt.Swellex
+   rs3.properties.bolt.Tieback
+
+
+.. automodule:: rs3.properties.bolt
+   :members:
+   :undoc-members:
+   :show-inheritance:

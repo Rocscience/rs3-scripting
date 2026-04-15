@@ -1,0 +1,1100 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006066,
+     "end_time": "2026-03-13T21:18:16.901316",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:16.895250",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(composite_liner_example)=\n",
+    "# Composite Liner Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008032,
+     "end_time": "2026-03-13T21:18:16.915858",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:16.907826",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:16.932922Z",
+     "iopub.status.busy": "2026-03-13T21:18:16.932318Z",
+     "iopub.status.idle": "2026-03-13T21:18:17.192586Z",
+     "shell.execute_reply": "2026-03-13T21:18:17.191500Z"
+    },
+    "papermill": {
+     "duration": 0.270686,
+     "end_time": "2026-03-13T21:18:17.194011",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:16.923325",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.properties.liningComposition.LiningComposition import CompositeLinerLayer\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005499,
+     "end_time": "2026-03-13T21:18:17.206329",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:17.200830",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:17.222182Z",
+     "iopub.status.busy": "2026-03-13T21:18:17.221691Z",
+     "iopub.status.idle": "2026-03-13T21:18:17.226821Z",
+     "shell.execute_reply": "2026-03-13T21:18:17.225277Z"
+    },
+    "papermill": {
+     "duration": 0.015761,
+     "end_time": "2026-03-13T21:18:17.228146",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:17.212385",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.abspath(\"\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005462,
+     "end_time": "2026-03-13T21:18:17.240551",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:17.235089",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "88cb86b6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:17.254873Z",
+     "iopub.status.busy": "2026-03-13T21:18:17.254487Z",
+     "iopub.status.idle": "2026-03-13T21:18:46.152562Z",
+     "shell.execute_reply": "2026-03-13T21:18:46.151002Z"
+    },
+    "papermill": {
+     "duration": 28.908195,
+     "end_time": "2026-03-13T21:18:46.154429",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:17.246234",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:18:17,260 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60306...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60306\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ff9b1adc",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00756,
+     "end_time": "2026-03-13T21:18:46.170433",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:46.162873",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "b6ccbb92",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:46.184842Z",
+     "iopub.status.busy": "2026-03-13T21:18:46.184513Z",
+     "iopub.status.idle": "2026-03-13T21:18:46.194113Z",
+     "shell.execute_reply": "2026-03-13T21:18:46.192043Z"
+    },
+    "papermill": {
+     "duration": 0.018199,
+     "end_time": "2026-03-13T21:18:46.195652",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:46.177453",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006829,
+     "end_time": "2026-03-13T21:18:46.208587",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:46.201758",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:46.224499Z",
+     "iopub.status.busy": "2026-03-13T21:18:46.224073Z",
+     "iopub.status.idle": "2026-03-13T21:18:46.249469Z",
+     "shell.execute_reply": "2026-03-13T21:18:46.247967Z"
+    },
+    "papermill": {
+     "duration": 0.035373,
+     "end_time": "2026-03-13T21:18:46.250913",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:46.215540",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008065,
+     "end_time": "2026-03-13T21:18:46.266105",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:46.258040",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:46.283749Z",
+     "iopub.status.busy": "2026-03-13T21:18:46.283254Z",
+     "iopub.status.idle": "2026-03-13T21:18:57.601885Z",
+     "shell.execute_reply": "2026-03-13T21:18:57.600174Z"
+    },
+    "papermill": {
+     "duration": 11.328668,
+     "end_time": "2026-03-13T21:18:57.603212",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:46.274544",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9cf97507",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005957,
+     "end_time": "2026-03-13T21:18:57.616914",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:57.610957",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create and Get Composite Liners"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "aaedcf71",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:57.632542Z",
+     "iopub.status.busy": "2026-03-13T21:18:57.632082Z",
+     "iopub.status.idle": "2026-03-13T21:18:57.816850Z",
+     "shell.execute_reply": "2026-03-13T21:18:57.814617Z"
+    },
+    "papermill": {
+     "duration": 0.193807,
+     "end_time": "2026-03-13T21:18:57.818605",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:57.624798",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Lining 1'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "compositeLiner1 = model.getAllLiningCompositionProperties()[0]\n",
+    "compositeLiner1.getCompositeName()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "85482188",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:57.833053Z",
+     "iopub.status.busy": "2026-03-13T21:18:57.832663Z",
+     "iopub.status.idle": "2026-03-13T21:18:57.980881Z",
+     "shell.execute_reply": "2026-03-13T21:18:57.979164Z"
+    },
+    "papermill": {
+     "duration": 0.156897,
+     "end_time": "2026-03-13T21:18:57.982423",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:57.825526",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Composite Liner 2'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "compositeLiner2Name = \"Composite Liner 2\"\n",
+    "model.createNewLiningCompositionProperty(compositeLiner2Name)\n",
+    "compositeLiner2 = model.getLiningCompositionPropertyByName(compositeLiner2Name)\n",
+    "compositeLiner2.getCompositeName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9928b59b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005171,
+     "end_time": "2026-03-13T21:18:57.994848",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:57.989677",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Set Composite Liner Properties"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "219c1a26",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010607,
+     "end_time": "2026-03-13T21:18:58.014882",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.004275",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create more joint and liner properties for the later example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "f3b3feff",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.030018Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.029721Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.247842Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.245312Z"
+    },
+    "papermill": {
+     "duration": 0.226922,
+     "end_time": "2026-03-13T21:18:58.249881",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.022959",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.createNewJointProperty(\"Joint 2\")\n",
+    "model.createNewJointProperty(\"Joint 3\")\n",
+    "model.createNewJointProperty(\"Joint 4\")\n",
+    "model.createNewLinerProperty(\"Liner 2\")\n",
+    "model.createNewLinerProperty(\"Liner 3\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "928b322f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006692,
+     "end_time": "2026-03-13T21:18:58.264615",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.257923",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.1 Set Composite Liner through CompositeLinerLayer class"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2b78a16b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007252,
+     "end_time": "2026-03-13T21:18:58.279806",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.272554",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create the first CompositeLinerLayer with an upper joint."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "9ea9057f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.294911Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.294560Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.299168Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.297835Z"
+    },
+    "papermill": {
+     "duration": 0.013035,
+     "end_time": "2026-03-13T21:18:58.301002",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.287967",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "lining1 = CompositeLinerLayer()\n",
+    "lining1.setLinerByName(\"Liner 1\")\n",
+    "lining1.setUpperJoint(True, \"Joint 1\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0691ada4",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005536,
+     "end_time": "2026-03-13T21:18:58.312256",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.306720",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create the second CompositeLinerLayer with an upper and a lower joint. This composite liner layer installs one stage after the lining installation and removes two stages after lining installation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "a94c8392",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.325548Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.325187Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.329855Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.328663Z"
+    },
+    "papermill": {
+     "duration": 0.012119,
+     "end_time": "2026-03-13T21:18:58.331036",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.318917",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "lining2 = CompositeLinerLayer()\n",
+    "lining2.setLinerByName(\"Liner 2\")\n",
+    "lining2.setUpperJoint(True, \"Joint 2\")\n",
+    "lining2.setLowerJoint(True, \"Joint 3\")\n",
+    "lining2.setInstallationStage(1)\n",
+    "lining2.setRemovalStage(True, 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a5234772",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005219,
+     "end_time": "2026-03-13T21:18:58.341689",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.336470",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create the third CompositeLinerLayer with a lower joint. The composite liner installs three stages after the lining installation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "9aae86d7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.355535Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.355207Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.359616Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.358443Z"
+    },
+    "papermill": {
+     "duration": 0.014007,
+     "end_time": "2026-03-13T21:18:58.360894",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.346887",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "lining3 = CompositeLinerLayer()\n",
+    "lining3.setLinerByName(\"Liner 3\")\n",
+    "lining3.setLowerJoint(True, \"Joint 4\")\n",
+    "lining3.installationStage = 3  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "97d028de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005699,
+     "end_time": "2026-03-13T21:18:58.372994",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.367295",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set and get the composite liner."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "6f33cb6a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.385724Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.385320Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.465260Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.463528Z"
+    },
+    "papermill": {
+     "duration": 0.089332,
+     "end_time": "2026-03-13T21:18:58.467191",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.377859",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[CompositeLinerLayer(linerName='Liner 1', hasUpperJoint=True, hasLowerJoint=False, installationStage=0, isRemoved=False, removalStage=-1, upperJointName='Joint 1', lowerJointName=None),\n",
+       " CompositeLinerLayer(linerName='Liner 2', hasUpperJoint=True, hasLowerJoint=True, installationStage=1, isRemoved=True, removalStage=2, upperJointName='Joint 2', lowerJointName='Joint 3'),\n",
+       " CompositeLinerLayer(linerName='Liner 3', hasUpperJoint=False, hasLowerJoint=True, installationStage=3, isRemoved=False, removalStage=-1, upperJointName=None, lowerJointName='Joint 4')]"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liningComposition1 = [lining1, lining2, lining3]\n",
+    "compositeLiner1.setLayerComposition(liningComposition1)\n",
+    "compositeLiner1.getLayerComposition()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "277055a0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005822,
+     "end_time": "2026-03-13T21:18:58.479316",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.473494",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.2 Set Composite Liner through Tuple"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7d9209a9",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005826,
+     "end_time": "2026-03-13T21:18:58.491935",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.486109",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "You may also create composite liner layers as tuples. The order of the parameters are (linerName, hasUpperJoint, upperJointName, hasLowerJoint, lowerJointName, installationStage, isRemoved, removalStage)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "81ea2bcc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.508490Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.508060Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.512980Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.511871Z"
+    },
+    "papermill": {
+     "duration": 0.016187,
+     "end_time": "2026-03-13T21:18:58.514187",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.498000",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "liningComposition2 = [('Liner 1', True, 'Joint 1', False, None, 0, False, -1), \n",
+    "                      ('Liner 2', True, 'Joint 2', True, 'Joint 3', 1, True, 2), \n",
+    "                      ('Liner 3', False, None, True, 'Joint 4', 3, False, -1)]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "67a3acaa",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005372,
+     "end_time": "2026-03-13T21:18:58.525365",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.519993",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set and get the composite liner."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "09243664",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.542966Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.542571Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.578978Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.577381Z"
+    },
+    "papermill": {
+     "duration": 0.048397,
+     "end_time": "2026-03-13T21:18:58.580561",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.532164",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('Liner 1', True, 'Joint 1', False, None, 0, False, -1),\n",
+       " ('Liner 2', True, 'Joint 2', True, 'Joint 3', 1, True, 2),\n",
+       " ('Liner 3', False, None, True, 'Joint 4', 3, False, -1)]"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "compositeLiner2.setLayerCompositionTuple(liningComposition2)\n",
+    "compositeLiner2.getLayerCompositionTuple()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "da6245ec",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007102,
+     "end_time": "2026-03-13T21:18:58.595228",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.588126",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Delete a Composite Liner"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "a10d0746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.611976Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.611562Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.660019Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.658481Z"
+    },
+    "papermill": {
+     "duration": 0.057502,
+     "end_time": "2026-03-13T21:18:58.661504",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.604002",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.deleteLiningCompositionProperty(compositeLiner2Name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "88dc6524",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.679003Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.678540Z",
+     "iopub.status.idle": "2026-03-13T21:18:58.688639Z",
+     "shell.execute_reply": "2026-03-13T21:18:58.687402Z"
+    },
+    "papermill": {
+     "duration": 0.020744,
+     "end_time": "2026-03-13T21:18:58.689786",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.669042",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Lining 1\n"
+     ]
+    }
+   ],
+   "source": [
+    "allCompositeLiners = model.getAllLiningCompositionProperties()\n",
+    "for compositeLiner in allCompositeLiners:\n",
+    "    print(compositeLiner.getCompositeName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007413,
+     "end_time": "2026-03-13T21:18:58.702734",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.695321",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:18:58.717435Z",
+     "iopub.status.busy": "2026-03-13T21:18:58.717034Z",
+     "iopub.status.idle": "2026-03-13T21:19:01.916925Z",
+     "shell.execute_reply": "2026-03-13T21:19:01.913813Z"
+    },
+    "papermill": {
+     "duration": 3.210541,
+     "end_time": "2026-03-13T21:19:01.919213",
+     "exception": false,
+     "start_time": "2026-03-13T21:18:58.708672",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ed36fc0d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015948,
+     "end_time": "2026-03-13T21:19:01.944010",
+     "exception": false,
+     "start_time": "2026-03-13T21:19:01.928062",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "86492150",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:19:01.970795Z",
+     "iopub.status.busy": "2026-03-13T21:19:01.969841Z",
+     "iopub.status.idle": "2026-03-13T21:19:06.912098Z",
+     "shell.execute_reply": "2026-03-13T21:19:06.908016Z"
+    },
+    "papermill": {
+     "duration": 4.957047,
+     "end_time": "2026-03-13T21:19:06.914419",
+     "exception": false,
+     "start_time": "2026-03-13T21:19:01.957372",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8687756b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011085,
+     "end_time": "2026-03-13T21:19:06.935871",
+     "exception": false,
+     "start_time": "2026-03-13T21:19:06.924786",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "848fbe26",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:19:06.960777Z",
+     "iopub.status.busy": "2026-03-13T21:19:06.960070Z",
+     "iopub.status.idle": "2026-03-13T21:19:51.870907Z",
+     "shell.execute_reply": "2026-03-13T21:19:51.868777Z"
+    },
+    "papermill": {
+     "duration": 44.926607,
+     "end_time": "2026-03-13T21:19:51.873248",
+     "exception": false,
+     "start_time": "2026-03-13T21:19:06.946641",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:19:06,972 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60306...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Lining 1\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Composite Liner Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.properties.liningComposition.LiningComposition import CompositeLinerLayer\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.abspath(\"\")\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60306\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. \n",
+    "# You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create and Get Composite Liners\n",
+    "compositeLiner1 = model.getAllLiningCompositionProperties()[0]\n",
+    "compositeLiner2Name = \"Composite Liner 2\"\n",
+    "model.createNewLiningCompositionProperty(compositeLiner2Name)\n",
+    "compositeLiner2 = model.getLiningCompositionPropertyByName(compositeLiner2Name)\n",
+    "\n",
+    "# 2. Set Composite Liner Properties\n",
+    "# Create more joint and liner properties for the later example.\n",
+    "model.createNewJointProperty(\"Joint 2\")\n",
+    "model.createNewJointProperty(\"Joint 3\")\n",
+    "model.createNewJointProperty(\"Joint 4\")\n",
+    "model.createNewLinerProperty(\"Liner 2\")\n",
+    "model.createNewLinerProperty(\"Liner 3\")\n",
+    "\n",
+    "# 2.1 Set Composite Liner through CompositeLinerLayer class\n",
+    "# Create the first CompositeLinerLayer with an upper joint.\n",
+    "lining1 = CompositeLinerLayer()\n",
+    "lining1.setLinerByName(\"Liner 1\")\n",
+    "lining1.setUpperJoint(True, \"Joint 1\")\n",
+    "# Create the second CompositeLinerLayer with an upper and a lower joint. \n",
+    "# This composite liner layer installs one stage after the lining installation \n",
+    "# and removes two stages after lining installation.\n",
+    "lining2 = CompositeLinerLayer()\n",
+    "lining2.setLinerByName(\"Liner 2\")\n",
+    "lining2.setUpperJoint(True, \"Joint 2\")\n",
+    "lining2.setLowerJoint(True, \"Joint 3\")\n",
+    "lining2.setInstallationStage(1)\n",
+    "lining2.setRemovalStage(True, 2)\n",
+    "# Create the third CompositeLinerLayer with a lower joint. The composite \n",
+    "# liner installs three stages after the lining installation.\n",
+    "lining3 = CompositeLinerLayer()\n",
+    "lining3.setLinerByName(\"Liner 3\")\n",
+    "lining3.setLowerJoint(True, \"Joint 4\")\n",
+    "lining3.installationStage = 3  \n",
+    "# Set and get the composite liner.\n",
+    "liningComposition1 = [lining1, lining2, lining3]\n",
+    "compositeLiner1.setLayerComposition(liningComposition1)\n",
+    "\n",
+    "# 2.2 Set Composite Liner through Tuple\n",
+    "# You may also create composite liner layers as tuples. The order of the parameters \n",
+    "# are (linerName, hasUpperJoint, upperJointName, hasLowerJoint, lowerJointName, \n",
+    "# installationStage, isRemoved, removalStage).\n",
+    "liningComposition2 = [('Liner 1', True, 'Joint 1', False, None, 0, False, -1), \n",
+    "                      ('Liner 2', True, 'Joint 2', True, 'Joint 3', 1, True, 2), \n",
+    "                      ('Liner 3', False, None, True, 'Joint 4', 3, False, -1)]\n",
+    "# Set and get the composite liner.\n",
+    "compositeLiner2.setLayerCompositionTuple(liningComposition2)\n",
+    "\n",
+    "# 3. Delete a Composite Liner\n",
+    "model.deleteLiningCompositionProperty(compositeLiner2Name)\n",
+    "allCompositeLiners = model.getAllLiningCompositionProperties()\n",
+    "for compositeLiner in allCompositeLiners:\n",
+    "    print(compositeLiner.getCompositeName())\n",
+    "    \n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 98.122957,
+   "end_time": "2026-03-13T21:19:53.600465",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\supports\\composite_liner_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\supports\\composite_liner_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:18:15.477508",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

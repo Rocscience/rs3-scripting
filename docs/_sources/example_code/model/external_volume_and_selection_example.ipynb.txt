@@ -1,0 +1,1794 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009653,
+     "end_time": "2026-03-13T20:48:13.269579",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:13.259926",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(external_volume_and_selection_example)=\n",
+    "# External Volume and Selection Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008282,
+     "end_time": "2026-03-13T20:48:13.287160",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:13.278878",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:13.303756Z",
+     "iopub.status.busy": "2026-03-13T20:48:13.303320Z",
+     "iopub.status.idle": "2026-03-13T20:48:13.585770Z",
+     "shell.execute_reply": "2026-03-13T20:48:13.584889Z"
+    },
+    "papermill": {
+     "duration": 0.292666,
+     "end_time": "2026-03-13T20:48:13.586881",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:13.294215",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.Geometry import Point, Polyline, Cube, Cylinder, Sphere\n",
+    "from rs3.CommonEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010716,
+     "end_time": "2026-03-13T20:48:13.605038",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:13.594322",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "32bec39c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:13.624144Z",
+     "iopub.status.busy": "2026-03-13T20:48:13.623682Z",
+     "iopub.status.idle": "2026-03-13T20:48:13.628335Z",
+     "shell.execute_reply": "2026-03-13T20:48:13.627183Z"
+    },
+    "papermill": {
+     "duration": 0.016735,
+     "end_time": "2026-03-13T20:48:13.629619",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:13.612884",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007809,
+     "end_time": "2026-03-13T20:48:13.646592",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:13.638783",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "6151c7c5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:13.666657Z",
+     "iopub.status.busy": "2026-03-13T20:48:13.666156Z",
+     "iopub.status.idle": "2026-03-13T20:48:42.229432Z",
+     "shell.execute_reply": "2026-03-13T20:48:42.228010Z"
+    },
+    "papermill": {
+     "duration": 28.575927,
+     "end_time": "2026-03-13T20:48:42.230570",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:13.654643",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:48:13,673 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60104...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60104\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "819bde3e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007544,
+     "end_time": "2026-03-13T20:48:42.246456",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:42.238912",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "067b497b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:42.264989Z",
+     "iopub.status.busy": "2026-03-13T20:48:42.264675Z",
+     "iopub.status.idle": "2026-03-13T20:48:42.597483Z",
+     "shell.execute_reply": "2026-03-13T20:48:42.595695Z"
+    },
+    "papermill": {
+     "duration": 0.344739,
+     "end_time": "2026-03-13T20:48:42.598906",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:42.254167",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010877,
+     "end_time": "2026-03-13T20:48:42.620374",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:42.609497",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:42.659047Z",
+     "iopub.status.busy": "2026-03-13T20:48:42.657884Z",
+     "iopub.status.idle": "2026-03-13T20:48:42.698025Z",
+     "shell.execute_reply": "2026-03-13T20:48:42.696203Z"
+    },
+    "papermill": {
+     "duration": 0.062261,
+     "end_time": "2026-03-13T20:48:42.699868",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:42.637607",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014359,
+     "end_time": "2026-03-13T20:48:42.726324",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:42.711965",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:42.758179Z",
+     "iopub.status.busy": "2026-03-13T20:48:42.756852Z",
+     "iopub.status.idle": "2026-03-13T20:48:54.550457Z",
+     "shell.execute_reply": "2026-03-13T20:48:54.549147Z"
+    },
+    "papermill": {
+     "duration": 11.812665,
+     "end_time": "2026-03-13T20:48:54.551751",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:42.739086",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1915e04e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008172,
+     "end_time": "2026-03-13T20:48:54.569039",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.560867",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Select External Volumes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f786f6b6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009457,
+     "end_time": "2026-03-13T20:48:54.586232",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.576775",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.1 Select Volumes by Defining a Point"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "62c9a20d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009121,
+     "end_time": "2026-03-13T20:48:54.602758",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.593637",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Select the foundation by defining a point on foundation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "da7d5ee3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:54.620798Z",
+     "iopub.status.busy": "2026-03-13T20:48:54.620447Z",
+     "iopub.status.idle": "2026-03-13T20:48:54.624850Z",
+     "shell.execute_reply": "2026-03-13T20:48:54.623847Z"
+    },
+    "papermill": {
+     "duration": 0.01613,
+     "end_time": "2026-03-13T20:48:54.626227",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.610097",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "point = Point(18, 15, 0)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "cb5a25c5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:54.643707Z",
+     "iopub.status.busy": "2026-03-13T20:48:54.643225Z",
+     "iopub.status.idle": "2026-03-13T20:48:54.804762Z",
+     "shell.execute_reply": "2026-03-13T20:48:54.803741Z"
+    },
+    "papermill": {
+     "duration": 0.171795,
+     "end_time": "2026-03-13T20:48:54.805929",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.634134",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Foundation'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "selectByPoint = model.Selection.getExternalVolumes(point)\n",
+    "selectByPoint[0].getName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "96ff1340",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009747,
+     "end_time": "2026-03-13T20:48:54.822160",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.812413",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.2 Select Volumes by Definiing a Polyline"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d2a16453",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010106,
+     "end_time": "2026-03-13T20:48:54.839685",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.829579",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Select tunnel, foundation and soil by create a polyline going through all three volumes."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "caf1c5fe",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:54.856694Z",
+     "iopub.status.busy": "2026-03-13T20:48:54.856342Z",
+     "iopub.status.idle": "2026-03-13T20:48:54.860876Z",
+     "shell.execute_reply": "2026-03-13T20:48:54.859497Z"
+    },
+    "papermill": {
+     "duration": 0.013671,
+     "end_time": "2026-03-13T20:48:54.861846",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.848175",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "polyline = Polyline([Point(10, 2, -10), Point(18, 15, 0)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "3adf1312",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:54.878768Z",
+     "iopub.status.busy": "2026-03-13T20:48:54.878475Z",
+     "iopub.status.idle": "2026-03-13T20:48:54.905619Z",
+     "shell.execute_reply": "2026-03-13T20:48:54.904123Z"
+    },
+    "papermill": {
+     "duration": 0.036302,
+     "end_time": "2026-03-13T20:48:54.906794",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.870492",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n",
+      "Soil\n",
+      "Foundation\n"
+     ]
+    }
+   ],
+   "source": [
+    "selectByPolyline = model.Selection.getExternalVolumes(polyline)\n",
+    "for volume in selectByPolyline:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4c9fda88",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007614,
+     "end_time": "2026-03-13T20:48:54.923250",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.915636",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.3 Select Volumes by Defining a Cube"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "753372d5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013104,
+     "end_time": "2026-03-13T20:48:54.942969",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.929865",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Define a cube which is slightly larger than the tunnel to include some tolerance."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "3fa7509b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:54.966797Z",
+     "iopub.status.busy": "2026-03-13T20:48:54.965877Z",
+     "iopub.status.idle": "2026-03-13T20:48:54.974184Z",
+     "shell.execute_reply": "2026-03-13T20:48:54.972521Z"
+    },
+    "papermill": {
+     "duration": 0.023945,
+     "end_time": "2026-03-13T20:48:54.975879",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.951934",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "cube = Cube(Point(8.5, 0, -11.5), Point(11.5, 30, -8.5))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ced09feb",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011147,
+     "end_time": "2026-03-13T20:48:54.998269",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:54.987122",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "To get external volumes within a defined volume, include intersecting can be defined. If include intersecting is True, volumes that attach the defining volume will be selected. Otherwise, intersecting volumes will not be included.\n",
+    "\n",
+    "If intersecting volumes are included, both underground tunnel and soil volumes will be chosen."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "a75bfe54",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.027049Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.026497Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.103529Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.101838Z"
+    },
+    "papermill": {
+     "duration": 0.093689,
+     "end_time": "2026-03-13T20:48:55.104920",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.011231",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n",
+      "Soil\n"
+     ]
+    }
+   ],
+   "source": [
+    "selectByCube = model.Selection.getExternalVolumes(cube)\n",
+    "for volume in selectByCube:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "da84eb5d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010938,
+     "end_time": "2026-03-13T20:48:55.127555",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.116617",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "If intersecting volumes are not included, only underground tunnel will be selected."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "7e6e3e01",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.155175Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.154693Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.166577Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.164456Z"
+    },
+    "papermill": {
+     "duration": 0.028345,
+     "end_time": "2026-03-13T20:48:55.168205",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.139860",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n"
+     ]
+    }
+   ],
+   "source": [
+    "selectByCubeWithoutIntersection = model.Selection.getExternalVolumes(cube, False)\n",
+    "for volume in selectByCubeWithoutIntersection:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "31047d19",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011759,
+     "end_time": "2026-03-13T20:48:55.192736",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.180977",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.4 Select Volumes by Defining a Cylinder"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "762e0f67",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014013,
+     "end_time": "2026-03-13T20:48:55.219113",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.205100",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create a cylinder which is slightly larger than the actual tunnel"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "d7f911c3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.268758Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.267566Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.278908Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.276227Z"
+    },
+    "papermill": {
+     "duration": 0.043284,
+     "end_time": "2026-03-13T20:48:55.281697",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.238413",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "cylinder = Cylinder(Point(10, 0, -10), Point(10, 30, -10), 1.5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "34c79b65",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.334393Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.333167Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.406199Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.402827Z"
+    },
+    "papermill": {
+     "duration": 0.102041,
+     "end_time": "2026-03-13T20:48:55.409163",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.307122",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n",
+      "Soil\n"
+     ]
+    }
+   ],
+   "source": [
+    "selectByCylinder = model.Selection.getExternalVolumes(cylinder)\n",
+    "for volume in selectByCylinder:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "91f0796f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.454938Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.453679Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.476141Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.473072Z"
+    },
+    "papermill": {
+     "duration": 0.050634,
+     "end_time": "2026-03-13T20:48:55.478372",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.427738",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n"
+     ]
+    }
+   ],
+   "source": [
+    "selectByCylinderWithoutIntersection = model.Selection.getExternalVolumes(cylinder, False)\n",
+    "for volume in selectByCylinderWithoutIntersection:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f660ac34",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014564,
+     "end_time": "2026-03-13T20:48:55.509413",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.494849",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.5 Select Volumes by Defining a Sphere"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "fa58d681",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.559533Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.558564Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.567850Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.565257Z"
+    },
+    "papermill": {
+     "duration": 0.040269,
+     "end_time": "2026-03-13T20:48:55.569963",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.529694",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "sphere = Sphere(Point(17.5, 15, 0), 5.5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "92f121d9",
+   "metadata": {
+    "papermill": {
+     "duration": 0.016059,
+     "end_time": "2026-03-13T20:48:55.604646",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.588587",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create a sphere that is slightly larger than the foundation and include intersecting volumes. Both foundation and soil will be selected."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "179c8810",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.637928Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.636909Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.658572Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.656875Z"
+    },
+    "papermill": {
+     "duration": 0.041928,
+     "end_time": "2026-03-13T20:48:55.660214",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.618286",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Soil\n",
+      "Foundation\n"
+     ]
+    }
+   ],
+   "source": [
+    "selectBySphere = model.Selection.getExternalVolumes(sphere)\n",
+    "for volume in selectBySphere:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f234f3d2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014226,
+     "end_time": "2026-03-13T20:48:55.687305",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.673079",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "If exclude intersecting volumes, foundation will be the only one that's fully inside the defined region."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "fb6cf88d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.715143Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.714332Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.727840Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.725341Z"
+    },
+    "papermill": {
+     "duration": 0.029287,
+     "end_time": "2026-03-13T20:48:55.729522",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.700235",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Foundation\n"
+     ]
+    }
+   ],
+   "source": [
+    "selectBySphereWithoutIntersection = model.Selection.getExternalVolumes(sphere, False)\n",
+    "for volume in selectBySphereWithoutIntersection:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ebac820c",
+   "metadata": {
+    "papermill": {
+     "duration": 0.020563,
+     "end_time": "2026-03-13T20:48:55.763795",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.743232",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Change External Volume Properties"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d6fff099",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015268,
+     "end_time": "2026-03-13T20:48:55.802477",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.787209",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Once external volume is selected, external volume properties can be changed. Let's first select the soil volume."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "36748573",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.832807Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.831839Z",
+     "iopub.status.idle": "2026-03-13T20:48:55.844341Z",
+     "shell.execute_reply": "2026-03-13T20:48:55.842705Z"
+    },
+    "papermill": {
+     "duration": 0.030646,
+     "end_time": "2026-03-13T20:48:55.845974",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.815328",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Soil'"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "soil = model.Selection.getExternalVolumes(Point(22, 0, -12))[0]\n",
+    "soil.getName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "daf301e8",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013348,
+     "end_time": "2026-03-13T20:48:55.874828",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.861480",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Change the external volume name to \"Material 3 Soil\"."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "883624b7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:55.906020Z",
+     "iopub.status.busy": "2026-03-13T20:48:55.905067Z",
+     "iopub.status.idle": "2026-03-13T20:48:56.065576Z",
+     "shell.execute_reply": "2026-03-13T20:48:56.062874Z"
+    },
+    "papermill": {
+     "duration": 0.17853,
+     "end_time": "2026-03-13T20:48:56.067822",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:55.889292",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Material 4 Soil'"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "soil.setName(\"Material 4 Soil\")\n",
+    "soil.getName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "33922e8f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013735,
+     "end_time": "2026-03-13T20:48:56.098485",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:56.084750",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get material 4."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "bd80c7b2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:56.128906Z",
+     "iopub.status.busy": "2026-03-13T20:48:56.128300Z",
+     "iopub.status.idle": "2026-03-13T20:48:56.546568Z",
+     "shell.execute_reply": "2026-03-13T20:48:56.545310Z"
+    },
+    "papermill": {
+     "duration": 0.435686,
+     "end_time": "2026-03-13T20:48:56.547706",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:56.112020",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Material 4'"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material4 = model.getAllMaterialProperties()[3]\n",
+    "material4Name = material4.getMaterialName()\n",
+    "material4Name"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8b0c168d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013132,
+     "end_time": "2026-03-13T20:48:56.571905",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:56.558773",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the soil model to Material 4 since stage 1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "2e02dd13",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:56.607003Z",
+     "iopub.status.busy": "2026-03-13T20:48:56.606468Z",
+     "iopub.status.idle": "2026-03-13T20:48:56.776515Z",
+     "shell.execute_reply": "2026-03-13T20:48:56.773068Z"
+    },
+    "papermill": {
+     "duration": 0.190724,
+     "end_time": "2026-03-13T20:48:56.779798",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:56.589074",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Material 4'"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "soil.setAppliedMaterialProperty(1, material4Name)\n",
+    "soil.getAppliedMaterialProperty(1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cd2e5e6d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.028844,
+     "end_time": "2026-03-13T20:48:56.836192",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:56.807348",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the soil role to CONSTRUCTION."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "afd8fadc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:56.872182Z",
+     "iopub.status.busy": "2026-03-13T20:48:56.871299Z",
+     "iopub.status.idle": "2026-03-13T20:48:57.076666Z",
+     "shell.execute_reply": "2026-03-13T20:48:57.074288Z"
+    },
+    "papermill": {
+     "duration": 0.223091,
+     "end_time": "2026-03-13T20:48:57.078561",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:56.855470",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<ExternalVolumeRoles.CONSTRUCTION: 'Construction'>"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "soil.setRole(ExternalVolumeRoles.CONSTRUCTION)\n",
+    "soil.getRole()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "25e1d4fb",
+   "metadata": {
+    "papermill": {
+     "duration": 0.02313,
+     "end_time": "2026-03-13T20:48:57.117200",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:57.094070",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Change the soil role back to GEOLOGY."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "c649b1d6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:57.159612Z",
+     "iopub.status.busy": "2026-03-13T20:48:57.158438Z",
+     "iopub.status.idle": "2026-03-13T20:48:57.897030Z",
+     "shell.execute_reply": "2026-03-13T20:48:57.894057Z"
+    },
+    "papermill": {
+     "duration": 0.764731,
+     "end_time": "2026-03-13T20:48:57.901051",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:57.136320",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "soil.setRole(ExternalVolumeRoles.GEOLOGY)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c9eaa89b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.037568,
+     "end_time": "2026-03-13T20:48:57.968402",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:57.930834",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Attached Volumes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a59447a7",
+   "metadata": {
+    "papermill": {
+     "duration": 0.020875,
+     "end_time": "2026-03-13T20:48:58.024073",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.003198",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "This function is for selecting volumes attached to the given volumes for easier selection. \n",
+    "\n",
+    "You may provide an external volume object to look up attached volumes. For example, tunnel and foundation are attached to the soil."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "389e322c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:58.141931Z",
+     "iopub.status.busy": "2026-03-13T20:48:58.140255Z",
+     "iopub.status.idle": "2026-03-13T20:48:58.499662Z",
+     "shell.execute_reply": "2026-03-13T20:48:58.496187Z"
+    },
+    "papermill": {
+     "duration": 0.432053,
+     "end_time": "2026-03-13T20:48:58.503673",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.071620",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n",
+      "Foundation\n"
+     ]
+    }
+   ],
+   "source": [
+    "attachedVolumesbyExternalVolume = model.Selection.getAttachedExternalVolumes(soil)\n",
+    "for volume in attachedVolumesbyExternalVolume:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0dfc2e62",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018227,
+     "end_time": "2026-03-13T20:48:58.542522",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.524295",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Without getting the external volume first, you may select the external volume by name as well."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "f29d23cf",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:58.585598Z",
+     "iopub.status.busy": "2026-03-13T20:48:58.584148Z",
+     "iopub.status.idle": "2026-03-13T20:48:58.638980Z",
+     "shell.execute_reply": "2026-03-13T20:48:58.634686Z"
+    },
+    "papermill": {
+     "duration": 0.08078,
+     "end_time": "2026-03-13T20:48:58.641938",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.561158",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n",
+      "Foundation\n"
+     ]
+    }
+   ],
+   "source": [
+    "attachedVolumesbyExternalVolumeName = model.Selection.getAttachedExternalVolumesByVolumeName(soil.getName())\n",
+    "for volume in attachedVolumesbyExternalVolumeName:\n",
+    "    print(volume.getName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e3b9cace",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018753,
+     "end_time": "2026-03-13T20:48:58.683406",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.664653",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 4. Volumes and Areas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c7d76b66",
+   "metadata": {
+    "papermill": {
+     "duration": 0.016946,
+     "end_time": "2026-03-13T20:48:58.717305",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.700359",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the volume and surface area of the tunnel."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "98061e00",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:58.765791Z",
+     "iopub.status.busy": "2026-03-13T20:48:58.764427Z",
+     "iopub.status.idle": "2026-03-13T20:48:58.802029Z",
+     "shell.execute_reply": "2026-03-13T20:48:58.797347Z"
+    },
+    "papermill": {
+     "duration": 0.073389,
+     "end_time": "2026-03-13T20:48:58.805947",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.732558",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The volume of the tunnel is 93.26 m^3.\n",
+      "The surface area of the tunnel is 194.22 m^2.\n"
+     ]
+    }
+   ],
+   "source": [
+    "tunnel = model.getExternalVolumeByName(\"Underground Tunnel\")\n",
+    "print(f\"The volume of the tunnel is {round(tunnel.getVolume(), 2)} m^3.\")\n",
+    "print(f\"The surface area of the tunnel is {round(tunnel.getTotalSurfaceArea(), 2)} m^2.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.032421,
+     "end_time": "2026-03-13T20:48:58.873361",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.840940",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:48:58.920894Z",
+     "iopub.status.busy": "2026-03-13T20:48:58.919620Z",
+     "iopub.status.idle": "2026-03-13T20:49:01.887239Z",
+     "shell.execute_reply": "2026-03-13T20:49:01.885043Z"
+    },
+    "papermill": {
+     "duration": 2.990698,
+     "end_time": "2026-03-13T20:49:01.889438",
+     "exception": false,
+     "start_time": "2026-03-13T20:48:58.898740",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:49:01,882 - Rocscience.RS3 - INFO - Not saving changes for file \"C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\example_models\\copiedModel.rs3v3\".\n"
+     ]
+    }
+   ],
+   "source": [
+    "model.close(False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4fec88a9",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010036,
+     "end_time": "2026-03-13T20:49:01.911138",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:01.901102",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "25babd55",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:49:01.931672Z",
+     "iopub.status.busy": "2026-03-13T20:49:01.931360Z",
+     "iopub.status.idle": "2026-03-13T20:49:07.703373Z",
+     "shell.execute_reply": "2026-03-13T20:49:07.698388Z"
+    },
+    "papermill": {
+     "duration": 5.785837,
+     "end_time": "2026-03-13T20:49:07.705484",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:01.919647",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "385439a0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014063,
+     "end_time": "2026-03-13T20:49:07.735317",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:07.721254",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "34d57320",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:49:07.767722Z",
+     "iopub.status.busy": "2026-03-13T20:49:07.767182Z",
+     "iopub.status.idle": "2026-03-13T20:49:53.489382Z",
+     "shell.execute_reply": "2026-03-13T20:49:53.487104Z"
+    },
+    "papermill": {
+     "duration": 45.740992,
+     "end_time": "2026-03-13T20:49:53.491095",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:07.750103",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:49:07,784 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60104...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n",
+      "Soil\n",
+      "Foundation\n",
+      "Underground Tunnel\n",
+      "Soil\n",
+      "Underground Tunnel\n",
+      "Underground Tunnel\n",
+      "Soil\n",
+      "Underground Tunnel\n",
+      "Soil\n",
+      "Foundation\n",
+      "Foundation\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Underground Tunnel\n",
+      "Foundation\n",
+      "Underground Tunnel\n",
+      "Foundation\n",
+      "The volume of the tunnel is 93.26 m^3.\n",
+      "The surface area of the tunnel is 194.22 m^2.\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:49:53,482 - Rocscience.RS3 - INFO - Not saving changes for file \"C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\example_models\\copiedModel.rs3v3\".\n"
+     ]
+    }
+   ],
+   "source": [
+    "# External Volume and Selection Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.Geometry import Point, Polyline, Cube, Cylinder, Sphere\n",
+    "from rs3.CommonEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60104\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. \n",
+    "# You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Select External Volumes\n",
+    "\n",
+    "# 1.1 Select Volumes by Defining a Point\n",
+    "# Select the foundation by defining a point on foundation.\n",
+    "point = Point(18, 15, 0)\n",
+    "selectByPoint = model.Selection.getExternalVolumes(point)\n",
+    "\n",
+    "# 1.2 Select Volumes by Definiing a Polyline\n",
+    "# Select tunnel, foundation and soil by create a polyline going through all three volumes.\n",
+    "polyline = Polyline([Point(10, 2, -10), Point(18, 15, 0)])\n",
+    "selectByPolyline = model.Selection.getExternalVolumes(polyline)\n",
+    "for volume in selectByPolyline:\n",
+    "    print(volume.getName())\n",
+    "    \n",
+    "# 1.3 Select Volumes by Defining a Cube\n",
+    "# Define a cube which is slightly larger than the tunnel to include some tolerance.\n",
+    "cube = Cube(Point(8.5, 0, -11.5), Point(11.5, 30, -8.5))\n",
+    "# To get external volumes within a defined volume, include intersecting can be defined. \n",
+    "# If include intersecting is True, volumes that attach the defining volume will be selected. \n",
+    "# Otherwise, intersecting volumes will not be included.\n",
+    "# If intersecting volumes are included, both underground tunnel and soil volumes will be chosen.\n",
+    "selectByCube = model.Selection.getExternalVolumes(cube)\n",
+    "for volume in selectByCube:\n",
+    "    print(volume.getName())\n",
+    "# If intersecting volumes are not included, only underground tunnel will be selected.\n",
+    "selectByCubeWithoutIntersection = model.Selection.getExternalVolumes(cube, False)\n",
+    "for volume in selectByCubeWithoutIntersection:\n",
+    "    print(volume.getName())\n",
+    "    \n",
+    "# 1.4 Select Volumes by Defining a Cylinder\n",
+    "# Create a cylinder which is slightly larger than the actual tunnel\n",
+    "cylinder = Cylinder(Point(10, 0, -10), Point(10, 30, -10), 1.5)\n",
+    "selectByCylinder = model.Selection.getExternalVolumes(cylinder)\n",
+    "for volume in selectByCylinder:\n",
+    "    print(volume.getName())\n",
+    "selectByCylinderWithoutIntersection = model.Selection.getExternalVolumes(\n",
+    "    cylinder, False\n",
+    ")\n",
+    "for volume in selectByCylinderWithoutIntersection:\n",
+    "    print(volume.getName())\n",
+    "    \n",
+    "# 1.5 Select Volumes by Defining a Sphere\n",
+    "sphere = Sphere(Point(17.5, 15, 0), 5.5)\n",
+    "# Create a sphere that is slightly larger than the foundation and include intersecting volumes. \n",
+    "# Both foundation and soil will be selected.\n",
+    "selectBySphere = model.Selection.getExternalVolumes(sphere)\n",
+    "for volume in selectBySphere:\n",
+    "    print(volume.getName())\n",
+    "# If exclude intersecting volumes, foundation will be the only one that's fully inside the defined region.\n",
+    "selectBySphereWithoutIntersection = model.Selection.getExternalVolumes(sphere, False)\n",
+    "for volume in selectBySphereWithoutIntersection:\n",
+    "    print(volume.getName())\n",
+    "    \n",
+    "# 2. Change External Volume Properties\n",
+    "# Once external volume is selected, external volume properties can be changed. \n",
+    "# Let's first select the soil volume.\n",
+    "soil = model.Selection.getExternalVolumes(Point(22, 0, -12))[0]\n",
+    "# Change the external volume name to \"Material 3 Soil\".\n",
+    "soil.setName(\"Material 4 Soil\")\n",
+    "# Get material 4.\n",
+    "material4 = model.getAllMaterialProperties()[3]\n",
+    "material4Name = material4.getMaterialName()\n",
+    "# Set the soil model to Material 4 since stage 1.\n",
+    "soil.setAppliedMaterialProperty(1, material4Name)\n",
+    "# Set the soil role to CONSTRUCTION.\n",
+    "soil.setRole(ExternalVolumeRoles.CONSTRUCTION)\n",
+    "# Change the soil role back to GEOLOGY.\n",
+    "soil.setRole(ExternalVolumeRoles.GEOLOGY)\n",
+    "\n",
+    "# 3. Attached Volumes\n",
+    "# This function is for selecting volumes attached to the given volumes for easier selection.\n",
+    "# You may provide an external volume object to look up attached volumes. For example, tunnel \n",
+    "# and foundation are attached to the soil.\n",
+    "attachedVolumesbyExternalVolume = model.Selection.getAttachedExternalVolumes(soil)\n",
+    "for volume in attachedVolumesbyExternalVolume:\n",
+    "    print(volume.getName())\n",
+    "# Without getting the external volume first, you may select the external volume by name as well.\n",
+    "attachedVolumesbyExternalVolumeName = (\n",
+    "    model.Selection.getAttachedExternalVolumesByVolumeName(soil.getName())\n",
+    ")\n",
+    "for volume in attachedVolumesbyExternalVolumeName:\n",
+    "    print(volume.getName())\n",
+    "    \n",
+    "# 4. Volumes and Areas\n",
+    "# Get the volume and surface area of the tunnel.\n",
+    "tunnel = model.getExternalVolumeByName(\"Underground Tunnel\")\n",
+    "print(f\"The volume of the tunnel is {round(tunnel.getVolume(), 2)} m^3.\")\n",
+    "print(\n",
+    "    f\"The surface area of the tunnel is {round(tunnel.getTotalSurfaceArea(), 2)} m^2.\"\n",
+    ")\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(False)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 104.755161,
+   "end_time": "2026-03-13T20:49:55.206091",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\external_volume_and_selection_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\external_volume_and_selection_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:48:10.450930",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

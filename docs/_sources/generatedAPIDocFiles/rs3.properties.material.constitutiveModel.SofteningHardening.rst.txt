@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.SofteningHardening module
+===================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.SofteningHardening
+   :members:
+   :undoc-members:
+   :show-inheritance:

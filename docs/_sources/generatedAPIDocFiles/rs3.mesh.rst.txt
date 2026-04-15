@@ -1,0 +1,17 @@
+rs3.mesh package
+================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.mesh.Graded
+   rs3.mesh.Mesh
+   rs3.mesh.MeshEnums
+   rs3.mesh.Uniform
+
+
+.. automodule:: rs3.mesh
+   :members:
+   :undoc-members:
+   :show-inheritance:

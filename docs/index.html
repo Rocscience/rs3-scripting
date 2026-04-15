@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RS3 Scripting Reference Manual &#8212; RS3 Scripting Reference Manual  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="icon" href="_static/rocscience_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="rs3 package" href="generatedAPIDocFiles/rs3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/rocscience-logo-primary.png" class="logo__image only-light" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+    <img src="_static/rocscience-logo-primary.png" class="logo__image only-dark pst-js-only" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="generatedAPIDocFiles/rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="generatedAPIDocFiles/rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="rs3-scripting-reference-manual">
+<h1>RS3 Scripting Reference Manual<a class="headerlink" href="#rs3-scripting-reference-manual" title="Link to this heading">#</a></h1>
+<p><strong>Version: 4.042.0</strong></p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p>Before you begin, ensure you have the RS3 program installed. You must have at minimum Version 4.042 in order to use this feature.</p>
+</section>
+<section id="python-environment">
+<h2>Python Environment<a class="headerlink" href="#python-environment" title="Link to this heading">#</a></h2>
+<p>There are two methods to run a script, which differ in the Python environment used:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Running on RocScript Editor</dt><dd><ul class="simple">
+<li><p>Comes pre-installed with RS3 and includes the <strong>RS3 Python API library</strong></p></li>
+<li><p>For all-level users</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Running on your own Python environment</dt><dd><ul class="simple">
+<li><p>Requires downloading the <strong>RS3 Python API library</strong></p></li>
+<li><p>For advanced users</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="install-rs3-python-api-library">
+<h2>Install RS3 Python API Library<a class="headerlink" href="#install-rs3-python-api-library" title="Link to this heading">#</a></h2>
+<p>pip installation</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">RS3Scripting</span>
+</pre></div>
+</div>
+<p>If you are not using the latest release of RS3, you need to specify a library version that matches your RS3 version. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;RS3Scripting==4.042.0&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="generatedAPIDocFiles/rs3.html">rs3 package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.loadings.html">rs3.loadings package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.mesh.html">rs3.mesh package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.projectSettings.html">rs3.projectSettings package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.properties.html">rs3.properties package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.results.html">rs3.results package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.ApplicationManager.html">rs3.ApplicationManager module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.ColorPicker.html">rs3.ColorPicker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.CommonEnums.html">rs3.CommonEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.Compute.html">rs3.Compute module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.ExternalVolume.html">rs3.ExternalVolume module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.Geometry.html">rs3.Geometry module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.Model.html">rs3.Model module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.ModelEnums.html">rs3.ModelEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.RS3Modeler.html">rs3.RS3Modeler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.Restraints.html">rs3.Restraints module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generatedAPIDocFiles/rs3.Selection.html">rs3.Selection module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Python Script Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example_code/model/model_example.html">Model Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/model/open_and_close_model_example.html">Open and Close Model Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/model/project_settings_example.html">Project Settings Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/model/external_volume_and_selection_example.html">External Volume and Selection Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/model/field_stress_example.html">Field Stress Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/model/restraints_example.html">Restraints Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/model/mesh_example.html">Mesh Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/model/compute_example.html">Compute Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/material/initial_conditions_example.html">Material Initial Conditions Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/material/constitutive_models_example.html">Material Constitutive Models Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/material/hydraulic_example.html">Material Hydraulic Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/material/datum_example.html">Material Datum Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/material/material_stage_factors_example.html">Material Stage Factors Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/supports/beam_example.html">Beam Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/supports/bolt_example.html">Bolt Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/supports/joint_example.html">Joint Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/supports/liner_example.html">Liner Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/supports/pile_example.html">Pile Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/supports/composite_liner_example.html">Composite Liner Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/groundwater/water_by_location_example.html">Water By Location Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/groundwater/water_grid_example.html">Water Grid Script Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/results/solid_result_example.html">Solid Result Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/results/beam_result_example.html">Beam Result Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/results/bolt_result_example.html">Bolt Result Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/results/joint_result_example.html">Joint Result Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/results/pile_result_example.html">Pile Result Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_code/results/composite_liner_result_example.html">Composite Liner Result Script Example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="generatedAPIDocFiles/rs3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">rs3 package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environment">Python Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-rs3-python-api-library">Install RS3 Python API Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Rocscience Inc..
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

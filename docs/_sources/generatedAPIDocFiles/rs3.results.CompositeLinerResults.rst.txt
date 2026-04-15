@@ -1,0 +1,7 @@
+rs3.results.CompositeLinerResults module
+========================================
+
+.. automodule:: rs3.results.CompositeLinerResults
+   :members:
+   :undoc-members:
+   :show-inheritance:

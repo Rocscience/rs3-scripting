@@ -1,0 +1,1579 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009461,
+     "end_time": "2026-03-13T20:31:39.929180",
+     "exception": false,
+     "start_time": "2026-03-13T20:31:39.919719",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(material_stage_factors_example)=\n",
+    "# Material Stage Factors Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01037,
+     "end_time": "2026-03-13T20:31:39.949926",
+     "exception": false,
+     "start_time": "2026-03-13T20:31:39.939556",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:31:39.973802Z",
+     "iopub.status.busy": "2026-03-13T20:31:39.973213Z",
+     "iopub.status.idle": "2026-03-13T20:31:40.341348Z",
+     "shell.execute_reply": "2026-03-13T20:31:40.340073Z"
+    },
+    "papermill": {
+     "duration": 0.381994,
+     "end_time": "2026-03-13T20:31:40.342604",
+     "exception": false,
+     "start_time": "2026-03-13T20:31:39.960610",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.projectSettings.ProjectSettingEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007784,
+     "end_time": "2026-03-13T20:31:40.358614",
+     "exception": false,
+     "start_time": "2026-03-13T20:31:40.350830",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:31:40.378328Z",
+     "iopub.status.busy": "2026-03-13T20:31:40.377808Z",
+     "iopub.status.idle": "2026-03-13T20:31:40.385186Z",
+     "shell.execute_reply": "2026-03-13T20:31:40.381913Z"
+    },
+    "papermill": {
+     "duration": 0.021689,
+     "end_time": "2026-03-13T20:31:40.387746",
+     "exception": false,
+     "start_time": "2026-03-13T20:31:40.366057",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008136,
+     "end_time": "2026-03-13T20:31:40.407025",
+     "exception": false,
+     "start_time": "2026-03-13T20:31:40.398889",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "d0c56e52",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:31:40.421696Z",
+     "iopub.status.busy": "2026-03-13T20:31:40.421188Z",
+     "iopub.status.idle": "2026-03-13T20:32:08.919052Z",
+     "shell.execute_reply": "2026-03-13T20:32:08.918013Z"
+    },
+    "papermill": {
+     "duration": 28.506973,
+     "end_time": "2026-03-13T20:32:08.920454",
+     "exception": false,
+     "start_time": "2026-03-13T20:31:40.413481",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:31:40,428 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60205...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60205\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f4c75883",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011991,
+     "end_time": "2026-03-13T20:32:08.940493",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:08.928502",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "f85f6a03",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:08.959988Z",
+     "iopub.status.busy": "2026-03-13T20:32:08.959671Z",
+     "iopub.status.idle": "2026-03-13T20:32:08.967024Z",
+     "shell.execute_reply": "2026-03-13T20:32:08.964784Z"
+    },
+    "papermill": {
+     "duration": 0.018698,
+     "end_time": "2026-03-13T20:32:08.968934",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:08.950236",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006486,
+     "end_time": "2026-03-13T20:32:08.983743",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:08.977257",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:09.000057Z",
+     "iopub.status.busy": "2026-03-13T20:32:08.999643Z",
+     "iopub.status.idle": "2026-03-13T20:32:09.023605Z",
+     "shell.execute_reply": "2026-03-13T20:32:09.022550Z"
+    },
+    "papermill": {
+     "duration": 0.03413,
+     "end_time": "2026-03-13T20:32:09.024904",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:08.990774",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008833,
+     "end_time": "2026-03-13T20:32:09.041309",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:09.032476",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:09.061103Z",
+     "iopub.status.busy": "2026-03-13T20:32:09.060781Z",
+     "iopub.status.idle": "2026-03-13T20:32:19.492061Z",
+     "shell.execute_reply": "2026-03-13T20:32:19.490088Z"
+    },
+    "papermill": {
+     "duration": 10.443129,
+     "end_time": "2026-03-13T20:32:19.493608",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:09.050479",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8178f89d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010304,
+     "end_time": "2026-03-13T20:32:19.516100",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:19.505796",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create and Get Material"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "91094ee0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009732,
+     "end_time": "2026-03-13T20:32:19.533864",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:19.524132",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the first material in the list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "ab017b80",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:19.554191Z",
+     "iopub.status.busy": "2026-03-13T20:32:19.553859Z",
+     "iopub.status.idle": "2026-03-13T20:32:20.196200Z",
+     "shell.execute_reply": "2026-03-13T20:32:20.195020Z"
+    },
+    "papermill": {
+     "duration": 0.654384,
+     "end_time": "2026-03-13T20:32:20.197429",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:19.543045",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Soil'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1 = model.getAllMaterialProperties()[0]\n",
+    "material1.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "ecc0192e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:20.216817Z",
+     "iopub.status.busy": "2026-03-13T20:32:20.216460Z",
+     "iopub.status.idle": "2026-03-13T20:32:20.537168Z",
+     "shell.execute_reply": "2026-03-13T20:32:20.535417Z"
+    },
+    "papermill": {
+     "duration": 0.33467,
+     "end_time": "2026-03-13T20:32:20.538651",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.203981",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'New Material'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newMaterialName = \"New Material\"\n",
+    "model.createNewMaterialProperty(newMaterialName)\n",
+    "newMaterial = model.getMaterialPropertyByName(newMaterialName)\n",
+    "newMaterial.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2c63f598",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009067,
+     "end_time": "2026-03-13T20:32:20.557316",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.548249",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Set Constitutive Model Stage Factors"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "c41ddec3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:20.580160Z",
+     "iopub.status.busy": "2026-03-13T20:32:20.579723Z",
+     "iopub.status.idle": "2026-03-13T20:32:20.703028Z",
+     "shell.execute_reply": "2026-03-13T20:32:20.699048Z"
+    },
+    "papermill": {
+     "duration": 0.137412,
+     "end_time": "2026-03-13T20:32:20.705848",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.568436",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.StageFactors.setApplyConstitutiveModelStageFactors(True)\n",
+    "material1.StageFactors.getApplyConstitutiveModelStageFactors()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b06b658b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012478,
+     "end_time": "2026-03-13T20:32:20.731186",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.718708",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create new stage factors for stage 2 under StageFactors class."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "5d673f66",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:20.753253Z",
+     "iopub.status.busy": "2026-03-13T20:32:20.752777Z",
+     "iopub.status.idle": "2026-03-13T20:32:20.789071Z",
+     "shell.execute_reply": "2026-03-13T20:32:20.787398Z"
+    },
+    "papermill": {
+     "duration": 0.049564,
+     "end_time": "2026-03-13T20:32:20.790449",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.740885",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<rs3.properties.material.stageFactors.StageFactors.DefinedStageFactor at 0x1a6981a82f0>"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.StageFactors.createStageFactor(2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5e912d1d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011344,
+     "end_time": "2026-03-13T20:32:20.815125",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.803781",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.1 Mohr Coulomb"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1f2ce299",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011388,
+     "end_time": "2026-03-13T20:32:20.834086",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.822698",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the constitutive model to Mohr Coulomb."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "9ef70106",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:20.854769Z",
+     "iopub.status.busy": "2026-03-13T20:32:20.854409Z",
+     "iopub.status.idle": "2026-03-13T20:32:20.918255Z",
+     "shell.execute_reply": "2026-03-13T20:32:20.915005Z"
+    },
+    "papermill": {
+     "duration": 0.077596,
+     "end_time": "2026-03-13T20:32:20.921088",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.843492",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<ConstitutiveModelTypes.MOHR_COULOMB: 'MOHR_COULOMB'>"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.MOHR_COULOMB)\n",
+    "material1.ConstitutiveModel.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "02687276",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013293,
+     "end_time": "2026-03-13T20:32:20.948940",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.935647",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get defined stage factors for stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "c220fb79",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:20.973667Z",
+     "iopub.status.busy": "2026-03-13T20:32:20.973232Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.004186Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.002794Z"
+    },
+    "papermill": {
+     "duration": 0.044188,
+     "end_time": "2026-03-13T20:32:21.005227",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:20.961039",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "mohrCoulomb_st2 = material1.ConstitutiveModel.MohrCoulomb.StageFactorInterface.getDefinedStageFactors()[2]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b86c465e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009119,
+     "end_time": "2026-03-13T20:32:21.024779",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.015660",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the original cohesion stage factor at stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "9da16b40",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.041951Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.041503Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.057351Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.056206Z"
+    },
+    "papermill": {
+     "duration": 0.026577,
+     "end_time": "2026-03-13T20:32:21.059055",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.032478",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.0"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mohrCoulomb_st2.getCohesionFactor()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0816d59d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008887,
+     "end_time": "2026-03-13T20:32:21.077761",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.068874",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the new cohesion stage factor for stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "e0f67720",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.096616Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.096245Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.120550Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.118995Z"
+    },
+    "papermill": {
+     "duration": 0.035493,
+     "end_time": "2026-03-13T20:32:21.122192",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.086699",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.1"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "mohrCoulomb_st2.setCohesionFactor(1.1)\n",
+    "mohrCoulomb_st2.getCohesionFactor()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "5d1209a3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.144051Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.143664Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.149985Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.148689Z"
+    },
+    "papermill": {
+     "duration": 0.018913,
+     "end_time": "2026-03-13T20:32:21.151094",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.132181",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "isotropic_mohrCoulomb_st2 = material1.ConstitutiveModel.MohrCoulomb.LinearIsotropicStiffness.StageFactorInterface.getDefinedStageFactors()[2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "8afab262",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.170828Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.170416Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.181081Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.179405Z"
+    },
+    "papermill": {
+     "duration": 0.02301,
+     "end_time": "2026-03-13T20:32:21.182401",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.159391",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.0"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "isotropic_mohrCoulomb_st2.getPoissonsRatioFactor()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "f1b11c4f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.202012Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.201622Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.218199Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.216292Z"
+    },
+    "papermill": {
+     "duration": 0.029543,
+     "end_time": "2026-03-13T20:32:21.219779",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.190236",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.4"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "isotropic_mohrCoulomb_st2.setPoissonsRatioFactor(1.4)\n",
+    "isotropic_mohrCoulomb_st2.getPoissonsRatioFactor()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8b1eaf03",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011086,
+     "end_time": "2026-03-13T20:32:21.242844",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.231758",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.2 Cam Clay"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "512aefd6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.265984Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.265415Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.352197Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.349601Z"
+    },
+    "papermill": {
+     "duration": 0.102414,
+     "end_time": "2026-03-13T20:32:21.354127",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.251713",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<ConstitutiveModelTypes.CAM_CLAY: 'CAM_CLAY'>"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.CAM_CLAY)\n",
+    "material1.ConstitutiveModel.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "e5d5a659",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.384036Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.383495Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.390993Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.389114Z"
+    },
+    "papermill": {
+     "duration": 0.023589,
+     "end_time": "2026-03-13T20:32:21.392608",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.369019",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "camClay_st2 = material1.ConstitutiveModel.CamClay.StageFactorInterface.getDefinedStageFactors()[2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "459b528e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.418381Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.417920Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.433505Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.431571Z"
+    },
+    "papermill": {
+     "duration": 0.030647,
+     "end_time": "2026-03-13T20:32:21.435088",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.404441",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.0"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "camClay_st2.getKappaFactor()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "14207ad3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.456186Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.455794Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.478691Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.477015Z"
+    },
+    "papermill": {
+     "duration": 0.035849,
+     "end_time": "2026-03-13T20:32:21.480328",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.444479",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.34"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "camClay_st2.setKappaFactor(1.34)\n",
+    "camClay_st2.getKappaFactor()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "f56e17b0",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.500153Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.499750Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.561965Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.559571Z"
+    },
+    "papermill": {
+     "duration": 0.074437,
+     "end_time": "2026-03-13T20:32:21.564136",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.489699",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.StageFactors.setApplyConstitutiveModelStageFactors(False)\n",
+    "material1.StageFactors.getApplyConstitutiveModelStageFactors()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3a543f26",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011642,
+     "end_time": "2026-03-13T20:32:21.590091",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.578449",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Set Hydraulic Stage Factors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "19a71797",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012516,
+     "end_time": "2026-03-13T20:32:21.613327",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.600811",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on static water analysis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "7f882469",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.649286Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.647922Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.825456Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.823114Z"
+    },
+    "papermill": {
+     "duration": 0.198597,
+     "end_time": "2026-03-13T20:32:21.827605",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.629008",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.ProjectSettings.Groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_SURFACES)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "14902885",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011581,
+     "end_time": "2026-03-13T20:32:21.849787",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.838206",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on apply hydraulic stage factors."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "ebae9b15",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:21.871968Z",
+     "iopub.status.busy": "2026-03-13T20:32:21.871442Z",
+     "iopub.status.idle": "2026-03-13T20:32:21.946157Z",
+     "shell.execute_reply": "2026-03-13T20:32:21.944088Z"
+    },
+    "papermill": {
+     "duration": 0.090046,
+     "end_time": "2026-03-13T20:32:21.947805",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.857759",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.StageFactors.setApplyHydraulicStageFactors(True)\n",
+    "material1.StageFactors.getApplyHydraulicStageFactors()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a3521058",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015282,
+     "end_time": "2026-03-13T20:32:21.979738",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.964456",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get hydraulic stage factors at stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "45969bcb",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:22.008348Z",
+     "iopub.status.busy": "2026-03-13T20:32:22.007879Z",
+     "iopub.status.idle": "2026-03-13T20:32:22.018537Z",
+     "shell.execute_reply": "2026-03-13T20:32:22.016255Z"
+    },
+    "papermill": {
+     "duration": 0.028308,
+     "end_time": "2026-03-13T20:32:22.020356",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:21.992048",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "hydraulic_st2 = material1.Hydraulic.StageFactorInterface.getDefinedStageFactors()[2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "add4dabf",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:22.043833Z",
+     "iopub.status.busy": "2026-03-13T20:32:22.043465Z",
+     "iopub.status.idle": "2026-03-13T20:32:22.053094Z",
+     "shell.execute_reply": "2026-03-13T20:32:22.051376Z"
+    },
+    "papermill": {
+     "duration": 0.023295,
+     "end_time": "2026-03-13T20:32:22.054375",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:22.031080",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MaterialBehaviours.DRAINED: 'DRAINED'>"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "hydraulic_st2.getMaterialBehaviorType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "2514e801",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:22.077935Z",
+     "iopub.status.busy": "2026-03-13T20:32:22.077397Z",
+     "iopub.status.idle": "2026-03-13T20:32:22.120205Z",
+     "shell.execute_reply": "2026-03-13T20:32:22.118616Z"
+    },
+    "papermill": {
+     "duration": 0.056598,
+     "end_time": "2026-03-13T20:32:22.122202",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:22.065604",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MaterialBehaviours.UNDRAINED: 'UNDRAINED'>"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "hydraulic_st2.setMaterialBehaviorType(MaterialBehaviours.UNDRAINED)\n",
+    "hydraulic_st2.getMaterialBehaviorType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "adf28475",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008701,
+     "end_time": "2026-03-13T20:32:22.141077",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:22.132376",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get static groundwater stage factors at stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "c7b2a0ba",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:22.162446Z",
+     "iopub.status.busy": "2026-03-13T20:32:22.161956Z",
+     "iopub.status.idle": "2026-03-13T20:32:22.168677Z",
+     "shell.execute_reply": "2026-03-13T20:32:22.167349Z"
+    },
+    "papermill": {
+     "duration": 0.018696,
+     "end_time": "2026-03-13T20:32:22.169844",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:22.151148",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "staticWater_st2 = material1.Hydraulic.StaticGroundwater.StageFactorInterface.getDefinedStageFactors()[2]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "8cbcae5c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:22.192939Z",
+     "iopub.status.busy": "2026-03-13T20:32:22.192387Z",
+     "iopub.status.idle": "2026-03-13T20:32:22.543056Z",
+     "shell.execute_reply": "2026-03-13T20:32:22.540629Z"
+    },
+    "papermill": {
+     "duration": 0.366267,
+     "end_time": "2026-03-13T20:32:22.545681",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:22.179414",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "waterSurfaceName = \"Water Surface\"\n",
+    "model.createNewWaterByLocationProperty(waterSurfaceName)\n",
+    "waterSurface = model.getWaterByLocationPropertyByName(waterSurfaceName)\n",
+    "waterSurface.setWaterSurfaceLocation([(0, 0, -5), (0, 30, -5), (30, 30, -5), (30, 0, -5)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "11c774ad",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:22.578468Z",
+     "iopub.status.busy": "2026-03-13T20:32:22.577494Z",
+     "iopub.status.idle": "2026-03-13T20:32:22.624188Z",
+     "shell.execute_reply": "2026-03-13T20:32:22.622570Z"
+    },
+    "papermill": {
+     "duration": 0.067456,
+     "end_time": "2026-03-13T20:32:22.626152",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:22.558696",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Water Surface'"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "staticWater_st2.setWaterCondition(StaticWaterModes.WATER_SURFACE, \"Water Surface\")\n",
+    "staticWater_st2.getWaterCondition()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011229,
+     "end_time": "2026-03-13T20:32:22.649167",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:22.637938",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:22.675040Z",
+     "iopub.status.busy": "2026-03-13T20:32:22.674511Z",
+     "iopub.status.idle": "2026-03-13T20:32:26.477917Z",
+     "shell.execute_reply": "2026-03-13T20:32:26.475885Z"
+    },
+    "papermill": {
+     "duration": 3.818694,
+     "end_time": "2026-03-13T20:32:26.479837",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:22.661143",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "15e92d56",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012808,
+     "end_time": "2026-03-13T20:32:26.505693",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:26.492885",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "b9d7a1a8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:26.532540Z",
+     "iopub.status.busy": "2026-03-13T20:32:26.532127Z",
+     "iopub.status.idle": "2026-03-13T20:32:31.711294Z",
+     "shell.execute_reply": "2026-03-13T20:32:31.707203Z"
+    },
+    "papermill": {
+     "duration": 5.194931,
+     "end_time": "2026-03-13T20:32:31.713665",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:26.518734",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5df0725e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.0161,
+     "end_time": "2026-03-13T20:32:31.746824",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:31.730724",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "f76d34f5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:32:31.785628Z",
+     "iopub.status.busy": "2026-03-13T20:32:31.784187Z",
+     "iopub.status.idle": "2026-03-13T20:33:33.975711Z",
+     "shell.execute_reply": "2026-03-13T20:33:33.973450Z"
+    },
+    "papermill": {
+     "duration": 62.214331,
+     "end_time": "2026-03-13T20:33:33.978137",
+     "exception": false,
+     "start_time": "2026-03-13T20:32:31.763806",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:32:31,800 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60205...\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Material Stage Factors Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.projectSettings.ProjectSettingEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60205\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create and Get Material\n",
+    "# Get the first material in the list.\n",
+    "material1 = model.getAllMaterialProperties()[0]\n",
+    "newMaterialName = \"New Material\"\n",
+    "model.createNewMaterialProperty(newMaterialName)\n",
+    "newMaterial = model.getMaterialPropertyByName(newMaterialName)\n",
+    "\n",
+    "# 2. Set Constitutive Model Stage Factors\n",
+    "material1.StageFactors.setApplyConstitutiveModelStageFactors(True)\n",
+    "# Create new stage factors for stage 2 under StageFactors class.\n",
+    "material1.StageFactors.createStageFactor(2)\n",
+    "# 2.1 Mohr Coulomb\n",
+    "# Set the constitutive model to Mohr Coulomb.\n",
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.MOHR_COULOMB)\n",
+    "# Get defined stage factors for stage 2.\n",
+    "mohrCoulomb_st2 = material1.ConstitutiveModel.MohrCoulomb.StageFactorInterface.getDefinedStageFactors()[2]\n",
+    "# Set the new cohesion stage factor for stage 2.\n",
+    "mohrCoulomb_st2.setCohesionFactor(1.1)\n",
+    "isotropic_mohrCoulomb_st2 = material1.ConstitutiveModel.MohrCoulomb.LinearIsotropicStiffness.StageFactorInterface.getDefinedStageFactors()[2]\n",
+    "isotropic_mohrCoulomb_st2.setPoissonsRatioFactor(1.4)\n",
+    "# 2.2 Cam Clay\n",
+    "material1.ConstitutiveModel.setConstitutiveModel(ConstitutiveModelTypes.CAM_CLAY)\n",
+    "camClay_st2 = material1.ConstitutiveModel.CamClay.StageFactorInterface.getDefinedStageFactors()[2]\n",
+    "camClay_st2.setKappaFactor(1.34)\n",
+    "material1.StageFactors.setApplyConstitutiveModelStageFactors(False)\n",
+    "\n",
+    "# 3. Set Hydraulic Stage Factors\n",
+    "# Turn on static water analysis.\n",
+    "model.ProjectSettings.Groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_SURFACES)\n",
+    "# Turn on apply hydraulic stage factors.\n",
+    "material1.StageFactors.setApplyHydraulicStageFactors(True)\n",
+    "# Get hydraulic stage factors at stage 2.\n",
+    "hydraulic_st2 = material1.Hydraulic.StageFactorInterface.getDefinedStageFactors()[2]\n",
+    "hydraulic_st2.setMaterialBehaviorType(MaterialBehaviours.UNDRAINED)\n",
+    "# Get static groundwater stage factors at stage 2.\n",
+    "staticWater_st2 = material1.Hydraulic.StaticGroundwater.StageFactorInterface.getDefinedStageFactors()[2]\n",
+    "waterSurfaceName = \"Water Surface\"\n",
+    "model.createNewWaterByLocationProperty(waterSurfaceName)\n",
+    "waterSurface = model.getWaterByLocationPropertyByName(waterSurfaceName)\n",
+    "waterSurface.setWaterSurfaceLocation([(0, 0, -5), (0, 30, -5), (30, 30, -5), (30, 0, -5)])\n",
+    "staticWater_st2.setWaterCondition(StaticWaterModes.WATER_SURFACE, \"Water Surface\")\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 117.673175,
+   "end_time": "2026-03-13T20:33:36.131216",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\material\\material_stage_factors_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\material\\material_stage_factors_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:31:38.458041",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -1,0 +1,7 @@
+rs3.projectSettings.Stages module
+=================================
+
+.. automodule:: rs3.projectSettings.Stages
+   :members:
+   :undoc-members:
+   :show-inheritance:

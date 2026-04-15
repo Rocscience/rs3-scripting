@@ -1,0 +1,816 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "3953d19e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005728,
+     "end_time": "2026-03-13T21:04:38.930692",
+     "exception": false,
+     "start_time": "2026-03-13T21:04:38.924964",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(beam_result_example)=\n",
+    "# Beam Result Script Example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c4944e55",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005857,
+     "end_time": "2026-03-13T21:04:38.944238",
+     "exception": false,
+     "start_time": "2026-03-13T21:04:38.938381",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "0d48abd5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:04:38.958714Z",
+     "iopub.status.busy": "2026-03-13T21:04:38.958312Z",
+     "iopub.status.idle": "2026-03-13T21:04:39.320973Z",
+     "shell.execute_reply": "2026-03-13T21:04:39.319825Z"
+    },
+    "papermill": {
+     "duration": 0.37133,
+     "end_time": "2026-03-13T21:04:39.322555",
+     "exception": false,
+     "start_time": "2026-03-13T21:04:38.951225",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import BeamsDataType\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6375a745",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006852,
+     "end_time": "2026-03-13T21:04:39.336941",
+     "exception": false,
+     "start_time": "2026-03-13T21:04:39.330089",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "01397a19",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:04:39.353709Z",
+     "iopub.status.busy": "2026-03-13T21:04:39.353126Z",
+     "iopub.status.idle": "2026-03-13T21:04:39.358761Z",
+     "shell.execute_reply": "2026-03-13T21:04:39.356927Z"
+    },
+    "papermill": {
+     "duration": 0.017448,
+     "end_time": "2026-03-13T21:04:39.360638",
+     "exception": false,
+     "start_time": "2026-03-13T21:04:39.343190",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2810d692",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006078,
+     "end_time": "2026-03-13T21:04:39.373703",
+     "exception": false,
+     "start_time": "2026-03-13T21:04:39.367625",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "1f671b33",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:04:39.388953Z",
+     "iopub.status.busy": "2026-03-13T21:04:39.388488Z",
+     "iopub.status.idle": "2026-03-13T21:05:09.615966Z",
+     "shell.execute_reply": "2026-03-13T21:05:09.614617Z"
+    },
+    "papermill": {
+     "duration": 30.238204,
+     "end_time": "2026-03-13T21:05:09.617213",
+     "exception": false,
+     "start_time": "2026-03-13T21:04:39.379009",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:04:39,395 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60502...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60502\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b0bbf1de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005469,
+     "end_time": "2026-03-13T21:05:09.627882",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:09.622413",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "d1a37143",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:09.639457Z",
+     "iopub.status.busy": "2026-03-13T21:05:09.639132Z",
+     "iopub.status.idle": "2026-03-13T21:05:09.969404Z",
+     "shell.execute_reply": "2026-03-13T21:05:09.968161Z"
+    },
+    "papermill": {
+     "duration": 0.338076,
+     "end_time": "2026-03-13T21:05:09.970969",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:09.632893",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fa1ba63d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005846,
+     "end_time": "2026-03-13T21:05:09.982665",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:09.976819",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "68a779ea",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:09.996599Z",
+     "iopub.status.busy": "2026-03-13T21:05:09.996201Z",
+     "iopub.status.idle": "2026-03-13T21:05:22.489574Z",
+     "shell.execute_reply": "2026-03-13T21:05:22.488301Z"
+    },
+    "papermill": {
+     "duration": 12.50277,
+     "end_time": "2026-03-13T21:05:22.491748",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:09.988978",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "77e01601",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008024,
+     "end_time": "2026-03-13T21:05:22.505900",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:22.497876",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Get Node Results"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3dfa67c3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006354,
+     "end_time": "2026-03-13T21:05:22.518305",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:22.511951",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.1 Define a box region to filter beam elements (optional)\n",
+    "\n",
+    "A cube region is defined by two corners. Only mesh nodes inside or intersecting the box will be returned. If you omit the region in the next step, all nodes in the model would be returned.\n",
+    "\n",
+    "The goal of this example is to query the beam on the right wall of the tunnel. Therefore, define a cube region that includes the queried beam."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c3a02dcd",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:22.532303Z",
+     "iopub.status.busy": "2026-03-13T21:05:22.531749Z",
+     "iopub.status.idle": "2026-03-13T21:05:22.539793Z",
+     "shell.execute_reply": "2026-03-13T21:05:22.537309Z"
+    },
+    "papermill": {
+     "duration": 0.017208,
+     "end_time": "2026-03-13T21:05:22.541338",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:22.524130",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "beam_query_region = Cube(\n",
+    "    corner1=Point(x=10.5, y=-1.0, z=-10.5),\n",
+    "    corner2=Point(x=11.5, y=31.0, z=-9.5),\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0c52ef31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006746,
+     "end_time": "2026-03-13T21:05:22.553907",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:22.547161",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.2 Get the beam results object for the desired stage(s)\n",
+    "\n",
+    "getBeamResults returns a list: one entry per stage requested. Here we request only stage 3, so the list has one element at index 0."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "e1bf1c47",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:22.568470Z",
+     "iopub.status.busy": "2026-03-13T21:05:22.567973Z",
+     "iopub.status.idle": "2026-03-13T21:05:23.701037Z",
+     "shell.execute_reply": "2026-03-13T21:05:23.698767Z"
+    },
+    "papermill": {
+     "duration": 1.143006,
+     "end_time": "2026-03-13T21:05:23.702633",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:22.559627",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "beam_results_list = model.Results.getBeamResults(stageNumber=[3])\n",
+    "beam_results_stage_3 = beam_results_list[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "90d686fd",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00567,
+     "end_time": "2026-03-13T21:05:23.714053",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:23.708383",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.3 Get all beam node results for this stage\n",
+    "\n",
+    "The query region is passed in to filter the beam we aim to query."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "992d3346",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:23.737168Z",
+     "iopub.status.busy": "2026-03-13T21:05:23.736477Z",
+     "iopub.status.idle": "2026-03-13T21:05:23.898068Z",
+     "shell.execute_reply": "2026-03-13T21:05:23.896022Z"
+    },
+    "papermill": {
+     "duration": 0.175047,
+     "end_time": "2026-03-13T21:05:23.901252",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:23.726205",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "beam_node_results_list = beam_results_stage_3.getBeamNodeResults(region=beam_query_region)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f1385d63",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006422,
+     "end_time": "2026-03-13T21:05:23.917140",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:23.910718",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Build a lookup: NodeID -> nodal result object. This is used later to get coordinates for each node attached to an element."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "68a91513",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:23.937221Z",
+     "iopub.status.busy": "2026-03-13T21:05:23.936120Z",
+     "iopub.status.idle": "2026-03-13T21:05:23.947938Z",
+     "shell.execute_reply": "2026-03-13T21:05:23.945994Z"
+    },
+    "papermill": {
+     "duration": 0.023919,
+     "end_time": "2026-03-13T21:05:23.949634",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:23.925715",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Beam: node results in region for stage 3: 109\n"
+     ]
+    }
+   ],
+   "source": [
+    "beam_node_by_id = {nr.NodeID: nr for nr in beam_node_results_list}\n",
+    "print(f\"Beam: node results in region for stage 3: {len(beam_node_results_list)}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ada3fc8",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006251,
+     "end_time": "2026-03-13T21:05:23.965309",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:23.959058",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.4 Get beam element results within the region"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "3e5170a9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:23.985462Z",
+     "iopub.status.busy": "2026-03-13T21:05:23.984164Z",
+     "iopub.status.idle": "2026-03-13T21:05:24.180752Z",
+     "shell.execute_reply": "2026-03-13T21:05:24.179194Z"
+    },
+    "papermill": {
+     "duration": 0.208478,
+     "end_time": "2026-03-13T21:05:24.182352",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:23.973874",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Beam: element results in region for stage 3: 108\n"
+     ]
+    }
+   ],
+   "source": [
+    "beam_element_results_list = beam_results_stage_3.getBeamElementResults(region=beam_query_region)\n",
+    "print(f\"Beam: element results in region for stage 3: {len(beam_element_results_list)}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8f00176",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011262,
+     "end_time": "2026-03-13T21:05:24.204372",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:24.193110",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.5 Take one element and read its per-node result values\n",
+    "\n",
+    "Each element has attached nodes. getResults(...) returns a list of values, one per node of the element (in the same order as AttachedNodeIDs).\n",
+    "\n",
+    "Based on the coordinates of nodes, this element locates at around one third of the tunnel."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1aac0004",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:24.227663Z",
+     "iopub.status.busy": "2026-03-13T21:05:24.227134Z",
+     "iopub.status.idle": "2026-03-13T21:05:24.240443Z",
+     "shell.execute_reply": "2026-03-13T21:05:24.237692Z"
+    },
+    "papermill": {
+     "duration": 0.029894,
+     "end_time": "2026-03-13T21:05:24.242681",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:24.212787",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Beam element ID 87991, nodal results:\n",
+      "  Node 3420: (x, y, z, Axis Force, Total Displacement) = (10.99802672842827, 12.48457786636161, -10.062790519529315, -14.273378942008405, 0.019423629801735173)\n",
+      "  Node 3421: (x, y, z, Axis Force, Total Displacement) = (10.99802672842827, 12.76386542774327, -10.062790519529315, -14.273378942008405, 0.018018400683144545)\n"
+     ]
+    }
+   ],
+   "source": [
+    "element_index = 0\n",
+    "selected_beam_element = beam_element_results_list[element_index]\n",
+    "beam_attached_node_ids = selected_beam_element.AttachedNodeIDs\n",
+    "axis_force_per_node = selected_beam_element.getNodeResult(BeamsDataType.AXIS_FORCE)\n",
+    "beam_disp_per_node = selected_beam_element.getNodeResult(BeamsDataType.DISPLACEMENT_TOTAL)\n",
+    "\n",
+    "print(f\"Beam element ID {selected_beam_element.ElementID}, nodal results:\")\n",
+    "for i in range(len(beam_attached_node_ids)):\n",
+    "    node_id = beam_attached_node_ids[i]\n",
+    "    nodal_result = beam_node_by_id[node_id]\n",
+    "    print(\n",
+    "        f\"  Node {node_id}: (x, y, z, Axis Force, Total Displacement) = \"\n",
+    "        f\"({nodal_result.XCoordinate}, {nodal_result.YCoordinate}, {nodal_result.ZCoordinate}, \"\n",
+    "        f\"{axis_force_per_node[i]}, {beam_disp_per_node[i]})\"\n",
+    "    )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "649242e3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011788,
+     "end_time": "2026-03-13T21:05:24.264781",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:24.252993",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Since accessing results doesn't change the model, close the model without saving."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "358e8f69",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:24.294931Z",
+     "iopub.status.busy": "2026-03-13T21:05:24.294352Z",
+     "iopub.status.idle": "2026-03-13T21:05:26.405671Z",
+     "shell.execute_reply": "2026-03-13T21:05:26.402453Z"
+    },
+    "papermill": {
+     "duration": 2.130516,
+     "end_time": "2026-03-13T21:05:26.407810",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:24.277294",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "40ece583",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010472,
+     "end_time": "2026-03-13T21:05:26.424570",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:26.414098",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "8607e079",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:26.441269Z",
+     "iopub.status.busy": "2026-03-13T21:05:26.440701Z",
+     "iopub.status.idle": "2026-03-13T21:05:31.636184Z",
+     "shell.execute_reply": "2026-03-13T21:05:31.633454Z"
+    },
+    "papermill": {
+     "duration": 5.207004,
+     "end_time": "2026-03-13T21:05:31.638259",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:26.431255",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "af0dcb63",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009433,
+     "end_time": "2026-03-13T21:05:31.658662",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:31.649229",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "9ceee902",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:05:31.682311Z",
+     "iopub.status.busy": "2026-03-13T21:05:31.680797Z",
+     "iopub.status.idle": "2026-03-13T21:06:20.626378Z",
+     "shell.execute_reply": "2026-03-13T21:06:20.624753Z"
+    },
+    "papermill": {
+     "duration": 48.960139,
+     "end_time": "2026-03-13T21:06:20.627915",
+     "exception": false,
+     "start_time": "2026-03-13T21:05:31.667776",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:05:31,695 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60502...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Beam: node results in region for stage 3: 109\n",
+      "Beam: element results in region for stage 3: 108\n",
+      "Beam element ID 87991, nodal results:\n",
+      "  Node 3420: (x, y, z, Axis Force, Total Displacement) = (10.99802672842827, 12.48457786636161, -10.062790519529315, -14.273378942008405, 0.019423629801735173)\n",
+      "  Node 3421: (x, y, z, Axis Force, Total Displacement) = (10.99802672842827, 12.76386542774327, -10.062790519529315, -14.273378942008405, 0.018018400683144545)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Beam Result Script Example\n",
+    "# Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import BeamsDataType\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60502\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the \n",
+    "# model path to your own model path.\n",
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")\n",
+    "\n",
+    "# 1. Get Node Results\n",
+    "# 1.1 Define a box region to filter beam elements (optional)\n",
+    "# A cube region is defined by two corners. Only mesh nodes inside or intersecting the box \n",
+    "# will be returned. If you omit the region in the next step, all nodes in the model would \n",
+    "# be returned.\n",
+    "# The goal of this example is to query the beam on the right wall of the tunnel. Therefore, \n",
+    "# define a cube region that includes the queried beam.\n",
+    "beam_query_region = Cube(\n",
+    "    corner1=Point(x=10.5, y=-1.0, z=-10.5),\n",
+    "    corner2=Point(x=11.5, y=31.0, z=-9.5),\n",
+    ")\n",
+    "\n",
+    "# 1.2 Get the beam results object for the desired stage(s)\n",
+    "# getBeamResults returns a list: one entry per stage requested. Here we request only stage 3, \n",
+    "# so the list has one element at index 0.\n",
+    "beam_results_list = model.Results.getBeamResults(stageNumber=[3])\n",
+    "beam_results_stage_3 = beam_results_list[0]\n",
+    "\n",
+    "# 1.3 Get all beam node results for this stage\n",
+    "# The query region is passed in to filter the beam we aim to query.\n",
+    "beam_node_results_list = beam_results_stage_3.getBeamNodeResults(region=beam_query_region)\n",
+    "# Build a lookup: NodeID -> nodal result object. This is used later to get coordinates for \n",
+    "# each node attached to an element.\n",
+    "beam_node_by_id = {nr.NodeID: nr for nr in beam_node_results_list}\n",
+    "print(f\"Beam: node results in region for stage 3: {len(beam_node_results_list)}\")\n",
+    "\n",
+    "# 1.4 Get beam element results within the region\n",
+    "beam_element_results_list = beam_results_stage_3.getBeamElementResults(region=beam_query_region)\n",
+    "print(f\"Beam: element results in region for stage 3: {len(beam_element_results_list)}\")\n",
+    "\n",
+    "# 1.5 Take one element and read its per-node result values\n",
+    "# Each element has attached nodes. getResults(...) returns a list of values, one per node of \n",
+    "# the element (in the same order as AttachedNodeIDs).\n",
+    "# Based on the coordinates of nodes, this element locates at around one third of the tunnel.\n",
+    "element_index = 0\n",
+    "selected_beam_element = beam_element_results_list[element_index]\n",
+    "beam_attached_node_ids = selected_beam_element.AttachedNodeIDs\n",
+    "axis_force_per_node = selected_beam_element.getNodeResult(BeamsDataType.AXIS_FORCE)\n",
+    "beam_disp_per_node = selected_beam_element.getNodeResult(BeamsDataType.DISPLACEMENT_TOTAL)\n",
+    "print(f\"Beam element ID {selected_beam_element.ElementID}, nodal results:\")\n",
+    "for i in range(len(beam_attached_node_ids)):\n",
+    "    node_id = beam_attached_node_ids[i]\n",
+    "    nodal_result = beam_node_by_id[node_id]\n",
+    "    print(\n",
+    "        f\"  Node {node_id}: (x, y, z, Axis Force, Total Displacement) = \"\n",
+    "        f\"({nodal_result.XCoordinate}, {nodal_result.YCoordinate}, {nodal_result.ZCoordinate}, \"\n",
+    "        f\"{axis_force_per_node[i]}, {beam_disp_per_node[i]})\"\n",
+    "    )\n",
+    "    \n",
+    "# Since accessing results doesn't change the model, close the model without saving.\n",
+    "model.close(False)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 105.256248,
+   "end_time": "2026-03-13T21:06:22.353849",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\beam_result_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\beam_result_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:04:37.097601",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -1,0 +1,7 @@
+rs3.properties.joint.NoneSlip module
+====================================
+
+.. automodule:: rs3.properties.joint.NoneSlip
+   :members:
+   :undoc-members:
+   :show-inheritance:

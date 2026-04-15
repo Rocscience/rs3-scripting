@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.AnisotropicLinear module
+==================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.AnisotropicLinear
+   :members:
+   :undoc-members:
+   :show-inheritance:

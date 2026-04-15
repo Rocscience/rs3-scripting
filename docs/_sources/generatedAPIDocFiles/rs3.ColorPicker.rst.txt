@@ -1,0 +1,7 @@
+rs3.ColorPicker module
+======================
+
+.. automodule:: rs3.ColorPicker
+   :members:
+   :undoc-members:
+   :show-inheritance:

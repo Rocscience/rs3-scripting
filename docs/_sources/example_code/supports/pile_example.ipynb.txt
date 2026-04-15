@@ -1,0 +1,1748 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013118,
+     "end_time": "2026-03-13T21:23:49.704845",
+     "exception": false,
+     "start_time": "2026-03-13T21:23:49.691727",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(pile_example)=\n",
+    "# Pile Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007569,
+     "end_time": "2026-03-13T21:23:49.723340",
+     "exception": false,
+     "start_time": "2026-03-13T21:23:49.715771",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:23:49.738947Z",
+     "iopub.status.busy": "2026-03-13T21:23:49.738213Z",
+     "iopub.status.idle": "2026-03-13T21:23:49.980825Z",
+     "shell.execute_reply": "2026-03-13T21:23:49.979633Z"
+    },
+    "papermill": {
+     "duration": 0.251411,
+     "end_time": "2026-03-13T21:23:49.981668",
+     "exception": false,
+     "start_time": "2026-03-13T21:23:49.730257",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008105,
+     "end_time": "2026-03-13T21:23:49.996540",
+     "exception": false,
+     "start_time": "2026-03-13T21:23:49.988435",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:23:50.012687Z",
+     "iopub.status.busy": "2026-03-13T21:23:50.012281Z",
+     "iopub.status.idle": "2026-03-13T21:23:50.016767Z",
+     "shell.execute_reply": "2026-03-13T21:23:50.015506Z"
+    },
+    "papermill": {
+     "duration": 0.01479,
+     "end_time": "2026-03-13T21:23:50.018017",
+     "exception": false,
+     "start_time": "2026-03-13T21:23:50.003227",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.abspath(\"\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007066,
+     "end_time": "2026-03-13T21:23:50.033563",
+     "exception": false,
+     "start_time": "2026-03-13T21:23:50.026497",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "0d2517c8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:23:50.049607Z",
+     "iopub.status.busy": "2026-03-13T21:23:50.049243Z",
+     "iopub.status.idle": "2026-03-13T21:24:18.005770Z",
+     "shell.execute_reply": "2026-03-13T21:24:18.004588Z"
+    },
+    "papermill": {
+     "duration": 27.965531,
+     "end_time": "2026-03-13T21:24:18.006852",
+     "exception": false,
+     "start_time": "2026-03-13T21:23:50.041321",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:23:50,055 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60305...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60305\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "80f79cad",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00789,
+     "end_time": "2026-03-13T21:24:18.021604",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:18.013714",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "71845dd4",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:18.039404Z",
+     "iopub.status.busy": "2026-03-13T21:24:18.039037Z",
+     "iopub.status.idle": "2026-03-13T21:24:18.045489Z",
+     "shell.execute_reply": "2026-03-13T21:24:18.044352Z"
+    },
+    "papermill": {
+     "duration": 0.016883,
+     "end_time": "2026-03-13T21:24:18.046579",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:18.029696",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007527,
+     "end_time": "2026-03-13T21:24:18.062777",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:18.055250",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:18.077943Z",
+     "iopub.status.busy": "2026-03-13T21:24:18.077587Z",
+     "iopub.status.idle": "2026-03-13T21:24:18.100063Z",
+     "shell.execute_reply": "2026-03-13T21:24:18.098510Z"
+    },
+    "papermill": {
+     "duration": 0.031908,
+     "end_time": "2026-03-13T21:24:18.101607",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:18.069699",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008079,
+     "end_time": "2026-03-13T21:24:18.117117",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:18.109038",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:18.134338Z",
+     "iopub.status.busy": "2026-03-13T21:24:18.134011Z",
+     "iopub.status.idle": "2026-03-13T21:24:29.385737Z",
+     "shell.execute_reply": "2026-03-13T21:24:29.383719Z"
+    },
+    "papermill": {
+     "duration": 11.263245,
+     "end_time": "2026-03-13T21:24:29.387840",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:18.124595",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8178f89d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015851,
+     "end_time": "2026-03-13T21:24:29.430155",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:29.414304",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create and Get Pile"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "91094ee0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011248,
+     "end_time": "2026-03-13T21:24:29.454881",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:29.443633",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the first pile in the list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "f538154b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:29.489379Z",
+     "iopub.status.busy": "2026-03-13T21:24:29.488507Z",
+     "iopub.status.idle": "2026-03-13T21:24:30.165378Z",
+     "shell.execute_reply": "2026-03-13T21:24:30.164116Z"
+    },
+    "papermill": {
+     "duration": 0.700597,
+     "end_time": "2026-03-13T21:24:30.167217",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:29.466620",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Pile 1'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile1 = model.getAllPileProperties()[0]\n",
+    "pile1.getPileName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "592a6630",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01458,
+     "end_time": "2026-03-13T21:24:30.196422",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:30.181842",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create a new pile and get the pile by name."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "749fa49f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:30.224136Z",
+     "iopub.status.busy": "2026-03-13T21:24:30.223766Z",
+     "iopub.status.idle": "2026-03-13T21:24:30.406333Z",
+     "shell.execute_reply": "2026-03-13T21:24:30.404449Z"
+    },
+    "papermill": {
+     "duration": 0.200765,
+     "end_time": "2026-03-13T21:24:30.409892",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:30.209127",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Pile 2'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile2Name = \"Pile 2\"\n",
+    "model.createNewPileProperty(pile2Name)\n",
+    "pile2 = model.getPilePropertyByName(pile2Name)\n",
+    "pile2.getPileName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e099dd78",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018017,
+     "end_time": "2026-03-13T21:24:30.443143",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:30.425126",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Set Pile Properties"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bf61bdbf",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012181,
+     "end_time": "2026-03-13T21:24:30.464622",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:30.452441",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create a beam for the later example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "ede6b50f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:30.496070Z",
+     "iopub.status.busy": "2026-03-13T21:24:30.495425Z",
+     "iopub.status.idle": "2026-03-13T21:24:30.558566Z",
+     "shell.execute_reply": "2026-03-13T21:24:30.555334Z"
+    },
+    "papermill": {
+     "duration": 0.088015,
+     "end_time": "2026-03-13T21:24:30.563014",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:30.474999",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "newBeamName = \"Beam for pile\"\n",
+    "model.createNewBeamProperty(newBeamName)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "11b4011f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:30.600094Z",
+     "iopub.status.busy": "2026-03-13T21:24:30.599588Z",
+     "iopub.status.idle": "2026-03-13T21:24:30.789812Z",
+     "shell.execute_reply": "2026-03-13T21:24:30.782280Z"
+    },
+    "papermill": {
+     "duration": 0.212176,
+     "end_time": "2026-03-13T21:24:30.794058",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:30.581882",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile1.setConnectionType(ConnectionType.HINGED)\n",
+    "pile1.setLiningConnectionType(LiningConnectionType.FIRST_LINER_AT_INSTALL)\n",
+    "pile1.setBeamMaterial(newBeamName)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "54e32148",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:30.868080Z",
+     "iopub.status.busy": "2026-03-13T21:24:30.866588Z",
+     "iopub.status.idle": "2026-03-13T21:24:30.938138Z",
+     "shell.execute_reply": "2026-03-13T21:24:30.934523Z"
+    },
+    "papermill": {
+     "duration": 0.120542,
+     "end_time": "2026-03-13T21:24:30.941917",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:30.821375",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<PileSkinResistanceType.MULTI_LINEAR: 'MULTILINEAR'>"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile1.setSkinResistance(PileSkinResistanceType.MULTI_LINEAR)\n",
+    "pile1.getSkinResistance()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "d08f6b17",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:31.006535Z",
+     "iopub.status.busy": "2026-03-13T21:24:31.005370Z",
+     "iopub.status.idle": "2026-03-13T21:24:31.028653Z",
+     "shell.execute_reply": "2026-03-13T21:24:31.026119Z"
+    },
+    "papermill": {
+     "duration": 0.069173,
+     "end_time": "2026-03-13T21:24:31.030631",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:30.961458",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ShearStiffness': 10000.0,\n",
+       " 'NormalStiffness': 100000.0,\n",
+       " 'UsingPileProperties': True,\n",
+       " 'BaseNormalStiffness': 100000.0,\n",
+       " 'BaseForceResistance': 100.0}"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile1.MultiLinear.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "152cbe81",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:31.061306Z",
+     "iopub.status.busy": "2026-03-13T21:24:31.060428Z",
+     "iopub.status.idle": "2026-03-13T21:24:31.152037Z",
+     "shell.execute_reply": "2026-03-13T21:24:31.149900Z"
+    },
+    "papermill": {
+     "duration": 0.110546,
+     "end_time": "2026-03-13T21:24:31.154168",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.043622",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ShearStiffness': 10000.0,\n",
+       " 'NormalStiffness': 100000.0,\n",
+       " 'UsingPileProperties': True,\n",
+       " 'BaseNormalStiffness': 100000.0,\n",
+       " 'BaseForceResistance': 205.0}"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile1.MultiLinear.setProperties(BaseForceResistance=205)\n",
+    "pile1Properties = pile1.MultiLinear.getProperties()\n",
+    "pile1Properties"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f25e28e6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.017437,
+     "end_time": "2026-03-13T21:24:31.188838",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.171401",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set multi-linear skin resistance properties. Each tuple takes (Distance to Top, Max Traction)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "5d1a4a77",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:31.226314Z",
+     "iopub.status.busy": "2026-03-13T21:24:31.225714Z",
+     "iopub.status.idle": "2026-03-13T21:24:31.316512Z",
+     "shell.execute_reply": "2026-03-13T21:24:31.314182Z"
+    },
+    "papermill": {
+     "duration": 0.111709,
+     "end_time": "2026-03-13T21:24:31.318377",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.206668",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(1.1, 2.2), (3.3, 4.4)]"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile1.MultiLinear.setMultiLinearGrid([(1.1, 2.2), (3.3, 4.4)])\n",
+    "pile1.MultiLinear.getMultiLinearGrid()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3c99aa6d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012366,
+     "end_time": "2026-03-13T21:24:31.345413",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.333047",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set pile end conditions (force/displacement)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "bcdb7ef8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:31.370569Z",
+     "iopub.status.busy": "2026-03-13T21:24:31.370127Z",
+     "iopub.status.idle": "2026-03-13T21:24:31.652495Z",
+     "shell.execute_reply": "2026-03-13T21:24:31.651146Z"
+    },
+    "papermill": {
+     "duration": 0.297901,
+     "end_time": "2026-03-13T21:24:31.653920",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.356019",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Magnitude': 12.3, 'X': 1.1, 'Y': 2.2, 'Z': 3.3}"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile1.EndCondition.setEndConditionType(EndConditionType.DISPLACEMENT)\n",
+    "pile1.EndCondition.setProperties(12.3, 1.1, 2.2, 3.3)\n",
+    "pile1.EndCondition.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6fe251d6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009287,
+     "end_time": "2026-03-13T21:24:31.674435",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.665148",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "To turn off the pile end conditions, set EndConditionType to NONE."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "2a302494",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:31.701041Z",
+     "iopub.status.busy": "2026-03-13T21:24:31.700571Z",
+     "iopub.status.idle": "2026-03-13T21:24:31.734071Z",
+     "shell.execute_reply": "2026-03-13T21:24:31.732796Z"
+    },
+    "papermill": {
+     "duration": 0.048632,
+     "end_time": "2026-03-13T21:24:31.736264",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.687632",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile1.EndCondition.setEndConditionType(EndConditionType.NONE)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "719207a0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014513,
+     "end_time": "2026-03-13T21:24:31.764442",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.749929",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Copy Pile Properties"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "5734fb77",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:31.798883Z",
+     "iopub.status.busy": "2026-03-13T21:24:31.797885Z",
+     "iopub.status.idle": "2026-03-13T21:24:31.846508Z",
+     "shell.execute_reply": "2026-03-13T21:24:31.842489Z"
+    },
+    "papermill": {
+     "duration": 0.068038,
+     "end_time": "2026-03-13T21:24:31.849324",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.781286",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<PileSkinResistanceType.MULTI_LINEAR: 'MULTILINEAR'>"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile1.setSkinResistance(PileSkinResistanceType.MULTI_LINEAR)\n",
+    "pile1.getSkinResistance()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "ab017b80",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:31.886222Z",
+     "iopub.status.busy": "2026-03-13T21:24:31.885775Z",
+     "iopub.status.idle": "2026-03-13T21:24:31.900672Z",
+     "shell.execute_reply": "2026-03-13T21:24:31.898871Z"
+    },
+    "papermill": {
+     "duration": 0.035401,
+     "end_time": "2026-03-13T21:24:31.902532",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.867131",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ShearStiffness': 10000.0,\n",
+       " 'NormalStiffness': 100000.0,\n",
+       " 'UsingPileProperties': True,\n",
+       " 'BaseNormalStiffness': 100000.0,\n",
+       " 'BaseForceResistance': 100.0}"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile2.MultiLinear.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "86c2bc42",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:31.927110Z",
+     "iopub.status.busy": "2026-03-13T21:24:31.926673Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.182969Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.181496Z"
+    },
+    "papermill": {
+     "duration": 0.269387,
+     "end_time": "2026-03-13T21:24:32.184388",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:31.915001",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ShearStiffness': 10000.0,\n",
+       " 'NormalStiffness': 100000.0,\n",
+       " 'UsingPileProperties': True,\n",
+       " 'BaseNormalStiffness': 100000.0,\n",
+       " 'BaseForceResistance': 205.0}"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile2.MultiLinear.setProperties(**pile1Properties)\n",
+    "pile2.MultiLinear.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5b6f07e6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011539,
+     "end_time": "2026-03-13T21:24:32.207657",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.196118",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 4. Set Stage Factors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c64ec2e5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01536,
+     "end_time": "2026-03-13T21:24:32.235919",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.220559",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on the stage factors of piles."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "c488dd48",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.259780Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.259359Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.290019Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.288210Z"
+    },
+    "papermill": {
+     "duration": 0.044337,
+     "end_time": "2026-03-13T21:24:32.291744",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.247407",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile1.setApplyStageFactors(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "78cf4674",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015515,
+     "end_time": "2026-03-13T21:24:32.322288",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.306773",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create a stage factor for stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "5ea93281",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.348826Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.348408Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.385370Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.383771Z"
+    },
+    "papermill": {
+     "duration": 0.049347,
+     "end_time": "2026-03-13T21:24:32.386497",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.337150",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pileStageFactor_s2 = pile1.MultiLinear.StageFactorInterface.createStageFactor(2)\n",
+    "pileStageFactor_s2 = pile1.MultiLinear.StageFactorInterface.getDefinedStageFactors()[2]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "838e1e58",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00863,
+     "end_time": "2026-03-13T21:24:32.404479",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.395849",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current stage factor of multi-liear grid."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "6b928a7c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.428063Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.427622Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.439348Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.438323Z"
+    },
+    "papermill": {
+     "duration": 0.025385,
+     "end_time": "2026-03-13T21:24:32.440974",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.415589",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.0"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pileStageFactor_s2.getMultiLinearFactor()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "32b46d31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00966,
+     "end_time": "2026-03-13T21:24:32.461315",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.451655",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set stage factor of multi-linear grid."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "a0243a17",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.487287Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.486897Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.499161Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.498115Z"
+    },
+    "papermill": {
+     "duration": 0.026864,
+     "end_time": "2026-03-13T21:24:32.500165",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.473301",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pileStageFactor_s2.setMultiLinearFactor(1.5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0b2be899",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012642,
+     "end_time": "2026-03-13T21:24:32.521234",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.508592",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get stage factors of all stages and check stage factor of multi-linear grid at stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "19980170",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.544000Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.543407Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.561590Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.559451Z"
+    },
+    "papermill": {
+     "duration": 0.033074,
+     "end_time": "2026-03-13T21:24:32.563435",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.530361",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.5"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stageFactors_s2 = pile1.MultiLinear.StageFactorInterface.getStageFactor(2)\n",
+    "stageFactors_s2.getMultiLinearFactor()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b4857a83",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012539,
+     "end_time": "2026-03-13T21:24:32.586400",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.573861",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create another stage factor for stage 4 and set the stage multi-linear grid stage factor to 2.1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "61507c97",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.615303Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.614793Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.624254Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.622877Z"
+    },
+    "papermill": {
+     "duration": 0.02443,
+     "end_time": "2026-03-13T21:24:32.625601",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.601171",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile1.MultiLinear.StageFactorInterface.createStageFactor(4)\n",
+    "newPileStageFactor_s4 = pile1.MultiLinear.StageFactorInterface.getDefinedStageFactors()[4]\n",
+    "newPileStageFactor_s4.setMultiLinearFactor(2.1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "de1e5587",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010714,
+     "end_time": "2026-03-13T21:24:32.646834",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.636120",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 5. Delete Pile Stage Factor"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ac8d4ff7",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010937,
+     "end_time": "2026-03-13T21:24:32.667130",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.656193",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the dictionary of all stage factors."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "474048ca",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.687673Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.687282Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.695696Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.693969Z"
+    },
+    "papermill": {
+     "duration": 0.021643,
+     "end_time": "2026-03-13T21:24:32.697686",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.676043",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{2: <rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x1bcc1944ef0>,\n",
+       " 4: <rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x1bcb1b7b130>}"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pileStageFactors = pile1.MultiLinear.StageFactorInterface.getDefinedStageFactors()\n",
+    "pileStageFactors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d898ef1b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011815,
+     "end_time": "2026-03-13T21:24:32.721451",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.709636",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Remove stage factors at stage 4."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "7b063466",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.747588Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.747088Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.754199Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.752892Z"
+    },
+    "papermill": {
+     "duration": 0.023193,
+     "end_time": "2026-03-13T21:24:32.755808",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.732615",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x1bcb1b7b130>"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pileStageFactors.pop(4)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7af01f16",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009497,
+     "end_time": "2026-03-13T21:24:32.775915",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.766418",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the dictionary back and check the defined stage factors. Now only stage 2 has stage factors defined."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "38cd2bfb",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.798285Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.797907Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.839916Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.838610Z"
+    },
+    "papermill": {
+     "duration": 0.055069,
+     "end_time": "2026-03-13T21:24:32.841109",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.786040",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{2: <rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x1bcb1b7b460>}"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pile1.MultiLinear.StageFactorInterface.setDefinedStageFactors(pileStageFactors)\n",
+    "pile1.MultiLinear.StageFactorInterface.getDefinedStageFactors()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c9eaf85f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010556,
+     "end_time": "2026-03-13T21:24:32.862521",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.851965",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 6. Delete Pile"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5bc2abf2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01135,
+     "end_time": "2026-03-13T21:24:32.885043",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.873693",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Delete pile2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "60c835b7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:32.905674Z",
+     "iopub.status.busy": "2026-03-13T21:24:32.905238Z",
+     "iopub.status.idle": "2026-03-13T21:24:32.964651Z",
+     "shell.execute_reply": "2026-03-13T21:24:32.960716Z"
+    },
+    "papermill": {
+     "duration": 0.072246,
+     "end_time": "2026-03-13T21:24:32.966789",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.894543",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.deletePileProperty(pile2Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "26128543",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014868,
+     "end_time": "2026-03-13T21:24:32.996731",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:32.981863",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Check if pile2 still exist in the pile list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "67d78560",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:33.024864Z",
+     "iopub.status.busy": "2026-03-13T21:24:33.024464Z",
+     "iopub.status.idle": "2026-03-13T21:24:33.034385Z",
+     "shell.execute_reply": "2026-03-13T21:24:33.032842Z"
+    },
+    "papermill": {
+     "duration": 0.027603,
+     "end_time": "2026-03-13T21:24:33.035911",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:33.008308",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Pile 1\n"
+     ]
+    }
+   ],
+   "source": [
+    "allPiles = model.getAllPileProperties()\n",
+    "for pile in allPiles:\n",
+    "    print(pile.getPileName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00937,
+     "end_time": "2026-03-13T21:24:33.054961",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:33.045591",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:33.077792Z",
+     "iopub.status.busy": "2026-03-13T21:24:33.077124Z",
+     "iopub.status.idle": "2026-03-13T21:24:36.975393Z",
+     "shell.execute_reply": "2026-03-13T21:24:36.973166Z"
+    },
+    "papermill": {
+     "duration": 3.911661,
+     "end_time": "2026-03-13T21:24:36.977387",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:33.065726",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "717b9dc6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013331,
+     "end_time": "2026-03-13T21:24:37.005841",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:36.992510",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "057467a7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:37.032313Z",
+     "iopub.status.busy": "2026-03-13T21:24:37.031920Z",
+     "iopub.status.idle": "2026-03-13T21:24:41.873566Z",
+     "shell.execute_reply": "2026-03-13T21:24:41.869816Z"
+    },
+    "papermill": {
+     "duration": 4.86114,
+     "end_time": "2026-03-13T21:24:41.877042",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:37.015902",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3d88beca",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015876,
+     "end_time": "2026-03-13T21:24:41.910119",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:41.894243",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "abc1fe4d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:24:41.942513Z",
+     "iopub.status.busy": "2026-03-13T21:24:41.941804Z",
+     "iopub.status.idle": "2026-03-13T21:25:28.031113Z",
+     "shell.execute_reply": "2026-03-13T21:25:28.029841Z"
+    },
+    "papermill": {
+     "duration": 46.108113,
+     "end_time": "2026-03-13T21:25:28.032347",
+     "exception": false,
+     "start_time": "2026-03-13T21:24:41.924234",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:24:41,951 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60305...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Pile 1\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Pile Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.abspath(\"\")\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60305\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create and Get Pile\n",
+    "# Get the first pile in the list.\n",
+    "pile1 = model.getAllPileProperties()[0]\n",
+    "# Create a new pile and get the pile by name.\n",
+    "pile2Name = \"Pile 2\"\n",
+    "model.createNewPileProperty(pile2Name)\n",
+    "pile2 = model.getPilePropertyByName(pile2Name)\n",
+    "\n",
+    "# 2. Set Pile Properties\n",
+    "# Create a beam for the later example.\n",
+    "newBeamName = \"Beam for pile\"\n",
+    "model.createNewBeamProperty(newBeamName)\n",
+    "pile1.setConnectionType(ConnectionType.HINGED)\n",
+    "pile1.setLiningConnectionType(LiningConnectionType.FIRST_LINER_AT_INSTALL)\n",
+    "pile1.setBeamMaterial(newBeamName)\n",
+    "pile1.setSkinResistance(PileSkinResistanceType.MULTI_LINEAR)\n",
+    "pile1.MultiLinear.setProperties(BaseForceResistance=205)\n",
+    "pile1Properties = pile1.MultiLinear.getProperties()\n",
+    "# Set multi-linear skin resistance properties. Each tuple takes (Distance to Top, Max Traction).\n",
+    "pile1.MultiLinear.setMultiLinearGrid([(1.1, 2.2), (3.3, 4.4)])\n",
+    "# Set pile end conditions (force/displacement).\n",
+    "pile1.EndCondition.setEndConditionType(EndConditionType.DISPLACEMENT)\n",
+    "pile1.EndCondition.setProperties(12.3, 1.1, 2.2, 3.3)\n",
+    "# To turn off the pile end conditions, set EndConditionType to NONE.\n",
+    "pile1.EndCondition.setEndConditionType(EndConditionType.NONE)\n",
+    "\n",
+    "# 3. Copy Pile Properties\n",
+    "pile1.setSkinResistance(PileSkinResistanceType.MULTI_LINEAR)\n",
+    "pile2.MultiLinear.setProperties(**pile1Properties)\n",
+    "\n",
+    "# 4. Set Stage Factors\n",
+    "# Turn on the stage factors of piles.\n",
+    "pile1.setApplyStageFactors(True)\n",
+    "# Create a stage factor for stage 2.\n",
+    "pileStageFactor_s2 = pile1.MultiLinear.StageFactorInterface.createStageFactor(2)\n",
+    "pileStageFactor_s2 = pile1.MultiLinear.StageFactorInterface.getDefinedStageFactors()[2]\n",
+    "# Set stage factor of multi-linear grid.\n",
+    "pileStageFactor_s2.setMultiLinearFactor(1.5)\n",
+    "# Get stage factors of all stages and check stage factor of multi-linear grid at stage 2.\n",
+    "stageFactors_s2 = pile1.MultiLinear.StageFactorInterface.getStageFactor(2)\n",
+    "# Create another stage factor for stage 4 and set the stage multi-linear grid stage factor to 2.1.\n",
+    "pile1.MultiLinear.StageFactorInterface.createStageFactor(4)\n",
+    "newPileStageFactor_s4 = pile1.MultiLinear.StageFactorInterface.getDefinedStageFactors()[4]\n",
+    "newPileStageFactor_s4.setMultiLinearFactor(2.1)\n",
+    "\n",
+    "# 5. Delete Pile Stage Factor\n",
+    "# Get the dictionary of all stage factors.\n",
+    "pileStageFactors = pile1.MultiLinear.StageFactorInterface.getDefinedStageFactors()\n",
+    "# Remove stage factors at stage 4.\n",
+    "pileStageFactors.pop(4)\n",
+    "# Set the dictionary back and check the defined stage factors. Now only stage 2 has stage factors defined.\n",
+    "pile1.MultiLinear.StageFactorInterface.setDefinedStageFactors(pileStageFactors)\n",
+    "\n",
+    "# 6. Delete Pile\n",
+    "# Delete pile2.\n",
+    "model.deletePileProperty(pile2Name)\n",
+    "# Check if pile2 still exist in the pile list.\n",
+    "allPiles = model.getAllPileProperties()\n",
+    "for pile in allPiles:\n",
+    "    print(pile.getPileName())\n",
+    "    \n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 101.250969,
+   "end_time": "2026-03-13T21:25:29.645370",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\supports\\pile_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\supports\\pile_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:23:48.394401",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

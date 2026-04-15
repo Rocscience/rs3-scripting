@@ -1,0 +1,7 @@
+rs3.properties.joint.MohrCoulomb module
+=======================================
+
+.. automodule:: rs3.properties.joint.MohrCoulomb
+   :members:
+   :undoc-members:
+   :show-inheritance:

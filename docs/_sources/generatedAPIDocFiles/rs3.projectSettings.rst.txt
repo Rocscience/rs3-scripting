@@ -1,0 +1,22 @@
+rs3.projectSettings package
+===========================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.projectSettings.Dynamic
+   rs3.projectSettings.Groundwater
+   rs3.projectSettings.ProjectSettingEnums
+   rs3.projectSettings.ProjectSettings
+   rs3.projectSettings.ShearStrengthReduction
+   rs3.projectSettings.SolverOptions
+   rs3.projectSettings.Stages
+   rs3.projectSettings.StressAnalysis
+   rs3.projectSettings.Units
+
+
+.. automodule:: rs3.projectSettings
+   :members:
+   :undoc-members:
+   :show-inheritance:

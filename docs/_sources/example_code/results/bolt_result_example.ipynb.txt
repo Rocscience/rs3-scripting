@@ -1,0 +1,789 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "3953d19e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005125,
+     "end_time": "2026-03-13T21:06:23.805382",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:23.800257",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(bolt_result_example)=\n",
+    "# Bolt Result Script Example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d3bad902",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004765,
+     "end_time": "2026-03-13T21:06:23.815543",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:23.810778",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "0d48abd5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:06:23.827557Z",
+     "iopub.status.busy": "2026-03-13T21:06:23.827243Z",
+     "iopub.status.idle": "2026-03-13T21:06:24.119478Z",
+     "shell.execute_reply": "2026-03-13T21:06:24.117775Z"
+    },
+    "papermill": {
+     "duration": 0.300133,
+     "end_time": "2026-03-13T21:06:24.121052",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:23.820919",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import BoltDataType\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6375a745",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004161,
+     "end_time": "2026-03-13T21:06:24.130522",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:24.126361",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "01397a19",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:06:24.145493Z",
+     "iopub.status.busy": "2026-03-13T21:06:24.144967Z",
+     "iopub.status.idle": "2026-03-13T21:06:24.150530Z",
+     "shell.execute_reply": "2026-03-13T21:06:24.148775Z"
+    },
+    "papermill": {
+     "duration": 0.015987,
+     "end_time": "2026-03-13T21:06:24.151850",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:24.135863",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2810d692",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005772,
+     "end_time": "2026-03-13T21:06:24.162631",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:24.156859",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "5f12be77",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:06:24.176076Z",
+     "iopub.status.busy": "2026-03-13T21:06:24.175600Z",
+     "iopub.status.idle": "2026-03-13T21:06:52.688455Z",
+     "shell.execute_reply": "2026-03-13T21:06:52.686485Z"
+    },
+    "papermill": {
+     "duration": 28.522578,
+     "end_time": "2026-03-13T21:06:52.689901",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:24.167323",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:06:24,182 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60503...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60503\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0b043869",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006068,
+     "end_time": "2026-03-13T21:06:52.701526",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:52.695458",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "dc33efd2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:06:52.715643Z",
+     "iopub.status.busy": "2026-03-13T21:06:52.715221Z",
+     "iopub.status.idle": "2026-03-13T21:06:52.725976Z",
+     "shell.execute_reply": "2026-03-13T21:06:52.724186Z"
+    },
+    "papermill": {
+     "duration": 0.019693,
+     "end_time": "2026-03-13T21:06:52.727094",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:52.707401",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fa1ba63d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005339,
+     "end_time": "2026-03-13T21:06:52.737939",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:52.732600",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "68a779ea",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:06:52.749810Z",
+     "iopub.status.busy": "2026-03-13T21:06:52.749357Z",
+     "iopub.status.idle": "2026-03-13T21:07:03.852501Z",
+     "shell.execute_reply": "2026-03-13T21:07:03.851307Z"
+    },
+    "papermill": {
+     "duration": 11.111282,
+     "end_time": "2026-03-13T21:07:03.853605",
+     "exception": false,
+     "start_time": "2026-03-13T21:06:52.742323",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "77e01601",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006649,
+     "end_time": "2026-03-13T21:07:03.872155",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:03.865506",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Get Node Results"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3dfa67c3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004922,
+     "end_time": "2026-03-13T21:07:03.883691",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:03.878769",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.1 Define a box region to filter bolt elements (optional)\n",
+    "\n",
+    "A cube region is defined by two corners. Only mesh nodes inside or intersecting the box will be returned. If you omit the region in the next step, all nodes in the model would be returned."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c3a02dcd",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:03.900662Z",
+     "iopub.status.busy": "2026-03-13T21:07:03.900155Z",
+     "iopub.status.idle": "2026-03-13T21:07:03.906897Z",
+     "shell.execute_reply": "2026-03-13T21:07:03.904805Z"
+    },
+    "papermill": {
+     "duration": 0.01962,
+     "end_time": "2026-03-13T21:07:03.908532",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:03.888912",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt_query_region = Cube(\n",
+    "    corner1=Point(x=10.25, y=13.5, z=-9.5),\n",
+    "    corner2=Point(x=10.75, y=14.5, z=-7.0),\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0c52ef31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003914,
+     "end_time": "2026-03-13T21:07:03.920075",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:03.916161",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.2 Get the bolt results object for the desired stage(s)\n",
+    "\n",
+    "getBoltResults returns a list: one entry per stage requested. Here we request only stage 5, so the list has one element at index 0."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "e1bf1c47",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:03.935533Z",
+     "iopub.status.busy": "2026-03-13T21:07:03.935145Z",
+     "iopub.status.idle": "2026-03-13T21:07:04.954055Z",
+     "shell.execute_reply": "2026-03-13T21:07:04.952209Z"
+    },
+    "papermill": {
+     "duration": 1.027982,
+     "end_time": "2026-03-13T21:07:04.956108",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:03.928126",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt_results_list = model.Results.getBoltResults(stageNumber=[5])\n",
+    "bolt_results_stage_5 = bolt_results_list[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "90d686fd",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004651,
+     "end_time": "2026-03-13T21:07:04.966575",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:04.961924",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.3 Get all bolt node results for this stage\n",
+    "\n",
+    "No region is passed, so we get nodes for the entire bolt in this stage."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "992d3346",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:04.980105Z",
+     "iopub.status.busy": "2026-03-13T21:07:04.979657Z",
+     "iopub.status.idle": "2026-03-13T21:07:05.039101Z",
+     "shell.execute_reply": "2026-03-13T21:07:05.037076Z"
+    },
+    "papermill": {
+     "duration": 0.06928,
+     "end_time": "2026-03-13T21:07:05.040831",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:04.971551",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt_node_results_list = bolt_results_stage_5.getBoltNodeResults()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f1385d63",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004005,
+     "end_time": "2026-03-13T21:07:05.049401",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:05.045396",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Build a lookup: NodeID -> nodal result object. This is used later to get coordinates for each node attached to an element."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "68a91513",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:05.061737Z",
+     "iopub.status.busy": "2026-03-13T21:07:05.061322Z",
+     "iopub.status.idle": "2026-03-13T21:07:05.065759Z",
+     "shell.execute_reply": "2026-03-13T21:07:05.064805Z"
+    },
+    "papermill": {
+     "duration": 0.013202,
+     "end_time": "2026-03-13T21:07:05.066911",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:05.053709",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt_node_by_id = {nr.NodeID: nr for nr in bolt_node_results_list}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ada3fc8",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005388,
+     "end_time": "2026-03-13T21:07:05.077725",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:05.072337",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.4 Get bolt element results within the region"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "3e5170a9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:05.088355Z",
+     "iopub.status.busy": "2026-03-13T21:07:05.087792Z",
+     "iopub.status.idle": "2026-03-13T21:07:05.137574Z",
+     "shell.execute_reply": "2026-03-13T21:07:05.136037Z"
+    },
+    "papermill": {
+     "duration": 0.057052,
+     "end_time": "2026-03-13T21:07:05.139069",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:05.082017",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt_element_results_list = bolt_results_stage_5.getBoltElementResults(region=bolt_query_region)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8f00176",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00437,
+     "end_time": "2026-03-13T21:07:05.148556",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:05.144186",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.5 Take one element and read its per-node result values\n",
+    "\n",
+    "Each element has attached nodes. getResults(...) returns a list of values, one per node of the element (in the same order as AttachedNodeIDs).\n",
+    "\n",
+    "Get the element result of a bolt at the middle of the tunnel."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1aac0004",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:05.161018Z",
+     "iopub.status.busy": "2026-03-13T21:07:05.160653Z",
+     "iopub.status.idle": "2026-03-13T21:07:05.166229Z",
+     "shell.execute_reply": "2026-03-13T21:07:05.165339Z"
+    },
+    "papermill": {
+     "duration": 0.013849,
+     "end_time": "2026-03-13T21:07:05.167304",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:05.153455",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Bolt element ID 87399, nodal results:\n",
+      "  Node 15249: (x, y, z, Axial Force, Total Displacement) = (10.36430198810137, 14.00024, -9.069242046342069, 75.04676297801929, 0.02664402981195637)\n",
+      "  Node 15250: (x, y, z, Axial Force, Total Displacement) = (10.367334412616781, 14.00024, -9.057431539950944, 75.04676297801929, 0.02644257771344131)\n"
+     ]
+    }
+   ],
+   "source": [
+    "element_index = 0\n",
+    "selected_bolt_element = bolt_element_results_list[element_index]\n",
+    "bolt_node_ids = selected_bolt_element.NodeIDs\n",
+    "axial_force_per_node = selected_bolt_element.getNodeResult(BoltDataType.AXIAL_FORCE)\n",
+    "displacement_per_node = selected_bolt_element.getNodeResult(BoltDataType.DISPLACEMENT_TOTAL)\n",
+    "\n",
+    "print(f\"Bolt element ID {selected_bolt_element.ElementID}, nodal results:\")\n",
+    "for i in range(len(bolt_node_ids)):\n",
+    "    node_id = bolt_node_ids[i]\n",
+    "    nodal_result = bolt_node_by_id[node_id]\n",
+    "    print(\n",
+    "        f\"  Node {node_id}: (x, y, z, Axial Force, Total Displacement) = \"\n",
+    "        f\"({nodal_result.XCoordinate}, {nodal_result.YCoordinate}, {nodal_result.ZCoordinate}, \"\n",
+    "        f\"{axial_force_per_node[i]}, {displacement_per_node[i]})\"\n",
+    "    )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "649242e3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00504,
+     "end_time": "2026-03-13T21:07:05.176482",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:05.171442",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Since accessing results doesn't change the model, close the model without saving."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "358e8f69",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:05.187438Z",
+     "iopub.status.busy": "2026-03-13T21:07:05.187011Z",
+     "iopub.status.idle": "2026-03-13T21:07:06.794441Z",
+     "shell.execute_reply": "2026-03-13T21:07:06.793025Z"
+    },
+    "papermill": {
+     "duration": 1.614493,
+     "end_time": "2026-03-13T21:07:06.795684",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:05.181191",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8ac742b0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005051,
+     "end_time": "2026-03-13T21:07:06.805346",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:06.800295",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "f33b64cf",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:06.819348Z",
+     "iopub.status.busy": "2026-03-13T21:07:06.818735Z",
+     "iopub.status.idle": "2026-03-13T21:07:11.962870Z",
+     "shell.execute_reply": "2026-03-13T21:07:11.959671Z"
+    },
+    "papermill": {
+     "duration": 5.153392,
+     "end_time": "2026-03-13T21:07:11.964908",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:06.811516",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8262147",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007726,
+     "end_time": "2026-03-13T21:07:11.980450",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:11.972724",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "18a14256",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:07:11.995330Z",
+     "iopub.status.busy": "2026-03-13T21:07:11.994447Z",
+     "iopub.status.idle": "2026-03-13T21:07:59.350828Z",
+     "shell.execute_reply": "2026-03-13T21:07:59.348800Z"
+    },
+    "papermill": {
+     "duration": 47.365849,
+     "end_time": "2026-03-13T21:07:59.352374",
+     "exception": false,
+     "start_time": "2026-03-13T21:07:11.986525",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:07:12,003 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60503...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Bolt element ID 87399, nodal results:\n",
+      "  Node 15249: (x, y, z, Axial Force, Total Displacement) = (10.36430198810137, 14.00024, -9.069242046342069, 75.04676297801929, 0.02664402981195637)\n",
+      "  Node 15250: (x, y, z, Axial Force, Total Displacement) = (10.367334412616781, 14.00024, -9.057431539950944, 75.04676297801929, 0.02644257771344131)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Bolt Result Script Example\n",
+    "# Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import BoltDataType\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60503\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")\n",
+    "\n",
+    "# 1. Get Node Results\n",
+    "# 1.1 Define a box region to filter bolt elements (optional)\n",
+    "# A cube region is defined by two corners. Only mesh nodes inside or intersecting \n",
+    "# the box will be returned. If you omit the region in the next step, all nodes in \n",
+    "# the model would be returned.\n",
+    "bolt_query_region = Cube(\n",
+    "    corner1=Point(x=10.25, y=13.5, z=-9.5),\n",
+    "    corner2=Point(x=10.75, y=14.5, z=-7.0),\n",
+    ")\n",
+    "\n",
+    "# 1.2 Get the bolt results object for the desired stage(s)\n",
+    "# getBoltResults returns a list: one entry per stage requested. Here we request \n",
+    "# only stage 5, so the list has one element at index 0.\n",
+    "bolt_results_list = model.Results.getBoltResults(stageNumber=[5])\n",
+    "bolt_results_stage_5 = bolt_results_list[0]\n",
+    "\n",
+    "# 1.3 Get all bolt node results for this stage\n",
+    "# No region is passed, so we get nodes for the entire bolt in this stage.\n",
+    "bolt_node_results_list = bolt_results_stage_5.getBoltNodeResults()\n",
+    "# Build a lookup: NodeID -> nodal result object. This is used later to get \n",
+    "# coordinates for each node attached to an element.\n",
+    "bolt_node_by_id = {nr.NodeID: nr for nr in bolt_node_results_list}\n",
+    "\n",
+    "# 1.4 Get bolt element results within the region\n",
+    "bolt_element_results_list = bolt_results_stage_5.getBoltElementResults(region=bolt_query_region)\n",
+    "\n",
+    "# 1.5 Take one element and read its per-node result values\n",
+    "# Each element has attached nodes. getResults(...) returns a list of values, one \n",
+    "# per node of the element (in the same order as AttachedNodeIDs).\n",
+    "# Get the element result of a bolt at the middle of the tunnel.\n",
+    "element_index = 0\n",
+    "selected_bolt_element = bolt_element_results_list[element_index]\n",
+    "bolt_node_ids = selected_bolt_element.NodeIDs\n",
+    "axial_force_per_node = selected_bolt_element.getNodeResult(BoltDataType.AXIAL_FORCE)\n",
+    "displacement_per_node = selected_bolt_element.getNodeResult(BoltDataType.DISPLACEMENT_TOTAL)\n",
+    "print(f\"Bolt element ID {selected_bolt_element.ElementID}, nodal results:\")\n",
+    "for i in range(len(bolt_node_ids)):\n",
+    "    node_id = bolt_node_ids[i]\n",
+    "    nodal_result = bolt_node_by_id[node_id]\n",
+    "    print(\n",
+    "        f\"  Node {node_id}: (x, y, z, Axial Force, Total Displacement) = \"\n",
+    "        f\"({nodal_result.XCoordinate}, {nodal_result.YCoordinate}, {nodal_result.ZCoordinate}, \"\n",
+    "        f\"{axial_force_per_node[i]}, {displacement_per_node[i]})\"\n",
+    "    )\n",
+    "    \n",
+    "# Since accessing results doesn't change the model, close the model without saving.\n",
+    "model.close(False)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 99.139507,
+   "end_time": "2026-03-13T21:08:01.507202",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\bolt_result_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\bolt_result_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:06:22.367695",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

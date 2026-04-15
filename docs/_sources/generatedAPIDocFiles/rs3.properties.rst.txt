@@ -1,0 +1,34 @@
+rs3.properties package
+======================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.beam
+   rs3.properties.bolt
+   rs3.properties.groundwater
+   rs3.properties.joint
+   rs3.properties.liner
+   rs3.properties.liningComposition
+   rs3.properties.material
+   rs3.properties.pile
+   rs3.properties.stageFactors
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.CustomHydraulicModel
+   rs3.properties.DiscreteFunction
+   rs3.properties.GeneralizedAnisotropicFunction
+   rs3.properties.IPropertyGroupAccessors
+   rs3.properties.PropertyEnums
+   rs3.properties.ShearNormalFunction
+   rs3.properties.SnowdenStrengthFunction
+
+
+.. automodule:: rs3.properties
+   :members:
+   :undoc-members:
+   :show-inheritance:

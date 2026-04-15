@@ -1,0 +1,16 @@
+rs3.properties.material.constitutiveModel.stiffness.formula package
+===================================================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.constitutiveModel.stiffness.formula.Formula1
+   rs3.properties.material.constitutiveModel.stiffness.formula.Formula2
+   rs3.properties.material.constitutiveModel.stiffness.formula.Formula3
+
+
+.. automodule:: rs3.properties.material.constitutiveModel.stiffness.formula
+   :members:
+   :undoc-members:
+   :show-inheritance:

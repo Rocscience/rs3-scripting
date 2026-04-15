@@ -1,0 +1,14 @@
+rs3.properties.material.stageFactors package
+============================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.stageFactors.StageFactors
+
+
+.. automodule:: rs3.properties.material.stageFactors
+   :members:
+   :undoc-members:
+   :show-inheritance:

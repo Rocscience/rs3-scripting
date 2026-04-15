@@ -1,0 +1,7 @@
+rs3.ApplicationManager module
+=============================
+
+.. automodule:: rs3.ApplicationManager
+   :members:
+   :undoc-members:
+   :show-inheritance:

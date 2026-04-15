@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.MohrCoulombUnsaturatedZoneCalculations module
+=======================================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.MohrCoulombUnsaturatedZoneCalculations
+   :members:
+   :undoc-members:
+   :show-inheritance:

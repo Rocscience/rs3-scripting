@@ -1,0 +1,7 @@
+rs3.mesh.MeshEnums module
+=========================
+
+.. automodule:: rs3.mesh.MeshEnums
+   :members:
+   :undoc-members:
+   :show-inheritance:

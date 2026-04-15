@@ -1,0 +1,734 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003998,
+     "end_time": "2026-03-13T20:25:21.994400",
+     "exception": false,
+     "start_time": "2026-03-13T20:25:21.990402",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(material_datum_example)=\n",
+    "# Material Datum Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004735,
+     "end_time": "2026-03-13T20:25:22.004007",
+     "exception": false,
+     "start_time": "2026-03-13T20:25:21.999272",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:25:22.019684Z",
+     "iopub.status.busy": "2026-03-13T20:25:22.019275Z",
+     "iopub.status.idle": "2026-03-13T20:25:22.294333Z",
+     "shell.execute_reply": "2026-03-13T20:25:22.292980Z"
+    },
+    "papermill": {
+     "duration": 0.283959,
+     "end_time": "2026-03-13T20:25:22.295277",
+     "exception": false,
+     "start_time": "2026-03-13T20:25:22.011318",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004568,
+     "end_time": "2026-03-13T20:25:22.303568",
+     "exception": false,
+     "start_time": "2026-03-13T20:25:22.299000",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:25:22.314158Z",
+     "iopub.status.busy": "2026-03-13T20:25:22.313727Z",
+     "iopub.status.idle": "2026-03-13T20:25:22.318294Z",
+     "shell.execute_reply": "2026-03-13T20:25:22.316973Z"
+    },
+    "papermill": {
+     "duration": 0.010987,
+     "end_time": "2026-03-13T20:25:22.319534",
+     "exception": false,
+     "start_time": "2026-03-13T20:25:22.308547",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004776,
+     "end_time": "2026-03-13T20:25:22.328820",
+     "exception": false,
+     "start_time": "2026-03-13T20:25:22.324044",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "c937797c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:25:22.339046Z",
+     "iopub.status.busy": "2026-03-13T20:25:22.338683Z",
+     "iopub.status.idle": "2026-03-13T20:26:07.697034Z",
+     "shell.execute_reply": "2026-03-13T20:26:07.694325Z"
+    },
+    "papermill": {
+     "duration": 45.366389,
+     "end_time": "2026-03-13T20:26:07.699024",
+     "exception": false,
+     "start_time": "2026-03-13T20:25:22.332635",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:25:22,345 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60204...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60204\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ce18fb9b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005125,
+     "end_time": "2026-03-13T20:26:07.712787",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:07.707662",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "6856bcd1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:07.732990Z",
+     "iopub.status.busy": "2026-03-13T20:26:07.731738Z",
+     "iopub.status.idle": "2026-03-13T20:26:07.744498Z",
+     "shell.execute_reply": "2026-03-13T20:26:07.743053Z"
+    },
+    "papermill": {
+     "duration": 0.023056,
+     "end_time": "2026-03-13T20:26:07.745687",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:07.722631",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006557,
+     "end_time": "2026-03-13T20:26:07.758312",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:07.751755",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:07.772584Z",
+     "iopub.status.busy": "2026-03-13T20:26:07.771911Z",
+     "iopub.status.idle": "2026-03-13T20:26:07.798781Z",
+     "shell.execute_reply": "2026-03-13T20:26:07.795736Z"
+    },
+    "papermill": {
+     "duration": 0.0375,
+     "end_time": "2026-03-13T20:26:07.800543",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:07.763043",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005413,
+     "end_time": "2026-03-13T20:26:07.810864",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:07.805451",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:07.824794Z",
+     "iopub.status.busy": "2026-03-13T20:26:07.824414Z",
+     "iopub.status.idle": "2026-03-13T20:26:21.488637Z",
+     "shell.execute_reply": "2026-03-13T20:26:21.487029Z"
+    },
+    "papermill": {
+     "duration": 13.67232,
+     "end_time": "2026-03-13T20:26:21.490138",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:07.817818",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8178f89d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005525,
+     "end_time": "2026-03-13T20:26:21.504738",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:21.499213",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create and Get Material"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "91094ee0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008481,
+     "end_time": "2026-03-13T20:26:21.521742",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:21.513261",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the first material in the list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "ab017b80",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:21.538148Z",
+     "iopub.status.busy": "2026-03-13T20:26:21.537674Z",
+     "iopub.status.idle": "2026-03-13T20:26:22.201286Z",
+     "shell.execute_reply": "2026-03-13T20:26:22.199460Z"
+    },
+    "papermill": {
+     "duration": 0.673534,
+     "end_time": "2026-03-13T20:26:22.202833",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:21.529299",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Soil'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1 = model.getAllMaterialProperties()[0]\n",
+    "material1.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "ecc0192e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:22.216182Z",
+     "iopub.status.busy": "2026-03-13T20:26:22.215733Z",
+     "iopub.status.idle": "2026-03-13T20:26:22.588222Z",
+     "shell.execute_reply": "2026-03-13T20:26:22.586932Z"
+    },
+    "papermill": {
+     "duration": 0.38172,
+     "end_time": "2026-03-13T20:26:22.589691",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:22.207971",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'New Material'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newMaterialName = \"New Material\"\n",
+    "model.createNewMaterialProperty(newMaterialName)\n",
+    "newMaterial = model.getMaterialPropertyByName(newMaterialName)\n",
+    "newMaterial.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2c63f598",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005434,
+     "end_time": "2026-03-13T20:26:22.601772",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:22.596338",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Set Datum"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "b2553801",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:22.618180Z",
+     "iopub.status.busy": "2026-03-13T20:26:22.617033Z",
+     "iopub.status.idle": "2026-03-13T20:26:22.749110Z",
+     "shell.execute_reply": "2026-03-13T20:26:22.746918Z"
+    },
+    "papermill": {
+     "duration": 0.143768,
+     "end_time": "2026-03-13T20:26:22.751407",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:22.607639",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.Datum.YoungsModulusDatumDependency.setInUse(True)\n",
+    "material1.Datum.YoungsModulusDatumDependency.getInUse()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "92c432e8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:22.766945Z",
+     "iopub.status.busy": "2026-03-13T20:26:22.766473Z",
+     "iopub.status.idle": "2026-03-13T20:26:22.784719Z",
+     "shell.execute_reply": "2026-03-13T20:26:22.782441Z"
+    },
+    "papermill": {
+     "duration": 0.028169,
+     "end_time": "2026-03-13T20:26:22.786535",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:22.758366",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'PeakCutoff': False,\n",
+       " 'PeakCutoffValue': 0.0,\n",
+       " 'Change': 0.0,\n",
+       " 'Datum': 0.0,\n",
+       " 'InUse': True}"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.Datum.YoungsModulusDatumDependency.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "243f1651",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:22.803356Z",
+     "iopub.status.busy": "2026-03-13T20:26:22.802939Z",
+     "iopub.status.idle": "2026-03-13T20:26:23.053571Z",
+     "shell.execute_reply": "2026-03-13T20:26:23.051031Z"
+    },
+    "papermill": {
+     "duration": 0.263813,
+     "end_time": "2026-03-13T20:26:23.056291",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:22.792478",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'PeakCutoff': False,\n",
+       " 'PeakCutoffValue': 0.0,\n",
+       " 'Change': 0.2,\n",
+       " 'Datum': 1.5,\n",
+       " 'InUse': True}"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.Datum.YoungsModulusDatumDependency.setDatumType(DatumType.DEPTH)\n",
+    "material1.Datum.YoungsModulusDatumDependency.setProperties(Datum=1.5, Change=0.2)\n",
+    "material1.Datum.YoungsModulusDatumDependency.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "12e9bea0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007027,
+     "end_time": "2026-03-13T20:26:23.070701",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:23.063674",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "d875d89d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:23.089228Z",
+     "iopub.status.busy": "2026-03-13T20:26:23.088707Z",
+     "iopub.status.idle": "2026-03-13T20:26:26.784419Z",
+     "shell.execute_reply": "2026-03-13T20:26:26.783197Z"
+    },
+    "papermill": {
+     "duration": 3.707339,
+     "end_time": "2026-03-13T20:26:26.785923",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:23.078584",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e1cc25f9",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009651,
+     "end_time": "2026-03-13T20:26:26.801591",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:26.791940",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "c328b6ce",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:26.823218Z",
+     "iopub.status.busy": "2026-03-13T20:26:26.822675Z",
+     "iopub.status.idle": "2026-03-13T20:26:32.547449Z",
+     "shell.execute_reply": "2026-03-13T20:26:32.543131Z"
+    },
+    "papermill": {
+     "duration": 5.742276,
+     "end_time": "2026-03-13T20:26:32.551348",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:26.809072",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "054597ca",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01266,
+     "end_time": "2026-03-13T20:26:32.579928",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:32.567268",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "be000db8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:26:32.609147Z",
+     "iopub.status.busy": "2026-03-13T20:26:32.607472Z",
+     "iopub.status.idle": "2026-03-13T20:27:35.385372Z",
+     "shell.execute_reply": "2026-03-13T20:27:35.383678Z"
+    },
+    "papermill": {
+     "duration": 62.791336,
+     "end_time": "2026-03-13T20:27:35.386724",
+     "exception": false,
+     "start_time": "2026-03-13T20:26:32.595388",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:26:32,617 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60204...\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Material Datum Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60204\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create and Get Material\n",
+    "# Get the first material in the list.\n",
+    "material1 = model.getAllMaterialProperties()[0]\n",
+    "newMaterialName = \"New Material\"\n",
+    "model.createNewMaterialProperty(newMaterialName)\n",
+    "newMaterial = model.getMaterialPropertyByName(newMaterialName)\n",
+    "\n",
+    "# 2. Set Datum\n",
+    "material1.Datum.YoungsModulusDatumDependency.setInUse(True)\n",
+    "material1.Datum.YoungsModulusDatumDependency.setDatumType(DatumType.DEPTH)\n",
+    "material1.Datum.YoungsModulusDatumDependency.setProperties(Datum=1.5, Change=0.2)\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 138.066199,
+   "end_time": "2026-03-13T20:27:37.682833",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\material\\datum_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\material\\datum_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:25:19.616634",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

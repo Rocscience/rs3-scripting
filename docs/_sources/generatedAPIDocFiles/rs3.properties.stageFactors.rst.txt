@@ -1,0 +1,16 @@
+rs3.properties.stageFactors package
+===================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.stageFactors.IStageFactorBase
+   rs3.properties.stageFactors.StageFactorBaseInterfaces
+   rs3.properties.stageFactors.StageFactorInterfaces
+
+
+.. automodule:: rs3.properties.stageFactors
+   :members:
+   :undoc-members:
+   :show-inheritance:

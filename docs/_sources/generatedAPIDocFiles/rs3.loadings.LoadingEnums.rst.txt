@@ -1,0 +1,7 @@
+rs3.loadings.LoadingEnums module
+================================
+
+.. automodule:: rs3.loadings.LoadingEnums
+   :members:
+   :undoc-members:
+   :show-inheritance:

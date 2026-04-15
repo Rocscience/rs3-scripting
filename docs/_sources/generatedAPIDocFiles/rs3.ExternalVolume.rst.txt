@@ -1,0 +1,7 @@
+rs3.ExternalVolume module
+=========================
+
+.. automodule:: rs3.ExternalVolume
+   :members:
+   :undoc-members:
+   :show-inheritance:

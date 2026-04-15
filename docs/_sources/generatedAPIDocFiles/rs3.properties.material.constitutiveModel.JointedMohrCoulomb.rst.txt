@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.JointedMohrCoulomb module
+===================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.JointedMohrCoulomb
+   :members:
+   :undoc-members:
+   :show-inheritance:

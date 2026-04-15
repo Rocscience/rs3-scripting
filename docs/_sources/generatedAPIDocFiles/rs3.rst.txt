@@ -1,0 +1,34 @@
+rs3 package
+===========
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.loadings
+   rs3.mesh
+   rs3.projectSettings
+   rs3.properties
+   rs3.results
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.ApplicationManager
+   rs3.ColorPicker
+   rs3.CommonEnums
+   rs3.Compute
+   rs3.ExternalVolume
+   rs3.Geometry
+   rs3.Model
+   rs3.ModelEnums
+   rs3.RS3Modeler
+   rs3.Restraints
+   rs3.Selection
+
+
+.. automodule:: rs3
+   :members:
+   :undoc-members:
+   :show-inheritance:

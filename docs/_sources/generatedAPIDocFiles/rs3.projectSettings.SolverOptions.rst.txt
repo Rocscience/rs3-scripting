@@ -1,0 +1,7 @@
+rs3.projectSettings.SolverOptions module
+========================================
+
+.. automodule:: rs3.projectSettings.SolverOptions
+   :members:
+   :undoc-members:
+   :show-inheritance:

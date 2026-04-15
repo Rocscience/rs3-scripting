@@ -1,0 +1,7 @@
+rs3.ModelEnums module
+=====================
+
+.. automodule:: rs3.ModelEnums
+   :members:
+   :undoc-members:
+   :show-inheritance:

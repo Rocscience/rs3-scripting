@@ -1,0 +1,467 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00589,
+     "end_time": "2026-03-13T20:58:39.200602",
+     "exception": false,
+     "start_time": "2026-03-13T20:58:39.194712",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(open_and_close_model_example)=\n",
+    "# Open and Close Model Script Example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.002428,
+     "end_time": "2026-03-13T20:58:39.205563",
+     "exception": false,
+     "start_time": "2026-03-13T20:58:39.203135",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:58:39.215113Z",
+     "iopub.status.busy": "2026-03-13T20:58:39.214524Z",
+     "iopub.status.idle": "2026-03-13T20:58:39.517630Z",
+     "shell.execute_reply": "2026-03-13T20:58:39.515364Z"
+    },
+    "papermill": {
+     "duration": 0.311376,
+     "end_time": "2026-03-13T20:58:39.519200",
+     "exception": false,
+     "start_time": "2026-03-13T20:58:39.207824",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.002884,
+     "end_time": "2026-03-13T20:58:39.526250",
+     "exception": false,
+     "start_time": "2026-03-13T20:58:39.523366",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:58:39.535867Z",
+     "iopub.status.busy": "2026-03-13T20:58:39.535264Z",
+     "iopub.status.idle": "2026-03-13T20:58:39.540931Z",
+     "shell.execute_reply": "2026-03-13T20:58:39.539326Z"
+    },
+    "papermill": {
+     "duration": 0.012632,
+     "end_time": "2026-03-13T20:58:39.542254",
+     "exception": false,
+     "start_time": "2026-03-13T20:58:39.529622",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003147,
+     "end_time": "2026-03-13T20:58:39.549086",
+     "exception": false,
+     "start_time": "2026-03-13T20:58:39.545939",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "33b1149a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:58:39.557563Z",
+     "iopub.status.busy": "2026-03-13T20:58:39.557163Z",
+     "iopub.status.idle": "2026-03-13T20:59:11.331238Z",
+     "shell.execute_reply": "2026-03-13T20:59:11.329568Z"
+    },
+    "papermill": {
+     "duration": 31.780201,
+     "end_time": "2026-03-13T20:59:11.332573",
+     "exception": false,
+     "start_time": "2026-03-13T20:58:39.552372",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:58:39,565 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60102...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60102\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2e1c7fb6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004155,
+     "end_time": "2026-03-13T20:59:11.340724",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:11.336569",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "4fee4a77",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:59:11.349477Z",
+     "iopub.status.busy": "2026-03-13T20:59:11.349107Z",
+     "iopub.status.idle": "2026-03-13T20:59:11.725135Z",
+     "shell.execute_reply": "2026-03-13T20:59:11.723355Z"
+    },
+    "papermill": {
+     "duration": 0.382511,
+     "end_time": "2026-03-13T20:59:11.726705",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:11.344194",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005127,
+     "end_time": "2026-03-13T20:59:11.737447",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:11.732320",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:59:11.751231Z",
+     "iopub.status.busy": "2026-03-13T20:59:11.750753Z",
+     "iopub.status.idle": "2026-03-13T20:59:11.755826Z",
+     "shell.execute_reply": "2026-03-13T20:59:11.754346Z"
+    },
+    "papermill": {
+     "duration": 0.013537,
+     "end_time": "2026-03-13T20:59:11.757395",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:11.743858",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004245,
+     "end_time": "2026-03-13T20:59:11.766753",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:11.762508",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:59:11.778628Z",
+     "iopub.status.busy": "2026-03-13T20:59:11.778093Z",
+     "iopub.status.idle": "2026-03-13T20:59:25.241274Z",
+     "shell.execute_reply": "2026-03-13T20:59:25.239201Z"
+    },
+    "papermill": {
+     "duration": 13.472593,
+     "end_time": "2026-03-13T20:59:25.243151",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:11.770558",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(blankModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003763,
+     "end_time": "2026-03-13T20:59:25.251952",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:25.248189",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:59:25.261418Z",
+     "iopub.status.busy": "2026-03-13T20:59:25.260959Z",
+     "iopub.status.idle": "2026-03-13T20:59:28.798393Z",
+     "shell.execute_reply": "2026-03-13T20:59:28.796639Z"
+    },
+    "papermill": {
+     "duration": 3.545093,
+     "end_time": "2026-03-13T20:59:28.799996",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:25.254903",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ca88cc63",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006792,
+     "end_time": "2026-03-13T20:59:28.812869",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:28.806077",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "2c2f4415",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:59:28.825559Z",
+     "iopub.status.busy": "2026-03-13T20:59:28.824821Z",
+     "iopub.status.idle": "2026-03-13T20:59:34.118831Z",
+     "shell.execute_reply": "2026-03-13T20:59:34.113708Z"
+    },
+    "papermill": {
+     "duration": 5.304999,
+     "end_time": "2026-03-13T20:59:34.122215",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:28.817216",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b0785d94",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005712,
+     "end_time": "2026-03-13T20:59:34.136968",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:34.131256",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "6ff0cf1a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:59:34.150975Z",
+     "iopub.status.busy": "2026-03-13T20:59:34.150471Z",
+     "iopub.status.idle": "2026-03-13T21:00:33.004510Z",
+     "shell.execute_reply": "2026-03-13T21:00:33.003017Z"
+    },
+    "papermill": {
+     "duration": 58.865,
+     "end_time": "2026-03-13T21:00:33.005885",
+     "exception": false,
+     "start_time": "2026-03-13T20:59:34.140885",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:59:34,154 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60102...\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Open and Close Model Script Example\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "import os\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60102\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# Get the model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "# Open the model file.\n",
+    "model = modeler.openFile(blankModelPath)\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 117.21233,
+   "end_time": "2026-03-13T21:00:34.854762",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\open_and_close_model_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\open_and_close_model_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:58:37.642432",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

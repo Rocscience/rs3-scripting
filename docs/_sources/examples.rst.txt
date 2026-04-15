@@ -1,0 +1,80 @@
+Python Script Examples
+======================
+
+RS3 models included in the examples can be found here: `example_models <https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models>`_
+
+Model
+-----------------
+.. toctree::
+   :maxdepth: 1
+
+   example_code/model/model_example
+   example_code/model/open_and_close_model_example
+   example_code/model/project_settings_example
+   example_code/model/external_volume_and_selection_example
+   example_code/model/field_stress_example
+   example_code/model/restraints_example
+   example_code/model/mesh_example
+   example_code/model/compute_example
+
+
+Material
+-----------------
+.. toctree::
+   :maxdepth: 1
+
+   example_code/material/initial_conditions_example
+   example_code/material/constitutive_models_example
+   example_code/material/hydraulic_example
+   example_code/material/datum_example
+   example_code/material/material_stage_factors_example
+   
+
+Support
+------------------
+.. toctree::
+   :maxdepth: 1
+
+   example_code/supports/beam_example
+   example_code/supports/bolt_example
+   example_code/supports/joint_example
+   example_code/supports/liner_example
+   example_code/supports/pile_example
+   example_code/supports/composite_liner_example
+
+Groundwater
+-----------------
+.. toctree::
+   :maxdepth: 1
+
+   example_code/groundwater/water_by_location_example
+   example_code/groundwater/water_grid_example
+
+Result
+--------------------
+.. toctree::
+   :maxdepth: 1
+
+   example_code/results/solid_result_example
+   example_code/results/beam_result_example
+   example_code/results/bolt_result_example
+   example_code/results/joint_result_example
+   example_code/results/pile_result_example
+   example_code/results/composite_liner_result_example
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

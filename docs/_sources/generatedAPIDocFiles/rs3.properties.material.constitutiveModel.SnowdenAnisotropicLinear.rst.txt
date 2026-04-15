@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.SnowdenAnisotropicLinear module
+=========================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.SnowdenAnisotropicLinear
+   :members:
+   :undoc-members:
+   :show-inheritance:

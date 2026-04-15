@@ -1,0 +1,7 @@
+rs3.RS3Modeler module
+=====================
+
+.. automodule:: rs3.RS3Modeler
+   :members:
+   :undoc-members:
+   :show-inheritance:

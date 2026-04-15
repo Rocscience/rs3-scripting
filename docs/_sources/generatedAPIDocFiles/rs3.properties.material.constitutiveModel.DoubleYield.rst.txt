@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.DoubleYield module
+============================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.DoubleYield
+   :members:
+   :undoc-members:
+   :show-inheritance:

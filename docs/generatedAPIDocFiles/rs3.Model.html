@@ -1,0 +1,1439 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>rs3.Model module &#8212; RS3 Scripting Reference Manual  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.Model';</script>
+    <link rel="icon" href="../_static/rocscience_favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="rs3.ModelEnums module" href="rs3.ModelEnums.html" />
+    <link rel="prev" title="rs3.Geometry module" href="rs3.Geometry.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/rocscience-logo-primary.png" class="logo__image only-light" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+    <img src="../_static/rocscience-logo-primary.png" class="logo__image only-dark pst-js-only" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.loadings.html">rs3.loadings package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.loadings.fieldStress.html">rs3.loadings.fieldStress package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.AdvancedConstant.html">rs3.loadings.fieldStress.AdvancedConstant module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.AdvancedGravity.html">rs3.loadings.fieldStress.AdvancedGravity module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.Constant.html">rs3.loadings.fieldStress.Constant module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.FieldStress.html">rs3.loadings.fieldStress.FieldStress module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.loadings.fieldStress.Gravity.html">rs3.loadings.fieldStress.Gravity module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.loadings.LoadingEnums.html">rs3.loadings.LoadingEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.loadings.Loadings.html">rs3.loadings.Loadings module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.mesh.html">rs3.mesh package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.mesh.Graded.html">rs3.mesh.Graded module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.mesh.Mesh.html">rs3.mesh.Mesh module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.mesh.MeshEnums.html">rs3.mesh.MeshEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.mesh.Uniform.html">rs3.mesh.Uniform module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.projectSettings.html">rs3.projectSettings package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.Dynamic.html">rs3.projectSettings.Dynamic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.Groundwater.html">rs3.projectSettings.Groundwater module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.ProjectSettingEnums.html">rs3.projectSettings.ProjectSettingEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.ProjectSettings.html">rs3.projectSettings.ProjectSettings module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.ShearStrengthReduction.html">rs3.projectSettings.ShearStrengthReduction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.SolverOptions.html">rs3.projectSettings.SolverOptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.Stages.html">rs3.projectSettings.Stages module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.StressAnalysis.html">rs3.projectSettings.StressAnalysis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.projectSettings.Units.html">rs3.projectSettings.Units module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.properties.html">rs3.properties package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.beam.html">rs3.properties.beam package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.beam.Beam.html">rs3.properties.beam.Beam module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.beam.BeamCommon.html">rs3.properties.beam.BeamCommon module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.beam.Standard.html">rs3.properties.beam.Standard module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.beam.Truss.html">rs3.properties.beam.Truss module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.bolt.html">rs3.properties.bolt package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.Bolt.html">rs3.properties.bolt.Bolt module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.EndAnchored.html">rs3.properties.bolt.EndAnchored module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.FullyBonded.html">rs3.properties.bolt.FullyBonded module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.PlainStrandCable.html">rs3.properties.bolt.PlainStrandCable module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.Swellex.html">rs3.properties.bolt.Swellex module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.bolt.Tieback.html">rs3.properties.bolt.Tieback module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.groundwater.html">rs3.properties.groundwater package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.groundwater.WaterByLocation.html">rs3.properties.groundwater.WaterByLocation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.groundwater.WaterGrid.html">rs3.properties.groundwater.WaterGrid module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.joint.html">rs3.properties.joint package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.BartonBandis.html">rs3.properties.joint.BartonBandis module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.GeosyntheticHyperbolic.html">rs3.properties.joint.GeosyntheticHyperbolic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.Joint.html">rs3.properties.joint.Joint module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.MaterialDependent.html">rs3.properties.joint.MaterialDependent module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.MohrCoulomb.html">rs3.properties.joint.MohrCoulomb module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.joint.NoneSlip.html">rs3.properties.joint.NoneSlip module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.liner.html">rs3.properties.liner package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liner.Geosynthetic.html">rs3.properties.liner.Geosynthetic module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liner.Liner.html">rs3.properties.liner.Liner module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liner.ReinforcedConcrete.html">rs3.properties.liner.ReinforcedConcrete module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liner.Standard.html">rs3.properties.liner.Standard module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.liningComposition.html">rs3.properties.liningComposition package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.liningComposition.LiningComposition.html">rs3.properties.liningComposition.LiningComposition module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.material.html">rs3.properties.material package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.constitutiveModel.html">rs3.properties.material.constitutiveModel package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.jointOption.html">rs3.properties.material.constitutiveModel.jointOption package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.stiffness.html">rs3.properties.material.constitutiveModel.stiffness package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.AnisotropicLinear.html">rs3.properties.material.constitutiveModel.AnisotropicLinear module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase.html">rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.BarcelonaBasic.html">rs3.properties.material.constitutiveModel.BarcelonaBasic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.BartonBandis.html">rs3.properties.material.constitutiveModel.BartonBandis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.BaseConstitutiveModel.html">rs3.properties.material.constitutiveModel.BaseConstitutiveModel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.BoundingSurfacePlasticity.html">rs3.properties.material.constitutiveModel.BoundingSurfacePlasticity module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.CamClay.html">rs3.properties.material.constitutiveModel.CamClay module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ChSoil.html">rs3.properties.material.constitutiveModel.ChSoil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ConstitutiveModel.html">rs3.properties.material.constitutiveModel.ConstitutiveModel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.CySoil.html">rs3.properties.material.constitutiveModel.CySoil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.DiscreteFunction.html">rs3.properties.material.constitutiveModel.DiscreteFunction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.DoubleYield.html">rs3.properties.material.constitutiveModel.DoubleYield module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.DruckerPrager.html">rs3.properties.material.constitutiveModel.DruckerPrager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.GeneralizedAnisotropic.html">rs3.properties.material.constitutiveModel.GeneralizedAnisotropic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.html">rs3.properties.material.constitutiveModel.GeneralizedHoekBrown module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.HardeningSoil.html">rs3.properties.material.constitutiveModel.HardeningSoil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.HardeningSoilWithSmallStrain.html">rs3.properties.material.constitutiveModel.HardeningSoilWithSmallStrain module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.HoekBrown.html">rs3.properties.material.constitutiveModel.HoekBrown module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.Hyperbolic.html">rs3.properties.material.constitutiveModel.Hyperbolic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.JointedGeneralizedHoekBrown.html">rs3.properties.material.constitutiveModel.JointedGeneralizedHoekBrown module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.JointedMohrCoulomb.html">rs3.properties.material.constitutiveModel.JointedMohrCoulomb module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ManzariAndDafalias.html">rs3.properties.material.constitutiveModel.ManzariAndDafalias module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ModifiedCamClay.html">rs3.properties.material.constitutiveModel.ModifiedCamClay module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.MohrCoulomb.html">rs3.properties.material.constitutiveModel.MohrCoulomb module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.MohrCoulombUnsaturatedZoneCalculations.html">rs3.properties.material.constitutiveModel.MohrCoulombUnsaturatedZoneCalculations module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.MohrCoulombWithCap.html">rs3.properties.material.constitutiveModel.MohrCoulombWithCap module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.Norsand.html">rs3.properties.material.constitutiveModel.Norsand module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.PowerCurve.html">rs3.properties.material.constitutiveModel.PowerCurve module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.Shansep.html">rs3.properties.material.constitutiveModel.Shansep module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.ShearNormalFunction.html">rs3.properties.material.constitutiveModel.ShearNormalFunction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SnowdenAnisotropicLinear.html">rs3.properties.material.constitutiveModel.SnowdenAnisotropicLinear module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SoftSoil.html">rs3.properties.material.constitutiveModel.SoftSoil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SoftSoilCreep.html">rs3.properties.material.constitutiveModel.SoftSoilCreep module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SofteningHardening.html">rs3.properties.material.constitutiveModel.SofteningHardening module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.SwellingRock.html">rs3.properties.material.constitutiveModel.SwellingRock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.UnsaturatedZoneCalculations.html">rs3.properties.material.constitutiveModel.UnsaturatedZoneCalculations module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.constitutiveModel.VerticalStressRatio.html">rs3.properties.material.constitutiveModel.VerticalStressRatio module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.datum.html">rs3.properties.material.datum package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.datum.CohesionDatumDependency.html">rs3.properties.material.datum.CohesionDatumDependency module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.datum.Datum.html">rs3.properties.material.datum.Datum module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.datum.FrictionAngleDatumDependency.html">rs3.properties.material.datum.FrictionAngleDatumDependency module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.datum.YoungsModulusDatumDependency.html">rs3.properties.material.datum.YoungsModulusDatumDependency module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.hydraulic.html">rs3.properties.material.hydraulic package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.FEAGroundwater.html">rs3.properties.material.hydraulic.FEAGroundwater package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.Hydraulic.html">rs3.properties.material.hydraulic.Hydraulic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.PhreaticConditions.html">rs3.properties.material.hydraulic.PhreaticConditions module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.StaticGroundwater.html">rs3.properties.material.hydraulic.StaticGroundwater module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.hydraulic.WaterConditions.html">rs3.properties.material.hydraulic.WaterConditions module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.initialConditions.html">rs3.properties.material.initialConditions package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.initialConditions.InitialConditions.html">rs3.properties.material.initialConditions.InitialConditions module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="rs3.properties.material.stageFactors.html">rs3.properties.material.stageFactors package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="rs3.properties.material.stageFactors.StageFactors.html">rs3.properties.material.stageFactors.StageFactors module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.material.Material.html">rs3.properties.material.Material module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.pile.html">rs3.properties.pile package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.EndCondition.html">rs3.properties.pile.EndCondition module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.Linear.html">rs3.properties.pile.Linear module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.MohrCoulomb.html">rs3.properties.pile.MohrCoulomb module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.MultiLinear.html">rs3.properties.pile.MultiLinear module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.Pile.html">rs3.properties.pile.Pile module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.pile.PileCommon.html">rs3.properties.pile.PileCommon module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="rs3.properties.stageFactors.html">rs3.properties.stageFactors package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.stageFactors.IStageFactorBase.html">rs3.properties.stageFactors.IStageFactorBase module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.stageFactors.StageFactorBaseInterfaces.html">rs3.properties.stageFactors.StageFactorBaseInterfaces module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rs3.properties.stageFactors.StageFactorInterfaces.html">rs3.properties.stageFactors.StageFactorInterfaces module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.SnowdenStrengthFunction.html">rs3.properties.SnowdenStrengthFunction module</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="rs3.results.html">rs3.results package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BeamResults.html">rs3.results.BeamResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.BoltResults.html">rs3.results.BoltResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.CompositeLinerResults.html">rs3.results.CompositeLinerResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.JointResults.html">rs3.results.JointResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.PileForepoleResults.html">rs3.results.PileForepoleResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.ResultEnums.html">rs3.results.ResultEnums module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.Results.html">rs3.results.Results module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidElementResults.html">rs3.results.SolidElementResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidNodalResults.html">rs3.results.SolidNodalResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.SolidResults.html">rs3.results.SolidResults module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.results.YieldedElement.html">rs3.results.YieldedElement module</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="rs3.ApplicationManager.html">rs3.ApplicationManager module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.ColorPicker.html">rs3.ColorPicker module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.CommonEnums.html">rs3.CommonEnums module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Compute.html">rs3.Compute module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.ExternalVolume.html">rs3.ExternalVolume module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Geometry.html">rs3.Geometry module</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">rs3.Model module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.ModelEnums.html">rs3.ModelEnums module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.RS3Modeler.html">rs3.RS3Modeler module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Restraints.html">rs3.Restraints module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rs3.Selection.html">rs3.Selection module</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="rs3.html" class="nav-link">rs3 package</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">rs3.Model module</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-rs3.Model">
+<span id="rs3-model-module"></span><h1>rs3.Model module<a class="headerlink" href="#module-rs3.Model" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Model.</span></span><span class="sig-name descname"><span class="pre">ModelBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Model.ModelBase" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.save" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.saveAs">
+<span class="sig-name descname"><span class="pre">saveAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">newLocation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.saveAs" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">saveProject</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.close" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.saveComputeFile">
+<span class="sig-name descname"><span class="pre">saveComputeFile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.saveComputeFile" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.setActiveStageByName">
+<span class="sig-name descname"><span class="pre">setActiveStageByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.setActiveStageByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getActiveStageName">
+<span class="sig-name descname"><span class="pre">getActiveStageName</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getActiveStageName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.setActiveStage">
+<span class="sig-name descname"><span class="pre">setActiveStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.setActiveStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getActiveStage">
+<span class="sig-name descname"><span class="pre">getActiveStage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getActiveStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getBoltPropertyByName">
+<span class="sig-name descname"><span class="pre">getBoltPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boltName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getBoltPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getBeamPropertyByName">
+<span class="sig-name descname"><span class="pre">getBeamPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beamName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getBeamPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getLinerPropertyByName">
+<span class="sig-name descname"><span class="pre">getLinerPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linerName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getLinerPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getJointPropertyByName">
+<span class="sig-name descname"><span class="pre">getJointPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jointName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getJointPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getLiningCompositionPropertyByName">
+<span class="sig-name descname"><span class="pre">getLiningCompositionPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compositeLinerName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getLiningCompositionPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getPilePropertyByName">
+<span class="sig-name descname"><span class="pre">getPilePropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pileName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getPilePropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getMaterialPropertyByName">
+<span class="sig-name descname"><span class="pre">getMaterialPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">materialName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getMaterialPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getWaterByLocationPropertyByName">
+<span class="sig-name descname"><span class="pre">getWaterByLocationPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waterSurfaceName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getWaterByLocationPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getWaterGridPropertyByName">
+<span class="sig-name descname"><span class="pre">getWaterGridPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waterGridName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getWaterGridPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getExternalVolumeByName">
+<span class="sig-name descname"><span class="pre">getExternalVolumeByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">externalVolumeName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getExternalVolumeByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getDiscreteFunctionByName">
+<span class="sig-name descname"><span class="pre">getDiscreteFunctionByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discreteFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getDiscreteFunctionByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getShearNormalFunctionByName">
+<span class="sig-name descname"><span class="pre">getShearNormalFunctionByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shearNormalFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getShearNormalFunctionByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getGeneralizedAnisotropicFunctionByName">
+<span class="sig-name descname"><span class="pre">getGeneralizedAnisotropicFunctionByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generalizedAnisotropicFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getGeneralizedAnisotropicFunctionByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getCustomHydraulicModelPropertyByName">
+<span class="sig-name descname"><span class="pre">getCustomHydraulicModelPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hydraulicModelName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getCustomHydraulicModelPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllBoltProperties">
+<span class="sig-name descname"><span class="pre">getAllBoltProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllBoltProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllBeamProperties">
+<span class="sig-name descname"><span class="pre">getAllBeamProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllBeamProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllLinerProperties">
+<span class="sig-name descname"><span class="pre">getAllLinerProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllLinerProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllJointProperties">
+<span class="sig-name descname"><span class="pre">getAllJointProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllJointProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllLiningCompositionProperties">
+<span class="sig-name descname"><span class="pre">getAllLiningCompositionProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllLiningCompositionProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllPileProperties">
+<span class="sig-name descname"><span class="pre">getAllPileProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllPileProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllMaterialProperties">
+<span class="sig-name descname"><span class="pre">getAllMaterialProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllMaterialProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllWaterByLocationProperties">
+<span class="sig-name descname"><span class="pre">getAllWaterByLocationProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllWaterByLocationProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllWaterGridProperties">
+<span class="sig-name descname"><span class="pre">getAllWaterGridProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllWaterGridProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllCustomHydraulicModelProperties">
+<span class="sig-name descname"><span class="pre">getAllCustomHydraulicModelProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllCustomHydraulicModelProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllExternalVolumes">
+<span class="sig-name descname"><span class="pre">getAllExternalVolumes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllExternalVolumes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllBoltPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllBoltPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllBoltPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllBeamPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllBeamPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllBeamPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllLinerPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllLinerPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllLinerPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllJointPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllJointPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllJointPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllLiningCompositionPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllLiningCompositionPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllLiningCompositionPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllPilePropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllPilePropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllPilePropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllMaterialPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllMaterialPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllMaterialPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getBoltPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getBoltPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getBoltPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getBeamPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getBeamPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getBeamPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getLinerPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getLinerPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getLinerPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getJointPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getJointPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getJointPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getLiningCompositionPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getLiningCompositionPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getLiningCompositionPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getPilePropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getPilePropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getPilePropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getMaterialPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getMaterialPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getMaterialPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewBoltProperty">
+<span class="sig-name descname"><span class="pre">createNewBoltProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boltName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewBoltProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteBoltProperty">
+<span class="sig-name descname"><span class="pre">deleteBoltProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boltName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteBoltProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewBeamProperty">
+<span class="sig-name descname"><span class="pre">createNewBeamProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beamName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewBeamProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteBeamProperty">
+<span class="sig-name descname"><span class="pre">deleteBeamProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beamName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteBeamProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewJointProperty">
+<span class="sig-name descname"><span class="pre">createNewJointProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jointName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewJointProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteJointProperty">
+<span class="sig-name descname"><span class="pre">deleteJointProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jointName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteJointProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewLinerProperty">
+<span class="sig-name descname"><span class="pre">createNewLinerProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linerName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewLinerProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteLinerProperty">
+<span class="sig-name descname"><span class="pre">deleteLinerProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linerName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteLinerProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewLiningCompositionProperty">
+<span class="sig-name descname"><span class="pre">createNewLiningCompositionProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compositeLinerName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewLiningCompositionProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteLiningCompositionProperty">
+<span class="sig-name descname"><span class="pre">deleteLiningCompositionProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">compositeLinerName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteLiningCompositionProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewPileProperty">
+<span class="sig-name descname"><span class="pre">createNewPileProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pileName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewPileProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deletePileProperty">
+<span class="sig-name descname"><span class="pre">deletePileProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pileName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deletePileProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewMaterialProperty">
+<span class="sig-name descname"><span class="pre">createNewMaterialProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">materialName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewMaterialProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteMaterialProperty">
+<span class="sig-name descname"><span class="pre">deleteMaterialProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">materialName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteMaterialProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewWaterByLocationProperty">
+<span class="sig-name descname"><span class="pre">createNewWaterByLocationProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waterSurfaceName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewWaterByLocationProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteWaterByLocationProperty">
+<span class="sig-name descname"><span class="pre">deleteWaterByLocationProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waterSurfaceName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteWaterByLocationProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewWaterGridProperty">
+<span class="sig-name descname"><span class="pre">createNewWaterGridProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waterGridName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewWaterGridProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteWaterGridProperty">
+<span class="sig-name descname"><span class="pre">deleteWaterGridProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waterGridName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteWaterGridProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getDiscreteFunctions">
+<span class="sig-name descname"><span class="pre">getDiscreteFunctions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getDiscreteFunctions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getShearNormalFunctions">
+<span class="sig-name descname"><span class="pre">getShearNormalFunctions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getShearNormalFunctions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getGeneralizedAnisotropicFunctions">
+<span class="sig-name descname"><span class="pre">getGeneralizedAnisotropicFunctions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getGeneralizedAnisotropicFunctions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewDiscreteFunction">
+<span class="sig-name descname"><span class="pre">createNewDiscreteFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discreteFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewDiscreteFunction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteDiscreteFunction">
+<span class="sig-name descname"><span class="pre">deleteDiscreteFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discreteFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteDiscreteFunction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewShearNormalFunction">
+<span class="sig-name descname"><span class="pre">createNewShearNormalFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shearNormalFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewShearNormalFunction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteShearNormalFunction">
+<span class="sig-name descname"><span class="pre">deleteShearNormalFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shearNormalFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteShearNormalFunction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewGeneralizedAnisotropicFunction">
+<span class="sig-name descname"><span class="pre">createNewGeneralizedAnisotropicFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generalizedAnisotropicFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewGeneralizedAnisotropicFunction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteGeneralizedAnisotropicFunction">
+<span class="sig-name descname"><span class="pre">deleteGeneralizedAnisotropicFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generalizedAnisotropicFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteGeneralizedAnisotropicFunction" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewCustomHydraulicModel">
+<span class="sig-name descname"><span class="pre">createNewCustomHydraulicModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">customHydraulicModelFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewCustomHydraulicModel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteCustomHydraulicModel">
+<span class="sig-name descname"><span class="pre">deleteCustomHydraulicModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hydraulicModelName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteCustomHydraulicModel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase2ModelModelBase">
+<span class="sig-prename descclassname"><span class="pre">rs3.Model.</span></span><span class="sig-name descname"><span class="pre">ModelBase2ModelModelBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Model.ModelBase" title="rs3.Model.ModelBase"><span class="pre">ModelBase</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">rs3.generatedFiles.ModelService_pb2.ModelBase</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase2ModelModelBase" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="rs3.Model.ModelModelBase2ModelBase">
+<span class="sig-prename descclassname"><span class="pre">rs3.Model.</span></span><span class="sig-name descname"><span class="pre">ModelModelBase2ModelBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">rs3.generatedFiles.ModelService_pb2.ModelBase</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#rs3.Model.ModelBase" title="rs3.Model.ModelBase"><span class="pre">ModelBase</span></a></span></span><a class="headerlink" href="#rs3.Model.ModelModelBase2ModelBase" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="rs3.Model.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Model.Model" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#rs3.Model.ModelBase" title="rs3.Model.ModelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBase</span></code></a></p>
+<p class="rubric">Examples</p>
+<p>See <a class="reference internal" href="../example_code/model/model_example.html#model-example"><span class="std std-ref">Model Script Examples</span></a>.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="rs3.Model.Model.results">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">results</span></span><a class="headerlink" href="#rs3.Model.Model.results" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.setActiveStageByName">
+<span class="sig-name descname"><span class="pre">setActiveStageByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.Model.setActiveStageByName" title="Link to this definition">#</a></dt>
+<dd><p>Set the active stage in the RS3 model by its name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stageName</strong> (<em>str</em>) – The exact name of the stage to activate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getActiveStageName">
+<span class="sig-name descname"><span class="pre">getActiveStageName</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.Model.getActiveStageName" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve the name of the currently active stage in the RS3 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The name of the active stage.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.setActiveStage">
+<span class="sig-name descname"><span class="pre">setActiveStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.Model.setActiveStage" title="Link to this definition">#</a></dt>
+<dd><p>Set the active stage in the RS3 model by its index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stageNum</strong> (<em>int</em>) – The index of the absolute stage or relative stage (if reference stage is set) to activate. Counting starts at 1. (i.e., the first stage is 1, the second is 2, etc.).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getActiveStage">
+<span class="sig-name descname"><span class="pre">getActiveStage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#rs3.Model.Model.getActiveStage" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve the index of the currently active stage in the RS3 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The index of absolute stage or relative stage (if reference stage is set) is active. Counting starts at 1. (i.e., the first stage is 1, the second is 2, etc.).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getBoltPropertyByName">
+<span class="sig-name descname"><span class="pre">getBoltPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boltName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.bolt.Bolt.html#rs3.properties.bolt.Bolt.BoltProperty" title="rs3.properties.bolt.Bolt.BoltProperty"><span class="pre">BoltProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getBoltPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getBeamPropertyByName">
+<span class="sig-name descname"><span class="pre">getBeamPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beamName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.beam.Beam.html#rs3.properties.beam.Beam.BeamProperty" title="rs3.properties.beam.Beam.BeamProperty"><span class="pre">BeamProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getBeamPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getLinerPropertyByName">
+<span class="sig-name descname"><span class="pre">getLinerPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linerName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.liner.Liner.html#rs3.properties.liner.Liner.LinerProperty" title="rs3.properties.liner.Liner.LinerProperty"><span class="pre">LinerProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getLinerPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getJointPropertyByName">
+<span class="sig-name descname"><span class="pre">getJointPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linerName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.joint.Joint.html#rs3.properties.joint.Joint.JointProperty" title="rs3.properties.joint.Joint.JointProperty"><span class="pre">JointProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getJointPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getPilePropertyByName">
+<span class="sig-name descname"><span class="pre">getPilePropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pileName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.pile.Pile.html#rs3.properties.pile.Pile.PileProperty" title="rs3.properties.pile.Pile.PileProperty"><span class="pre">PileProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getPilePropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getLiningCompositionPropertyByName">
+<span class="sig-name descname"><span class="pre">getLiningCompositionPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">liningCompositionName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.liningComposition.LiningComposition.html#rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty" title="rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty"><span class="pre">LiningCompositionProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getLiningCompositionPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getCustomHydraulicModelPropertyByName">
+<span class="sig-name descname"><span class="pre">getCustomHydraulicModelPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">customHydraulicModelName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html#rs3.properties.CustomHydraulicModel.CustomHydraulicModel" title="rs3.properties.CustomHydraulicModel.CustomHydraulicModel"><span class="pre">CustomHydraulicModel</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getCustomHydraulicModelPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getMaterialPropertyByName">
+<span class="sig-name descname"><span class="pre">getMaterialPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">materialName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.material.Material.html#rs3.properties.material.Material.MaterialProperty" title="rs3.properties.material.Material.MaterialProperty"><span class="pre">MaterialProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getMaterialPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getWaterByLocationPropertyByName">
+<span class="sig-name descname"><span class="pre">getWaterByLocationPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waterSurfaceName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.groundwater.WaterByLocation.html#rs3.properties.groundwater.WaterByLocation.WaterByLocationProperty" title="rs3.properties.groundwater.WaterByLocation.WaterByLocationProperty"><span class="pre">WaterByLocationProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getWaterByLocationPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getWaterGridPropertyByName">
+<span class="sig-name descname"><span class="pre">getWaterGridPropertyByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waterGridName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.groundwater.WaterGrid.html#rs3.properties.groundwater.WaterGrid.WaterGridProperty" title="rs3.properties.groundwater.WaterGrid.WaterGridProperty"><span class="pre">WaterGridProperty</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getWaterGridPropertyByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getExternalVolumeByName">
+<span class="sig-name descname"><span class="pre">getExternalVolumeByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">externalVolumeName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.ExternalVolume.html#rs3.ExternalVolume.ExternalVolume" title="rs3.ExternalVolume.ExternalVolume"><span class="pre">ExternalVolume</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getExternalVolumeByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getDiscreteFunctionByName">
+<span class="sig-name descname"><span class="pre">getDiscreteFunctionByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discreteFunctionName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.DiscreteFunction.html#rs3.properties.DiscreteFunction.DiscreteFunction" title="rs3.properties.DiscreteFunction.DiscreteFunction"><span class="pre">DiscreteFunction</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getDiscreteFunctionByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getShearNormalFunctionByName">
+<span class="sig-name descname"><span class="pre">getShearNormalFunctionByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shearNormalFunctionName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html#rs3.properties.ShearNormalFunction.ShearNormalFunction" title="rs3.properties.ShearNormalFunction.ShearNormalFunction"><span class="pre">ShearNormalFunction</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getShearNormalFunctionByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getGeneralizedAnisotropicFunctionByName">
+<span class="sig-name descname"><span class="pre">getGeneralizedAnisotropicFunctionByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generalizedAnisotropicFunctionName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html#rs3.properties.GeneralizedAnisotropicFunction.GeneralizedAnisotropicFunction" title="rs3.properties.GeneralizedAnisotropicFunction.GeneralizedAnisotropicFunction"><span class="pre">GeneralizedAnisotropicFunction</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getGeneralizedAnisotropicFunctionByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllBoltProperties">
+<span class="sig-name descname"><span class="pre">getAllBoltProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.bolt.Bolt.html#rs3.properties.bolt.Bolt.BoltProperty" title="rs3.properties.bolt.Bolt.BoltProperty"><span class="pre">BoltProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllBoltProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllBeamProperties">
+<span class="sig-name descname"><span class="pre">getAllBeamProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.beam.Beam.html#rs3.properties.beam.Beam.BeamProperty" title="rs3.properties.beam.Beam.BeamProperty"><span class="pre">BeamProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllBeamProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllLinerProperties">
+<span class="sig-name descname"><span class="pre">getAllLinerProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.liner.Liner.html#rs3.properties.liner.Liner.LinerProperty" title="rs3.properties.liner.Liner.LinerProperty"><span class="pre">LinerProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllLinerProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllJointProperties">
+<span class="sig-name descname"><span class="pre">getAllJointProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.joint.Joint.html#rs3.properties.joint.Joint.JointProperty" title="rs3.properties.joint.Joint.JointProperty"><span class="pre">JointProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllJointProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllLiningCompositionProperties">
+<span class="sig-name descname"><span class="pre">getAllLiningCompositionProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.liningComposition.LiningComposition.html#rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty" title="rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty"><span class="pre">LiningCompositionProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllLiningCompositionProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllPileProperties">
+<span class="sig-name descname"><span class="pre">getAllPileProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.pile.Pile.html#rs3.properties.pile.Pile.PileProperty" title="rs3.properties.pile.Pile.PileProperty"><span class="pre">PileProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllPileProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllMaterialProperties">
+<span class="sig-name descname"><span class="pre">getAllMaterialProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.material.Material.html#rs3.properties.material.Material.MaterialProperty" title="rs3.properties.material.Material.MaterialProperty"><span class="pre">MaterialProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllMaterialProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllWaterByLocationProperties">
+<span class="sig-name descname"><span class="pre">getAllWaterByLocationProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.groundwater.WaterByLocation.html#rs3.properties.groundwater.WaterByLocation.WaterByLocationProperty" title="rs3.properties.groundwater.WaterByLocation.WaterByLocationProperty"><span class="pre">WaterByLocationProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllWaterByLocationProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllWaterGridProperties">
+<span class="sig-name descname"><span class="pre">getAllWaterGridProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.groundwater.WaterGrid.html#rs3.properties.groundwater.WaterGrid.WaterGridProperty" title="rs3.properties.groundwater.WaterGrid.WaterGridProperty"><span class="pre">WaterGridProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllWaterGridProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllCustomHydraulicModelProperties">
+<span class="sig-name descname"><span class="pre">getAllCustomHydraulicModelProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html#rs3.properties.CustomHydraulicModel.CustomHydraulicModel" title="rs3.properties.CustomHydraulicModel.CustomHydraulicModel"><span class="pre">CustomHydraulicModel</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllCustomHydraulicModelProperties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllExternalVolumes">
+<span class="sig-name descname"><span class="pre">getAllExternalVolumes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.ExternalVolume.html#rs3.ExternalVolume.ExternalVolume" title="rs3.ExternalVolume.ExternalVolume"><span class="pre">ExternalVolume</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllExternalVolumes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllBoltPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllBoltPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.bolt.Bolt.html#rs3.properties.bolt.Bolt.BoltProperty" title="rs3.properties.bolt.Bolt.BoltProperty"><span class="pre">BoltProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllBoltPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllBeamPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllBeamPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.beam.Beam.html#rs3.properties.beam.Beam.BeamProperty" title="rs3.properties.beam.Beam.BeamProperty"><span class="pre">BeamProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllBeamPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllLinerPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllLinerPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.liner.Liner.html#rs3.properties.liner.Liner.LinerProperty" title="rs3.properties.liner.Liner.LinerProperty"><span class="pre">LinerProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllLinerPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllJointPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllJointPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.joint.Joint.html#rs3.properties.joint.Joint.JointProperty" title="rs3.properties.joint.Joint.JointProperty"><span class="pre">JointProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllJointPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllPilePropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllPilePropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.pile.Pile.html#rs3.properties.pile.Pile.PileProperty" title="rs3.properties.pile.Pile.PileProperty"><span class="pre">PileProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllPilePropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllLiningCompositionPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllLiningCompositionPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.liningComposition.LiningComposition.html#rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty" title="rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty"><span class="pre">LiningCompositionProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllLiningCompositionPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllMaterialPropertiesInUse">
+<span class="sig-name descname"><span class="pre">getAllMaterialPropertiesInUse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.material.Material.html#rs3.properties.material.Material.MaterialProperty" title="rs3.properties.material.Material.MaterialProperty"><span class="pre">MaterialProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllMaterialPropertiesInUse" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getBoltPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getBoltPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.bolt.Bolt.html#rs3.properties.bolt.Bolt.BoltProperty" title="rs3.properties.bolt.Bolt.BoltProperty"><span class="pre">BoltProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getBoltPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getBeamPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getBeamPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.beam.Beam.html#rs3.properties.beam.Beam.BeamProperty" title="rs3.properties.beam.Beam.BeamProperty"><span class="pre">BeamProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getBeamPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getLinerPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getLinerPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.liner.Liner.html#rs3.properties.liner.Liner.LinerProperty" title="rs3.properties.liner.Liner.LinerProperty"><span class="pre">LinerProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getLinerPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getJointPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getJointPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.joint.Joint.html#rs3.properties.joint.Joint.JointProperty" title="rs3.properties.joint.Joint.JointProperty"><span class="pre">JointProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getJointPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getPilePropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getPilePropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.pile.Pile.html#rs3.properties.pile.Pile.PileProperty" title="rs3.properties.pile.Pile.PileProperty"><span class="pre">PileProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getPilePropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getLiningCompositionPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getLiningCompositionPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.liningComposition.LiningComposition.html#rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty" title="rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty"><span class="pre">LiningCompositionProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getLiningCompositionPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getMaterialPropertiesInUseByStage">
+<span class="sig-name descname"><span class="pre">getMaterialPropertiesInUseByStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNum</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.material.Material.html#rs3.properties.material.Material.MaterialProperty" title="rs3.properties.material.Material.MaterialProperty"><span class="pre">MaterialProperty</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getMaterialPropertiesInUseByStage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getDiscreteFunctions">
+<span class="sig-name descname"><span class="pre">getDiscreteFunctions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.DiscreteFunction.html#rs3.properties.DiscreteFunction.DiscreteFunction" title="rs3.properties.DiscreteFunction.DiscreteFunction"><span class="pre">DiscreteFunction</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getDiscreteFunctions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getShearNormalFunctions">
+<span class="sig-name descname"><span class="pre">getShearNormalFunctions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.ShearNormalFunction.html#rs3.properties.ShearNormalFunction.ShearNormalFunction" title="rs3.properties.ShearNormalFunction.ShearNormalFunction"><span class="pre">ShearNormalFunction</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getShearNormalFunctions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getGeneralizedAnisotropicFunctions">
+<span class="sig-name descname"><span class="pre">getGeneralizedAnisotropicFunctions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html#rs3.properties.GeneralizedAnisotropicFunction.GeneralizedAnisotropicFunction" title="rs3.properties.GeneralizedAnisotropicFunction.GeneralizedAnisotropicFunction"><span class="pre">GeneralizedAnisotropicFunction</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getGeneralizedAnisotropicFunctions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rs3.Geometry.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">rs3.Geometry module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rs3.ModelEnums.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">rs3.ModelEnums module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase"><code class="docutils literal notranslate"><span class="pre">ModelBase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.save"><code class="docutils literal notranslate"><span class="pre">ModelBase.save()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.saveAs"><code class="docutils literal notranslate"><span class="pre">ModelBase.saveAs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.close"><code class="docutils literal notranslate"><span class="pre">ModelBase.close()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.saveComputeFile"><code class="docutils literal notranslate"><span class="pre">ModelBase.saveComputeFile()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.setActiveStageByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.setActiveStageByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getActiveStageName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getActiveStageName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.setActiveStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.setActiveStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getActiveStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.getActiveStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getBoltPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getBoltPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getBeamPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getBeamPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getLinerPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getLinerPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getJointPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getJointPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getLiningCompositionPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getLiningCompositionPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getPilePropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getPilePropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getMaterialPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getMaterialPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getWaterByLocationPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getWaterByLocationPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getWaterGridPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getWaterGridPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getExternalVolumeByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getExternalVolumeByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getDiscreteFunctionByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getDiscreteFunctionByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getShearNormalFunctionByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getShearNormalFunctionByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getGeneralizedAnisotropicFunctionByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getGeneralizedAnisotropicFunctionByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getCustomHydraulicModelPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getCustomHydraulicModelPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllBoltProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllBoltProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllBeamProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllBeamProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllLinerProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllLinerProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllJointProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllJointProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllLiningCompositionProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllLiningCompositionProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllPileProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllPileProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllMaterialProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllMaterialProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllWaterByLocationProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllWaterByLocationProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllWaterGridProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllWaterGridProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllCustomHydraulicModelProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllCustomHydraulicModelProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllExternalVolumes"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllExternalVolumes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllBoltPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllBoltPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllBeamPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllBeamPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllLinerPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllLinerPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllJointPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllJointPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllLiningCompositionPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllLiningCompositionPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllPilePropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllPilePropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllMaterialPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllMaterialPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getBoltPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.getBoltPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getBeamPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.getBeamPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getLinerPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.getLinerPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getJointPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.getJointPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getLiningCompositionPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.getLiningCompositionPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getPilePropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.getPilePropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getMaterialPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">ModelBase.getMaterialPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewBoltProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewBoltProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteBoltProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteBoltProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewBeamProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewBeamProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteBeamProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteBeamProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewJointProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewJointProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteJointProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteJointProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewLinerProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewLinerProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteLinerProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteLinerProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewLiningCompositionProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewLiningCompositionProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteLiningCompositionProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteLiningCompositionProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewPileProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewPileProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deletePileProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deletePileProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewMaterialProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewMaterialProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteMaterialProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteMaterialProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewWaterByLocationProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewWaterByLocationProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteWaterByLocationProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteWaterByLocationProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewWaterGridProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewWaterGridProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteWaterGridProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteWaterGridProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getDiscreteFunctions"><code class="docutils literal notranslate"><span class="pre">ModelBase.getDiscreteFunctions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getShearNormalFunctions"><code class="docutils literal notranslate"><span class="pre">ModelBase.getShearNormalFunctions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getGeneralizedAnisotropicFunctions"><code class="docutils literal notranslate"><span class="pre">ModelBase.getGeneralizedAnisotropicFunctions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewDiscreteFunction"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewDiscreteFunction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteDiscreteFunction"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteDiscreteFunction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewShearNormalFunction"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewShearNormalFunction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteShearNormalFunction"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteShearNormalFunction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewGeneralizedAnisotropicFunction"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewGeneralizedAnisotropicFunction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteGeneralizedAnisotropicFunction"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteGeneralizedAnisotropicFunction()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewCustomHydraulicModel"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewCustomHydraulicModel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteCustomHydraulicModel"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteCustomHydraulicModel()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase2ModelModelBase"><code class="docutils literal notranslate"><span class="pre">ModelBase2ModelModelBase()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelModelBase2ModelBase"><code class="docutils literal notranslate"><span class="pre">ModelModelBase2ModelBase()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.results"><code class="docutils literal notranslate"><span class="pre">Model.results</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.setActiveStageByName"><code class="docutils literal notranslate"><span class="pre">Model.setActiveStageByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getActiveStageName"><code class="docutils literal notranslate"><span class="pre">Model.getActiveStageName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.setActiveStage"><code class="docutils literal notranslate"><span class="pre">Model.setActiveStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getActiveStage"><code class="docutils literal notranslate"><span class="pre">Model.getActiveStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getBoltPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getBoltPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getBeamPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getBeamPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getLinerPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getLinerPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getJointPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getJointPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getPilePropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getPilePropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getLiningCompositionPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getLiningCompositionPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getCustomHydraulicModelPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getCustomHydraulicModelPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getMaterialPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getMaterialPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getWaterByLocationPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getWaterByLocationPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getWaterGridPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getWaterGridPropertyByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getExternalVolumeByName"><code class="docutils literal notranslate"><span class="pre">Model.getExternalVolumeByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getDiscreteFunctionByName"><code class="docutils literal notranslate"><span class="pre">Model.getDiscreteFunctionByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getShearNormalFunctionByName"><code class="docutils literal notranslate"><span class="pre">Model.getShearNormalFunctionByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getGeneralizedAnisotropicFunctionByName"><code class="docutils literal notranslate"><span class="pre">Model.getGeneralizedAnisotropicFunctionByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllBoltProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllBoltProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllBeamProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllBeamProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllLinerProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllLinerProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllJointProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllJointProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllLiningCompositionProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllLiningCompositionProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllPileProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllPileProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllMaterialProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllMaterialProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllWaterByLocationProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllWaterByLocationProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllWaterGridProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllWaterGridProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllCustomHydraulicModelProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllCustomHydraulicModelProperties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllExternalVolumes"><code class="docutils literal notranslate"><span class="pre">Model.getAllExternalVolumes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllBoltPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllBoltPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllBeamPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllBeamPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllLinerPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllLinerPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllJointPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllJointPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllPilePropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllPilePropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllLiningCompositionPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllLiningCompositionPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllMaterialPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllMaterialPropertiesInUse()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getBoltPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">Model.getBoltPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getBeamPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">Model.getBeamPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getLinerPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">Model.getLinerPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getJointPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">Model.getJointPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getPilePropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">Model.getPilePropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getLiningCompositionPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">Model.getLiningCompositionPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getMaterialPropertiesInUseByStage"><code class="docutils literal notranslate"><span class="pre">Model.getMaterialPropertiesInUseByStage()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getDiscreteFunctions"><code class="docutils literal notranslate"><span class="pre">Model.getDiscreteFunctions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getShearNormalFunctions"><code class="docutils literal notranslate"><span class="pre">Model.getShearNormalFunctions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getGeneralizedAnisotropicFunctions"><code class="docutils literal notranslate"><span class="pre">Model.getGeneralizedAnisotropicFunctions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/generatedAPIDocFiles/rs3.Model.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Rocscience Inc..
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

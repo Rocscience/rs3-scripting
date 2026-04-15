@@ -1,0 +1,19 @@
+rs3.properties.joint package
+============================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.joint.BartonBandis
+   rs3.properties.joint.GeosyntheticHyperbolic
+   rs3.properties.joint.Joint
+   rs3.properties.joint.MaterialDependent
+   rs3.properties.joint.MohrCoulomb
+   rs3.properties.joint.NoneSlip
+
+
+.. automodule:: rs3.properties.joint
+   :members:
+   :undoc-members:
+   :show-inheritance:

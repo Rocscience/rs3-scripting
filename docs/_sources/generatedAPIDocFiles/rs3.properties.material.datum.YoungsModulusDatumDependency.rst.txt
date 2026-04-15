@@ -1,0 +1,7 @@
+rs3.properties.material.datum.YoungsModulusDatumDependency module
+=================================================================
+
+.. automodule:: rs3.properties.material.datum.YoungsModulusDatumDependency
+   :members:
+   :undoc-members:
+   :show-inheritance:

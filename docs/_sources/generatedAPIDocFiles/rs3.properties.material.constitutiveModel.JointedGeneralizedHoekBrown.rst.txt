@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.JointedGeneralizedHoekBrown module
+============================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.JointedGeneralizedHoekBrown
+   :members:
+   :undoc-members:
+   :show-inheritance:

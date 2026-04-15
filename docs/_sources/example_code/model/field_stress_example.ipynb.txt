@@ -1,0 +1,1745 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014579,
+     "end_time": "2026-03-13T20:49:56.631152",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:56.616573",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(field_stress_example)=\n",
+    "# Field Stress Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015081,
+     "end_time": "2026-03-13T20:49:56.664432",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:56.649351",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:49:56.696915Z",
+     "iopub.status.busy": "2026-03-13T20:49:56.696355Z",
+     "iopub.status.idle": "2026-03-13T20:49:57.087319Z",
+     "shell.execute_reply": "2026-03-13T20:49:57.082966Z"
+    },
+    "papermill": {
+     "duration": 0.410059,
+     "end_time": "2026-03-13T20:49:57.089620",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:56.679561",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.loadings.LoadingEnums import *\n",
+    "from rs3.CommonEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008492,
+     "end_time": "2026-03-13T20:49:57.109632",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:57.101140",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:49:57.130915Z",
+     "iopub.status.busy": "2026-03-13T20:49:57.130474Z",
+     "iopub.status.idle": "2026-03-13T20:49:57.135398Z",
+     "shell.execute_reply": "2026-03-13T20:49:57.133984Z"
+    },
+    "papermill": {
+     "duration": 0.01973,
+     "end_time": "2026-03-13T20:49:57.137465",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:57.117735",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008623,
+     "end_time": "2026-03-13T20:49:57.157279",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:57.148656",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "83f9433b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:49:57.176752Z",
+     "iopub.status.busy": "2026-03-13T20:49:57.176332Z",
+     "iopub.status.idle": "2026-03-13T20:50:28.597035Z",
+     "shell.execute_reply": "2026-03-13T20:50:28.594841Z"
+    },
+    "papermill": {
+     "duration": 31.433736,
+     "end_time": "2026-03-13T20:50:28.599135",
+     "exception": false,
+     "start_time": "2026-03-13T20:49:57.165399",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:49:57,182 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60105...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60105\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f02c506e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010174,
+     "end_time": "2026-03-13T20:50:28.617999",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:28.607825",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "c82c27f4",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:28.639821Z",
+     "iopub.status.busy": "2026-03-13T20:50:28.639294Z",
+     "iopub.status.idle": "2026-03-13T20:50:28.653303Z",
+     "shell.execute_reply": "2026-03-13T20:50:28.651333Z"
+    },
+    "papermill": {
+     "duration": 0.028633,
+     "end_time": "2026-03-13T20:50:28.655064",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:28.626431",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011529,
+     "end_time": "2026-03-13T20:50:28.676239",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:28.664710",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:28.695876Z",
+     "iopub.status.busy": "2026-03-13T20:50:28.694907Z",
+     "iopub.status.idle": "2026-03-13T20:50:28.727610Z",
+     "shell.execute_reply": "2026-03-13T20:50:28.725856Z"
+    },
+    "papermill": {
+     "duration": 0.044286,
+     "end_time": "2026-03-13T20:50:28.729171",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:28.684885",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009748,
+     "end_time": "2026-03-13T20:50:28.749307",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:28.739559",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:28.772776Z",
+     "iopub.status.busy": "2026-03-13T20:50:28.772358Z",
+     "iopub.status.idle": "2026-03-13T20:50:46.722188Z",
+     "shell.execute_reply": "2026-03-13T20:50:46.720771Z"
+    },
+    "papermill": {
+     "duration": 17.963798,
+     "end_time": "2026-03-13T20:50:46.723169",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:28.759371",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1915e04e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006284,
+     "end_time": "2026-03-13T20:50:46.736111",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:46.729827",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Constant Field Stress"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "66718133",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007655,
+     "end_time": "2026-03-13T20:50:46.750457",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:46.742802",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Field stress type needs to be set to CONSTANT. Otherwise, script cannot make changes to constant field stress properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "0536532e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:46.768296Z",
+     "iopub.status.busy": "2026-03-13T20:50:46.767878Z",
+     "iopub.status.idle": "2026-03-13T20:50:46.961366Z",
+     "shell.execute_reply": "2026-03-13T20:50:46.959620Z"
+    },
+    "papermill": {
+     "duration": 0.205666,
+     "end_time": "2026-03-13T20:50:46.963419",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:46.757753",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.Loadings.FieldStress.setType(FieldStressType.CONSTANT)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a830d6b2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008448,
+     "end_time": "2026-03-13T20:50:46.981483",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:46.973035",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "<div class=\"alert alert-block alert-info\">\n",
+    "<b>Tip:</b> create a short alias to avoid repeatedly typing model.Mesh.Uniform\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "c19f6c54",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:47.004036Z",
+     "iopub.status.busy": "2026-03-13T20:50:47.003368Z",
+     "iopub.status.idle": "2026-03-13T20:50:47.010900Z",
+     "shell.execute_reply": "2026-03-13T20:50:47.009073Z"
+    },
+    "papermill": {
+     "duration": 0.023128,
+     "end_time": "2026-03-13T20:50:47.012467",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:46.989339",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "constantFieldStress = model.Loadings.FieldStress.Constant"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "04932d3c",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009255,
+     "end_time": "2026-03-13T20:50:47.033848",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.024593",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Check current constant field stress properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "55ad9f63",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:47.050645Z",
+     "iopub.status.busy": "2026-03-13T20:50:47.050289Z",
+     "iopub.status.idle": "2026-03-13T20:50:47.075551Z",
+     "shell.execute_reply": "2026-03-13T20:50:47.073946Z"
+    },
+    "papermill": {
+     "duration": 0.036128,
+     "end_time": "2026-03-13T20:50:47.076821",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.040693",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Sigma1': 10.0, 'Sigma2': 10.0, 'Sigma3': 10.0}"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "constantFieldStress.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "d1568a92",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:47.096400Z",
+     "iopub.status.busy": "2026-03-13T20:50:47.095969Z",
+     "iopub.status.idle": "2026-03-13T20:50:47.252943Z",
+     "shell.execute_reply": "2026-03-13T20:50:47.250270Z"
+    },
+    "papermill": {
+     "duration": 0.169671,
+     "end_time": "2026-03-13T20:50:47.255709",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.086038",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Sigma1': 15.1, 'Sigma2': 10.2, 'Sigma3': 5.3}"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "constantFieldStress.setProperties(Sigma1=15.1, Sigma2=10.2, Sigma3=5.3)\n",
+    "constantFieldStress.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0bc58fac",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018274,
+     "end_time": "2026-03-13T20:50:47.298192",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.279918",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set orientation of field stress by normal vectors."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "9b230798",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:47.339539Z",
+     "iopub.status.busy": "2026-03-13T20:50:47.338416Z",
+     "iopub.status.idle": "2026-03-13T20:50:47.490797Z",
+     "shell.execute_reply": "2026-03-13T20:50:47.487362Z"
+    },
+    "papermill": {
+     "duration": 0.173377,
+     "end_time": "2026-03-13T20:50:47.493497",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.320120",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(1.0, 3.0, 2.0), (1.0, 3.0, -5.0)]"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "constantFieldStress.setOrientationType(LinearDirectionType.NORMAL_VECTOR)\n",
+    "constantFieldStress.setVectorOrientation((1.0, 3.0, 2.0), (1.0, 3.0, -5.0))\n",
+    "constantFieldStress.getVectorOrientation()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8dc1caf",
+   "metadata": {
+    "papermill": {
+     "duration": 0.016648,
+     "end_time": "2026-03-13T20:50:47.524758",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.508110",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set orientation of field stress by trend and plunge."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "64c5fa3b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:47.567558Z",
+     "iopub.status.busy": "2026-03-13T20:50:47.566961Z",
+     "iopub.status.idle": "2026-03-13T20:50:47.703233Z",
+     "shell.execute_reply": "2026-03-13T20:50:47.698601Z"
+    },
+    "papermill": {
+     "duration": 0.161006,
+     "end_time": "2026-03-13T20:50:47.705484",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.544478",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(18.4349, -32.3115, 108.435, 0.0)"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "constantFieldStress.setOrientationType(LinearDirectionType.TREND_PLUNGE)\n",
+    "constantFieldStress.setTrendPlungeOrientation(18.4349, -32.3115, 108.435, 0)\n",
+    "constantFieldStress.getTrendPlungeOrientation()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c9eaa89b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.022452,
+     "end_time": "2026-03-13T20:50:47.745711",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.723259",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Gravity Field Stress"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1be0fceb",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013941,
+     "end_time": "2026-03-13T20:50:47.771028",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.757087",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Field stress type needs to be set to GRAVITY. Otherwise, script cannot make changes to gravity field stress properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "eb5e9a4f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:47.799241Z",
+     "iopub.status.busy": "2026-03-13T20:50:47.798590Z",
+     "iopub.status.idle": "2026-03-13T20:50:47.847843Z",
+     "shell.execute_reply": "2026-03-13T20:50:47.843613Z"
+    },
+    "papermill": {
+     "duration": 0.065818,
+     "end_time": "2026-03-13T20:50:47.850871",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.785053",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.Loadings.FieldStress.setType(FieldStressType.GRAVITY)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "d75dda0d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:47.907183Z",
+     "iopub.status.busy": "2026-03-13T20:50:47.906234Z",
+     "iopub.status.idle": "2026-03-13T20:50:47.914660Z",
+     "shell.execute_reply": "2026-03-13T20:50:47.911075Z"
+    },
+    "papermill": {
+     "duration": 0.036885,
+     "end_time": "2026-03-13T20:50:47.917304",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.880419",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "gravityFieldStress = model.Loadings.FieldStress.Gravity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d27151c4",
+   "metadata": {
+    "papermill": {
+     "duration": 0.022237,
+     "end_time": "2026-03-13T20:50:47.958237",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.936000",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Check current gravity field stress properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "da79e845",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:48.004913Z",
+     "iopub.status.busy": "2026-03-13T20:50:48.003860Z",
+     "iopub.status.idle": "2026-03-13T20:50:48.062536Z",
+     "shell.execute_reply": "2026-03-13T20:50:48.058620Z"
+    },
+    "papermill": {
+     "duration": 0.090866,
+     "end_time": "2026-03-13T20:50:48.065187",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:47.974321",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'UseActualGroundSurface': True,\n",
+       " 'GroundSurfaceElevation': 0.0,\n",
+       " 'OverburdenUnitWeight': 20.0,\n",
+       " 'UseEffectiveStressRatio': True,\n",
+       " 'UseNonlinearVariableStressRatio': False,\n",
+       " 'K0Condition': True,\n",
+       " 'SigmaH1K1': 1.0,\n",
+       " 'SigmaH1K1a': 1.0,\n",
+       " 'SigmaH1K1b': 0.0,\n",
+       " 'SigmaH1K1c': 0.0,\n",
+       " 'SigmaH1LockedIn': 0.0,\n",
+       " 'SigmaH2K2': 2.0,\n",
+       " 'SigmaH2K2a': 1.0,\n",
+       " 'SigmaH2K2b': 0.0,\n",
+       " 'SigmaH2K2c': 0.0,\n",
+       " 'SigmaH2LockedIn': 0.0}"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "gravityFieldStress.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "5e8b65c9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:48.104789Z",
+     "iopub.status.busy": "2026-03-13T20:50:48.103788Z",
+     "iopub.status.idle": "2026-03-13T20:50:48.424469Z",
+     "shell.execute_reply": "2026-03-13T20:50:48.421887Z"
+    },
+    "papermill": {
+     "duration": 0.342409,
+     "end_time": "2026-03-13T20:50:48.426754",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:48.084345",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'UseActualGroundSurface': False,\n",
+       " 'GroundSurfaceElevation': 10.5,\n",
+       " 'OverburdenUnitWeight': 19.02,\n",
+       " 'UseEffectiveStressRatio': True,\n",
+       " 'UseNonlinearVariableStressRatio': False,\n",
+       " 'K0Condition': True,\n",
+       " 'SigmaH1K1': 1.5,\n",
+       " 'SigmaH1K1a': 1.0,\n",
+       " 'SigmaH1K1b': 0.0,\n",
+       " 'SigmaH1K1c': 0.0,\n",
+       " 'SigmaH1LockedIn': 0.0,\n",
+       " 'SigmaH2K2': 2.0,\n",
+       " 'SigmaH2K2a': 1.0,\n",
+       " 'SigmaH2K2b': 0.0,\n",
+       " 'SigmaH2K2c': 0.0,\n",
+       " 'SigmaH2LockedIn': 0.0}"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "gravityFieldStress.setProperties(UseActualGroundSurface=False, GroundSurfaceElevation=10.5, OverburdenUnitWeight=19.02)\n",
+    "gravityFieldStress.setSigmaH1K1(1.5)\n",
+    "gravityFieldStress.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "35bbc48e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014842,
+     "end_time": "2026-03-13T20:50:48.467248",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:48.452406",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set orientation of field stress by normal vectors."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "7e9b13e7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:48.515159Z",
+     "iopub.status.busy": "2026-03-13T20:50:48.514510Z",
+     "iopub.status.idle": "2026-03-13T20:50:48.634118Z",
+     "shell.execute_reply": "2026-03-13T20:50:48.628019Z"
+    },
+    "papermill": {
+     "duration": 0.145081,
+     "end_time": "2026-03-13T20:50:48.637452",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:48.492371",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(1.0, 3.0, 2.0), (1.0, 3.0, -5.0)]"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "gravityFieldStress.setOrientationType(LinearDirectionType.NORMAL_VECTOR)\n",
+    "gravityFieldStress.setVectorOrientation((1.0, 3.0, 2.0), (1.0, 3.0, -5.0))\n",
+    "gravityFieldStress.getVectorOrientation()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a509fa58",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015054,
+     "end_time": "2026-03-13T20:50:48.677891",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:48.662837",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set orientation of field stress by trend and plunge."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "9929c4a2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:48.714030Z",
+     "iopub.status.busy": "2026-03-13T20:50:48.713115Z",
+     "iopub.status.idle": "2026-03-13T20:50:48.820277Z",
+     "shell.execute_reply": "2026-03-13T20:50:48.818073Z"
+    },
+    "papermill": {
+     "duration": 0.129758,
+     "end_time": "2026-03-13T20:50:48.822370",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:48.692612",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(18.4349, 13.2, 78.435)"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "gravityFieldStress.setOrientationType(LinearDirectionType.TREND_PLUNGE)\n",
+    "gravityFieldStress.setTrendPlungeOrientation(18.4349, 13.2, 78.435)\n",
+    "gravityFieldStress.getTrendPlungeOrientation()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1aa154ea",
+   "metadata": {
+    "papermill": {
+     "duration": 0.031403,
+     "end_time": "2026-03-13T20:50:48.871222",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:48.839819",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Advanced Constant Field Stress"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5d6a9a84",
+   "metadata": {
+    "papermill": {
+     "duration": 0.024556,
+     "end_time": "2026-03-13T20:50:48.925100",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:48.900544",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Field stress type needs to be set to CONSTANT. Otherwise, script cannot make changes to constant field stress properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "120c6197",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:48.988807Z",
+     "iopub.status.busy": "2026-03-13T20:50:48.987028Z",
+     "iopub.status.idle": "2026-03-13T20:50:49.080049Z",
+     "shell.execute_reply": "2026-03-13T20:50:49.076843Z"
+    },
+    "papermill": {
+     "duration": 0.132503,
+     "end_time": "2026-03-13T20:50:49.084877",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:48.952374",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.Loadings.FieldStress.setType(FieldStressType.CONSTANT)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "b115833e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:49.172844Z",
+     "iopub.status.busy": "2026-03-13T20:50:49.171189Z",
+     "iopub.status.idle": "2026-03-13T20:50:49.185715Z",
+     "shell.execute_reply": "2026-03-13T20:50:49.181102Z"
+    },
+    "papermill": {
+     "duration": 0.061396,
+     "end_time": "2026-03-13T20:50:49.189745",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:49.128349",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "advancedConstantFieldStress = model.Loadings.FieldStress.AdvancedConstant"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "06e4e720",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:49.250665Z",
+     "iopub.status.busy": "2026-03-13T20:50:49.249149Z",
+     "iopub.status.idle": "2026-03-13T20:50:50.212076Z",
+     "shell.execute_reply": "2026-03-13T20:50:50.207879Z"
+    },
+    "papermill": {
+     "duration": 1.002228,
+     "end_time": "2026-03-13T20:50:50.217813",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:49.215585",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "material1Name = model.getAllMaterialProperties()[0].getMaterialName()\n",
+    "advancedConstantFieldStress.setApplyCustomFieldStress(material1Name, True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "8da983f0",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:50.286998Z",
+     "iopub.status.busy": "2026-03-13T20:50:50.285817Z",
+     "iopub.status.idle": "2026-03-13T20:50:50.466472Z",
+     "shell.execute_reply": "2026-03-13T20:50:50.462766Z"
+    },
+    "papermill": {
+     "duration": 0.217085,
+     "end_time": "2026-03-13T20:50:50.470661",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:50.253576",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "246.289"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "advancedConstantFieldStress.setSigma1(material1Name, 246.289)\n",
+    "advancedConstantFieldStress.getSigma1(material1Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3e688f3b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.04916,
+     "end_time": "2026-03-13T20:50:50.552542",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:50.503382",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the vector orientation of the material."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "ab25e560",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:50.663615Z",
+     "iopub.status.busy": "2026-03-13T20:50:50.662108Z",
+     "iopub.status.idle": "2026-03-13T20:50:50.962497Z",
+     "shell.execute_reply": "2026-03-13T20:50:50.959330Z"
+    },
+    "papermill": {
+     "duration": 0.367417,
+     "end_time": "2026-03-13T20:50:50.965843",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:50.598426",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(1.0, 3.0, 2.0), (1.0, 3.0, -5.0)]"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "advancedConstantFieldStress.setVectorOrientation(material1Name, (1.0, 3.0, 2.0), (1.0, 3.0, -5.0))\n",
+    "advancedConstantFieldStress.getVectorOrientation(material1Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b486969b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.030746,
+     "end_time": "2026-03-13T20:50:51.037165",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.006419",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Trend and plunge orientation are updated accordingly."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "a7ce4070",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:51.087630Z",
+     "iopub.status.busy": "2026-03-13T20:50:51.086716Z",
+     "iopub.status.idle": "2026-03-13T20:50:51.122477Z",
+     "shell.execute_reply": "2026-03-13T20:50:51.119894Z"
+    },
+    "papermill": {
+     "duration": 0.06226,
+     "end_time": "2026-03-13T20:50:51.126032",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.063772",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(18.43494882292201, -32.31153323742385, 18.43494882292201, 57.688466762576155)"
+      ]
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "advancedConstantFieldStress.getTrendPlungeOrientation(material1Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "60750ee2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.023667,
+     "end_time": "2026-03-13T20:50:51.170888",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.147221",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the trend and plunge orientation of the material."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "39db163e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:51.219148Z",
+     "iopub.status.busy": "2026-03-13T20:50:51.217582Z",
+     "iopub.status.idle": "2026-03-13T20:50:51.411744Z",
+     "shell.execute_reply": "2026-03-13T20:50:51.408781Z"
+    },
+    "papermill": {
+     "duration": 0.219518,
+     "end_time": "2026-03-13T20:50:51.414500",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.194982",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(18.4349, -32.3115, 108.435, 0.0)"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "advancedConstantFieldStress.setTrendPlungeOrientation(material1Name, 18.4349, -32.3115, 108.435, 0)\n",
+    "advancedConstantFieldStress.getTrendPlungeOrientation(material1Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "57b1021e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.02912,
+     "end_time": "2026-03-13T20:50:51.474594",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.445474",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "The vector orientation is updated accordingly."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "e9a10a10",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:51.551041Z",
+     "iopub.status.busy": "2026-03-13T20:50:51.549498Z",
+     "iopub.status.idle": "2026-03-13T20:50:51.577064Z",
+     "shell.execute_reply": "2026-03-13T20:50:51.572286Z"
+    },
+    "papermill": {
+     "duration": 0.071245,
+     "end_time": "2026-03-13T20:50:51.579885",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.508640",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(0.2672606567507064, 0.8017842476414259, 0.5345219935486788),\n",
+       " (0.9486830155928029, -0.31622861338870933, 0.0)]"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "advancedConstantFieldStress.getVectorOrientation(material1Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "82492dbf",
+   "metadata": {
+    "papermill": {
+     "duration": 0.025496,
+     "end_time": "2026-03-13T20:50:51.633467",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.607971",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 4. Advanced Gravity Field Stress"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "861c09f3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.037002,
+     "end_time": "2026-03-13T20:50:51.698977",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.661975",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Field stress type needs to be set to GRAVITY. Otherwise, script cannot make changes to gravity field stress properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "d086929e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:51.782160Z",
+     "iopub.status.busy": "2026-03-13T20:50:51.781438Z",
+     "iopub.status.idle": "2026-03-13T20:50:51.863163Z",
+     "shell.execute_reply": "2026-03-13T20:50:51.859944Z"
+    },
+    "papermill": {
+     "duration": 0.1356,
+     "end_time": "2026-03-13T20:50:51.866573",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.730973",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.Loadings.FieldStress.setType(FieldStressType.GRAVITY)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "3ceab4e4",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:51.915623Z",
+     "iopub.status.busy": "2026-03-13T20:50:51.914620Z",
+     "iopub.status.idle": "2026-03-13T20:50:51.924282Z",
+     "shell.execute_reply": "2026-03-13T20:50:51.922074Z"
+    },
+    "papermill": {
+     "duration": 0.039883,
+     "end_time": "2026-03-13T20:50:51.927785",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.887902",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "advancedGravityFieldStress = model.Loadings.FieldStress.AdvancedGravity"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "77795426",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:51.980758Z",
+     "iopub.status.busy": "2026-03-13T20:50:51.979399Z",
+     "iopub.status.idle": "2026-03-13T20:50:52.645543Z",
+     "shell.execute_reply": "2026-03-13T20:50:52.642310Z"
+    },
+    "papermill": {
+     "duration": 0.690577,
+     "end_time": "2026-03-13T20:50:52.649253",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:51.958676",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "material2Name = model.getAllMaterialProperties()[1].getMaterialName()\n",
+    "advancedGravityFieldStress.setApplyCustomFieldStress(material2Name, True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "7f7e5cdc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:52.696141Z",
+     "iopub.status.busy": "2026-03-13T20:50:52.695242Z",
+     "iopub.status.idle": "2026-03-13T20:50:52.821344Z",
+     "shell.execute_reply": "2026-03-13T20:50:52.816608Z"
+    },
+    "papermill": {
+     "duration": 0.152769,
+     "end_time": "2026-03-13T20:50:52.824759",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:52.671990",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "101.2"
+      ]
+     },
+     "execution_count": 30,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "advancedGravityFieldStress.setSigmaH1K1(material2Name, 101.2)\n",
+    "advancedGravityFieldStress.getSigmaH1K1(material2Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "44eb5880",
+   "metadata": {
+    "papermill": {
+     "duration": 0.021834,
+     "end_time": "2026-03-13T20:50:52.875652",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:52.853818",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set trend and plunge orientation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "682539b4",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:52.941220Z",
+     "iopub.status.busy": "2026-03-13T20:50:52.939903Z",
+     "iopub.status.idle": "2026-03-13T20:50:53.142830Z",
+     "shell.execute_reply": "2026-03-13T20:50:53.139342Z"
+    },
+    "papermill": {
+     "duration": 0.23832,
+     "end_time": "2026-03-13T20:50:53.146760",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:52.908440",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(18.4349, 13.2, 78.435)"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "advancedGravityFieldStress.setTrendPlungeOrientation(material2Name, 18.4349, 13.2, 78.435)\n",
+    "advancedGravityFieldStress.getTrendPlungeOrientation(material2Name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "e3166ab1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:53.206868Z",
+     "iopub.status.busy": "2026-03-13T20:50:53.205605Z",
+     "iopub.status.idle": "2026-03-13T20:50:53.230712Z",
+     "shell.execute_reply": "2026-03-13T20:50:53.226985Z"
+    },
+    "papermill": {
+     "duration": 0.054977,
+     "end_time": "2026-03-13T20:50:53.233447",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:53.178470",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(0.416069423439195, 0.08514194847222456, 0.9053381045163894),\n",
+       " (0.3078718944625007, 0.9236183068344723, -0.22835087011065575)]"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "advancedGravityFieldStress.getVectorOrientation(material2Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018332,
+     "end_time": "2026-03-13T20:50:53.276588",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:53.258256",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:53.333997Z",
+     "iopub.status.busy": "2026-03-13T20:50:53.332615Z",
+     "iopub.status.idle": "2026-03-13T20:50:57.016976Z",
+     "shell.execute_reply": "2026-03-13T20:50:57.015528Z"
+    },
+    "papermill": {
+     "duration": 3.719269,
+     "end_time": "2026-03-13T20:50:57.018345",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:53.299076",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0bade837",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013542,
+     "end_time": "2026-03-13T20:50:57.045379",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:57.031837",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "80c14e6d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:50:57.077956Z",
+     "iopub.status.busy": "2026-03-13T20:50:57.076871Z",
+     "iopub.status.idle": "2026-03-13T20:51:02.509655Z",
+     "shell.execute_reply": "2026-03-13T20:51:02.506725Z"
+    },
+    "papermill": {
+     "duration": 5.453639,
+     "end_time": "2026-03-13T20:51:02.512567",
+     "exception": false,
+     "start_time": "2026-03-13T20:50:57.058928",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c8cb2c15",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013453,
+     "end_time": "2026-03-13T20:51:02.537706",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:02.524253",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "abcd494f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:51:02.560586Z",
+     "iopub.status.busy": "2026-03-13T20:51:02.560214Z",
+     "iopub.status.idle": "2026-03-13T20:51:50.361974Z",
+     "shell.execute_reply": "2026-03-13T20:51:50.360285Z"
+    },
+    "papermill": {
+     "duration": 47.816017,
+     "end_time": "2026-03-13T20:51:50.363316",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:02.547299",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:51:02,568 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60105...\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Field Stress Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.loadings.LoadingEnums import *\n",
+    "from rs3.CommonEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60105\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Constant Field Stress\n",
+    "# Field stress type needs to be set to CONSTANT. Otherwise, script cannot make changes to constant field stress properties.\n",
+    "model.Loadings.FieldStress.setType(FieldStressType.CONSTANT)\n",
+    "# Create a short alias to avoid repeatedly typing model.Mesh.Uniform\n",
+    "constantFieldStress = model.Loadings.FieldStress.Constant\n",
+    "# Check current constant field stress properties.\n",
+    "constantFieldStress.setProperties(Sigma1=15.1, Sigma2=10.2, Sigma3=5.3)\n",
+    "# Set orientation of field stress by normal vectors.\n",
+    "constantFieldStress.setOrientationType(LinearDirectionType.NORMAL_VECTOR)\n",
+    "constantFieldStress.setVectorOrientation((1.0, 3.0, 2.0), (1.0, 3.0, -5.0))\n",
+    "# Set orientation of field stress by trend and plunge.\n",
+    "constantFieldStress.setOrientationType(LinearDirectionType.TREND_PLUNGE)\n",
+    "constantFieldStress.setTrendPlungeOrientation(18.4349, -32.3115, 108.435, 0)\n",
+    "\n",
+    "# 2. Gravity Field Stress\n",
+    "# Field stress type needs to be set to GRAVITY. Otherwise, script cannot make changes to gravity field stress properties.\n",
+    "model.Loadings.FieldStress.setType(FieldStressType.GRAVITY)\n",
+    "gravityFieldStress = model.Loadings.FieldStress.Gravity\n",
+    "gravityFieldStress.setProperties(UseActualGroundSurface=False, GroundSurfaceElevation=10.5, OverburdenUnitWeight=19.02)\n",
+    "gravityFieldStress.setSigmaH1K1(1.5)\n",
+    "# Set orientation of field stress by normal vectors.\n",
+    "gravityFieldStress.setOrientationType(LinearDirectionType.NORMAL_VECTOR)\n",
+    "gravityFieldStress.setVectorOrientation((1.0, 3.0, 2.0), (1.0, 3.0, -5.0))\n",
+    "# Set orientation of field stress by trend and plunge.\n",
+    "gravityFieldStress.setOrientationType(LinearDirectionType.TREND_PLUNGE)\n",
+    "gravityFieldStress.setTrendPlungeOrientation(18.4349, 13.2, 78.435)\n",
+    "\n",
+    "# 3. Advanced Constant Field Stress\n",
+    "# Field stress type needs to be set to CONSTANT. Otherwise, script cannot make changes to constant field stress properties.\n",
+    "model.Loadings.FieldStress.setType(FieldStressType.CONSTANT)\n",
+    "advancedConstantFieldStress = model.Loadings.FieldStress.AdvancedConstant\n",
+    "material1Name = model.getAllMaterialProperties()[0].getMaterialName()\n",
+    "advancedConstantFieldStress.setApplyCustomFieldStress(material1Name, True)\n",
+    "advancedConstantFieldStress.setSigma1(material1Name, 246.289)\n",
+    "# Set the vector orientation of the material.\n",
+    "advancedConstantFieldStress.setVectorOrientation(material1Name, (1.0, 3.0, 2.0), (1.0, 3.0, -5.0))\n",
+    "# Set the trend and plunge orientation of the material.\n",
+    "advancedConstantFieldStress.setTrendPlungeOrientation(material1Name, 18.4349, -32.3115, 108.435, 0)\n",
+    "\n",
+    "# 4. Advanced Gravity Field Stress\n",
+    "# Field stress type needs to be set to GRAVITY. Otherwise, script cannot make changes to gravity field stress properties.\n",
+    "model.Loadings.FieldStress.setType(FieldStressType.GRAVITY)\n",
+    "advancedGravityFieldStress = model.Loadings.FieldStress.AdvancedGravity\n",
+    "material2Name = model.getAllMaterialProperties()[1].getMaterialName()\n",
+    "advancedGravityFieldStress.setApplyCustomFieldStress(material2Name, True)\n",
+    "advancedGravityFieldStress.setSigmaH1K1(material2Name, 101.2)\n",
+    "# Set trend and plunge orientation.\n",
+    "advancedGravityFieldStress.setTrendPlungeOrientation(material2Name, 18.4349, 13.2, 78.435)\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 117.402013,
+   "end_time": "2026-03-13T20:51:52.639930",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\field_stress_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\field_stress_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:49:55.237917",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

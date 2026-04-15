@@ -1,0 +1,1410 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Project Settings Script Examples &#8212; RS3 Scripting Reference Manual  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'example_code/model/project_settings_example';</script>
+    <link rel="icon" href="../../_static/rocscience_favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="External Volume and Selection Script Examples" href="external_volume_and_selection_example.html" />
+    <link rel="prev" title="Open and Close Model Script Example" href="open_and_close_model_example.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/rocscience-logo-primary.png" class="logo__image only-light" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+    <img src="../../_static/rocscience-logo-primary.png" class="logo__image only-dark pst-js-only" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../generatedAPIDocFiles/rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../generatedAPIDocFiles/rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="model_example.html">Model Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open_and_close_model_example.html">Open and Close Model Script Example</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project Settings Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_volume_and_selection_example.html">External Volume and Selection Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="field_stress_example.html">Field Stress Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restraints_example.html">Restraints Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_example.html">Mesh Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute_example.html">Compute Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../material/initial_conditions_example.html">Material Initial Conditions Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/constitutive_models_example.html">Material Constitutive Models Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/hydraulic_example.html">Material Hydraulic Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/datum_example.html">Material Datum Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/material_stage_factors_example.html">Material Stage Factors Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supports/beam_example.html">Beam Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/bolt_example.html">Bolt Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/joint_example.html">Joint Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/liner_example.html">Liner Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/pile_example.html">Pile Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/composite_liner_example.html">Composite Liner Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../groundwater/water_by_location_example.html">Water By Location Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groundwater/water_grid_example.html">Water Grid Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../results/solid_result_example.html">Solid Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/beam_result_example.html">Beam Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/bolt_result_example.html">Bolt Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/joint_result_example.html">Joint Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/pile_result_example.html">Pile Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/composite_liner_result_example.html">Composite Liner Result Script Example</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../examples.html" class="nav-link">Python Script Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Project Settings Script Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="project-settings-script-examples">
+<span id="project-settings-example"></span><h1>Project Settings Script Examples<a class="headerlink" href="#project-settings-script-examples" title="Link to this heading">#</a></h1>
+<p>Download the <a class="reference external" href="https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3">blankModel.rs3v3</a> for this example.</p>
+<p>You may jump to a specific section by selecting the table on content on the right side of the page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rs3.RS3Modeler</span> <span class="kn">import</span> <span class="n">RS3Modeler</span>
+<span class="kn">from</span> <span class="nn">rs3.projectSettings.ProjectSettingEnums</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get the current folder directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Specify a port number that is not in use and start the RS3 program.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="mi">60103</span>
+<span class="n">RS3Modeler</span><span class="o">.</span><span class="n">startApplication</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 17:00:36,601 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60103...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Connect with the RS3 Modeler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modeler</span> <span class="o">=</span> <span class="n">RS3Modeler</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blankModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\blankModel.rs3v3&quot;</span>
+<span class="n">copiedModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\copiedModel.rs3v3&quot;</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">blankModelPath</span><span class="p">,</span> <span class="n">copiedModelPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Open the copied model file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="n">copiedModelPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="units">
+<h2>1. Units<a class="headerlink" href="#units" title="Link to this heading">#</a></h2>
+<p>Change the units will impact almost all properties in the project. Therefore, we highly recommend you to set the correct unit at the beginning of the project.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Units</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">.</span><span class="n">getUnitSystem</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;UnitSystemType.METRIC_KPA: &#39;RFC_METRIC_KPA&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, properties will be reset when the new unit system is set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">.</span><span class="n">setUnitSystem</span><span class="p">(</span><span class="n">UnitSystemType</span><span class="o">.</span><span class="n">METRIC_MPA</span><span class="p">)</span>
+<span class="n">units</span><span class="o">.</span><span class="n">getUnitSystem</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;UnitSystemType.METRIC_MPA: &#39;RFC_METRIC_MPA&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">.</span><span class="n">getTimeUnits</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;TimeUnitsType.DAYS: &#39;DAYS&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">.</span><span class="n">getPermeabilityUnits</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;PermeabilityUnitsType.METER_SECONDS: &#39;METER_SECONDS&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">.</span><span class="n">setTimeUnits</span><span class="p">(</span><span class="n">TimeUnitsType</span><span class="o">.</span><span class="n">HOURS</span><span class="p">)</span>
+<span class="n">units</span><span class="o">.</span><span class="n">getTimeUnits</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;TimeUnitsType.HOURS: &#39;HOURS&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">.</span><span class="n">setPermeabilityUnits</span><span class="p">(</span><span class="n">PermeabilityUnitsType</span><span class="o">.</span><span class="n">METER_SECONDS</span><span class="p">)</span>
+<span class="n">units</span><span class="o">.</span><span class="n">getPermeabilityUnits</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;PermeabilityUnitsType.METER_SECONDS: &#39;METER_SECONDS&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stages">
+<h2>2. Stages<a class="headerlink" href="#stages" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Stages</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="stage-names">
+<h3>2.1 Stage Names<a class="headerlink" href="#stage-names" title="Link to this heading">#</a></h3>
+<p>Get defined stages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">originalStageNames</span> <span class="o">=</span> <span class="n">stages</span><span class="o">.</span><span class="n">getDefinedStageNames</span><span class="p">()</span>
+<span class="n">originalStageNames</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Stage 1&#39;, &#39;Stage 2&#39;, &#39;Stage 3&#39;, &#39;Stage 4&#39;, &#39;Stage 5&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rename every stage through a for loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stageNames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Initial Conditions&quot;</span><span class="p">,</span> <span class="s2">&quot;Excavate Tunnel&quot;</span><span class="p">,</span> <span class="s2">&quot;Excavate Foundation&quot;</span><span class="p">,</span> <span class="s2">&quot;Pour Concrete Foundation&quot;</span><span class="p">,</span> <span class="s2">&quot;Loading Foundation&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">originalStageNames</span><span class="p">)):</span>
+    <span class="n">stageNum</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">stages</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">stageNum</span><span class="p">,</span> <span class="n">stageNames</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">newStageName</span> <span class="o">=</span> <span class="n">stages</span><span class="o">.</span><span class="n">getName</span><span class="p">(</span><span class="n">stageNum</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The new stage name of stage </span><span class="si">{</span><span class="n">stageNum</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">newStageName</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The new stage name of stage 1 is Initial Conditions
+The new stage name of stage 2 is Excavate Tunnel
+The new stage name of stage 3 is Excavate Foundation
+The new stage name of stage 4 is Pour Concrete Foundation
+The new stage name of stage 5 is Loading Foundation
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-total-number-of-stages">
+<h3>2.2 Set Total Number of Stages<a class="headerlink" href="#set-total-number-of-stages" title="Link to this heading">#</a></h3>
+<p>Add three more stages to the current model. The new stages will use the default stage names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">setTotalNumberOfStages</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">getDefinedStageNames</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Initial Conditions&#39;,
+ &#39;Excavate Tunnel&#39;,
+ &#39;Excavate Foundation&#39;,
+ &#39;Pour Concrete Foundation&#39;,
+ &#39;Loading Foundation&#39;,
+ &#39;Stage 6&#39;,
+ &#39;Stage 7&#39;,
+ &#39;Stage 8&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reduce the number of stages will delete stages from the last stage.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">setTotalNumberOfStages</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">getDefinedStageNames</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Initial Conditions&#39;,
+ &#39;Excavate Tunnel&#39;,
+ &#39;Excavate Foundation&#39;,
+ &#39;Pour Concrete Foundation&#39;,
+ &#39;Loading Foundation&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-or-delete-stages">
+<h3>2.3 Add or Delete Stages<a class="headerlink" href="#add-or-delete-stages" title="Link to this heading">#</a></h3>
+<p>Add 2 stages at the end of the project</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">addStages</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remove 2 stages from the end</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">removeStages</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add 3 stages after the stage 2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">addStages</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remove 3 stages starting from stage 3 (removes stages 3, 4, 5)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">removeStages</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add 2 stages at the end (same as passing -1)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">addStages</span><span class="p">(</span><span class="n">numberOfStages</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remove 2 stages from the end (same as passing -1 explicitly)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">removeStages</span><span class="p">(</span><span class="n">numberOfStages</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add 1 stage after the stage 5</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">addStages</span><span class="p">(</span><span class="n">numberOfStages</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">referenceStage</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remove 1 stage at stage 6</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">removeStages</span><span class="p">(</span><span class="n">numberOfStages</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">startingStage</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-time-and-pwp-method">
+<h3>2.4 Set time and PWP Method<a class="headerlink" href="#set-time-and-pwp-method" title="Link to this heading">#</a></h3>
+<p>When the groundwater model is set to transient analysis, time and pore water pressure (PWP) method are required.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Groundwater</span><span class="o">.</span><span class="n">setGroundwaterMethod</span><span class="p">(</span><span class="n">GroundwaterMethodType</span><span class="o">.</span><span class="n">GW_TRANSIENT</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Groundwater</span><span class="o">.</span><span class="n">setPWPMethodByStage</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">setTime</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">getTime</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stages</span><span class="o">.</span><span class="n">setPWPMethod</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">PWPMethod</span><span class="o">.</span><span class="n">GW_SURFACES</span><span class="p">)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">getPWPMethod</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;PWPMethod.GW_SURFACES: &#39;GW_SURFACES&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="stress-analysis">
+<h2>3. Stress Analysis<a class="headerlink" href="#stress-analysis" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stressAnalysis</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">StressAnalysis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get properties as a dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stressAnalysis</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Iterations&#39;: 500,
+ &#39;Tolerance&#39;: 0.001,
+ &#39;NumberLoadSteps&#39;: 10,
+ &#39;IterationsMin&#39;: 20,
+ &#39;LoadIncrementInitial&#39;: 0.1,
+ &#39;LoadIncrementMin&#39;: 0.05,
+ &#39;LoadIncrementMax&#39;: 1.0,
+ &#39;IterationsTrackConvergence&#39;: 5,
+ &#39;ScaleForceIncrementUp&#39;: True,
+ &#39;ScaleForceIncrementUpVal&#39;: 1.3,
+ &#39;ScaleForceIncrementDown&#39;: True,
+ &#39;ScaleForceIncrementDownVal&#39;: 0.5,
+ &#39;IsAcceleratedConvergenceActive&#39;: True,
+ &#39;AccelerateInitialStiffness&#39;: True,
+ &#39;AlphaMin&#39;: 0.1,
+ &#39;AlphaMax&#39;: 10.0,
+ &#39;AbortUponFailure&#39;: False,
+ &#39;EnableFileRecovery&#39;: True,
+ &#39;TensileFailureReduceHoekBrownTensileStrengthToZero&#39;: False,
+ &#39;TensileFailureReduceShearStrengthToResidual&#39;: True,
+ &#39;UseDefaultMaterialForAdvancedMaterialsOutsidePlasticRegion&#39;: True}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set multiple properties at the same time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stressAnalysis</span><span class="o">.</span><span class="n">setProperties</span><span class="p">(</span><span class="n">Iterations</span><span class="o">=</span><span class="mi">520</span><span class="p">,</span> <span class="n">Tolerance</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="n">stressAnalysis</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Iterations&#39;: 520,
+ &#39;Tolerance&#39;: 0.005,
+ &#39;NumberLoadSteps&#39;: 10,
+ &#39;IterationsMin&#39;: 20,
+ &#39;LoadIncrementInitial&#39;: 0.1,
+ &#39;LoadIncrementMin&#39;: 0.05,
+ &#39;LoadIncrementMax&#39;: 1.0,
+ &#39;IterationsTrackConvergence&#39;: 5,
+ &#39;ScaleForceIncrementUp&#39;: True,
+ &#39;ScaleForceIncrementUpVal&#39;: 1.3,
+ &#39;ScaleForceIncrementDown&#39;: True,
+ &#39;ScaleForceIncrementDownVal&#39;: 0.5,
+ &#39;IsAcceleratedConvergenceActive&#39;: True,
+ &#39;AccelerateInitialStiffness&#39;: True,
+ &#39;AlphaMin&#39;: 0.1,
+ &#39;AlphaMax&#39;: 10.0,
+ &#39;AbortUponFailure&#39;: False,
+ &#39;EnableFileRecovery&#39;: True,
+ &#39;TensileFailureReduceHoekBrownTensileStrengthToZero&#39;: False,
+ &#39;TensileFailureReduceShearStrengthToResidual&#39;: True,
+ &#39;UseDefaultMaterialForAdvancedMaterialsOutsidePlasticRegion&#39;: True}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get a single property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stressAnalysis</span><span class="o">.</span><span class="n">getConvergenceCriteriaType</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StressConvergenceCriteriaType.ABSOLUTE_FORCE_ENERGY: &#39;ABSOLUTE_FORCE_ENERGY&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set a single property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stressAnalysis</span><span class="o">.</span><span class="n">setConvergenceCriteriaType</span><span class="p">(</span><span class="n">StressConvergenceCriteriaType</span><span class="o">.</span><span class="n">ABSOLUTE_ENERGY</span><span class="p">)</span>
+<span class="n">stressAnalysis</span><span class="o">.</span><span class="n">getConvergenceCriteriaType</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StressConvergenceCriteriaType.ABSOLUTE_ENERGY: &#39;ABSOLUTE_ENERGY&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solver-options">
+<h2>4. Solver Options<a class="headerlink" href="#solver-options" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solverOptions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">SolverOptions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get the current analaysis type and set it to the new type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solverOptions</span><span class="o">.</span><span class="n">getAnalysisType</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AnalysisType.UNCOUPLED: &#39;UNCOUPLED&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solverOptions</span><span class="o">.</span><span class="n">setAnalysisType</span><span class="p">(</span><span class="n">AnalysisType</span><span class="o">.</span><span class="n">COUPLED_BIOT</span><span class="p">)</span>
+<span class="n">solverOptions</span><span class="o">.</span><span class="n">getAnalysisType</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AnalysisType.COUPLED_BIOT: &#39;COUPLED_BIOT&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get the current solver type and change it to the new type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solverOptions</span><span class="o">.</span><span class="n">getSolverType</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SolverType.AUTO: &#39;AUTO&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solverOptions</span><span class="o">.</span><span class="n">setSolverType</span><span class="p">(</span><span class="n">SolverType</span><span class="o">.</span><span class="n">DIRECT_CPU</span><span class="p">)</span>
+<span class="n">solverOptions</span><span class="o">.</span><span class="n">getSolverType</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SolverType.DIRECT_CPU: &#39;DIRECT&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="groundwater">
+<h2>5. Groundwater<a class="headerlink" href="#groundwater" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groundwater</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Groundwater</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groundwater</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;PoreFluidUnitWeight&#39;: 9.81,
+ &#39;IsNegativePorePressureCutoff&#39;: False,
+ &#39;NegativePorePressureCutoff&#39;: 0.0,
+ &#39;PWPMethodByStage&#39;: True,
+ &#39;MaxNumIterations&#39;: 500,
+ &#39;Tolerance&#39;: 0.001,
+ &#39;LoadSteps&#39;: 10,
+ &#39;TimeSteps&#39;: 1,
+ &#39;IsScaleTolerance&#39;: True,
+ &#39;IsAddFluidBodyForce&#39;: True,
+ &#39;FluidBulkModulus&#39;: 2200000.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groundwater</span><span class="o">.</span><span class="n">setProperties</span><span class="p">(</span><span class="n">PoreFluidUnitWeight</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">PWPMethodByStage</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">groundwater</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;PoreFluidUnitWeight&#39;: 10.0,
+ &#39;IsNegativePorePressureCutoff&#39;: False,
+ &#39;NegativePorePressureCutoff&#39;: 0.0,
+ &#39;PWPMethodByStage&#39;: False,
+ &#39;MaxNumIterations&#39;: 500,
+ &#39;Tolerance&#39;: 0.001,
+ &#39;LoadSteps&#39;: 10,
+ &#39;TimeSteps&#39;: 1,
+ &#39;IsScaleTolerance&#39;: True,
+ &#39;IsAddFluidBodyForce&#39;: True,
+ &#39;FluidBulkModulus&#39;: 2200000.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groundwater</span><span class="o">.</span><span class="n">getGroundwaterMethod</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;GroundwaterMethodType.GW_TRANSIENT: &#39;GW_TRANSIENT&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groundwater</span><span class="o">.</span><span class="n">setGroundwaterMethod</span><span class="p">(</span><span class="n">GroundwaterMethodType</span><span class="o">.</span><span class="n">GW_NONE</span><span class="p">)</span>
+<span class="n">groundwater</span><span class="o">.</span><span class="n">getGroundwaterMethod</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;GroundwaterMethodType.GW_NONE: &#39;GW_NONE&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="shear-strength-reduction">
+<h2>6. Shear Strength Reduction<a class="headerlink" href="#shear-strength-reduction" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">ShearStrengthReduction</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Turn on shear strength reduction analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssr</span><span class="o">.</span><span class="n">setSRFIsOn</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssr</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SRFIsOn&#39;: True,
+ &#39;InitialEstimateOfSRF&#39;: 1.0,
+ &#39;SRFAuto&#39;: True,
+ &#39;SRFTolerance&#39;: 0.01,
+ &#39;SRFStepSize&#39;: 0.2,
+ &#39;FinalSRF&#39;: 2.0,
+ &#39;AccelerateSRF&#39;: False,
+ &#39;SRFAccelerateAdvanced&#39;: True,
+ &#39;ApplySSRToMohrCoulombTensileStrength&#39;: True,
+ &#39;SRFUserdefined&#39;: False,
+ &#39;StressAnalysisTolerance&#39;: 0.001,
+ &#39;MaximumNumberOfIterations&#39;: 500}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssr</span><span class="o">.</span><span class="n">setProperties</span><span class="p">(</span><span class="n">AccelerateSRF</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SRFIsOn&#39;: True,
+ &#39;InitialEstimateOfSRF&#39;: 1.0,
+ &#39;SRFAuto&#39;: True,
+ &#39;SRFTolerance&#39;: 0.01,
+ &#39;SRFStepSize&#39;: 0.2,
+ &#39;FinalSRF&#39;: 2.0,
+ &#39;AccelerateSRF&#39;: True,
+ &#39;SRFAccelerateAdvanced&#39;: True,
+ &#39;ApplySSRToMohrCoulombTensileStrength&#39;: True,
+ &#39;SRFUserdefined&#39;: False,
+ &#39;StressAnalysisTolerance&#39;: 0.001,
+ &#39;MaximumNumberOfIterations&#39;: 500}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssr</span><span class="o">.</span><span class="n">setSRFAccelerateAdvanced</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">getSRFAccelerateAdvanced</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssr</span><span class="o">.</span><span class="n">setSRFUserdefined</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">setSSRConvergenceType</span><span class="p">(</span><span class="n">SSRConvergenceType</span><span class="o">.</span><span class="n">ABSOLUTE_FORCE</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">getSSRConvergenceType</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SSRConvergenceType.ABSOLUTE_FORCE: &#39;ABSOLUTE_FORCE&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssr</span><span class="o">.</span><span class="n">setSRFIsOn</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dynamic">
+<h2>7. Dynamic<a class="headerlink" href="#dynamic" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dynamic</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Dynamic</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Turn on dynamic analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dynamic</span><span class="o">.</span><span class="n">setIsDynamicOn</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dynamic</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;IsDynamicOn&#39;: True,
+ &#39;IsRayleighDampingbyAlphaMOn&#39;: True,
+ &#39;AlphaM&#39;: 1.5,
+ &#39;BetaK&#39;: 0.002,
+ &#39;Frequency1&#39;: 5.0,
+ &#39;Frequency2&#39;: 20.0,
+ &#39;DampingRatio1&#39;: 0.0,
+ &#39;DampingRatio2&#39;: 0.0,
+ &#39;NumTimeSteps&#39;: 1,
+ &#39;Beta&#39;: 0.25,
+ &#39;Gamma&#39;: 0.5}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dynamic</span><span class="o">.</span><span class="n">setIsRayleighDampingbyAlphaMOn</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dynamic</span><span class="o">.</span><span class="n">getIsRayleighDampingbyAlphaMOn</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dynamic</span><span class="o">.</span><span class="n">setProperties</span><span class="p">(</span><span class="n">Frequency1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">Frequency2</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">dynamic</span><span class="o">.</span><span class="n">getProperties</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;IsDynamicOn&#39;: True,
+ &#39;IsRayleighDampingbyAlphaMOn&#39;: False,
+ &#39;AlphaM&#39;: 1.5,
+ &#39;BetaK&#39;: 0.002,
+ &#39;Frequency1&#39;: 10.0,
+ &#39;Frequency2&#39;: 25.0,
+ &#39;DampingRatio1&#39;: 0.0,
+ &#39;DampingRatio2&#39;: 0.0,
+ &#39;NumTimeSteps&#39;: 1,
+ &#39;Beta&#39;: 0.25,
+ &#39;Gamma&#39;: 0.5}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Save and close the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Close the program.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modeler</span><span class="o">.</span><span class="n">closeProgram</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="full-script">
+<h2>Full Script<a class="headerlink" href="#full-script" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Project Settings Script Examples</span>
+<span class="c1"># Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example. </span>
+<span class="kn">from</span> <span class="nn">rs3.RS3Modeler</span> <span class="kn">import</span> <span class="n">RS3Modeler</span>
+<span class="kn">from</span> <span class="nn">rs3.projectSettings.ProjectSettingEnums</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="c1"># Get the current folder directory.</span>
+<span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+<span class="c1"># Specify a port number that is not in use and start the RS3 program.</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">60103</span>
+<span class="n">RS3Modeler</span><span class="o">.</span><span class="n">startApplication</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+<span class="c1"># Connect with the RS3 Modeler.</span>
+<span class="n">modeler</span> <span class="o">=</span> <span class="n">RS3Modeler</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+<span class="c1"># For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.</span>
+<span class="n">blankModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\blankModel.rs3v3&quot;</span>
+<span class="n">copiedModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\copiedModel.rs3v3&quot;</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">blankModelPath</span><span class="p">,</span> <span class="n">copiedModelPath</span><span class="p">)</span>
+<span class="c1"># Open the copied model file.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="n">copiedModelPath</span><span class="p">)</span>
+
+<span class="c1"># 1. Units</span>
+<span class="c1"># Change the units will impact almost all properties in the project. </span>
+<span class="c1"># Therefore, we highly recommend you to set the correct unit at the beginning of the project.</span>
+<span class="n">units</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Units</span>
+<span class="c1"># By default, properties will be reset when the new unit system is set.</span>
+<span class="n">units</span><span class="o">.</span><span class="n">setUnitSystem</span><span class="p">(</span><span class="n">UnitSystemType</span><span class="o">.</span><span class="n">METRIC_MPA</span><span class="p">)</span>
+<span class="n">units</span><span class="o">.</span><span class="n">setTimeUnits</span><span class="p">(</span><span class="n">TimeUnitsType</span><span class="o">.</span><span class="n">HOURS</span><span class="p">)</span>
+<span class="n">units</span><span class="o">.</span><span class="n">setPermeabilityUnits</span><span class="p">(</span><span class="n">PermeabilityUnitsType</span><span class="o">.</span><span class="n">METER_SECONDS</span><span class="p">)</span>
+
+<span class="c1"># 2. Stages</span>
+<span class="n">stages</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Stages</span>
+
+<span class="c1"># 2.1 Stage Names</span>
+<span class="c1"># Get defined stages.</span>
+<span class="n">originalStageNames</span> <span class="o">=</span> <span class="n">stages</span><span class="o">.</span><span class="n">getDefinedStageNames</span><span class="p">()</span>
+<span class="c1"># Rename every stage through a for loop.</span>
+<span class="n">stageNames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Initial Conditions&quot;</span><span class="p">,</span> <span class="s2">&quot;Excavate Tunnel&quot;</span><span class="p">,</span> <span class="s2">&quot;Excavate Foundation&quot;</span><span class="p">,</span> <span class="s2">&quot;Pour Concrete Foundation&quot;</span><span class="p">,</span> <span class="s2">&quot;Loading Foundation&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">originalStageNames</span><span class="p">)):</span>
+    <span class="n">stageNum</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">stages</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">stageNum</span><span class="p">,</span> <span class="n">stageNames</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">newStageName</span> <span class="o">=</span> <span class="n">stages</span><span class="o">.</span><span class="n">getName</span><span class="p">(</span><span class="n">stageNum</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The new stage name of stage </span><span class="si">{</span><span class="n">stageNum</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">newStageName</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+<span class="c1"># 2.2 Set Total Number of Stages</span>
+<span class="c1"># Add three more stages to the current model. The new stages will use the default stage names.</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">setTotalNumberOfStages</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="c1"># Reduce the number of stages will delete stages from the last stage.</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">setTotalNumberOfStages</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 2.3 Add or Delete Stages</span>
+<span class="c1"># Add 2 stages at the end of the project</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">addStages</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Remove 2 stages from the end</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">removeStages</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Add 3 stages after the stage 2</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">addStages</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Remove 3 stages starting from stage 3 (removes stages 3, 4, 5)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">removeStages</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1"># Add 2 stages at the end (same as passing -1)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">addStages</span><span class="p">(</span><span class="n">numberOfStages</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Remove 2 stages from the end (same as passing -1 explicitly)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">removeStages</span><span class="p">(</span><span class="n">numberOfStages</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Add 1 stage after the stage 5</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">addStages</span><span class="p">(</span><span class="n">numberOfStages</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">referenceStage</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># Remove 1 stage at stage 6</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">removeStages</span><span class="p">(</span><span class="n">numberOfStages</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">startingStage</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># 2.4 Set time and PWP Method</span>
+<span class="c1"># When the groundwater model is set to transient analysis, </span>
+<span class="c1"># time and pore water pressure (PWP) method are required.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Groundwater</span><span class="o">.</span><span class="n">setGroundwaterMethod</span><span class="p">(</span><span class="n">GroundwaterMethodType</span><span class="o">.</span><span class="n">GW_TRANSIENT</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Groundwater</span><span class="o">.</span><span class="n">setPWPMethodByStage</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">setTime</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">stages</span><span class="o">.</span><span class="n">setPWPMethod</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">PWPMethod</span><span class="o">.</span><span class="n">GW_SURFACES</span><span class="p">)</span>
+
+<span class="c1"># 3. Stress Analysis</span>
+<span class="n">stressAnalysis</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">StressAnalysis</span>
+<span class="c1"># Set multiple properties at the same time.</span>
+<span class="n">stressAnalysis</span><span class="o">.</span><span class="n">setProperties</span><span class="p">(</span><span class="n">Iterations</span><span class="o">=</span><span class="mi">520</span><span class="p">,</span> <span class="n">Tolerance</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="c1"># Set a single property.</span>
+<span class="n">stressAnalysis</span><span class="o">.</span><span class="n">setConvergenceCriteriaType</span><span class="p">(</span><span class="n">StressConvergenceCriteriaType</span><span class="o">.</span><span class="n">ABSOLUTE_ENERGY</span><span class="p">)</span>
+
+<span class="c1"># 4. Solver Options</span>
+<span class="n">solverOptions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">SolverOptions</span>
+<span class="c1"># Set the current analysis to the new type.</span>
+<span class="n">solverOptions</span><span class="o">.</span><span class="n">setAnalysisType</span><span class="p">(</span><span class="n">AnalysisType</span><span class="o">.</span><span class="n">COUPLED_BIOT</span><span class="p">)</span>
+<span class="c1"># Get the current solver type and change it to the new type.</span>
+<span class="n">solverOptions</span><span class="o">.</span><span class="n">setSolverType</span><span class="p">(</span><span class="n">SolverType</span><span class="o">.</span><span class="n">DIRECT_CPU</span><span class="p">)</span>
+
+<span class="c1"># 5. Groundwater</span>
+<span class="n">groundwater</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Groundwater</span>
+<span class="n">groundwater</span><span class="o">.</span><span class="n">setProperties</span><span class="p">(</span><span class="n">PoreFluidUnitWeight</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">PWPMethodByStage</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">groundwater</span><span class="o">.</span><span class="n">setGroundwaterMethod</span><span class="p">(</span><span class="n">GroundwaterMethodType</span><span class="o">.</span><span class="n">GW_NONE</span><span class="p">)</span>
+
+<span class="c1"># 6. Shear Strength Reduction</span>
+<span class="n">ssr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">ShearStrengthReduction</span>
+<span class="c1"># Turn on shear strength reduction analysis.</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">setSRFIsOn</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">setProperties</span><span class="p">(</span><span class="n">AccelerateSRF</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">setSRFAccelerateAdvanced</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">setSRFUserdefined</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">setSSRConvergenceType</span><span class="p">(</span><span class="n">SSRConvergenceType</span><span class="o">.</span><span class="n">ABSOLUTE_FORCE</span><span class="p">)</span>
+<span class="n">ssr</span><span class="o">.</span><span class="n">setSRFIsOn</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 7. Dynamic</span>
+<span class="n">dynamic</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Dynamic</span>
+<span class="c1"># Turn on dynamic analysis.</span>
+<span class="n">dynamic</span><span class="o">.</span><span class="n">setIsDynamicOn</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dynamic</span><span class="o">.</span><span class="n">setIsRayleighDampingbyAlphaMOn</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dynamic</span><span class="o">.</span><span class="n">setProperties</span><span class="p">(</span><span class="n">Frequency1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">Frequency2</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># Save and close the model.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 17:01:35,239 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60103...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The new stage name of stage 1 is Initial Conditions
+The new stage name of stage 2 is Excavate Tunnel
+The new stage name of stage 3 is Excavate Foundation
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The new stage name of stage 4 is Pour Concrete Foundation
+The new stage name of stage 5 is Loading Foundation
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="open_and_close_model_example.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Open and Close Model Script Example</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="external_volume_and_selection_example.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">External Volume and Selection Script Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#units">1. Units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stages">2. Stages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-names">2.1 Stage Names</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-total-number-of-stages">2.2 Set Total Number of Stages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-or-delete-stages">2.3 Add or Delete Stages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-time-and-pwp-method">2.4 Set time and PWP Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stress-analysis">3. Stress Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solver-options">4. Solver Options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#groundwater">5. Groundwater</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-strength-reduction">6. Shear Strength Reduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic">7. Dynamic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-script">Full Script</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/example_code/model/project_settings_example.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Rocscience Inc..
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,2895 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012415,
+     "end_time": "2026-03-13T21:00:36.176272",
+     "exception": false,
+     "start_time": "2026-03-13T21:00:36.163857",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(project_settings_example)=\n",
+    "# Project Settings Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013969,
+     "end_time": "2026-03-13T21:00:36.204207",
+     "exception": false,
+     "start_time": "2026-03-13T21:00:36.190238",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example. \n",
+    "\n",
+    "You may jump to a specific section by selecting the table on content on the right side of the page."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:00:36.232057Z",
+     "iopub.status.busy": "2026-03-13T21:00:36.231663Z",
+     "iopub.status.idle": "2026-03-13T21:00:36.488441Z",
+     "shell.execute_reply": "2026-03-13T21:00:36.487434Z"
+    },
+    "papermill": {
+     "duration": 0.275243,
+     "end_time": "2026-03-13T21:00:36.489518",
+     "exception": false,
+     "start_time": "2026-03-13T21:00:36.214275",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.projectSettings.ProjectSettingEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011395,
+     "end_time": "2026-03-13T21:00:36.512065",
+     "exception": false,
+     "start_time": "2026-03-13T21:00:36.500670",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:00:36.542092Z",
+     "iopub.status.busy": "2026-03-13T21:00:36.541565Z",
+     "iopub.status.idle": "2026-03-13T21:00:36.546492Z",
+     "shell.execute_reply": "2026-03-13T21:00:36.545189Z"
+    },
+    "papermill": {
+     "duration": 0.021039,
+     "end_time": "2026-03-13T21:00:36.547727",
+     "exception": false,
+     "start_time": "2026-03-13T21:00:36.526688",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011858,
+     "end_time": "2026-03-13T21:00:36.571215",
+     "exception": false,
+     "start_time": "2026-03-13T21:00:36.559357",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "27f3b611",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:00:36.595339Z",
+     "iopub.status.busy": "2026-03-13T21:00:36.595045Z",
+     "iopub.status.idle": "2026-03-13T21:01:05.933365Z",
+     "shell.execute_reply": "2026-03-13T21:01:05.931697Z"
+    },
+    "papermill": {
+     "duration": 29.352705,
+     "end_time": "2026-03-13T21:01:05.935034",
+     "exception": false,
+     "start_time": "2026-03-13T21:00:36.582329",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:00:36,601 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60103...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60103\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8a09a905",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018362,
+     "end_time": "2026-03-13T21:01:05.969941",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:05.951579",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "1cc03dd7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:06.007594Z",
+     "iopub.status.busy": "2026-03-13T21:01:06.007086Z",
+     "iopub.status.idle": "2026-03-13T21:01:06.019108Z",
+     "shell.execute_reply": "2026-03-13T21:01:06.017611Z"
+    },
+    "papermill": {
+     "duration": 0.033034,
+     "end_time": "2026-03-13T21:01:06.020466",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:05.987432",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014376,
+     "end_time": "2026-03-13T21:01:06.047116",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:06.032740",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:06.076914Z",
+     "iopub.status.busy": "2026-03-13T21:01:06.076435Z",
+     "iopub.status.idle": "2026-03-13T21:01:06.104300Z",
+     "shell.execute_reply": "2026-03-13T21:01:06.102634Z"
+    },
+    "papermill": {
+     "duration": 0.044522,
+     "end_time": "2026-03-13T21:01:06.105796",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:06.061274",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014008,
+     "end_time": "2026-03-13T21:01:06.136507",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:06.122499",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:06.164282Z",
+     "iopub.status.busy": "2026-03-13T21:01:06.163910Z",
+     "iopub.status.idle": "2026-03-13T21:01:19.091203Z",
+     "shell.execute_reply": "2026-03-13T21:01:19.089217Z"
+    },
+    "papermill": {
+     "duration": 12.945147,
+     "end_time": "2026-03-13T21:01:19.093091",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:06.147944",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1915e04e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.019856,
+     "end_time": "2026-03-13T21:01:19.132709",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:19.112853",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Units"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "61a74ed5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.022878,
+     "end_time": "2026-03-13T21:01:19.174184",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:19.151306",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Change the units will impact almost all properties in the project. Therefore, we highly recommend you to set the correct unit at the beginning of the project."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "83126bb6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:19.215807Z",
+     "iopub.status.busy": "2026-03-13T21:01:19.215213Z",
+     "iopub.status.idle": "2026-03-13T21:01:19.223836Z",
+     "shell.execute_reply": "2026-03-13T21:01:19.221457Z"
+    },
+    "papermill": {
+     "duration": 0.033547,
+     "end_time": "2026-03-13T21:01:19.225952",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:19.192405",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "units = model.ProjectSettings.Units"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "d9b3ace5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:19.269485Z",
+     "iopub.status.busy": "2026-03-13T21:01:19.268542Z",
+     "iopub.status.idle": "2026-03-13T21:01:19.682435Z",
+     "shell.execute_reply": "2026-03-13T21:01:19.680783Z"
+    },
+    "papermill": {
+     "duration": 0.438539,
+     "end_time": "2026-03-13T21:01:19.683936",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:19.245397",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<UnitSystemType.METRIC_KPA: 'RFC_METRIC_KPA'>"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "units.getUnitSystem()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "929283d1",
+   "metadata": {
+    "papermill": {
+     "duration": 0.017761,
+     "end_time": "2026-03-13T21:01:19.717632",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:19.699871",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "By default, properties will be reset when the new unit system is set."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "ce7ebb76",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:19.753715Z",
+     "iopub.status.busy": "2026-03-13T21:01:19.753030Z",
+     "iopub.status.idle": "2026-03-13T21:01:20.039702Z",
+     "shell.execute_reply": "2026-03-13T21:01:20.036217Z"
+    },
+    "papermill": {
+     "duration": 0.308381,
+     "end_time": "2026-03-13T21:01:20.041975",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:19.733594",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<UnitSystemType.METRIC_MPA: 'RFC_METRIC_MPA'>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "units.setUnitSystem(UnitSystemType.METRIC_MPA)\n",
+    "units.getUnitSystem()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "9091b57b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:20.094284Z",
+     "iopub.status.busy": "2026-03-13T21:01:20.093545Z",
+     "iopub.status.idle": "2026-03-13T21:01:20.104925Z",
+     "shell.execute_reply": "2026-03-13T21:01:20.102091Z"
+    },
+    "papermill": {
+     "duration": 0.038594,
+     "end_time": "2026-03-13T21:01:20.107274",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.068680",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<TimeUnitsType.DAYS: 'DAYS'>"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "units.getTimeUnits()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "096edcc1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:20.159997Z",
+     "iopub.status.busy": "2026-03-13T21:01:20.158837Z",
+     "iopub.status.idle": "2026-03-13T21:01:20.175664Z",
+     "shell.execute_reply": "2026-03-13T21:01:20.172837Z"
+    },
+    "papermill": {
+     "duration": 0.049101,
+     "end_time": "2026-03-13T21:01:20.177897",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.128796",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<PermeabilityUnitsType.METER_SECONDS: 'METER_SECONDS'>"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "units.getPermeabilityUnits()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "08d9d5df",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:20.226960Z",
+     "iopub.status.busy": "2026-03-13T21:01:20.226477Z",
+     "iopub.status.idle": "2026-03-13T21:01:20.253279Z",
+     "shell.execute_reply": "2026-03-13T21:01:20.250137Z"
+    },
+    "papermill": {
+     "duration": 0.054349,
+     "end_time": "2026-03-13T21:01:20.256306",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.201957",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<TimeUnitsType.HOURS: 'HOURS'>"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "units.setTimeUnits(TimeUnitsType.HOURS)\n",
+    "units.getTimeUnits()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "fc34b7fc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:20.314195Z",
+     "iopub.status.busy": "2026-03-13T21:01:20.313726Z",
+     "iopub.status.idle": "2026-03-13T21:01:20.347659Z",
+     "shell.execute_reply": "2026-03-13T21:01:20.345634Z"
+    },
+    "papermill": {
+     "duration": 0.066034,
+     "end_time": "2026-03-13T21:01:20.349654",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.283620",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<PermeabilityUnitsType.METER_SECONDS: 'METER_SECONDS'>"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "units.setPermeabilityUnits(PermeabilityUnitsType.METER_SECONDS)\n",
+    "units.getPermeabilityUnits()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c9eaa89b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.023879,
+     "end_time": "2026-03-13T21:01:20.397473",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.373594",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Stages"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "ba77fafc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:20.448164Z",
+     "iopub.status.busy": "2026-03-13T21:01:20.447608Z",
+     "iopub.status.idle": "2026-03-13T21:01:20.454316Z",
+     "shell.execute_reply": "2026-03-13T21:01:20.451790Z"
+    },
+    "papermill": {
+     "duration": 0.036287,
+     "end_time": "2026-03-13T21:01:20.457712",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.421425",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages = model.ProjectSettings.Stages"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d43aaeaf",
+   "metadata": {
+    "papermill": {
+     "duration": 0.019528,
+     "end_time": "2026-03-13T21:01:20.496591",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.477063",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.1 Stage Names"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "24baae58",
+   "metadata": {
+    "papermill": {
+     "duration": 0.030017,
+     "end_time": "2026-03-13T21:01:20.547878",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.517861",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get defined stages."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "ef55389c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:20.588800Z",
+     "iopub.status.busy": "2026-03-13T21:01:20.588152Z",
+     "iopub.status.idle": "2026-03-13T21:01:20.628422Z",
+     "shell.execute_reply": "2026-03-13T21:01:20.627123Z"
+    },
+    "papermill": {
+     "duration": 0.06153,
+     "end_time": "2026-03-13T21:01:20.629636",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.568106",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['Stage 1', 'Stage 2', 'Stage 3', 'Stage 4', 'Stage 5']"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "originalStageNames = stages.getDefinedStageNames()\n",
+    "originalStageNames"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7ac477f6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.020362,
+     "end_time": "2026-03-13T21:01:20.669930",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.649568",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Rename every stage through a for loop."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "bfb7e245",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:20.712787Z",
+     "iopub.status.busy": "2026-03-13T21:01:20.712297Z",
+     "iopub.status.idle": "2026-03-13T21:01:20.862175Z",
+     "shell.execute_reply": "2026-03-13T21:01:20.857956Z"
+    },
+    "papermill": {
+     "duration": 0.177347,
+     "end_time": "2026-03-13T21:01:20.864239",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.686892",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The new stage name of stage 1 is Initial Conditions\n",
+      "The new stage name of stage 2 is Excavate Tunnel\n",
+      "The new stage name of stage 3 is Excavate Foundation\n",
+      "The new stage name of stage 4 is Pour Concrete Foundation\n",
+      "The new stage name of stage 5 is Loading Foundation\n"
+     ]
+    }
+   ],
+   "source": [
+    "stageNames = [\"Initial Conditions\", \"Excavate Tunnel\", \"Excavate Foundation\", \"Pour Concrete Foundation\", \"Loading Foundation\"]\n",
+    "for i in range(len(originalStageNames)):\n",
+    "    stageNum = i+1\n",
+    "    stages.setName(stageNum, stageNames[i])\n",
+    "    newStageName = stages.getName(stageNum)\n",
+    "    print(f\"The new stage name of stage {stageNum} is {newStageName}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2cccab2c",
+   "metadata": {
+    "papermill": {
+     "duration": 0.027242,
+     "end_time": "2026-03-13T21:01:20.913596",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.886354",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.2 Set Total Number of Stages"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8ea39cef",
+   "metadata": {
+    "papermill": {
+     "duration": 0.022076,
+     "end_time": "2026-03-13T21:01:20.956266",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.934190",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Add three more stages to the current model. The new stages will use the default stage names."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "7923c8bf",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:20.997356Z",
+     "iopub.status.busy": "2026-03-13T21:01:20.996914Z",
+     "iopub.status.idle": "2026-03-13T21:01:21.103655Z",
+     "shell.execute_reply": "2026-03-13T21:01:21.100030Z"
+    },
+    "papermill": {
+     "duration": 0.130312,
+     "end_time": "2026-03-13T21:01:21.107051",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:20.976739",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['Initial Conditions',\n",
+       " 'Excavate Tunnel',\n",
+       " 'Excavate Foundation',\n",
+       " 'Pour Concrete Foundation',\n",
+       " 'Loading Foundation',\n",
+       " 'Stage 6',\n",
+       " 'Stage 7',\n",
+       " 'Stage 8']"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stages.setTotalNumberOfStages(8)\n",
+    "stages.getDefinedStageNames()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "202c9c69",
+   "metadata": {
+    "papermill": {
+     "duration": 0.026998,
+     "end_time": "2026-03-13T21:01:21.167098",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.140100",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Reduce the number of stages will delete stages from the last stage."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "a4d242b6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:21.223867Z",
+     "iopub.status.busy": "2026-03-13T21:01:21.223049Z",
+     "iopub.status.idle": "2026-03-13T21:01:21.284319Z",
+     "shell.execute_reply": "2026-03-13T21:01:21.282424Z"
+    },
+    "papermill": {
+     "duration": 0.091209,
+     "end_time": "2026-03-13T21:01:21.287921",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.196712",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['Initial Conditions',\n",
+       " 'Excavate Tunnel',\n",
+       " 'Excavate Foundation',\n",
+       " 'Pour Concrete Foundation',\n",
+       " 'Loading Foundation']"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stages.setTotalNumberOfStages(5)\n",
+    "stages.getDefinedStageNames()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a71d6f72",
+   "metadata": {
+    "papermill": {
+     "duration": 0.030779,
+     "end_time": "2026-03-13T21:01:21.345590",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.314811",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.3 Add or Delete Stages"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e9afe8f5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018613,
+     "end_time": "2026-03-13T21:01:21.389083",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.370470",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Add 2 stages at the end of the project"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "e0c1b610",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:21.435603Z",
+     "iopub.status.busy": "2026-03-13T21:01:21.435104Z",
+     "iopub.status.idle": "2026-03-13T21:01:21.474199Z",
+     "shell.execute_reply": "2026-03-13T21:01:21.472491Z"
+    },
+    "papermill": {
+     "duration": 0.063915,
+     "end_time": "2026-03-13T21:01:21.475719",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.411804",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages.addStages(2, -1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8c2acaf8",
+   "metadata": {
+    "papermill": {
+     "duration": 0.019271,
+     "end_time": "2026-03-13T21:01:21.516343",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.497072",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Remove 2 stages from the end"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "7753f3cc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:21.567490Z",
+     "iopub.status.busy": "2026-03-13T21:01:21.566980Z",
+     "iopub.status.idle": "2026-03-13T21:01:21.609907Z",
+     "shell.execute_reply": "2026-03-13T21:01:21.606551Z"
+    },
+    "papermill": {
+     "duration": 0.074846,
+     "end_time": "2026-03-13T21:01:21.611988",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.537142",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages.removeStages(2, -1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c35999e7",
+   "metadata": {
+    "papermill": {
+     "duration": 0.026805,
+     "end_time": "2026-03-13T21:01:21.663901",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.637096",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Add 3 stages after the stage 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "b2d8d2d2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:21.716721Z",
+     "iopub.status.busy": "2026-03-13T21:01:21.716144Z",
+     "iopub.status.idle": "2026-03-13T21:01:21.749205Z",
+     "shell.execute_reply": "2026-03-13T21:01:21.747174Z"
+    },
+    "papermill": {
+     "duration": 0.058472,
+     "end_time": "2026-03-13T21:01:21.751252",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.692780",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages.addStages(3, 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bddef7ef",
+   "metadata": {
+    "papermill": {
+     "duration": 0.023675,
+     "end_time": "2026-03-13T21:01:21.797588",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.773913",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Remove 3 stages starting from stage 3 (removes stages 3, 4, 5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "5c40f153",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:21.855255Z",
+     "iopub.status.busy": "2026-03-13T21:01:21.854675Z",
+     "iopub.status.idle": "2026-03-13T21:01:21.869217Z",
+     "shell.execute_reply": "2026-03-13T21:01:21.866980Z"
+    },
+    "papermill": {
+     "duration": 0.042439,
+     "end_time": "2026-03-13T21:01:21.872962",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.830523",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages.removeStages(3, 3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8e87d24b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.026851,
+     "end_time": "2026-03-13T21:01:21.924466",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.897615",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Add 2 stages at the end (same as passing -1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "bac434e8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:21.984241Z",
+     "iopub.status.busy": "2026-03-13T21:01:21.983877Z",
+     "iopub.status.idle": "2026-03-13T21:01:22.005741Z",
+     "shell.execute_reply": "2026-03-13T21:01:22.002230Z"
+    },
+    "papermill": {
+     "duration": 0.043304,
+     "end_time": "2026-03-13T21:01:22.008054",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:21.964750",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages.addStages(numberOfStages=2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0402fe21",
+   "metadata": {
+    "papermill": {
+     "duration": 0.02312,
+     "end_time": "2026-03-13T21:01:22.053620",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.030500",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Remove 2 stages from the end (same as passing -1 explicitly)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "b5ffb545",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:22.118474Z",
+     "iopub.status.busy": "2026-03-13T21:01:22.117936Z",
+     "iopub.status.idle": "2026-03-13T21:01:22.134958Z",
+     "shell.execute_reply": "2026-03-13T21:01:22.133499Z"
+    },
+    "papermill": {
+     "duration": 0.047859,
+     "end_time": "2026-03-13T21:01:22.137428",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.089569",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages.removeStages(numberOfStages=2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e1076eec",
+   "metadata": {
+    "papermill": {
+     "duration": 0.034112,
+     "end_time": "2026-03-13T21:01:22.196252",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.162140",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Add 1 stage after the stage 5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "cd79060b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:22.230176Z",
+     "iopub.status.busy": "2026-03-13T21:01:22.229798Z",
+     "iopub.status.idle": "2026-03-13T21:01:22.259688Z",
+     "shell.execute_reply": "2026-03-13T21:01:22.257640Z"
+    },
+    "papermill": {
+     "duration": 0.046704,
+     "end_time": "2026-03-13T21:01:22.261243",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.214539",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages.addStages(numberOfStages=1, referenceStage=5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "289246fb",
+   "metadata": {
+    "papermill": {
+     "duration": 0.023426,
+     "end_time": "2026-03-13T21:01:22.304375",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.280949",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Remove 1 stage at stage 6"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "5b9e44fb",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:22.348525Z",
+     "iopub.status.busy": "2026-03-13T21:01:22.348120Z",
+     "iopub.status.idle": "2026-03-13T21:01:22.363517Z",
+     "shell.execute_reply": "2026-03-13T21:01:22.361894Z"
+    },
+    "papermill": {
+     "duration": 0.036697,
+     "end_time": "2026-03-13T21:01:22.365124",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.328427",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stages.removeStages(numberOfStages=1, startingStage=6)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a47e08a9",
+   "metadata": {
+    "papermill": {
+     "duration": 0.026716,
+     "end_time": "2026-03-13T21:01:22.411549",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.384833",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 2.4 Set time and PWP Method"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "13d53878",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018975,
+     "end_time": "2026-03-13T21:01:22.451383",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.432408",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "When the groundwater model is set to transient analysis, time and pore water pressure (PWP) method are required."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "049c3a47",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:22.488253Z",
+     "iopub.status.busy": "2026-03-13T21:01:22.487731Z",
+     "iopub.status.idle": "2026-03-13T21:01:22.714935Z",
+     "shell.execute_reply": "2026-03-13T21:01:22.713068Z"
+    },
+    "papermill": {
+     "duration": 0.248982,
+     "end_time": "2026-03-13T21:01:22.716366",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.467384",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.ProjectSettings.Groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_TRANSIENT)\n",
+    "model.ProjectSettings.Groundwater.setPWPMethodByStage(True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "bb3029f9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:22.759270Z",
+     "iopub.status.busy": "2026-03-13T21:01:22.758314Z",
+     "iopub.status.idle": "2026-03-13T21:01:22.786693Z",
+     "shell.execute_reply": "2026-03-13T21:01:22.785126Z"
+    },
+    "papermill": {
+     "duration": 0.055014,
+     "end_time": "2026-03-13T21:01:22.788541",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.733527",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.5"
+      ]
+     },
+     "execution_count": 28,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stages.setTime(2, 1.5)\n",
+    "stages.getTime(2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "246c0262",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:22.838232Z",
+     "iopub.status.busy": "2026-03-13T21:01:22.837081Z",
+     "iopub.status.idle": "2026-03-13T21:01:22.862176Z",
+     "shell.execute_reply": "2026-03-13T21:01:22.860274Z"
+    },
+    "papermill": {
+     "duration": 0.050143,
+     "end_time": "2026-03-13T21:01:22.863741",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.813598",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<PWPMethod.GW_SURFACES: 'GW_SURFACES'>"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stages.setPWPMethod(2, PWPMethod.GW_SURFACES)\n",
+    "stages.getPWPMethod(2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e5ffc329",
+   "metadata": {
+    "papermill": {
+     "duration": 0.025256,
+     "end_time": "2026-03-13T21:01:22.912229",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.886973",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Stress Analysis"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "f4aa199c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:22.948813Z",
+     "iopub.status.busy": "2026-03-13T21:01:22.948432Z",
+     "iopub.status.idle": "2026-03-13T21:01:22.953329Z",
+     "shell.execute_reply": "2026-03-13T21:01:22.952109Z"
+    },
+    "papermill": {
+     "duration": 0.023662,
+     "end_time": "2026-03-13T21:01:22.955116",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.931454",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stressAnalysis = model.ProjectSettings.StressAnalysis"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d945345a",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012511,
+     "end_time": "2026-03-13T21:01:22.987209",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:22.974698",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get properties as a dictionary."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "55208286",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.034432Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.033859Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.075197Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.071620Z"
+    },
+    "papermill": {
+     "duration": 0.067155,
+     "end_time": "2026-03-13T21:01:23.077364",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.010209",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Iterations': 500,\n",
+       " 'Tolerance': 0.001,\n",
+       " 'NumberLoadSteps': 10,\n",
+       " 'IterationsMin': 20,\n",
+       " 'LoadIncrementInitial': 0.1,\n",
+       " 'LoadIncrementMin': 0.05,\n",
+       " 'LoadIncrementMax': 1.0,\n",
+       " 'IterationsTrackConvergence': 5,\n",
+       " 'ScaleForceIncrementUp': True,\n",
+       " 'ScaleForceIncrementUpVal': 1.3,\n",
+       " 'ScaleForceIncrementDown': True,\n",
+       " 'ScaleForceIncrementDownVal': 0.5,\n",
+       " 'IsAcceleratedConvergenceActive': True,\n",
+       " 'AccelerateInitialStiffness': True,\n",
+       " 'AlphaMin': 0.1,\n",
+       " 'AlphaMax': 10.0,\n",
+       " 'AbortUponFailure': False,\n",
+       " 'EnableFileRecovery': True,\n",
+       " 'TensileFailureReduceHoekBrownTensileStrengthToZero': False,\n",
+       " 'TensileFailureReduceShearStrengthToResidual': True,\n",
+       " 'UseDefaultMaterialForAdvancedMaterialsOutsidePlasticRegion': True}"
+      ]
+     },
+     "execution_count": 31,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stressAnalysis.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7c94c112",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015311,
+     "end_time": "2026-03-13T21:01:23.109041",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.093730",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set multiple properties at the same time."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "d4278203",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.153527Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.153117Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.282721Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.281215Z"
+    },
+    "papermill": {
+     "duration": 0.152665,
+     "end_time": "2026-03-13T21:01:23.284148",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.131483",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Iterations': 520,\n",
+       " 'Tolerance': 0.005,\n",
+       " 'NumberLoadSteps': 10,\n",
+       " 'IterationsMin': 20,\n",
+       " 'LoadIncrementInitial': 0.1,\n",
+       " 'LoadIncrementMin': 0.05,\n",
+       " 'LoadIncrementMax': 1.0,\n",
+       " 'IterationsTrackConvergence': 5,\n",
+       " 'ScaleForceIncrementUp': True,\n",
+       " 'ScaleForceIncrementUpVal': 1.3,\n",
+       " 'ScaleForceIncrementDown': True,\n",
+       " 'ScaleForceIncrementDownVal': 0.5,\n",
+       " 'IsAcceleratedConvergenceActive': True,\n",
+       " 'AccelerateInitialStiffness': True,\n",
+       " 'AlphaMin': 0.1,\n",
+       " 'AlphaMax': 10.0,\n",
+       " 'AbortUponFailure': False,\n",
+       " 'EnableFileRecovery': True,\n",
+       " 'TensileFailureReduceHoekBrownTensileStrengthToZero': False,\n",
+       " 'TensileFailureReduceShearStrengthToResidual': True,\n",
+       " 'UseDefaultMaterialForAdvancedMaterialsOutsidePlasticRegion': True}"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stressAnalysis.setProperties(Iterations=520, Tolerance=0.005)\n",
+    "stressAnalysis.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6c7619a4",
+   "metadata": {
+    "papermill": {
+     "duration": 0.016912,
+     "end_time": "2026-03-13T21:01:23.317046",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.300134",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get a single property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "c8cb6272",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.358527Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.357890Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.369398Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.367758Z"
+    },
+    "papermill": {
+     "duration": 0.035295,
+     "end_time": "2026-03-13T21:01:23.370865",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.335570",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<StressConvergenceCriteriaType.ABSOLUTE_FORCE_ENERGY: 'ABSOLUTE_FORCE_ENERGY'>"
+      ]
+     },
+     "execution_count": 33,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stressAnalysis.getConvergenceCriteriaType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "741e4089",
+   "metadata": {
+    "papermill": {
+     "duration": 0.021829,
+     "end_time": "2026-03-13T21:01:23.409509",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.387680",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set a single property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "4fc4659d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.443018Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.442616Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.459656Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.455067Z"
+    },
+    "papermill": {
+     "duration": 0.037175,
+     "end_time": "2026-03-13T21:01:23.461781",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.424606",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<StressConvergenceCriteriaType.ABSOLUTE_ENERGY: 'ABSOLUTE_ENERGY'>"
+      ]
+     },
+     "execution_count": 34,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stressAnalysis.setConvergenceCriteriaType(StressConvergenceCriteriaType.ABSOLUTE_ENERGY)\n",
+    "stressAnalysis.getConvergenceCriteriaType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bc4a5ed1",
+   "metadata": {
+    "papermill": {
+     "duration": 0.032865,
+     "end_time": "2026-03-13T21:01:23.519265",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.486400",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 4. Solver Options"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "f85f7bd9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.563426Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.562966Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.567470Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.566240Z"
+    },
+    "papermill": {
+     "duration": 0.023196,
+     "end_time": "2026-03-13T21:01:23.568543",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.545347",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "solverOptions = model.ProjectSettings.SolverOptions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "297b487e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.016156,
+     "end_time": "2026-03-13T21:01:23.600472",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.584316",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current analaysis type and set it to the new type."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "64b4f747",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.630522Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.630017Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.639218Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.637462Z"
+    },
+    "papermill": {
+     "duration": 0.029348,
+     "end_time": "2026-03-13T21:01:23.641556",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.612208",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<AnalysisType.UNCOUPLED: 'UNCOUPLED'>"
+      ]
+     },
+     "execution_count": 36,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "solverOptions.getAnalysisType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "c4620d02",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.675448Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.675048Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.690239Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.687930Z"
+    },
+    "papermill": {
+     "duration": 0.033591,
+     "end_time": "2026-03-13T21:01:23.692200",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.658609",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<AnalysisType.COUPLED_BIOT: 'COUPLED_BIOT'>"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "solverOptions.setAnalysisType(AnalysisType.COUPLED_BIOT)\n",
+    "solverOptions.getAnalysisType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f213ba42",
+   "metadata": {
+    "papermill": {
+     "duration": 0.016692,
+     "end_time": "2026-03-13T21:01:23.726579",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.709887",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current solver type and change it to the new type."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "530d880d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.760907Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.760068Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.769066Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.767829Z"
+    },
+    "papermill": {
+     "duration": 0.027197,
+     "end_time": "2026-03-13T21:01:23.770156",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.742959",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<SolverType.AUTO: 'AUTO'>"
+      ]
+     },
+     "execution_count": 38,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "solverOptions.getSolverType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "b222f06a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.799508Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.798999Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.816438Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.814643Z"
+    },
+    "papermill": {
+     "duration": 0.033364,
+     "end_time": "2026-03-13T21:01:23.818085",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.784721",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<SolverType.DIRECT_CPU: 'DIRECT'>"
+      ]
+     },
+     "execution_count": 39,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "solverOptions.setSolverType(SolverType.DIRECT_CPU)\n",
+    "solverOptions.getSolverType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1aa65191",
+   "metadata": {
+    "papermill": {
+     "duration": 0.017302,
+     "end_time": "2026-03-13T21:01:23.854819",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.837517",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 5. Groundwater"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "6fbc29cc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.890680Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.890304Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.895095Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.893696Z"
+    },
+    "papermill": {
+     "duration": 0.022567,
+     "end_time": "2026-03-13T21:01:23.896337",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.873770",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "groundwater = model.ProjectSettings.Groundwater"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "id": "afd669c7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.927825Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.927322Z",
+     "iopub.status.idle": "2026-03-13T21:01:23.945924Z",
+     "shell.execute_reply": "2026-03-13T21:01:23.944335Z"
+    },
+    "papermill": {
+     "duration": 0.038162,
+     "end_time": "2026-03-13T21:01:23.947432",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.909270",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'PoreFluidUnitWeight': 9.81,\n",
+       " 'IsNegativePorePressureCutoff': False,\n",
+       " 'NegativePorePressureCutoff': 0.0,\n",
+       " 'PWPMethodByStage': True,\n",
+       " 'MaxNumIterations': 500,\n",
+       " 'Tolerance': 0.001,\n",
+       " 'LoadSteps': 10,\n",
+       " 'TimeSteps': 1,\n",
+       " 'IsScaleTolerance': True,\n",
+       " 'IsAddFluidBodyForce': True,\n",
+       " 'FluidBulkModulus': 2200000.0}"
+      ]
+     },
+     "execution_count": 41,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "groundwater.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "a6bcd582",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:23.977992Z",
+     "iopub.status.busy": "2026-03-13T21:01:23.977304Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.205959Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.204003Z"
+    },
+    "papermill": {
+     "duration": 0.246995,
+     "end_time": "2026-03-13T21:01:24.208012",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:23.961017",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'PoreFluidUnitWeight': 10.0,\n",
+       " 'IsNegativePorePressureCutoff': False,\n",
+       " 'NegativePorePressureCutoff': 0.0,\n",
+       " 'PWPMethodByStage': False,\n",
+       " 'MaxNumIterations': 500,\n",
+       " 'Tolerance': 0.001,\n",
+       " 'LoadSteps': 10,\n",
+       " 'TimeSteps': 1,\n",
+       " 'IsScaleTolerance': True,\n",
+       " 'IsAddFluidBodyForce': True,\n",
+       " 'FluidBulkModulus': 2200000.0}"
+      ]
+     },
+     "execution_count": 42,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "groundwater.setProperties(PoreFluidUnitWeight=10.0, PWPMethodByStage=False)\n",
+    "groundwater.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "42fcc122",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.242001Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.241678Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.247951Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.246907Z"
+    },
+    "papermill": {
+     "duration": 0.027454,
+     "end_time": "2026-03-13T21:01:24.248921",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.221467",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<GroundwaterMethodType.GW_TRANSIENT: 'GW_TRANSIENT'>"
+      ]
+     },
+     "execution_count": 43,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "groundwater.getGroundwaterMethod()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "1be3de1c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.277191Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.276740Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.390013Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.387128Z"
+    },
+    "papermill": {
+     "duration": 0.130245,
+     "end_time": "2026-03-13T21:01:24.392186",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.261941",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<GroundwaterMethodType.GW_NONE: 'GW_NONE'>"
+      ]
+     },
+     "execution_count": 44,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_NONE)\n",
+    "groundwater.getGroundwaterMethod()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "42c7cb0e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.023676,
+     "end_time": "2026-03-13T21:01:24.436996",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.413320",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 6. Shear Strength Reduction"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "48d0cbcd",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.477966Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.477480Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.482648Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.481071Z"
+    },
+    "papermill": {
+     "duration": 0.025007,
+     "end_time": "2026-03-13T21:01:24.483865",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.458858",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "ssr = model.ProjectSettings.ShearStrengthReduction"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "28bc59a2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.019165,
+     "end_time": "2026-03-13T21:01:24.520184",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.501019",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on shear strength reduction analysis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "6f1171b7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.559279Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.558730Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.579485Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.577356Z"
+    },
+    "papermill": {
+     "duration": 0.043199,
+     "end_time": "2026-03-13T21:01:24.581526",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.538327",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "ssr.setSRFIsOn(True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "79bc26d1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.621296Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.620861Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.651858Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.650598Z"
+    },
+    "papermill": {
+     "duration": 0.054513,
+     "end_time": "2026-03-13T21:01:24.653060",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.598547",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'SRFIsOn': True,\n",
+       " 'InitialEstimateOfSRF': 1.0,\n",
+       " 'SRFAuto': True,\n",
+       " 'SRFTolerance': 0.01,\n",
+       " 'SRFStepSize': 0.2,\n",
+       " 'FinalSRF': 2.0,\n",
+       " 'AccelerateSRF': False,\n",
+       " 'SRFAccelerateAdvanced': True,\n",
+       " 'ApplySSRToMohrCoulombTensileStrength': True,\n",
+       " 'SRFUserdefined': False,\n",
+       " 'StressAnalysisTolerance': 0.001,\n",
+       " 'MaximumNumberOfIterations': 500}"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ssr.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 48,
+   "id": "f299ae2f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.694663Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.693741Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.775119Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.773496Z"
+    },
+    "papermill": {
+     "duration": 0.106754,
+     "end_time": "2026-03-13T21:01:24.776542",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.669788",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'SRFIsOn': True,\n",
+       " 'InitialEstimateOfSRF': 1.0,\n",
+       " 'SRFAuto': True,\n",
+       " 'SRFTolerance': 0.01,\n",
+       " 'SRFStepSize': 0.2,\n",
+       " 'FinalSRF': 2.0,\n",
+       " 'AccelerateSRF': True,\n",
+       " 'SRFAccelerateAdvanced': True,\n",
+       " 'ApplySSRToMohrCoulombTensileStrength': True,\n",
+       " 'SRFUserdefined': False,\n",
+       " 'StressAnalysisTolerance': 0.001,\n",
+       " 'MaximumNumberOfIterations': 500}"
+      ]
+     },
+     "execution_count": 48,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ssr.setProperties(AccelerateSRF=True)\n",
+    "ssr.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "id": "a80716a4",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.804717Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.804309Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.818886Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.817256Z"
+    },
+    "papermill": {
+     "duration": 0.030081,
+     "end_time": "2026-03-13T21:01:24.820239",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.790158",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ssr.setSRFAccelerateAdvanced(False)\n",
+    "ssr.getSRFAccelerateAdvanced()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 50,
+   "id": "5d3557ce",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.866866Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.866412Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.898950Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.897225Z"
+    },
+    "papermill": {
+     "duration": 0.056759,
+     "end_time": "2026-03-13T21:01:24.900775",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.844016",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<SSRConvergenceType.ABSOLUTE_FORCE: 'ABSOLUTE_FORCE'>"
+      ]
+     },
+     "execution_count": 50,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ssr.setSRFUserdefined(True)\n",
+    "ssr.setSSRConvergenceType(SSRConvergenceType.ABSOLUTE_FORCE)\n",
+    "ssr.getSSRConvergenceType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 51,
+   "id": "864da5fe",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:24.940899Z",
+     "iopub.status.busy": "2026-03-13T21:01:24.940423Z",
+     "iopub.status.idle": "2026-03-13T21:01:24.963349Z",
+     "shell.execute_reply": "2026-03-13T21:01:24.961313Z"
+    },
+    "papermill": {
+     "duration": 0.0456,
+     "end_time": "2026-03-13T21:01:24.965129",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.919529",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "ssr.setSRFIsOn(False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a1282118",
+   "metadata": {
+    "papermill": {
+     "duration": 0.022141,
+     "end_time": "2026-03-13T21:01:25.006072",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:24.983931",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 7. Dynamic"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "id": "b7e3a878",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:25.048607Z",
+     "iopub.status.busy": "2026-03-13T21:01:25.048159Z",
+     "iopub.status.idle": "2026-03-13T21:01:25.053147Z",
+     "shell.execute_reply": "2026-03-13T21:01:25.051617Z"
+    },
+    "papermill": {
+     "duration": 0.026447,
+     "end_time": "2026-03-13T21:01:25.054387",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:25.027940",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "dynamic = model.ProjectSettings.Dynamic"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "23df5f80",
+   "metadata": {
+    "papermill": {
+     "duration": 0.018577,
+     "end_time": "2026-03-13T21:01:25.092045",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:25.073468",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on dynamic analysis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "743278e1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:25.123198Z",
+     "iopub.status.busy": "2026-03-13T21:01:25.122542Z",
+     "iopub.status.idle": "2026-03-13T21:01:25.234868Z",
+     "shell.execute_reply": "2026-03-13T21:01:25.233439Z"
+    },
+    "papermill": {
+     "duration": 0.130718,
+     "end_time": "2026-03-13T21:01:25.236614",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:25.105896",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "dynamic.setIsDynamicOn(True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "97cd70e6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:25.273718Z",
+     "iopub.status.busy": "2026-03-13T21:01:25.273309Z",
+     "iopub.status.idle": "2026-03-13T21:01:25.305512Z",
+     "shell.execute_reply": "2026-03-13T21:01:25.304060Z"
+    },
+    "papermill": {
+     "duration": 0.054365,
+     "end_time": "2026-03-13T21:01:25.307019",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:25.252654",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'IsDynamicOn': True,\n",
+       " 'IsRayleighDampingbyAlphaMOn': True,\n",
+       " 'AlphaM': 1.5,\n",
+       " 'BetaK': 0.002,\n",
+       " 'Frequency1': 5.0,\n",
+       " 'Frequency2': 20.0,\n",
+       " 'DampingRatio1': 0.0,\n",
+       " 'DampingRatio2': 0.0,\n",
+       " 'NumTimeSteps': 1,\n",
+       " 'Beta': 0.25,\n",
+       " 'Gamma': 0.5}"
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dynamic.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "683c869d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:25.348705Z",
+     "iopub.status.busy": "2026-03-13T21:01:25.347874Z",
+     "iopub.status.idle": "2026-03-13T21:01:25.449732Z",
+     "shell.execute_reply": "2026-03-13T21:01:25.447954Z"
+    },
+    "papermill": {
+     "duration": 0.12682,
+     "end_time": "2026-03-13T21:01:25.451125",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:25.324305",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "False"
+      ]
+     },
+     "execution_count": 55,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dynamic.setIsRayleighDampingbyAlphaMOn(False)\n",
+    "dynamic.getIsRayleighDampingbyAlphaMOn()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "54cc4859",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:25.488919Z",
+     "iopub.status.busy": "2026-03-13T21:01:25.488396Z",
+     "iopub.status.idle": "2026-03-13T21:01:25.721079Z",
+     "shell.execute_reply": "2026-03-13T21:01:25.719437Z"
+    },
+    "papermill": {
+     "duration": 0.254604,
+     "end_time": "2026-03-13T21:01:25.722602",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:25.467998",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'IsDynamicOn': True,\n",
+       " 'IsRayleighDampingbyAlphaMOn': False,\n",
+       " 'AlphaM': 1.5,\n",
+       " 'BetaK': 0.002,\n",
+       " 'Frequency1': 10.0,\n",
+       " 'Frequency2': 25.0,\n",
+       " 'DampingRatio1': 0.0,\n",
+       " 'DampingRatio2': 0.0,\n",
+       " 'NumTimeSteps': 1,\n",
+       " 'Beta': 0.25,\n",
+       " 'Gamma': 0.5}"
+      ]
+     },
+     "execution_count": 56,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dynamic.setProperties(Frequency1=10, Frequency2=25)\n",
+    "dynamic.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014028,
+     "end_time": "2026-03-13T21:01:25.755314",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:25.741286",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:25.787386Z",
+     "iopub.status.busy": "2026-03-13T21:01:25.787007Z",
+     "iopub.status.idle": "2026-03-13T21:01:29.421135Z",
+     "shell.execute_reply": "2026-03-13T21:01:29.418180Z"
+    },
+    "papermill": {
+     "duration": 3.65277,
+     "end_time": "2026-03-13T21:01:29.423327",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:25.770557",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1c0e9e94",
+   "metadata": {
+    "papermill": {
+     "duration": 0.019768,
+     "end_time": "2026-03-13T21:01:29.472464",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:29.452696",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "dcc6ced2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:29.524411Z",
+     "iopub.status.busy": "2026-03-13T21:01:29.523924Z",
+     "iopub.status.idle": "2026-03-13T21:01:35.142012Z",
+     "shell.execute_reply": "2026-03-13T21:01:35.139338Z"
+    },
+    "papermill": {
+     "duration": 5.649713,
+     "end_time": "2026-03-13T21:01:35.144435",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:29.494722",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4a1675b0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.020241,
+     "end_time": "2026-03-13T21:01:35.186449",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:35.166208",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "793880c3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:01:35.228208Z",
+     "iopub.status.busy": "2026-03-13T21:01:35.227812Z",
+     "iopub.status.idle": "2026-03-13T21:02:23.104548Z",
+     "shell.execute_reply": "2026-03-13T21:02:23.102521Z"
+    },
+    "papermill": {
+     "duration": 47.89862,
+     "end_time": "2026-03-13T21:02:23.106168",
+     "exception": false,
+     "start_time": "2026-03-13T21:01:35.207548",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:01:35,239 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60103...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The new stage name of stage 1 is Initial Conditions\n",
+      "The new stage name of stage 2 is Excavate Tunnel\n",
+      "The new stage name of stage 3 is Excavate Foundation\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The new stage name of stage 4 is Pour Concrete Foundation\n",
+      "The new stage name of stage 5 is Loading Foundation\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Project Settings Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example. \n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.projectSettings.ProjectSettingEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60103\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Units\n",
+    "# Change the units will impact almost all properties in the project. \n",
+    "# Therefore, we highly recommend you to set the correct unit at the beginning of the project.\n",
+    "units = model.ProjectSettings.Units\n",
+    "# By default, properties will be reset when the new unit system is set.\n",
+    "units.setUnitSystem(UnitSystemType.METRIC_MPA)\n",
+    "units.setTimeUnits(TimeUnitsType.HOURS)\n",
+    "units.setPermeabilityUnits(PermeabilityUnitsType.METER_SECONDS)\n",
+    "\n",
+    "# 2. Stages\n",
+    "stages = model.ProjectSettings.Stages\n",
+    "\n",
+    "# 2.1 Stage Names\n",
+    "# Get defined stages.\n",
+    "originalStageNames = stages.getDefinedStageNames()\n",
+    "# Rename every stage through a for loop.\n",
+    "stageNames = [\"Initial Conditions\", \"Excavate Tunnel\", \"Excavate Foundation\", \"Pour Concrete Foundation\", \"Loading Foundation\"]\n",
+    "for i in range(len(originalStageNames)):\n",
+    "    stageNum = i+1\n",
+    "    stages.setName(stageNum, stageNames[i])\n",
+    "    newStageName = stages.getName(stageNum)\n",
+    "    print(f\"The new stage name of stage {stageNum} is {newStageName}\")\n",
+    "    \n",
+    "# 2.2 Set Total Number of Stages\n",
+    "# Add three more stages to the current model. The new stages will use the default stage names.\n",
+    "stages.setTotalNumberOfStages(8)\n",
+    "# Reduce the number of stages will delete stages from the last stage.\n",
+    "stages.setTotalNumberOfStages(5)\n",
+    "\n",
+    "# 2.3 Add or Delete Stages\n",
+    "# Add 2 stages at the end of the project\n",
+    "stages.addStages(2, -1)\n",
+    "# Remove 2 stages from the end\n",
+    "stages.removeStages(2, -1)\n",
+    "# Add 3 stages after the stage 2\n",
+    "stages.addStages(3, 2)\n",
+    "# Remove 3 stages starting from stage 3 (removes stages 3, 4, 5)\n",
+    "stages.removeStages(3, 3)\n",
+    "# Add 2 stages at the end (same as passing -1)\n",
+    "stages.addStages(numberOfStages=2)\n",
+    "# Remove 2 stages from the end (same as passing -1 explicitly)\n",
+    "stages.removeStages(numberOfStages=2)\n",
+    "# Add 1 stage after the stage 5\n",
+    "stages.addStages(numberOfStages=1, referenceStage=5)\n",
+    "# Remove 1 stage at stage 6\n",
+    "stages.removeStages(numberOfStages=1, startingStage=6)\n",
+    "\n",
+    "# 2.4 Set time and PWP Method\n",
+    "# When the groundwater model is set to transient analysis, \n",
+    "# time and pore water pressure (PWP) method are required.\n",
+    "model.ProjectSettings.Groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_TRANSIENT)\n",
+    "model.ProjectSettings.Groundwater.setPWPMethodByStage(True)\n",
+    "stages.setTime(2, 1.5)\n",
+    "stages.setPWPMethod(2, PWPMethod.GW_SURFACES)\n",
+    "\n",
+    "# 3. Stress Analysis\n",
+    "stressAnalysis = model.ProjectSettings.StressAnalysis\n",
+    "# Set multiple properties at the same time.\n",
+    "stressAnalysis.setProperties(Iterations=520, Tolerance=0.005)\n",
+    "# Set a single property.\n",
+    "stressAnalysis.setConvergenceCriteriaType(StressConvergenceCriteriaType.ABSOLUTE_ENERGY)\n",
+    "\n",
+    "# 4. Solver Options\n",
+    "solverOptions = model.ProjectSettings.SolverOptions\n",
+    "# Set the current analysis to the new type.\n",
+    "solverOptions.setAnalysisType(AnalysisType.COUPLED_BIOT)\n",
+    "# Get the current solver type and change it to the new type.\n",
+    "solverOptions.setSolverType(SolverType.DIRECT_CPU)\n",
+    "\n",
+    "# 5. Groundwater\n",
+    "groundwater = model.ProjectSettings.Groundwater\n",
+    "groundwater.setProperties(PoreFluidUnitWeight=10.0, PWPMethodByStage=False)\n",
+    "groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_NONE)\n",
+    "\n",
+    "# 6. Shear Strength Reduction\n",
+    "ssr = model.ProjectSettings.ShearStrengthReduction\n",
+    "# Turn on shear strength reduction analysis.\n",
+    "ssr.setSRFIsOn(True)\n",
+    "ssr.setProperties(AccelerateSRF=True)\n",
+    "ssr.setSRFAccelerateAdvanced(False)\n",
+    "ssr.setSRFUserdefined(True)\n",
+    "ssr.setSSRConvergenceType(SSRConvergenceType.ABSOLUTE_FORCE)\n",
+    "ssr.setSRFIsOn(False)\n",
+    "\n",
+    "# 7. Dynamic\n",
+    "dynamic = model.ProjectSettings.Dynamic\n",
+    "# Turn on dynamic analysis.\n",
+    "dynamic.setIsDynamicOn(True)\n",
+    "dynamic.setIsRayleighDampingbyAlphaMOn(False)\n",
+    "dynamic.setProperties(Frequency1=10, Frequency2=25)\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 109.988394,
+   "end_time": "2026-03-13T21:02:24.862964",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\project_settings_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\project_settings_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:00:34.874570",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

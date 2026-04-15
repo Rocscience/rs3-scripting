@@ -1,0 +1,1338 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009316,
+     "end_time": "2026-03-13T20:51:54.481186",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:54.471870",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(mesh_example)=\n",
+    "# Mesh Script Example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00831,
+     "end_time": "2026-03-13T20:51:54.495081",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:54.486771",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:51:54.513717Z",
+     "iopub.status.busy": "2026-03-13T20:51:54.513176Z",
+     "iopub.status.idle": "2026-03-13T20:51:54.796644Z",
+     "shell.execute_reply": "2026-03-13T20:51:54.795260Z"
+    },
+    "papermill": {
+     "duration": 0.296033,
+     "end_time": "2026-03-13T20:51:54.798342",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:54.502309",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.mesh.MeshEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009296,
+     "end_time": "2026-03-13T20:51:54.815424",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:54.806128",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:51:54.834773Z",
+     "iopub.status.busy": "2026-03-13T20:51:54.834210Z",
+     "iopub.status.idle": "2026-03-13T20:51:54.839788Z",
+     "shell.execute_reply": "2026-03-13T20:51:54.838276Z"
+    },
+    "papermill": {
+     "duration": 0.018705,
+     "end_time": "2026-03-13T20:51:54.841183",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:54.822478",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007913,
+     "end_time": "2026-03-13T20:51:54.858683",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:54.850770",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "75efe99e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:51:54.875209Z",
+     "iopub.status.busy": "2026-03-13T20:51:54.874694Z",
+     "iopub.status.idle": "2026-03-13T20:52:24.006694Z",
+     "shell.execute_reply": "2026-03-13T20:52:24.004869Z"
+    },
+    "papermill": {
+     "duration": 29.142749,
+     "end_time": "2026-03-13T20:52:24.008192",
+     "exception": false,
+     "start_time": "2026-03-13T20:51:54.865443",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:51:54,882 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60107...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60107\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5b086969",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008575,
+     "end_time": "2026-03-13T20:52:24.024001",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:24.015426",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "7901cc06",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:24.040428Z",
+     "iopub.status.busy": "2026-03-13T20:52:24.040025Z",
+     "iopub.status.idle": "2026-03-13T20:52:24.049255Z",
+     "shell.execute_reply": "2026-03-13T20:52:24.047964Z"
+    },
+    "papermill": {
+     "duration": 0.019763,
+     "end_time": "2026-03-13T20:52:24.050522",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:24.030759",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006215,
+     "end_time": "2026-03-13T20:52:24.064165",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:24.057950",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:24.078453Z",
+     "iopub.status.busy": "2026-03-13T20:52:24.078095Z",
+     "iopub.status.idle": "2026-03-13T20:52:24.103962Z",
+     "shell.execute_reply": "2026-03-13T20:52:24.102481Z"
+    },
+    "papermill": {
+     "duration": 0.034599,
+     "end_time": "2026-03-13T20:52:24.105201",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:24.070602",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007021,
+     "end_time": "2026-03-13T20:52:24.118189",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:24.111168",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:24.135139Z",
+     "iopub.status.busy": "2026-03-13T20:52:24.134743Z",
+     "iopub.status.idle": "2026-03-13T20:52:35.206981Z",
+     "shell.execute_reply": "2026-03-13T20:52:35.203785Z"
+    },
+    "papermill": {
+     "duration": 11.085245,
+     "end_time": "2026-03-13T20:52:35.210395",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:24.125150",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c5b6dc5e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011551,
+     "end_time": "2026-03-13T20:52:35.241004",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:35.229453",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Change Mesh Element Type"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "720ce11d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012644,
+     "end_time": "2026-03-13T20:52:35.263779",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:35.251135",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current mesh element type."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "3e26c87f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:35.295180Z",
+     "iopub.status.busy": "2026-03-13T20:52:35.294410Z",
+     "iopub.status.idle": "2026-03-13T20:52:35.641496Z",
+     "shell.execute_reply": "2026-03-13T20:52:35.639812Z"
+    },
+    "papermill": {
+     "duration": 0.365208,
+     "end_time": "2026-03-13T20:52:35.642783",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:35.277575",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MeshElementType.MESH_4_NODED_TETRAHEDRA: 'TET4'>"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.Mesh.getElementType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e195575a",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006187,
+     "end_time": "2026-03-13T20:52:35.656361",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:35.650174",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the current mesh element type to 10 noded tetrahedra."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "c64c7c06",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:35.674133Z",
+     "iopub.status.busy": "2026-03-13T20:52:35.673792Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.150848Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.149099Z"
+    },
+    "papermill": {
+     "duration": 0.488141,
+     "end_time": "2026-03-13T20:52:36.152591",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:35.664450",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MeshElementType.MESH_10_NODED_TETRAHEDRA: 'TET10'>"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.Mesh.setElementType(MeshElementType.MESH_10_NODED_TETRAHEDRA)\n",
+    "model.Mesh.getElementType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "daa0fe9c",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006845,
+     "end_time": "2026-03-13T20:52:36.168681",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.161836",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Graded Mesh"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "669d0a56",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014953,
+     "end_time": "2026-03-13T20:52:36.192808",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.177855",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the mesh gradition to GRADED."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "f11d5413",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.256027Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.255575Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.267536Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.265925Z"
+    },
+    "papermill": {
+     "duration": 0.059674,
+     "end_time": "2026-03-13T20:52:36.269632",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.209958",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.Mesh.setMeshGradation(MeshGradation.GRADED)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f31eea90",
+   "metadata": {
+    "papermill": {
+     "duration": 0.0098,
+     "end_time": "2026-03-13T20:52:36.290850",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.281050",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Check the current Graded mesh settings"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "ab7bd1a3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.309025Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.308442Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.325395Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.323961Z"
+    },
+    "papermill": {
+     "duration": 0.026846,
+     "end_time": "2026-03-13T20:52:36.326901",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.300055",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'MinGradedElementSize': -1.0,\n",
+       " 'MaxGradedElementSize': -1.0,\n",
+       " 'OneDGradation': 0.5,\n",
+       " 'TwoDGradation': 0.5,\n",
+       " 'ThreeDGradation': 0.5}"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.Mesh.Graded.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5de0ab8b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013781,
+     "end_time": "2026-03-13T20:52:36.351895",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.338114",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set individual properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "b8174299",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.371403Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.370974Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.409390Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.406612Z"
+    },
+    "papermill": {
+     "duration": 0.050885,
+     "end_time": "2026-03-13T20:52:36.411691",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.360806",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'MinGradedElementSize': 0.5,\n",
+       " 'MaxGradedElementSize': 1.2,\n",
+       " 'OneDGradation': 0.5,\n",
+       " 'TwoDGradation': 0.5,\n",
+       " 'ThreeDGradation': 0.5}"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.Mesh.Graded.setMaxGradedElementSize(1.2)\n",
+    "model.Mesh.Graded.setMinGradedElementSize(0.5)\n",
+    "model.Mesh.Graded.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cfbfae2a",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007848,
+     "end_time": "2026-03-13T20:52:36.428705",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.420857",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set properties all in once."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "3f7df8ab",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.446514Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.446037Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.493917Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.491532Z"
+    },
+    "papermill": {
+     "duration": 0.059649,
+     "end_time": "2026-03-13T20:52:36.495848",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.436199",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'MinGradedElementSize': 0.5,\n",
+       " 'MaxGradedElementSize': 1.2,\n",
+       " 'OneDGradation': 0.1,\n",
+       " 'TwoDGradation': 0.2,\n",
+       " 'ThreeDGradation': 0.3}"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.Mesh.Graded.setProperties(OneDGradation=0.1, TwoDGradation=0.2, ThreeDGradation=0.3)\n",
+    "model.Mesh.Graded.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d70e5d9e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009353,
+     "end_time": "2026-03-13T20:52:36.513468",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.504115",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Uniformed Mesh"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "334aaaa7",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00836,
+     "end_time": "2026-03-13T20:52:36.529981",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.521621",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the mesh gradation to UNIFORM."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "f4279b85",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.548608Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.547941Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.557996Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.555808Z"
+    },
+    "papermill": {
+     "duration": 0.022672,
+     "end_time": "2026-03-13T20:52:36.559878",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.537206",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.Mesh.setMeshGradation(MeshGradation.UNIFORM)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9ff12978",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012256,
+     "end_time": "2026-03-13T20:52:36.581600",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.569344",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "<div class=\"alert alert-block alert-info\">\n",
+    "<b>Tip:</b> create a short alias to avoid repeatedly typing model.Mesh.Uniform\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "db375760",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.610371Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.609519Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.617064Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.615148Z"
+    },
+    "papermill": {
+     "duration": 0.023471,
+     "end_time": "2026-03-13T20:52:36.618636",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.595165",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "uniformMesh = model.Mesh.Uniform"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "60a635e4",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007817,
+     "end_time": "2026-03-13T20:52:36.636655",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.628838",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Check current Properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "f1a5995e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.654510Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.654182Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.661515Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.660037Z"
+    },
+    "papermill": {
+     "duration": 0.017897,
+     "end_time": "2026-03-13T20:52:36.662690",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.644793",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MeshDensity.LOW: 'LOW'>"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "uniformMesh.getMeshDensity()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "9d9b393a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.682274Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.681777Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.690483Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.688818Z"
+    },
+    "papermill": {
+     "duration": 0.020306,
+     "end_time": "2026-03-13T20:52:36.691855",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.671549",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2.7095086413377265"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "uniformMesh.getUniformMeshElementSize()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "ffeb6dab",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.707232Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.706873Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.733165Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.731231Z"
+    },
+    "papermill": {
+     "duration": 0.035656,
+     "end_time": "2026-03-13T20:52:36.734663",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.699007",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MeshDensity.HIGH: 'HIGH'>"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "uniformMesh.setMeshDensity(MeshDensity.HIGH)\n",
+    "uniformMesh.getMeshDensity()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "37895ead",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.757931Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.757503Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.767517Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.765261Z"
+    },
+    "papermill": {
+     "duration": 0.023935,
+     "end_time": "2026-03-13T20:52:36.769203",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.745268",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.451584773556288"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "uniformMesh.getUniformMeshElementSize()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "a5d4d431",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.788818Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.788464Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.800127Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.798546Z"
+    },
+    "papermill": {
+     "duration": 0.024317,
+     "end_time": "2026-03-13T20:52:36.801731",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.777414",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "uniformMesh.setMeshDensity(MeshDensity.USER_DEFINED)\n",
+    "uniformMesh.setUniformMeshElementSize(3.5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "8bcd0ada",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.823081Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.822580Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.834480Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.832898Z"
+    },
+    "papermill": {
+     "duration": 0.026204,
+     "end_time": "2026-03-13T20:52:36.836358",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.810154",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MeshDensity.USER_DEFINED: 'USERDEFINED'>"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "uniformMesh.getMeshDensity()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "9278d143",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.854463Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.853859Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.862689Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.861214Z"
+    },
+    "papermill": {
+     "duration": 0.018515,
+     "end_time": "2026-03-13T20:52:36.864064",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.845549",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.5"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "uniformMesh.getUniformMeshElementSize()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "513195f7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.883373Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.882956Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.903538Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.901601Z"
+    },
+    "papermill": {
+     "duration": 0.031845,
+     "end_time": "2026-03-13T20:52:36.904982",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.873137",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MeshDensity.LOW: 'LOW'>"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "uniformMesh.setMeshDensity(MeshDensity.LOW)\n",
+    "uniformMesh.getMeshDensity()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "7fa075a2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.931736Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.931295Z",
+     "iopub.status.idle": "2026-03-13T20:52:36.938807Z",
+     "shell.execute_reply": "2026-03-13T20:52:36.937409Z"
+    },
+    "papermill": {
+     "duration": 0.023099,
+     "end_time": "2026-03-13T20:52:36.940042",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.916943",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3.5"
+      ]
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "uniformMesh.getUniformMeshElementSize()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6491c973",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007997,
+     "end_time": "2026-03-13T20:52:36.956752",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.948755",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 4. Mesh the model"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "7528e27c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:36.977989Z",
+     "iopub.status.busy": "2026-03-13T20:52:36.977459Z",
+     "iopub.status.idle": "2026-03-13T20:52:38.950455Z",
+     "shell.execute_reply": "2026-03-13T20:52:38.948906Z"
+    },
+    "papermill": {
+     "duration": 1.984902,
+     "end_time": "2026-03-13T20:52:38.952004",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:36.967102",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.Mesh.mesh()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013498,
+     "end_time": "2026-03-13T20:52:38.978034",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:38.964536",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:39.018434Z",
+     "iopub.status.busy": "2026-03-13T20:52:39.017243Z",
+     "iopub.status.idle": "2026-03-13T20:52:42.965071Z",
+     "shell.execute_reply": "2026-03-13T20:52:42.962992Z"
+    },
+    "papermill": {
+     "duration": 3.967809,
+     "end_time": "2026-03-13T20:52:42.967011",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:38.999202",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "08a3f120",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008647,
+     "end_time": "2026-03-13T20:52:42.987130",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:42.978483",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "9dfe8184",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:43.008262Z",
+     "iopub.status.busy": "2026-03-13T20:52:43.007842Z",
+     "iopub.status.idle": "2026-03-13T20:52:48.941550Z",
+     "shell.execute_reply": "2026-03-13T20:52:48.939573Z"
+    },
+    "papermill": {
+     "duration": 5.94793,
+     "end_time": "2026-03-13T20:52:48.943394",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:42.995464",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3de93025",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014577,
+     "end_time": "2026-03-13T20:52:48.970449",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:48.955872",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7d6bd4ea",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:52:49.000618Z",
+     "iopub.status.busy": "2026-03-13T20:52:48.999953Z",
+     "iopub.status.idle": "2026-03-13T20:53:48.329110Z",
+     "shell.execute_reply": "2026-03-13T20:53:48.327448Z"
+    },
+    "papermill": {
+     "duration": 59.346602,
+     "end_time": "2026-03-13T20:53:48.330597",
+     "exception": false,
+     "start_time": "2026-03-13T20:52:48.983995",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:52:49,009 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60107...\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Mesh Script Example\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.mesh.MeshEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60107\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Change Mesh Element Type\n",
+    "# Set the current mesh element type to 10 noded tetrahedra.\n",
+    "model.Mesh.setElementType(MeshElementType.MESH_10_NODED_TETRAHEDRA)\n",
+    "\n",
+    "# 2. Graded Mesh\n",
+    "# Set the mesh gradition to GRADED.\n",
+    "model.Mesh.setMeshGradation(MeshGradation.GRADED)\n",
+    "# Set individual properties.\n",
+    "model.Mesh.Graded.setMaxGradedElementSize(1.2)\n",
+    "model.Mesh.Graded.setMinGradedElementSize(0.5)\n",
+    "# Set properties all in once.\n",
+    "model.Mesh.Graded.setProperties(OneDGradation=0.1, TwoDGradation=0.2, ThreeDGradation=0.3)\n",
+    "\n",
+    "# 3. Uniformed Mesh\n",
+    "# Set the mesh gradation to UNIFORM.\n",
+    "model.Mesh.setMeshGradation(MeshGradation.UNIFORM)\n",
+    "# Create a short alias to avoid repeatedly typing model.Mesh.Uniform\n",
+    "uniformMesh = model.Mesh.Uniform\n",
+    "uniformMesh.getUniformMeshElementSize()\n",
+    "uniformMesh.setMeshDensity(MeshDensity.HIGH)\n",
+    "uniformMesh.setMeshDensity(MeshDensity.USER_DEFINED)\n",
+    "uniformMesh.setUniformMeshElementSize(3.5)\n",
+    "uniformMesh.setMeshDensity(MeshDensity.LOW)\n",
+    "\n",
+    "# 4. Mesh the model\n",
+    "model.Mesh.mesh()\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 117.510642,
+   "end_time": "2026-03-13T20:53:50.175793",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\mesh_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\mesh_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:51:52.665151",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

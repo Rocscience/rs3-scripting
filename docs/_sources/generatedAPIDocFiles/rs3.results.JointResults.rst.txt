@@ -1,0 +1,7 @@
+rs3.results.JointResults module
+===============================
+
+.. automodule:: rs3.results.JointResults
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,969 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006811,
+     "end_time": "2026-03-13T20:53:51.517947",
+     "exception": false,
+     "start_time": "2026-03-13T20:53:51.511136",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(model_example)=\n",
+    "# Model Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003686,
+     "end_time": "2026-03-13T20:53:51.525245",
+     "exception": false,
+     "start_time": "2026-03-13T20:53:51.521559",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:53:51.539553Z",
+     "iopub.status.busy": "2026-03-13T20:53:51.539182Z",
+     "iopub.status.idle": "2026-03-13T20:53:51.788352Z",
+     "shell.execute_reply": "2026-03-13T20:53:51.786826Z"
+    },
+    "papermill": {
+     "duration": 0.258006,
+     "end_time": "2026-03-13T20:53:51.789391",
+     "exception": false,
+     "start_time": "2026-03-13T20:53:51.531385",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003592,
+     "end_time": "2026-03-13T20:53:51.797758",
+     "exception": false,
+     "start_time": "2026-03-13T20:53:51.794166",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:53:51.809360Z",
+     "iopub.status.busy": "2026-03-13T20:53:51.808827Z",
+     "iopub.status.idle": "2026-03-13T20:53:51.814777Z",
+     "shell.execute_reply": "2026-03-13T20:53:51.812610Z"
+    },
+    "papermill": {
+     "duration": 0.014013,
+     "end_time": "2026-03-13T20:53:51.816392",
+     "exception": false,
+     "start_time": "2026-03-13T20:53:51.802379",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005207,
+     "end_time": "2026-03-13T20:53:51.826789",
+     "exception": false,
+     "start_time": "2026-03-13T20:53:51.821582",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "1a5fde5f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:53:51.839153Z",
+     "iopub.status.busy": "2026-03-13T20:53:51.838767Z",
+     "iopub.status.idle": "2026-03-13T20:54:21.240489Z",
+     "shell.execute_reply": "2026-03-13T20:54:21.239155Z"
+    },
+    "papermill": {
+     "duration": 29.408925,
+     "end_time": "2026-03-13T20:54:21.241629",
+     "exception": false,
+     "start_time": "2026-03-13T20:53:51.832704",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:53:51,845 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60101...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60101\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8e998e27",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003668,
+     "end_time": "2026-03-13T20:54:21.249965",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:21.246297",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "87971271",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:21.261465Z",
+     "iopub.status.busy": "2026-03-13T20:54:21.261133Z",
+     "iopub.status.idle": "2026-03-13T20:54:21.267645Z",
+     "shell.execute_reply": "2026-03-13T20:54:21.266097Z"
+    },
+    "papermill": {
+     "duration": 0.014183,
+     "end_time": "2026-03-13T20:54:21.269125",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:21.254942",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006602,
+     "end_time": "2026-03-13T20:54:21.280690",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:21.274088",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:21.293554Z",
+     "iopub.status.busy": "2026-03-13T20:54:21.293236Z",
+     "iopub.status.idle": "2026-03-13T20:54:21.315589Z",
+     "shell.execute_reply": "2026-03-13T20:54:21.314182Z"
+    },
+    "papermill": {
+     "duration": 0.029902,
+     "end_time": "2026-03-13T20:54:21.316677",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:21.286775",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004817,
+     "end_time": "2026-03-13T20:54:21.326419",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:21.321602",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:21.339037Z",
+     "iopub.status.busy": "2026-03-13T20:54:21.338537Z",
+     "iopub.status.idle": "2026-03-13T20:54:33.572929Z",
+     "shell.execute_reply": "2026-03-13T20:54:33.567776Z"
+    },
+    "papermill": {
+     "duration": 12.245375,
+     "end_time": "2026-03-13T20:54:33.576133",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:21.330758",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a46bca09",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009572,
+     "end_time": "2026-03-13T20:54:33.596227",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:33.586655",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the first bolt, liner and joint objects."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "589ffeb3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:33.614003Z",
+     "iopub.status.busy": "2026-03-13T20:54:33.613524Z",
+     "iopub.status.idle": "2026-03-13T20:54:34.018742Z",
+     "shell.execute_reply": "2026-03-13T20:54:34.017123Z"
+    },
+    "papermill": {
+     "duration": 0.416544,
+     "end_time": "2026-03-13T20:54:34.019863",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:33.603319",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt = model.getAllBoltProperties()[0]\n",
+    "liner = model.getAllLinerProperties()[0]\n",
+    "joint = model.getAllJointProperties()[0]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "42582a9d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:34.033426Z",
+     "iopub.status.busy": "2026-03-13T20:54:34.033036Z",
+     "iopub.status.idle": "2026-03-13T20:54:34.054586Z",
+     "shell.execute_reply": "2026-03-13T20:54:34.052469Z"
+    },
+    "papermill": {
+     "duration": 0.0308,
+     "end_time": "2026-03-13T20:54:34.056111",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.025311",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<BoltTypes.PLAIN_STRAND_CABLE: 'PLAIN_STRAND_CABLE'>"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt.getBoltType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "46fc5bb8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:34.071296Z",
+     "iopub.status.busy": "2026-03-13T20:54:34.070913Z",
+     "iopub.status.idle": "2026-03-13T20:54:34.080407Z",
+     "shell.execute_reply": "2026-03-13T20:54:34.079233Z"
+    },
+    "papermill": {
+     "duration": 0.019303,
+     "end_time": "2026-03-13T20:54:34.081479",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.062176",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<LinerTypes.STANDARD: 'STANDARD'>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner.getLinerType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "2c263247",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:34.095105Z",
+     "iopub.status.busy": "2026-03-13T20:54:34.094542Z",
+     "iopub.status.idle": "2026-03-13T20:54:34.104159Z",
+     "shell.execute_reply": "2026-03-13T20:54:34.103028Z"
+    },
+    "papermill": {
+     "duration": 0.018134,
+     "end_time": "2026-03-13T20:54:34.105300",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.087166",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<JointConstitutiveModelTypes.NONE: 'NONE'>"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "joint.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7a2088b6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007588,
+     "end_time": "2026-03-13T20:54:34.118070",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.110482",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the properties of bolt, liner and joint to something different from the current properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "34e275f6",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:34.132056Z",
+     "iopub.status.busy": "2026-03-13T20:54:34.131649Z",
+     "iopub.status.idle": "2026-03-13T20:54:34.325204Z",
+     "shell.execute_reply": "2026-03-13T20:54:34.321923Z"
+    },
+    "papermill": {
+     "duration": 0.203757,
+     "end_time": "2026-03-13T20:54:34.327759",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.124002",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt.setBoltType(BoltTypes.SWELLEX)\n",
+    "liner.setLinerType(LinerTypes.REINFORCED_CONCRETE)\n",
+    "joint.setConstitutiveModel(JointConstitutiveModelTypes.MATERIAL_DEPENDENT)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "64e90495",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009421,
+     "end_time": "2026-03-13T20:54:34.346440",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.337019",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get bolt type again."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "5f6bc00c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:34.367429Z",
+     "iopub.status.busy": "2026-03-13T20:54:34.366566Z",
+     "iopub.status.idle": "2026-03-13T20:54:34.378266Z",
+     "shell.execute_reply": "2026-03-13T20:54:34.376352Z"
+    },
+    "papermill": {
+     "duration": 0.023841,
+     "end_time": "2026-03-13T20:54:34.379850",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.356009",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<BoltTypes.SWELLEX: 'SWELLEX_BOLT'>"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt.getBoltType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "eb384b15",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006591,
+     "end_time": "2026-03-13T20:54:34.393724",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.387133",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get liner type again."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "0c1b0e6e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:34.410805Z",
+     "iopub.status.busy": "2026-03-13T20:54:34.410135Z",
+     "iopub.status.idle": "2026-03-13T20:54:34.419275Z",
+     "shell.execute_reply": "2026-03-13T20:54:34.417554Z"
+    },
+    "papermill": {
+     "duration": 0.01995,
+     "end_time": "2026-03-13T20:54:34.420807",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.400857",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<LinerTypes.REINFORCED_CONCRETE: 'REINFORCED_CONCRETE'>"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner.getLinerType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fabb5ccf",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007256,
+     "end_time": "2026-03-13T20:54:34.433788",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.426532",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the constitutive model of joint again."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "f52fbd90",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:34.449585Z",
+     "iopub.status.busy": "2026-03-13T20:54:34.448843Z",
+     "iopub.status.idle": "2026-03-13T20:54:34.457521Z",
+     "shell.execute_reply": "2026-03-13T20:54:34.456281Z"
+    },
+    "papermill": {
+     "duration": 0.01759,
+     "end_time": "2026-03-13T20:54:34.458620",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.441030",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<JointConstitutiveModelTypes.MATERIAL_DEPENDENT: 'MATERIAL_DEPENDENT'>"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "joint.getConstitutiveModel()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c19ae2ff",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009246,
+     "end_time": "2026-03-13T20:54:34.473979",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.464733",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "7d72da10",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:34.492870Z",
+     "iopub.status.busy": "2026-03-13T20:54:34.492462Z",
+     "iopub.status.idle": "2026-03-13T20:54:35.832112Z",
+     "shell.execute_reply": "2026-03-13T20:54:35.829677Z"
+    },
+    "papermill": {
+     "duration": 1.353081,
+     "end_time": "2026-03-13T20:54:35.834353",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:34.481272",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.save()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1aef6386",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010167,
+     "end_time": "2026-03-13T20:54:35.861279",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:35.851112",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Compute the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "32a466b5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:54:35.893940Z",
+     "iopub.status.busy": "2026-03-13T20:54:35.892455Z",
+     "iopub.status.idle": "2026-03-13T20:55:53.536517Z",
+     "shell.execute_reply": "2026-03-13T20:55:53.531610Z"
+    },
+    "papermill": {
+     "duration": 77.678474,
+     "end_time": "2026-03-13T20:55:53.551120",
+     "exception": false,
+     "start_time": "2026-03-13T20:54:35.872646",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Recovery: True\n",
+      "Stages Convergence:\n",
+      "Stage    Status  \n",
+      "----------------\n",
+      "1        Yes     \n",
+      "2        Yes     \n",
+      "3        Yes     \n",
+      "4        Yes     \n",
+      "5        Yes     \n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "(True, '')"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.Compute.compute()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.021842,
+     "end_time": "2026-03-13T20:55:53.607791",
+     "exception": false,
+     "start_time": "2026-03-13T20:55:53.585949",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:55:53.657747Z",
+     "iopub.status.busy": "2026-03-13T20:55:53.656103Z",
+     "iopub.status.idle": "2026-03-13T20:55:57.198000Z",
+     "shell.execute_reply": "2026-03-13T20:55:57.196324Z"
+    },
+    "papermill": {
+     "duration": 3.572084,
+     "end_time": "2026-03-13T20:55:57.199455",
+     "exception": false,
+     "start_time": "2026-03-13T20:55:53.627371",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7f4f0e31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.016607,
+     "end_time": "2026-03-13T20:55:57.225677",
+     "exception": false,
+     "start_time": "2026-03-13T20:55:57.209070",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "fcfde680",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:55:57.250141Z",
+     "iopub.status.busy": "2026-03-13T20:55:57.249234Z",
+     "iopub.status.idle": "2026-03-13T20:56:04.694617Z",
+     "shell.execute_reply": "2026-03-13T20:56:04.691171Z"
+    },
+    "papermill": {
+     "duration": 7.462259,
+     "end_time": "2026-03-13T20:56:04.697242",
+     "exception": false,
+     "start_time": "2026-03-13T20:55:57.234983",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e06461b5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011846,
+     "end_time": "2026-03-13T20:56:04.720348",
+     "exception": false,
+     "start_time": "2026-03-13T20:56:04.708502",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "e1bde22a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:56:04.750952Z",
+     "iopub.status.busy": "2026-03-13T20:56:04.750123Z",
+     "iopub.status.idle": "2026-03-13T20:58:35.154471Z",
+     "shell.execute_reply": "2026-03-13T20:58:35.152576Z"
+    },
+    "papermill": {
+     "duration": 150.422061,
+     "end_time": "2026-03-13T20:58:35.156118",
+     "exception": false,
+     "start_time": "2026-03-13T20:56:04.734057",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:56:04,758 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60101...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Recovery: True\n",
+      "Stages Convergence:\n",
+      "Stage    Status  \n",
+      "----------------\n",
+      "1        Yes     \n",
+      "2        Yes     \n",
+      "3        Yes     \n",
+      "4        Yes     \n",
+      "5        Yes     \n"
+     ]
+    }
+   ],
+   "source": [
+    "# Model Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60101\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# Get the first bolt, liner and joint objects.\n",
+    "bolt = model.getAllBoltProperties()[0]\n",
+    "liner = model.getAllLinerProperties()[0]\n",
+    "joint = model.getAllJointProperties()[0]\n",
+    "# Set the properties of bolt, liner and joint to something different from the current properties.\n",
+    "bolt.setBoltType(BoltTypes.SWELLEX)\n",
+    "liner.setLinerType(LinerTypes.REINFORCED_CONCRETE)\n",
+    "joint.setConstitutiveModel(JointConstitutiveModelTypes.MATERIAL_DEPENDENT)\n",
+    "# Save the model.\n",
+    "model.save()\n",
+    "# Compute the model.\n",
+    "model.Compute.compute()\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 287.437096,
+   "end_time": "2026-03-13T20:58:37.629068",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\model_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\model_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:53:50.191972",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

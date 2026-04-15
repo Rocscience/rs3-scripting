@@ -1,0 +1,7 @@
+rs3.results.SolidNodalResults module
+====================================
+
+.. automodule:: rs3.results.SolidNodalResults
+   :members:
+   :undoc-members:
+   :show-inheritance:

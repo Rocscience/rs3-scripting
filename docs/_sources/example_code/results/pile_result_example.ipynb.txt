@@ -1,0 +1,810 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "3953d19e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007561,
+     "end_time": "2026-03-13T21:11:20.503247",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:20.495686",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(pile_result_example)=\n",
+    "# Pile Result Script Example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0054078b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.0071,
+     "end_time": "2026-03-13T21:11:20.518161",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:20.511061",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "0d48abd5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:11:20.528820Z",
+     "iopub.status.busy": "2026-03-13T21:11:20.528525Z",
+     "iopub.status.idle": "2026-03-13T21:11:20.813465Z",
+     "shell.execute_reply": "2026-03-13T21:11:20.811820Z"
+    },
+    "papermill": {
+     "duration": 0.29183,
+     "end_time": "2026-03-13T21:11:20.815093",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:20.523263",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import PileInterfaceDataType, BeamsDataType\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6375a745",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005166,
+     "end_time": "2026-03-13T21:11:20.825477",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:20.820311",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "01397a19",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:11:20.839462Z",
+     "iopub.status.busy": "2026-03-13T21:11:20.839008Z",
+     "iopub.status.idle": "2026-03-13T21:11:20.844251Z",
+     "shell.execute_reply": "2026-03-13T21:11:20.842693Z"
+    },
+    "papermill": {
+     "duration": 0.01524,
+     "end_time": "2026-03-13T21:11:20.846237",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:20.830997",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2810d692",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005081,
+     "end_time": "2026-03-13T21:11:20.857346",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:20.852265",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "c83c4184",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:11:20.871246Z",
+     "iopub.status.busy": "2026-03-13T21:11:20.870823Z",
+     "iopub.status.idle": "2026-03-13T21:11:51.285789Z",
+     "shell.execute_reply": "2026-03-13T21:11:51.284043Z"
+    },
+    "papermill": {
+     "duration": 30.425156,
+     "end_time": "2026-03-13T21:11:51.287504",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:20.862348",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:11:20,877 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60505...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60505\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5cc8823f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005621,
+     "end_time": "2026-03-13T21:11:51.299772",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:51.294151",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "b86d1349",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:11:51.316300Z",
+     "iopub.status.busy": "2026-03-13T21:11:51.315808Z",
+     "iopub.status.idle": "2026-03-13T21:11:51.323382Z",
+     "shell.execute_reply": "2026-03-13T21:11:51.321967Z"
+    },
+    "papermill": {
+     "duration": 0.019175,
+     "end_time": "2026-03-13T21:11:51.324890",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:51.305715",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fa1ba63d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004423,
+     "end_time": "2026-03-13T21:11:51.336034",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:51.331611",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "68a779ea",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:11:51.347932Z",
+     "iopub.status.busy": "2026-03-13T21:11:51.347503Z",
+     "iopub.status.idle": "2026-03-13T21:12:05.805648Z",
+     "shell.execute_reply": "2026-03-13T21:12:05.803113Z"
+    },
+    "papermill": {
+     "duration": 14.467177,
+     "end_time": "2026-03-13T21:12:05.807842",
+     "exception": false,
+     "start_time": "2026-03-13T21:11:51.340665",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "77e01601",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009491,
+     "end_time": "2026-03-13T21:12:05.829129",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:05.819638",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Get Node Results"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3dfa67c3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01183,
+     "end_time": "2026-03-13T21:12:05.848219",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:05.836389",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.1 Define a box region to filter pile elements (optional)\n",
+    "\n",
+    "A cube region is defined by two corners. Only mesh nodes inside or intersecting the box will be returned. If you omit the region in the next step, all nodes in the model would be returned.\n",
+    "\n",
+    "In this example, we want to query the pile under the middle of the foundation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c3a02dcd",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:05.882721Z",
+     "iopub.status.busy": "2026-03-13T21:12:05.882113Z",
+     "iopub.status.idle": "2026-03-13T21:12:05.891772Z",
+     "shell.execute_reply": "2026-03-13T21:12:05.889197Z"
+    },
+    "papermill": {
+     "duration": 0.028879,
+     "end_time": "2026-03-13T21:12:05.894446",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:05.865567",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile_query_region = Cube(\n",
+    "    corner1=Point(x=17.0, y=14.5, z=-11.0),\n",
+    "    corner2=Point(x=18.0, y=15.5, z=1.0),\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0c52ef31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.016826,
+     "end_time": "2026-03-13T21:12:05.923005",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:05.906179",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.2 Get the pile results object for the desired stage(s)\n",
+    "\n",
+    "getPileForepoleResults returns a list: one entry per stage requested. Here we request only stage 5, so the list has one element at index 0."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "e1bf1c47",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:05.966222Z",
+     "iopub.status.busy": "2026-03-13T21:12:05.963359Z",
+     "iopub.status.idle": "2026-03-13T21:12:07.960449Z",
+     "shell.execute_reply": "2026-03-13T21:12:07.957385Z"
+    },
+    "papermill": {
+     "duration": 2.027029,
+     "end_time": "2026-03-13T21:12:07.962706",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:05.935677",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile_results_list = model.Results.getPileForepoleResults(stageNumber=[5])\n",
+    "pile_results_stage_5 = pile_results_list[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "90d686fd",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009045,
+     "end_time": "2026-03-13T21:12:07.978999",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:07.969954",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.3 Get all pile node results for this stage\n",
+    "\n",
+    "The region is defined for the central pile only, so only the node results related to this pile will be returned."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "992d3346",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:08.007312Z",
+     "iopub.status.busy": "2026-03-13T21:12:08.005471Z",
+     "iopub.status.idle": "2026-03-13T21:12:08.683743Z",
+     "shell.execute_reply": "2026-03-13T21:12:08.681356Z"
+    },
+    "papermill": {
+     "duration": 0.695401,
+     "end_time": "2026-03-13T21:12:08.686156",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:07.990755",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile_node_results_list = pile_results_stage_5.getPileForepoleNodeResults(region=pile_query_region)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f1385d63",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011179,
+     "end_time": "2026-03-13T21:12:08.710665",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:08.699486",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Build a lookup: NodeID -> nodal result object. This is used later to get coordinates for each node attached to an element."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "68a91513",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:08.735971Z",
+     "iopub.status.busy": "2026-03-13T21:12:08.735024Z",
+     "iopub.status.idle": "2026-03-13T21:12:08.746004Z",
+     "shell.execute_reply": "2026-03-13T21:12:08.743355Z"
+    },
+    "papermill": {
+     "duration": 0.027741,
+     "end_time": "2026-03-13T21:12:08.748536",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:08.720795",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile_node_by_id = {nr.NodeID: nr for nr in pile_node_results_list}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ada3fc8",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010838,
+     "end_time": "2026-03-13T21:12:08.768363",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:08.757525",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.4 Get pile element results within the region"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "3e5170a9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:08.794676Z",
+     "iopub.status.busy": "2026-03-13T21:12:08.793730Z",
+     "iopub.status.idle": "2026-03-13T21:12:08.969254Z",
+     "shell.execute_reply": "2026-03-13T21:12:08.964484Z"
+    },
+    "papermill": {
+     "duration": 0.192394,
+     "end_time": "2026-03-13T21:12:08.973160",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:08.780766",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "pile_element_results_list = pile_results_stage_5.getPileForepoleElementResults(region=pile_query_region)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e8f00176",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014218,
+     "end_time": "2026-03-13T21:12:09.003586",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:08.989368",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.5 Take one element and read its per-node result values\n",
+    "\n",
+    "Each element has attached nodes. getResults(...) returns a list of values, one per node of the element (in the same order as AttachedNodeIDs)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1aac0004",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:09.027760Z",
+     "iopub.status.busy": "2026-03-13T21:12:09.026862Z",
+     "iopub.status.idle": "2026-03-13T21:12:09.037804Z",
+     "shell.execute_reply": "2026-03-13T21:12:09.036308Z"
+    },
+    "papermill": {
+     "duration": 0.025288,
+     "end_time": "2026-03-13T21:12:09.039446",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:09.014158",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Pile element PileID=3 (BeamID=88233, InterfaceID=88258), nodal results:\n",
+      "  Node 15585 (PileID 3): (x, y, z, Interface Total Disp., Beam Total Disp.) = (17.5, 15.0, 1.734723475976807e-18, 0.07092518500510456, 0.017067301965327904)\n",
+      "  Node 15586 (PileID 3): (x, y, z, Interface Total Disp., Beam Total Disp.) = (17.5, 15.0, -0.16711709414160175, 0.07053305172810298, 0.017065342359394702)\n"
+     ]
+    }
+   ],
+   "source": [
+    "element_index = 0\n",
+    "selected_pile_element = pile_element_results_list[element_index]\n",
+    "pile_attached_node_ids = selected_pile_element.AttachedNodeIDs\n",
+    "# Interface total displacement (e.g. relative displacement at pile–soil interface).\n",
+    "pile_interface_disp_per_node = selected_pile_element.getNodeResult(\n",
+    "    PileInterfaceDataType.DISPLACEMENT_TOTAL,\n",
+    ")\n",
+    "# Beam total displacement (displacement of the pile beam itself).\n",
+    "pile_beam_disp_per_node = selected_pile_element.getNodeResult(\n",
+    "    BeamsDataType.DISPLACEMENT_TOTAL,\n",
+    ")\n",
+    "\n",
+    "print(\n",
+    "    f\"Pile element PileID={selected_pile_element.PileID} \"\n",
+    "    f\"(BeamID={selected_pile_element.BeamID}, InterfaceID={selected_pile_element.InterfaceID}), nodal results:\"\n",
+    ")\n",
+    "for i in range(len(pile_attached_node_ids)):\n",
+    "    node_id = pile_attached_node_ids[i]\n",
+    "    nodal_result = pile_node_by_id[node_id]\n",
+    "    print(\n",
+    "        f\"  Node {node_id} (PileID {nodal_result.PileID}): (x, y, z, Interface Total Disp., Beam Total Disp.) = \"\n",
+    "        f\"({nodal_result.XCoordinate}, {nodal_result.YCoordinate}, {nodal_result.ZCoordinate}, \"\n",
+    "        f\"{pile_interface_disp_per_node[i]}, {pile_beam_disp_per_node[i]})\"\n",
+    "    )\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "649242e3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005533,
+     "end_time": "2026-03-13T21:12:09.052636",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:09.047103",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Since accessing results doesn't change the model, close the model without saving."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "358e8f69",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:09.067680Z",
+     "iopub.status.busy": "2026-03-13T21:12:09.067257Z",
+     "iopub.status.idle": "2026-03-13T21:12:11.162906Z",
+     "shell.execute_reply": "2026-03-13T21:12:11.160711Z"
+    },
+    "papermill": {
+     "duration": 2.105083,
+     "end_time": "2026-03-13T21:12:11.164760",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:09.059677",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "73677420",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008683,
+     "end_time": "2026-03-13T21:12:11.179793",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:11.171110",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "d51877c1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:11.193398Z",
+     "iopub.status.busy": "2026-03-13T21:12:11.192845Z",
+     "iopub.status.idle": "2026-03-13T21:12:17.051001Z",
+     "shell.execute_reply": "2026-03-13T21:12:17.047171Z"
+    },
+    "papermill": {
+     "duration": 5.867353,
+     "end_time": "2026-03-13T21:12:17.052917",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:11.185564",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d744be91",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007816,
+     "end_time": "2026-03-13T21:12:17.067837",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:17.060021",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "6c1cdf0b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:12:17.083039Z",
+     "iopub.status.busy": "2026-03-13T21:12:17.082453Z",
+     "iopub.status.idle": "2026-03-13T21:13:00.935910Z",
+     "shell.execute_reply": "2026-03-13T21:13:00.933079Z"
+    },
+    "papermill": {
+     "duration": 43.863677,
+     "end_time": "2026-03-13T21:13:00.937774",
+     "exception": false,
+     "start_time": "2026-03-13T21:12:17.074097",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:12:17,093 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60505...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Pile element PileID=3 (BeamID=88233, InterfaceID=88258), nodal results:\n",
+      "  Node 15585 (PileID 3): (x, y, z, Interface Total Disp., Beam Total Disp.) = (17.5, 15.0, 1.734723475976807e-18, 0.07092518500510456, 0.017067301965327904)\n",
+      "  Node 15586 (PileID 3): (x, y, z, Interface Total Disp., Beam Total Disp.) = (17.5, 15.0, -0.16711709414160175, 0.07053305172810298, 0.017065342359394702)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Pile Result Script Example\n",
+    "# Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import PileInterfaceDataType, BeamsDataType\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60505\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. \n",
+    "# You may change the model path to your own model path.\n",
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")\n",
+    "\n",
+    "# 1. Get Node Results\n",
+    "# 1.1 Define a box region to filter pile elements (optional)\n",
+    "# A cube region is defined by two corners. Only mesh nodes inside or intersecting \n",
+    "# the box will be returned. If you omit the region in the next step, all nodes in \n",
+    "# the model would be returned.\n",
+    "# In this example, we want to query the pile under the middle of the foundation.\n",
+    "pile_query_region = Cube(\n",
+    "    corner1=Point(x=17.0, y=14.5, z=-11.0),\n",
+    "    corner2=Point(x=18.0, y=15.5, z=1.0),\n",
+    ")\n",
+    "\n",
+    "# 1.2 Get the pile results object for the desired stage(s)\n",
+    "# getPileForepoleResults returns a list: one entry per stage requested. Here we \n",
+    "# request only stage 5, so the list has one element at index 0.\n",
+    "pile_results_list = model.Results.getPileForepoleResults(stageNumber=[5])\n",
+    "pile_results_stage_5 = pile_results_list[0]\n",
+    "\n",
+    "# 1.3 Get all pile node results for this stage\n",
+    "# The region is defined for the central pile only, so only the node results related \n",
+    "# to this pile will be returned.\n",
+    "pile_node_results_list = pile_results_stage_5.getPileForepoleNodeResults(region=pile_query_region)\n",
+    "# Build a lookup: NodeID -> nodal result object. This is used later to get coordinates \n",
+    "# for each node attached to an element.\n",
+    "pile_node_by_id = {nr.NodeID: nr for nr in pile_node_results_list}\n",
+    "\n",
+    "# 1.4 Get pile element results within the region\n",
+    "pile_element_results_list = pile_results_stage_5.getPileForepoleElementResults(region=pile_query_region)\n",
+    "\n",
+    "# 1.5 Take one element and read its per-node result values\n",
+    "# Each element has attached nodes. getResults(...) returns a list of values, one per \n",
+    "# node of the element (in the same order as AttachedNodeIDs).\n",
+    "element_index = 0\n",
+    "selected_pile_element = pile_element_results_list[element_index]\n",
+    "pile_attached_node_ids = selected_pile_element.AttachedNodeIDs\n",
+    "# Interface total displacement (e.g. relative displacement at pile–soil interface).\n",
+    "pile_interface_disp_per_node = selected_pile_element.getNodeResult(\n",
+    "    PileInterfaceDataType.DISPLACEMENT_TOTAL,\n",
+    ")\n",
+    "\n",
+    "# Beam total displacement (displacement of the pile beam itself).\n",
+    "pile_beam_disp_per_node = selected_pile_element.getNodeResult(\n",
+    "    BeamsDataType.DISPLACEMENT_TOTAL,\n",
+    ")\n",
+    "print(\n",
+    "    f\"Pile element PileID={selected_pile_element.PileID} \"\n",
+    "    f\"(BeamID={selected_pile_element.BeamID}, InterfaceID={selected_pile_element.InterfaceID}), nodal results:\"\n",
+    ")\n",
+    "for i in range(len(pile_attached_node_ids)):\n",
+    "    node_id = pile_attached_node_ids[i]\n",
+    "    nodal_result = pile_node_by_id[node_id]\n",
+    "    print(\n",
+    "        f\"  Node {node_id} (PileID {nodal_result.PileID}): (x, y, z, Interface Total Disp., Beam Total Disp.) = \"\n",
+    "        f\"({nodal_result.XCoordinate}, {nodal_result.YCoordinate}, {nodal_result.ZCoordinate}, \"\n",
+    "        f\"{pile_interface_disp_per_node[i]}, {pile_beam_disp_per_node[i]})\"\n",
+    "    )\n",
+    "    \n",
+    "# Since accessing results doesn't change the model, close the model without saving.\n",
+    "model.close(False)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 103.848812,
+   "end_time": "2026-03-13T21:13:02.553547",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\pile_result_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\pile_result_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:11:18.704735",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

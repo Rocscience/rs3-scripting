@@ -1,0 +1,7 @@
+rs3.properties.bolt.FullyBonded module
+======================================
+
+.. automodule:: rs3.properties.bolt.FullyBonded
+   :members:
+   :undoc-members:
+   :show-inheritance:

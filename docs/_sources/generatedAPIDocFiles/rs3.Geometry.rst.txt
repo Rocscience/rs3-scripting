@@ -1,0 +1,7 @@
+rs3.Geometry module
+===================
+
+.. automodule:: rs3.Geometry
+   :members:
+   :undoc-members:
+   :show-inheritance:

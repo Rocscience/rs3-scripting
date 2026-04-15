@@ -1,0 +1,7 @@
+rs3.properties.bolt.Tieback module
+==================================
+
+.. automodule:: rs3.properties.bolt.Tieback
+   :members:
+   :undoc-members:
+   :show-inheritance:

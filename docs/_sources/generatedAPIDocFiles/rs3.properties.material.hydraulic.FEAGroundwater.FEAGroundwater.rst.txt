@@ -1,0 +1,7 @@
+rs3.properties.material.hydraulic.FEAGroundwater.FEAGroundwater module
+======================================================================
+
+.. automodule:: rs3.properties.material.hydraulic.FEAGroundwater.FEAGroundwater
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+rs3.results.ResultEnums module
+==============================
+
+.. automodule:: rs3.results.ResultEnums
+   :members:
+   :undoc-members:
+   :show-inheritance:

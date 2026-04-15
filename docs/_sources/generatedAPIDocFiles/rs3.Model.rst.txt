@@ -1,0 +1,7 @@
+rs3.Model module
+================
+
+.. automodule:: rs3.Model
+   :members:
+   :undoc-members:
+   :show-inheritance:

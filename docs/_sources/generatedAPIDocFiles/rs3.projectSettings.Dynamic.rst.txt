@@ -1,0 +1,7 @@
+rs3.projectSettings.Dynamic module
+==================================
+
+.. automodule:: rs3.projectSettings.Dynamic
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,1394 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005203,
+     "end_time": "2026-03-13T21:16:34.543496",
+     "exception": false,
+     "start_time": "2026-03-13T21:16:34.538293",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(bolt_example)=\n",
+    "# Bolt Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006495,
+     "end_time": "2026-03-13T21:16:34.554765",
+     "exception": false,
+     "start_time": "2026-03-13T21:16:34.548270",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:16:34.577810Z",
+     "iopub.status.busy": "2026-03-13T21:16:34.577232Z",
+     "iopub.status.idle": "2026-03-13T21:16:34.851642Z",
+     "shell.execute_reply": "2026-03-13T21:16:34.850578Z"
+    },
+    "papermill": {
+     "duration": 0.286001,
+     "end_time": "2026-03-13T21:16:34.853155",
+     "exception": false,
+     "start_time": "2026-03-13T21:16:34.567154",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006623,
+     "end_time": "2026-03-13T21:16:34.867398",
+     "exception": false,
+     "start_time": "2026-03-13T21:16:34.860775",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:16:34.884709Z",
+     "iopub.status.busy": "2026-03-13T21:16:34.884249Z",
+     "iopub.status.idle": "2026-03-13T21:16:34.888981Z",
+     "shell.execute_reply": "2026-03-13T21:16:34.887685Z"
+    },
+    "papermill": {
+     "duration": 0.015984,
+     "end_time": "2026-03-13T21:16:34.890363",
+     "exception": false,
+     "start_time": "2026-03-13T21:16:34.874379",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.abspath(\"\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006935,
+     "end_time": "2026-03-13T21:16:34.905415",
+     "exception": false,
+     "start_time": "2026-03-13T21:16:34.898480",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "caf789d3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:16:34.921395Z",
+     "iopub.status.busy": "2026-03-13T21:16:34.920764Z",
+     "iopub.status.idle": "2026-03-13T21:17:03.553313Z",
+     "shell.execute_reply": "2026-03-13T21:17:03.552111Z"
+    },
+    "papermill": {
+     "duration": 28.641204,
+     "end_time": "2026-03-13T21:17:03.554477",
+     "exception": false,
+     "start_time": "2026-03-13T21:16:34.913273",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:16:34,928 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60302...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60302\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "88a94055",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006432,
+     "end_time": "2026-03-13T21:17:03.566662",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:03.560230",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "dc6dfdba",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:03.579521Z",
+     "iopub.status.busy": "2026-03-13T21:17:03.579146Z",
+     "iopub.status.idle": "2026-03-13T21:17:03.800181Z",
+     "shell.execute_reply": "2026-03-13T21:17:03.797985Z"
+    },
+    "papermill": {
+     "duration": 0.229779,
+     "end_time": "2026-03-13T21:17:03.802172",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:03.572393",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008615,
+     "end_time": "2026-03-13T21:17:03.817685",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:03.809070",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:03.835126Z",
+     "iopub.status.busy": "2026-03-13T21:17:03.834160Z",
+     "iopub.status.idle": "2026-03-13T21:17:03.861903Z",
+     "shell.execute_reply": "2026-03-13T21:17:03.860661Z"
+    },
+    "papermill": {
+     "duration": 0.037203,
+     "end_time": "2026-03-13T21:17:03.863202",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:03.825999",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006292,
+     "end_time": "2026-03-13T21:17:03.877116",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:03.870824",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:03.891589Z",
+     "iopub.status.busy": "2026-03-13T21:17:03.891227Z",
+     "iopub.status.idle": "2026-03-13T21:17:14.984145Z",
+     "shell.execute_reply": "2026-03-13T21:17:14.982481Z"
+    },
+    "papermill": {
+     "duration": 11.101806,
+     "end_time": "2026-03-13T21:17:14.985876",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:03.884070",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7a37545f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007944,
+     "end_time": "2026-03-13T21:17:15.004264",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:14.996320",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create and Get Bolt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a46bca09",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011255,
+     "end_time": "2026-03-13T21:17:15.027545",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.016290",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the first bolt in the list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "589ffeb3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:15.048887Z",
+     "iopub.status.busy": "2026-03-13T21:17:15.048445Z",
+     "iopub.status.idle": "2026-03-13T21:17:15.257221Z",
+     "shell.execute_reply": "2026-03-13T21:17:15.256196Z"
+    },
+    "papermill": {
+     "duration": 0.220409,
+     "end_time": "2026-03-13T21:17:15.258638",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.038229",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'NewBolt'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt1 = model.getAllBoltProperties()[0]\n",
+    "bolt1.getBoltName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "76616df5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006277,
+     "end_time": "2026-03-13T21:17:15.273573",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.267296",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create a new bolt and get the bolt by name."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "ae33a7ee",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:15.295076Z",
+     "iopub.status.busy": "2026-03-13T21:17:15.294198Z",
+     "iopub.status.idle": "2026-03-13T21:17:15.450664Z",
+     "shell.execute_reply": "2026-03-13T21:17:15.448573Z"
+    },
+    "papermill": {
+     "duration": 0.168628,
+     "end_time": "2026-03-13T21:17:15.452224",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.283596",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Bolt 2'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt2Name = \"Bolt 2\"\n",
+    "model.createNewBoltProperty(bolt2Name)\n",
+    "bolt2 = model.getBoltPropertyByName(bolt2Name)\n",
+    "bolt2.getBoltName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9de1737c",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00891,
+     "end_time": "2026-03-13T21:17:15.469802",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.460892",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Set Bolt Properties"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "fece571e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:15.487559Z",
+     "iopub.status.busy": "2026-03-13T21:17:15.487165Z",
+     "iopub.status.idle": "2026-03-13T21:17:15.554152Z",
+     "shell.execute_reply": "2026-03-13T21:17:15.551753Z"
+    },
+    "papermill": {
+     "duration": 0.07772,
+     "end_time": "2026-03-13T21:17:15.555886",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.478166",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<BoltTypes.TIEBACK: 'TIEBACK_BOLT'>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt1.setBoltType(BoltTypes.TIEBACK)\n",
+    "bolt1.getBoltType()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8e96911c",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012503,
+     "end_time": "2026-03-13T21:17:15.580640",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.568137",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get all bolt properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "42582a9d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:15.604450Z",
+     "iopub.status.busy": "2026-03-13T21:17:15.603958Z",
+     "iopub.status.idle": "2026-03-13T21:17:15.649878Z",
+     "shell.execute_reply": "2026-03-13T21:17:15.648240Z"
+    },
+    "papermill": {
+     "duration": 0.060547,
+     "end_time": "2026-03-13T21:17:15.651398",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.590851",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'BondStrength': 50000.0,\n",
+       " 'BondShearStiffness': 100000.0,\n",
+       " 'BoreholeDiameter': 0.019,\n",
+       " 'PullOutForce': 0.0,\n",
+       " 'TensileCapacity': 100.0,\n",
+       " 'ResidualTensileCapacity': 0.0,\n",
+       " 'PreTensioningForce': 0.0,\n",
+       " 'FacePlates': True,\n",
+       " 'BoltDiameter': 0.019,\n",
+       " 'DelayInstallAfterBolt': 0,\n",
+       " 'ConstantPretensioningForceInInstallStage': True,\n",
+       " 'JointShear': False,\n",
+       " 'UseBondPercentageLength': True,\n",
+       " 'AddPullOutForce': False,\n",
+       " 'UseSecondaryBondLength': False,\n",
+       " 'BondLength': 1.0,\n",
+       " 'SecondaryBondLength': 0.0,\n",
+       " 'BoltModulusE': 200000000.0,\n",
+       " 'PercentageBondLength': 20.0,\n",
+       " 'PercentOfSecondaryBondLength': 0.0}"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt1.Tieback.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "379d1a99",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00918,
+     "end_time": "2026-03-13T21:17:15.672751",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.663571",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set and get individual bolt property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "46fc5bb8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:15.695644Z",
+     "iopub.status.busy": "2026-03-13T21:17:15.695159Z",
+     "iopub.status.idle": "2026-03-13T21:17:15.758006Z",
+     "shell.execute_reply": "2026-03-13T21:17:15.755655Z"
+    },
+    "papermill": {
+     "duration": 0.076398,
+     "end_time": "2026-03-13T21:17:15.760019",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.683621",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "0.015"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt1.Tieback.setBoltDiameter(0.015)\n",
+    "bolt1.Tieback.getBoltDiameter()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f8ae05e8",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011831,
+     "end_time": "2026-03-13T21:17:15.780944",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.769113",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set multiple bolt properties."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "292d4a05",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:15.804167Z",
+     "iopub.status.busy": "2026-03-13T21:17:15.803724Z",
+     "iopub.status.idle": "2026-03-13T21:17:15.946206Z",
+     "shell.execute_reply": "2026-03-13T21:17:15.944740Z"
+    },
+    "papermill": {
+     "duration": 0.156666,
+     "end_time": "2026-03-13T21:17:15.948403",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.791737",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'BondStrength': 50000.0,\n",
+       " 'BondShearStiffness': 100000.0,\n",
+       " 'BoreholeDiameter': 0.019,\n",
+       " 'PullOutForce': 0.0,\n",
+       " 'TensileCapacity': 100.0,\n",
+       " 'ResidualTensileCapacity': 0.0,\n",
+       " 'PreTensioningForce': 0.0,\n",
+       " 'FacePlates': False,\n",
+       " 'BoltDiameter': 0.015,\n",
+       " 'DelayInstallAfterBolt': 0,\n",
+       " 'ConstantPretensioningForceInInstallStage': True,\n",
+       " 'JointShear': False,\n",
+       " 'UseBondPercentageLength': True,\n",
+       " 'AddPullOutForce': False,\n",
+       " 'UseSecondaryBondLength': False,\n",
+       " 'BondLength': 1.0,\n",
+       " 'SecondaryBondLength': 0.0,\n",
+       " 'BoltModulusE': 150000000.0,\n",
+       " 'PercentageBondLength': 20.0,\n",
+       " 'PercentOfSecondaryBondLength': 0.0}"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt1.Tieback.setProperties(FacePlates=False, BoltModulusE=1.5e8)\n",
+    "bolt1Properties = bolt1.Tieback.getProperties()\n",
+    "bolt1Properties"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "80718e98",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007984,
+     "end_time": "2026-03-13T21:17:15.964360",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.956376",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set bolt2 to a plain strand cable."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "eddf1524",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:15.984157Z",
+     "iopub.status.busy": "2026-03-13T21:17:15.983727Z",
+     "iopub.status.idle": "2026-03-13T21:17:16.035953Z",
+     "shell.execute_reply": "2026-03-13T21:17:16.033896Z"
+    },
+    "papermill": {
+     "duration": 0.064961,
+     "end_time": "2026-03-13T21:17:16.038041",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:15.973080",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<BoltTypes.PLAIN_STRAND_CABLE: 'PLAIN_STRAND_CABLE'>"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt2.setBoltType(BoltTypes.PLAIN_STRAND_CABLE)\n",
+    "bolt2.getBoltType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "f9c1767d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:16.076604Z",
+     "iopub.status.busy": "2026-03-13T21:17:16.075625Z",
+     "iopub.status.idle": "2026-03-13T21:17:16.244330Z",
+     "shell.execute_reply": "2026-03-13T21:17:16.239642Z"
+    },
+    "papermill": {
+     "duration": 0.194819,
+     "end_time": "2026-03-13T21:17:16.248061",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.053242",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt2.PlainStrandCable.setAddBulges(True)\n",
+    "bolt2.PlainStrandCable.setBulgeType(BulgeTypes.NUT_CASE_21MM)\n",
+    "bolt2.PlainStrandCable.setBulgeLocations([50, 100, 150, 200])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "4bcbf96a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:16.275491Z",
+     "iopub.status.busy": "2026-03-13T21:17:16.274883Z",
+     "iopub.status.idle": "2026-03-13T21:17:16.286361Z",
+     "shell.execute_reply": "2026-03-13T21:17:16.284840Z"
+    },
+    "papermill": {
+     "duration": 0.027825,
+     "end_time": "2026-03-13T21:17:16.287419",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.259594",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<BulgeTypes.NUT_CASE_21MM: 'twentyone_NUT_CASE'>"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt2.PlainStrandCable.getBulgeType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "9c360ecc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:16.310886Z",
+     "iopub.status.busy": "2026-03-13T21:17:16.310434Z",
+     "iopub.status.idle": "2026-03-13T21:17:16.328366Z",
+     "shell.execute_reply": "2026-03-13T21:17:16.326086Z"
+    },
+    "papermill": {
+     "duration": 0.032668,
+     "end_time": "2026-03-13T21:17:16.330057",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.297389",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[50.0, 100.0, 150.0, 200.0]"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt2.PlainStrandCable.getBulgeLocations()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "dcd2c763",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:16.347621Z",
+     "iopub.status.busy": "2026-03-13T21:17:16.347247Z",
+     "iopub.status.idle": "2026-03-13T21:17:16.536853Z",
+     "shell.execute_reply": "2026-03-13T21:17:16.533879Z"
+    },
+    "papermill": {
+     "duration": 0.201523,
+     "end_time": "2026-03-13T21:17:16.539495",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.337972",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "bolt2.setBoltType(BoltTypes.TIEBACK)\n",
+    "bolt2.Tieback.setUseSecondaryBondLength(True)\n",
+    "bolt2.Tieback.setSecondaryBondLengthType(SecondaryBondLengthType.FULLY_BONDED)\n",
+    "bolt2.Tieback.setDelayInstallAfterBolt(1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ea258629",
+   "metadata": {
+    "papermill": {
+     "duration": 0.0131,
+     "end_time": "2026-03-13T21:17:16.566117",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.553017",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Copy Bolt Properties"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f0ce291b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014069,
+     "end_time": "2026-03-13T21:17:16.589166",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.575097",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set bolt2 to Tieback as well."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "580157ee",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:16.608601Z",
+     "iopub.status.busy": "2026-03-13T21:17:16.608189Z",
+     "iopub.status.idle": "2026-03-13T21:17:16.668043Z",
+     "shell.execute_reply": "2026-03-13T21:17:16.665739Z"
+    },
+    "papermill": {
+     "duration": 0.071622,
+     "end_time": "2026-03-13T21:17:16.670370",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.598748",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<BoltTypes.TIEBACK: 'TIEBACK_BOLT'>"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt2.setBoltType(BoltTypes.TIEBACK)\n",
+    "bolt2.getBoltType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "3da2e9f7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:16.701981Z",
+     "iopub.status.busy": "2026-03-13T21:17:16.701209Z",
+     "iopub.status.idle": "2026-03-13T21:17:16.733736Z",
+     "shell.execute_reply": "2026-03-13T21:17:16.732250Z"
+    },
+    "papermill": {
+     "duration": 0.051401,
+     "end_time": "2026-03-13T21:17:16.735118",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.683717",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'BondStrength': 50000.0,\n",
+       " 'BondShearStiffness': 100000.0,\n",
+       " 'BoreholeDiameter': 0.019,\n",
+       " 'PullOutForce': 0.0,\n",
+       " 'TensileCapacity': 100.0,\n",
+       " 'ResidualTensileCapacity': 0.0,\n",
+       " 'PreTensioningForce': 0.0,\n",
+       " 'FacePlates': True,\n",
+       " 'BoltDiameter': 0.019,\n",
+       " 'DelayInstallAfterBolt': 1,\n",
+       " 'ConstantPretensioningForceInInstallStage': True,\n",
+       " 'JointShear': False,\n",
+       " 'UseBondPercentageLength': True,\n",
+       " 'AddPullOutForce': False,\n",
+       " 'UseSecondaryBondLength': True,\n",
+       " 'BondLength': 1.0,\n",
+       " 'SecondaryBondLength': 0.0,\n",
+       " 'BoltModulusE': 200000000.0,\n",
+       " 'PercentageBondLength': 20.0,\n",
+       " 'PercentOfSecondaryBondLength': 0.0}"
+      ]
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt2.Tieback.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ed6eed2e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008966,
+     "end_time": "2026-03-13T21:17:16.752098",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.743132",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Copy all bolt1 properties to bolt2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "cf41f58e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:16.769689Z",
+     "iopub.status.busy": "2026-03-13T21:17:16.769069Z",
+     "iopub.status.idle": "2026-03-13T21:17:18.135997Z",
+     "shell.execute_reply": "2026-03-13T21:17:18.133794Z"
+    },
+    "papermill": {
+     "duration": 1.378524,
+     "end_time": "2026-03-13T21:17:18.137951",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:16.759427",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'BondStrength': 50000.0,\n",
+       " 'BondShearStiffness': 100000.0,\n",
+       " 'BoreholeDiameter': 0.019,\n",
+       " 'PullOutForce': 0.0,\n",
+       " 'TensileCapacity': 100.0,\n",
+       " 'ResidualTensileCapacity': 0.0,\n",
+       " 'PreTensioningForce': 0.0,\n",
+       " 'FacePlates': False,\n",
+       " 'BoltDiameter': 0.015,\n",
+       " 'DelayInstallAfterBolt': 0,\n",
+       " 'ConstantPretensioningForceInInstallStage': True,\n",
+       " 'JointShear': False,\n",
+       " 'UseBondPercentageLength': True,\n",
+       " 'AddPullOutForce': False,\n",
+       " 'UseSecondaryBondLength': False,\n",
+       " 'BondLength': 1.0,\n",
+       " 'SecondaryBondLength': 0.0,\n",
+       " 'BoltModulusE': 150000000.0,\n",
+       " 'PercentageBondLength': 20.0,\n",
+       " 'PercentOfSecondaryBondLength': 0.0}"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "bolt2.Tieback.setProperties(**bolt1Properties)\n",
+    "bolt2.Tieback.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c85b6ae4",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013833,
+     "end_time": "2026-03-13T21:17:18.166635",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:18.152802",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 4. Delete Bolt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ce7eb35",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014817,
+     "end_time": "2026-03-13T21:17:18.192700",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:18.177883",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Delete Bolt 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "eaf5865f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:18.222555Z",
+     "iopub.status.busy": "2026-03-13T21:17:18.221966Z",
+     "iopub.status.idle": "2026-03-13T21:17:18.328105Z",
+     "shell.execute_reply": "2026-03-13T21:17:18.323950Z"
+    },
+    "papermill": {
+     "duration": 0.126831,
+     "end_time": "2026-03-13T21:17:18.333113",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:18.206282",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.deleteBoltProperty(bolt2Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b1c0a055",
+   "metadata": {
+    "papermill": {
+     "duration": 0.021113,
+     "end_time": "2026-03-13T21:17:18.378769",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:18.357656",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Check the rest of bolts and see if \"Bolt 2\" still exists."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "d998fc8e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:18.414322Z",
+     "iopub.status.busy": "2026-03-13T21:17:18.412859Z",
+     "iopub.status.idle": "2026-03-13T21:17:18.440847Z",
+     "shell.execute_reply": "2026-03-13T21:17:18.439076Z"
+    },
+    "papermill": {
+     "duration": 0.050763,
+     "end_time": "2026-03-13T21:17:18.442617",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:18.391854",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "NewBolt\n"
+     ]
+    }
+   ],
+   "source": [
+    "allBolts = model.getAllBoltProperties()\n",
+    "for bolt in allBolts:\n",
+    "    print(bolt.getBoltName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014791,
+     "end_time": "2026-03-13T21:17:18.473218",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:18.458427",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:18.507735Z",
+     "iopub.status.busy": "2026-03-13T21:17:18.506981Z",
+     "iopub.status.idle": "2026-03-13T21:17:22.170103Z",
+     "shell.execute_reply": "2026-03-13T21:17:22.168085Z"
+    },
+    "papermill": {
+     "duration": 3.683174,
+     "end_time": "2026-03-13T21:17:22.171824",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:18.488650",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "aee58e89",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011452,
+     "end_time": "2026-03-13T21:17:22.197286",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:22.185834",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "702f988b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:22.232709Z",
+     "iopub.status.busy": "2026-03-13T21:17:22.232022Z",
+     "iopub.status.idle": "2026-03-13T21:17:27.293528Z",
+     "shell.execute_reply": "2026-03-13T21:17:27.289648Z"
+    },
+    "papermill": {
+     "duration": 5.082513,
+     "end_time": "2026-03-13T21:17:27.296119",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:22.213606",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7eed73f1",
+   "metadata": {
+    "papermill": {
+     "duration": 0.0135,
+     "end_time": "2026-03-13T21:17:27.323637",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:27.310137",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "f82700cc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:17:27.351904Z",
+     "iopub.status.busy": "2026-03-13T21:17:27.351189Z",
+     "iopub.status.idle": "2026-03-13T21:18:13.822282Z",
+     "shell.execute_reply": "2026-03-13T21:18:13.821173Z"
+    },
+    "papermill": {
+     "duration": 46.489643,
+     "end_time": "2026-03-13T21:18:13.823562",
+     "exception": false,
+     "start_time": "2026-03-13T21:17:27.333919",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:17:27,362 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60302...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "NewBolt\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Bolt Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.abspath(\"\")\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60302\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create and Get Bolt\n",
+    "# Get the first bolt in the list.\n",
+    "bolt1 = model.getAllBoltProperties()[0]\n",
+    "# Create a new bolt and get the bolt by name.\n",
+    "bolt2Name = \"Bolt 2\"\n",
+    "model.createNewBoltProperty(bolt2Name)\n",
+    "bolt2 = model.getBoltPropertyByName(bolt2Name)\n",
+    "\n",
+    "# 2. Set Bolt Properties\n",
+    "bolt1.setBoltType(BoltTypes.TIEBACK)\n",
+    "# Set and get individual bolt property.\n",
+    "bolt1.Tieback.setBoltDiameter(0.015)\n",
+    "# Set multiple bolt properties.\n",
+    "bolt1.Tieback.setProperties(FacePlates=False, BoltModulusE=1.5e8)\n",
+    "bolt1Properties = bolt1.Tieback.getProperties()\n",
+    "# Set bolt2 to a plain strand cable.\n",
+    "bolt2.setBoltType(BoltTypes.PLAIN_STRAND_CABLE)\n",
+    "bolt2.PlainStrandCable.setAddBulges(True)\n",
+    "bolt2.PlainStrandCable.setBulgeType(BulgeTypes.NUT_CASE_21MM)\n",
+    "bolt2.PlainStrandCable.setBulgeLocations([50, 100, 150, 200])\n",
+    "bolt2.setBoltType(BoltTypes.TIEBACK)\n",
+    "bolt2.Tieback.setUseSecondaryBondLength(True)\n",
+    "bolt2.Tieback.setSecondaryBondLengthType(SecondaryBondLengthType.FULLY_BONDED)\n",
+    "bolt2.Tieback.setDelayInstallAfterBolt(1)\n",
+    "\n",
+    "# 3. Copy Bolt Properties\n",
+    "# Set bolt2 to Tieback as well.\n",
+    "bolt2.setBoltType(BoltTypes.TIEBACK)\n",
+    "# Copy all bolt1 properties to bolt2.\n",
+    "bolt2.Tieback.setProperties(**bolt1Properties)\n",
+    "\n",
+    "# 4. Delete Bolt\n",
+    "# Delete Bolt 2.\n",
+    "model.deleteBoltProperty(bolt2Name)\n",
+    "# Check the rest of bolts and see if \"Bolt 2\" still exists.\n",
+    "allBolts = model.getAllBoltProperties()\n",
+    "for bolt in allBolts:\n",
+    "    print(bolt.getBoltName())\n",
+    "    \n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 102.350438,
+   "end_time": "2026-03-13T21:18:15.450471",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\supports\\bolt_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\supports\\bolt_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:16:33.100033",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

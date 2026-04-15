@@ -1,0 +1,7 @@
+rs3.properties.pile.Pile module
+===============================
+
+.. automodule:: rs3.properties.pile.Pile
+   :members:
+   :undoc-members:
+   :show-inheritance:

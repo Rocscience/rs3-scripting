@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase module
+============================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase
+   :members:
+   :undoc-members:
+   :show-inheritance:

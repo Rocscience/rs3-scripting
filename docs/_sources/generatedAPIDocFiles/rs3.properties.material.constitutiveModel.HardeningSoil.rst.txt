@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.HardeningSoil module
+==============================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.HardeningSoil
+   :members:
+   :undoc-members:
+   :show-inheritance:

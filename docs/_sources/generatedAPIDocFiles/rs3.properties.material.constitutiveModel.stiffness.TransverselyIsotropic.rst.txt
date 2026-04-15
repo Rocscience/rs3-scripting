@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.stiffness.TransverselyIsotropic module
+================================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.stiffness.TransverselyIsotropic
+   :members:
+   :undoc-members:
+   :show-inheritance:

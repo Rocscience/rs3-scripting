@@ -1,0 +1,7 @@
+rs3.properties.bolt.EndAnchored module
+======================================
+
+.. automodule:: rs3.properties.bolt.EndAnchored
+   :members:
+   :undoc-members:
+   :show-inheritance:

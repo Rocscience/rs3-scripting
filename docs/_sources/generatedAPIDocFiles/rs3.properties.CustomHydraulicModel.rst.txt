@@ -1,0 +1,7 @@
+rs3.properties.CustomHydraulicModel module
+==========================================
+
+.. automodule:: rs3.properties.CustomHydraulicModel
+   :members:
+   :undoc-members:
+   :show-inheritance:

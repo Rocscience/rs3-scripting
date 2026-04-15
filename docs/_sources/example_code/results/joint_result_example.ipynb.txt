@@ -1,0 +1,899 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "3953d19e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003653,
+     "end_time": "2026-03-13T21:09:42.062307",
+     "exception": false,
+     "start_time": "2026-03-13T21:09:42.058654",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(joint_result_example)=\n",
+    "# Joint Result Script Example"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3d42cd25",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00812,
+     "end_time": "2026-03-13T21:09:42.074653",
+     "exception": false,
+     "start_time": "2026-03-13T21:09:42.066533",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "0d48abd5",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:09:42.095670Z",
+     "iopub.status.busy": "2026-03-13T21:09:42.095216Z",
+     "iopub.status.idle": "2026-03-13T21:09:42.375448Z",
+     "shell.execute_reply": "2026-03-13T21:09:42.374413Z"
+    },
+    "papermill": {
+     "duration": 0.29105,
+     "end_time": "2026-03-13T21:09:42.376662",
+     "exception": false,
+     "start_time": "2026-03-13T21:09:42.085612",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import InterfaceResultTypes\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6375a745",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005431,
+     "end_time": "2026-03-13T21:09:42.389334",
+     "exception": false,
+     "start_time": "2026-03-13T21:09:42.383903",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "01397a19",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:09:42.403664Z",
+     "iopub.status.busy": "2026-03-13T21:09:42.403100Z",
+     "iopub.status.idle": "2026-03-13T21:09:42.408666Z",
+     "shell.execute_reply": "2026-03-13T21:09:42.407126Z"
+    },
+    "papermill": {
+     "duration": 0.015926,
+     "end_time": "2026-03-13T21:09:42.410225",
+     "exception": false,
+     "start_time": "2026-03-13T21:09:42.394299",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2810d692",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00546,
+     "end_time": "2026-03-13T21:09:42.420988",
+     "exception": false,
+     "start_time": "2026-03-13T21:09:42.415528",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "bac075eb",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:09:42.433072Z",
+     "iopub.status.busy": "2026-03-13T21:09:42.432652Z",
+     "iopub.status.idle": "2026-03-13T21:10:10.070678Z",
+     "shell.execute_reply": "2026-03-13T21:10:10.068825Z"
+    },
+    "papermill": {
+     "duration": 27.646619,
+     "end_time": "2026-03-13T21:10:10.072007",
+     "exception": false,
+     "start_time": "2026-03-13T21:09:42.425388",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:09:42,439 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60504...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60504\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "58308d31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00437,
+     "end_time": "2026-03-13T21:10:10.081583",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:10.077213",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "894c6dc2",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:10.093010Z",
+     "iopub.status.busy": "2026-03-13T21:10:10.092607Z",
+     "iopub.status.idle": "2026-03-13T21:10:10.198030Z",
+     "shell.execute_reply": "2026-03-13T21:10:10.196697Z"
+    },
+    "papermill": {
+     "duration": 0.1127,
+     "end_time": "2026-03-13T21:10:10.199183",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:10.086483",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fa1ba63d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005378,
+     "end_time": "2026-03-13T21:10:10.209533",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:10.204155",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "68a779ea",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:10.222074Z",
+     "iopub.status.busy": "2026-03-13T21:10:10.221630Z",
+     "iopub.status.idle": "2026-03-13T21:10:21.272690Z",
+     "shell.execute_reply": "2026-03-13T21:10:21.269464Z"
+    },
+    "papermill": {
+     "duration": 11.060663,
+     "end_time": "2026-03-13T21:10:21.274987",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:10.214324",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "77e01601",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007014,
+     "end_time": "2026-03-13T21:10:21.288489",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:21.281475",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Get Node Results"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3dfa67c3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00495,
+     "end_time": "2026-03-13T21:10:21.298376",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:21.293426",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.1 Define a box region to filter joint elements (optional)\n",
+    "\n",
+    "A Cube is defined by two corners. Only mesh nodes inside or intersecting the box will be returned. If you omit the region in the next step, all nodes in the model would be returned."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "c3a02dcd",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:21.311700Z",
+     "iopub.status.busy": "2026-03-13T21:10:21.311264Z",
+     "iopub.status.idle": "2026-03-13T21:10:21.319045Z",
+     "shell.execute_reply": "2026-03-13T21:10:21.316995Z"
+    },
+    "papermill": {
+     "duration": 0.015797,
+     "end_time": "2026-03-13T21:10:21.320588",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:21.304791",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "joint_query_region = Cube(\n",
+    "    corner1=Point(x=3.0, y=14.0, z=-21.0),\n",
+    "    corner2=Point(x=26.0, y=16.0, z=1.0),\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0c52ef31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004718,
+     "end_time": "2026-03-13T21:10:21.330760",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:21.326042",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 1.2 Get the joint results object for the desired stage(s)\n",
+    "\n",
+    "Request joint results for two stages. joint_results_list[0] = stage 4, [1] = stage 5."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "e1bf1c47",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:21.343977Z",
+     "iopub.status.busy": "2026-03-13T21:10:21.343604Z",
+     "iopub.status.idle": "2026-03-13T21:10:22.912599Z",
+     "shell.execute_reply": "2026-03-13T21:10:22.911088Z"
+    },
+    "papermill": {
+     "duration": 1.576485,
+     "end_time": "2026-03-13T21:10:22.913982",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:21.337497",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "joint_results_list = model.Results.getJointResults(stageNumber=[4, 5])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7088e5f2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005118,
+     "end_time": "2026-03-13T21:10:22.923936",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:22.918818",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Stage 4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "992d3346",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:22.938451Z",
+     "iopub.status.busy": "2026-03-13T21:10:22.938029Z",
+     "iopub.status.idle": "2026-03-13T21:10:23.010843Z",
+     "shell.execute_reply": "2026-03-13T21:10:23.009750Z"
+    },
+    "papermill": {
+     "duration": 0.082672,
+     "end_time": "2026-03-13T21:10:23.012144",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:22.929472",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Joint: total node results for stage 4: 458\n"
+     ]
+    }
+   ],
+   "source": [
+    "joint_results_stage_4 = joint_results_list[0]\n",
+    "joint_node_results_s4 = joint_results_stage_4.getJointNodeResults()\n",
+    "joint_node_by_id_s4 = {nr.NodeID: nr for nr in joint_node_results_s4}\n",
+    "print(f\"Joint: total node results for stage 4: {len(joint_node_results_s4)}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "68a91513",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:23.024474Z",
+     "iopub.status.busy": "2026-03-13T21:10:23.024131Z",
+     "iopub.status.idle": "2026-03-13T21:10:23.097242Z",
+     "shell.execute_reply": "2026-03-13T21:10:23.095677Z"
+    },
+    "papermill": {
+     "duration": 0.08104,
+     "end_time": "2026-03-13T21:10:23.098694",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:23.017654",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Joint: element results in region for stage 4: 50\n"
+     ]
+    }
+   ],
+   "source": [
+    "joint_element_results_s4 = joint_results_stage_4.getJointElementResults(\n",
+    "    region=joint_query_region,\n",
+    ")\n",
+    "print(f\"Joint: element results in region for stage 4: {len(joint_element_results_s4)}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "3e5170a9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:23.112882Z",
+     "iopub.status.busy": "2026-03-13T21:10:23.112310Z",
+     "iopub.status.idle": "2026-03-13T21:10:23.122251Z",
+     "shell.execute_reply": "2026-03-13T21:10:23.120267Z"
+    },
+    "papermill": {
+     "duration": 0.019492,
+     "end_time": "2026-03-13T21:10:23.123799",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:23.104307",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Nodal results for joint element ID 81231:\n",
+      "  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.00013422658477781323, 8.194546454307267e-05)\n",
+      "  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.00012989772319076887, 8.430580903496631e-05)\n",
+      "  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0001075489087358885, 8.155018914220158e-06)\n"
+     ]
+    }
+   ],
+   "source": [
+    "element_index = 0\n",
+    "selected_joint_element_s4 = joint_element_results_s4[element_index]\n",
+    "joint_attached_nodes_s4 = selected_joint_element_s4.AttachedNodeIDs\n",
+    "shear_disp_s4 = selected_joint_element_s4.getResults(InterfaceResultTypes.DISPLACEMENT_SHEAR)\n",
+    "normal_disp_s4 = selected_joint_element_s4.getResults(InterfaceResultTypes.DISPLACEMENT_NORMAL)\n",
+    "\n",
+    "print(f\"Nodal results for joint element ID {selected_joint_element_s4.ElementID}:\")\n",
+    "num_node_pairs_s4 = int(len(joint_attached_nodes_s4)/2)\n",
+    "for i in range(num_node_pairs_s4):\n",
+    "    node_id = joint_attached_nodes_s4[i]\n",
+    "    virtual_node_id = joint_attached_nodes_s4[i+num_node_pairs_s4]\n",
+    "    nr_s4 = joint_node_by_id_s4[node_id]\n",
+    "    shear_val = shear_disp_s4[i]\n",
+    "    normal_val = normal_disp_s4[i]\n",
+    "    print(\n",
+    "        f\"  Node Pair {(node_id, virtual_node_id)}: (x, y, z, Relative Shear Disp., Relative Normal Disp.) = \"\n",
+    "        f\"({nr_s4.XCoordinate}, {nr_s4.YCoordinate}, {nr_s4.ZCoordinate}, {shear_val}, {normal_val})\"\n",
+    "    )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "21a06b70",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008302,
+     "end_time": "2026-03-13T21:10:23.137180",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:23.128878",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Stage 5"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1aac0004",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:23.152403Z",
+     "iopub.status.busy": "2026-03-13T21:10:23.151877Z",
+     "iopub.status.idle": "2026-03-13T21:10:23.165724Z",
+     "shell.execute_reply": "2026-03-13T21:10:23.162892Z"
+    },
+    "papermill": {
+     "duration": 0.023908,
+     "end_time": "2026-03-13T21:10:23.167478",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:23.143570",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Joint: total node results for stage 5: 458\n"
+     ]
+    }
+   ],
+   "source": [
+    "joint_results_stage_5 = joint_results_list[1]\n",
+    "joint_node_results_s5 = joint_results_stage_5.getJointNodeResults()\n",
+    "joint_node_by_id_s5 = {nr.NodeID: nr for nr in joint_node_results_s5}\n",
+    "print(f\"Joint: total node results for stage 5: {len(joint_node_results_s5)}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "6b5a413a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:23.181801Z",
+     "iopub.status.busy": "2026-03-13T21:10:23.180995Z",
+     "iopub.status.idle": "2026-03-13T21:10:23.192654Z",
+     "shell.execute_reply": "2026-03-13T21:10:23.191157Z"
+    },
+    "papermill": {
+     "duration": 0.020385,
+     "end_time": "2026-03-13T21:10:23.193946",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:23.173561",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "joint_element_results_s5 = joint_results_stage_5.getJointElementResults(region=joint_query_region)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "60bd22bc",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:23.207502Z",
+     "iopub.status.busy": "2026-03-13T21:10:23.207065Z",
+     "iopub.status.idle": "2026-03-13T21:10:23.216200Z",
+     "shell.execute_reply": "2026-03-13T21:10:23.213780Z"
+    },
+    "papermill": {
+     "duration": 0.01847,
+     "end_time": "2026-03-13T21:10:23.218005",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:23.199535",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Nodal results for joint element ID 81231:\n",
+      "  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.0005128569233693311, 0.000252546207422967)\n",
+      "  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.0005480472002880548, 0.00027645215759602125)\n",
+      "  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0004961965421816254, 0.0002630609019895012)\n"
+     ]
+    }
+   ],
+   "source": [
+    "selected_joint_element_s5 = joint_element_results_s5[element_index]\n",
+    "joint_attached_nodes_s5 = selected_joint_element_s5.AttachedNodeIDs\n",
+    "shear_disp_s5 = selected_joint_element_s5.getResults(\n",
+    "    InterfaceResultTypes.DISPLACEMENT_SHEAR,\n",
+    ")\n",
+    "normal_disp_s5 = selected_joint_element_s5.getResults(\n",
+    "    InterfaceResultTypes.DISPLACEMENT_NORMAL,\n",
+    ")\n",
+    "\n",
+    "print(f\"Nodal results for joint element ID {selected_joint_element_s5.ElementID}:\")\n",
+    "num_node_pairs_s5 = int(len(joint_attached_nodes_s5)/2)\n",
+    "for i in range(num_node_pairs_s5):\n",
+    "    node_id = joint_attached_nodes_s5[i]\n",
+    "    virtual_node_id = joint_attached_nodes_s5[i+num_node_pairs_s5]\n",
+    "    nr_s5 = joint_node_by_id_s5[node_id]\n",
+    "    shear_val = shear_disp_s5[i]\n",
+    "    normal_val = normal_disp_s5[i]\n",
+    "    print(\n",
+    "        f\"  Node Pair {(node_id, virtual_node_id)}: (x, y, z, Relative Shear Disp., Relative Normal Disp.) = \"\n",
+    "        f\"({nr_s5.XCoordinate}, {nr_s5.YCoordinate}, {nr_s5.ZCoordinate}, {shear_val}, {normal_val})\"\n",
+    "    )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "649242e3",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005775,
+     "end_time": "2026-03-13T21:10:23.229626",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:23.223851",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Since accessing results doesn't change the model, close the model without saving."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "358e8f69",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:23.244307Z",
+     "iopub.status.busy": "2026-03-13T21:10:23.243911Z",
+     "iopub.status.idle": "2026-03-13T21:10:24.859664Z",
+     "shell.execute_reply": "2026-03-13T21:10:24.858304Z"
+    },
+    "papermill": {
+     "duration": 1.623918,
+     "end_time": "2026-03-13T21:10:24.860896",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:23.236978",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "80c02264",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005741,
+     "end_time": "2026-03-13T21:10:24.871405",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:24.865664",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "03ab0d62",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:24.885402Z",
+     "iopub.status.busy": "2026-03-13T21:10:24.884992Z",
+     "iopub.status.idle": "2026-03-13T21:10:29.952405Z",
+     "shell.execute_reply": "2026-03-13T21:10:29.949352Z"
+    },
+    "papermill": {
+     "duration": 5.077522,
+     "end_time": "2026-03-13T21:10:29.954490",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:24.876968",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b609c533",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005482,
+     "end_time": "2026-03-13T21:10:29.966850",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:29.961368",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "d4688528",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:10:29.981902Z",
+     "iopub.status.busy": "2026-03-13T21:10:29.981511Z",
+     "iopub.status.idle": "2026-03-13T21:11:16.973509Z",
+     "shell.execute_reply": "2026-03-13T21:11:16.971805Z"
+    },
+    "papermill": {
+     "duration": 47.000565,
+     "end_time": "2026-03-13T21:11:16.975026",
+     "exception": false,
+     "start_time": "2026-03-13T21:10:29.974461",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:10:29,993 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60504...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Joint: total node results for stage 4: 458\n",
+      "Joint: element results in region for stage 4: 50\n",
+      "Nodal results for joint element ID 81231:\n",
+      "  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.00013422658477781323, 8.194546454307267e-05)\n",
+      "  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.00012989772319076887, 8.430580903496631e-05)\n",
+      "  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0001075489087358885, 8.155018914220158e-06)\n",
+      "Joint: total node results for stage 5: 458\n",
+      "Nodal results for joint element ID 81231:\n",
+      "  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.0005128569233693311, 0.000252546207422967)\n",
+      "  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.0005480472002880548, 0.00027645215759602125)\n",
+      "  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0004961965421816254, 0.0002630609019895012)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Joint Result Script Example\n",
+    "# Download the [RS3_Result_Scripting_Example folder](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/RS3_Result_Scripting_Example) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.results.ResultEnums import InterfaceResultTypes\n",
+    "from rs3.Geometry import Point, Cube\n",
+    "import os\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60504\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "model = modeler.openFile(rf\"{current_dir}\\example_models\\RS3_Result_Scripting_Example\\RS3_Result_Scripting_Example.rs3v3\")\n",
+    "\n",
+    "# 1. Get Node Results\n",
+    "# 1.1 Define a box region to filter joint elements (optional)\n",
+    "# \n",
+    "# A Cube is defined by two corners. Only mesh nodes inside or intersecting \n",
+    "# the box will be returned. If you omit the region in the next step, all \n",
+    "# nodes in the model would be returned.\n",
+    "joint_query_region = Cube(\n",
+    "    corner1=Point(x=3.0, y=14.0, z=-21.0),\n",
+    "    corner2=Point(x=26.0, y=16.0, z=1.0),\n",
+    ")\n",
+    "\n",
+    "# 1.2 Get the joint results object for the desired stage(s)\n",
+    "# \n",
+    "# Request joint results for two stages. joint_results_list[0] = stage 4, [1] = stage 5.\n",
+    "joint_results_list = model.Results.getJointResults(stageNumber=[4, 5])\n",
+    "\n",
+    "# Stage 4\n",
+    "joint_results_stage_4 = joint_results_list[0]\n",
+    "joint_node_results_s4 = joint_results_stage_4.getJointNodeResults()\n",
+    "joint_node_by_id_s4 = {nr.NodeID: nr for nr in joint_node_results_s4}\n",
+    "print(f\"Joint: total node results for stage 4: {len(joint_node_results_s4)}\")\n",
+    "joint_element_results_s4 = joint_results_stage_4.getJointElementResults(\n",
+    "    region=joint_query_region,\n",
+    ")\n",
+    "print(f\"Joint: element results in region for stage 4: {len(joint_element_results_s4)}\")\n",
+    "element_index = 0\n",
+    "selected_joint_element_s4 = joint_element_results_s4[element_index]\n",
+    "joint_attached_nodes_s4 = selected_joint_element_s4.AttachedNodeIDs\n",
+    "shear_disp_s4 = selected_joint_element_s4.getResults(InterfaceResultTypes.DISPLACEMENT_SHEAR)\n",
+    "normal_disp_s4 = selected_joint_element_s4.getResults(InterfaceResultTypes.DISPLACEMENT_NORMAL)\n",
+    "print(f\"Nodal results for joint element ID {selected_joint_element_s4.ElementID}:\")\n",
+    "num_node_pairs_s4 = int(len(joint_attached_nodes_s4)/2)\n",
+    "for i in range(num_node_pairs_s4):\n",
+    "    node_id = joint_attached_nodes_s4[i]\n",
+    "    virtual_node_id = joint_attached_nodes_s4[i+num_node_pairs_s4]\n",
+    "    nr_s4 = joint_node_by_id_s4[node_id]\n",
+    "    shear_val = shear_disp_s4[i]\n",
+    "    normal_val = normal_disp_s4[i]\n",
+    "    print(\n",
+    "        f\"  Node Pair {(node_id, virtual_node_id)}: (x, y, z, Relative Shear Disp., Relative Normal Disp.) = \"\n",
+    "        f\"({nr_s4.XCoordinate}, {nr_s4.YCoordinate}, {nr_s4.ZCoordinate}, {shear_val}, {normal_val})\"\n",
+    "    )\n",
+    "    \n",
+    "# Stage 5\n",
+    "joint_results_stage_5 = joint_results_list[1]\n",
+    "joint_node_results_s5 = joint_results_stage_5.getJointNodeResults()\n",
+    "joint_node_by_id_s5 = {nr.NodeID: nr for nr in joint_node_results_s5}\n",
+    "print(f\"Joint: total node results for stage 5: {len(joint_node_results_s5)}\")\n",
+    "joint_element_results_s5 = joint_results_stage_5.getJointElementResults(region=joint_query_region)\n",
+    "selected_joint_element_s5 = joint_element_results_s5[element_index]\n",
+    "joint_attached_nodes_s5 = selected_joint_element_s5.AttachedNodeIDs\n",
+    "shear_disp_s5 = selected_joint_element_s5.getResults(\n",
+    "    InterfaceResultTypes.DISPLACEMENT_SHEAR,\n",
+    ")\n",
+    "normal_disp_s5 = selected_joint_element_s5.getResults(\n",
+    "    InterfaceResultTypes.DISPLACEMENT_NORMAL,\n",
+    ")\n",
+    "print(f\"Nodal results for joint element ID {selected_joint_element_s5.ElementID}:\")\n",
+    "num_node_pairs_s5 = int(len(joint_attached_nodes_s5)/2)\n",
+    "for i in range(num_node_pairs_s5):\n",
+    "    node_id = joint_attached_nodes_s5[i]\n",
+    "    virtual_node_id = joint_attached_nodes_s5[i+num_node_pairs_s5]\n",
+    "    nr_s5 = joint_node_by_id_s5[node_id]\n",
+    "    shear_val = shear_disp_s5[i]\n",
+    "    normal_val = normal_disp_s5[i]\n",
+    "    print(\n",
+    "        f\"  Node Pair {(node_id, virtual_node_id)}: (x, y, z, Relative Shear Disp., Relative Normal Disp.) = \"\n",
+    "        f\"({nr_s5.XCoordinate}, {nr_s5.YCoordinate}, {nr_s5.ZCoordinate}, {shear_val}, {normal_val})\"\n",
+    "    )\n",
+    "    \n",
+    "# Since accessing results doesn't change the model, close the model without saving.\n",
+    "model.close(False)\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 98.091715,
+   "end_time": "2026-03-13T21:11:18.685257",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\joint_result_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\results\\joint_result_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:09:40.593542",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

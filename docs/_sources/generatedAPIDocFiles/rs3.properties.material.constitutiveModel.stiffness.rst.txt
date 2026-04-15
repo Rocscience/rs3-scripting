@@ -1,0 +1,26 @@
+rs3.properties.material.constitutiveModel.stiffness package
+===========================================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.constitutiveModel.stiffness.formula
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.constitutiveModel.stiffness.BaseStiffness
+   rs3.properties.material.constitutiveModel.stiffness.DuncanChangHyperbolic
+   rs3.properties.material.constitutiveModel.stiffness.GeneralizedHoekBrownEstimation
+   rs3.properties.material.constitutiveModel.stiffness.LinearIsotropic
+   rs3.properties.material.constitutiveModel.stiffness.NonlinearIsotropic
+   rs3.properties.material.constitutiveModel.stiffness.Orthotropic
+   rs3.properties.material.constitutiveModel.stiffness.TransverselyIsotropic
+
+
+.. automodule:: rs3.properties.material.constitutiveModel.stiffness
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+rs3.properties.stageFactors.IStageFactorBase module
+===================================================
+
+.. automodule:: rs3.properties.stageFactors.IStageFactorBase
+   :members:
+   :undoc-members:
+   :show-inheritance:

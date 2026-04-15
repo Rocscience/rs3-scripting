@@ -1,0 +1,7 @@
+rs3.properties.liningComposition.LiningComposition module
+=========================================================
+
+.. automodule:: rs3.properties.liningComposition.LiningComposition
+   :members:
+   :undoc-members:
+   :show-inheritance:

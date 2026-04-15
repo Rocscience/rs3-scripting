@@ -1,0 +1,24 @@
+rs3.properties.material package
+===============================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.constitutiveModel
+   rs3.properties.material.datum
+   rs3.properties.material.hydraulic
+   rs3.properties.material.initialConditions
+   rs3.properties.material.stageFactors
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.Material
+
+
+.. automodule:: rs3.properties.material
+   :members:
+   :undoc-members:
+   :show-inheritance:

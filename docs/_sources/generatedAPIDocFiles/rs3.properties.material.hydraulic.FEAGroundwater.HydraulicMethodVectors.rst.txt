@@ -1,0 +1,7 @@
+rs3.properties.material.hydraulic.FEAGroundwater.HydraulicMethodVectors module
+==============================================================================
+
+.. automodule:: rs3.properties.material.hydraulic.FEAGroundwater.HydraulicMethodVectors
+   :members:
+   :undoc-members:
+   :show-inheritance:

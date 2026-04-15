@@ -1,0 +1,21 @@
+rs3.loadings package
+====================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.loadings.fieldStress
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.loadings.LoadingEnums
+   rs3.loadings.Loadings
+
+
+.. automodule:: rs3.loadings
+   :members:
+   :undoc-members:
+   :show-inheritance:

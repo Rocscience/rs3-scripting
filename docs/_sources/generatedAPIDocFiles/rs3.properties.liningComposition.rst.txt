@@ -1,0 +1,14 @@
+rs3.properties.liningComposition package
+========================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.liningComposition.LiningComposition
+
+
+.. automodule:: rs3.properties.liningComposition
+   :members:
+   :undoc-members:
+   :show-inheritance:

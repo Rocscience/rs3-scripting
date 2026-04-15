@@ -1,0 +1,22 @@
+rs3.properties.material.hydraulic.FEAGroundwater package
+========================================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.hydraulic.FEAGroundwater.Brooks
+   rs3.properties.material.hydraulic.FEAGroundwater.Custom
+   rs3.properties.material.hydraulic.FEAGroundwater.FEAGroundwater
+   rs3.properties.material.hydraulic.FEAGroundwater.Fredlund
+   rs3.properties.material.hydraulic.FEAGroundwater.Gardner
+   rs3.properties.material.hydraulic.FEAGroundwater.HydraulicMethodVectors
+   rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon
+   rs3.properties.material.hydraulic.FEAGroundwater.Simple
+   rs3.properties.material.hydraulic.FEAGroundwater.VanGenuchten
+
+
+.. automodule:: rs3.properties.material.hydraulic.FEAGroundwater
+   :members:
+   :undoc-members:
+   :show-inheritance:

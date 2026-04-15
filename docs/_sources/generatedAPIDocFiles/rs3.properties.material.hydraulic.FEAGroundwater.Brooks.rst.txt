@@ -1,0 +1,7 @@
+rs3.properties.material.hydraulic.FEAGroundwater.Brooks module
+==============================================================
+
+.. automodule:: rs3.properties.material.hydraulic.FEAGroundwater.Brooks
+   :members:
+   :undoc-members:
+   :show-inheritance:

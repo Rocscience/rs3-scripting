@@ -1,0 +1,878 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006776,
+     "end_time": "2026-03-13T20:42:17.001387",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:16.994611",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(compute_example)=\n",
+    "# Compute Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004015,
+     "end_time": "2026-03-13T20:42:17.010161",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:17.006146",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:42:17.020441Z",
+     "iopub.status.busy": "2026-03-13T20:42:17.020112Z",
+     "iopub.status.idle": "2026-03-13T20:42:17.275050Z",
+     "shell.execute_reply": "2026-03-13T20:42:17.273953Z"
+    },
+    "papermill": {
+     "duration": 0.262087,
+     "end_time": "2026-03-13T20:42:17.276191",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:17.014104",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.projectSettings.ProjectSettingEnums import *\n",
+    "from rs3.ModelEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005834,
+     "end_time": "2026-03-13T20:42:17.286615",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:17.280781",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:42:17.296879Z",
+     "iopub.status.busy": "2026-03-13T20:42:17.296437Z",
+     "iopub.status.idle": "2026-03-13T20:42:17.302574Z",
+     "shell.execute_reply": "2026-03-13T20:42:17.301045Z"
+    },
+    "papermill": {
+     "duration": 0.012651,
+     "end_time": "2026-03-13T20:42:17.303705",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:17.291054",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006259,
+     "end_time": "2026-03-13T20:42:17.314310",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:17.308051",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "bb4e6e4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:42:17.326748Z",
+     "iopub.status.busy": "2026-03-13T20:42:17.326415Z",
+     "iopub.status.idle": "2026-03-13T20:42:47.733320Z",
+     "shell.execute_reply": "2026-03-13T20:42:47.731211Z"
+    },
+    "papermill": {
+     "duration": 30.414661,
+     "end_time": "2026-03-13T20:42:47.734921",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:17.320260",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:42:17,331 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60108...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60108\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2937360b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007504,
+     "end_time": "2026-03-13T20:42:47.747720",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:47.740216",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "17be2256",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:42:47.765572Z",
+     "iopub.status.busy": "2026-03-13T20:42:47.764748Z",
+     "iopub.status.idle": "2026-03-13T20:42:47.775519Z",
+     "shell.execute_reply": "2026-03-13T20:42:47.774116Z"
+    },
+    "papermill": {
+     "duration": 0.023421,
+     "end_time": "2026-03-13T20:42:47.776843",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:47.753422",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005663,
+     "end_time": "2026-03-13T20:42:47.788147",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:47.782484",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:42:47.801125Z",
+     "iopub.status.busy": "2026-03-13T20:42:47.800713Z",
+     "iopub.status.idle": "2026-03-13T20:42:47.827180Z",
+     "shell.execute_reply": "2026-03-13T20:42:47.825294Z"
+    },
+    "papermill": {
+     "duration": 0.036153,
+     "end_time": "2026-03-13T20:42:47.828922",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:47.792769",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008926,
+     "end_time": "2026-03-13T20:42:47.845092",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:47.836166",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:42:47.868608Z",
+     "iopub.status.busy": "2026-03-13T20:42:47.867726Z",
+     "iopub.status.idle": "2026-03-13T20:43:03.737058Z",
+     "shell.execute_reply": "2026-03-13T20:43:03.735466Z"
+    },
+    "papermill": {
+     "duration": 15.881022,
+     "end_time": "2026-03-13T20:43:03.738493",
+     "exception": false,
+     "start_time": "2026-03-13T20:42:47.857471",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "29f10421",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004833,
+     "end_time": "2026-03-13T20:43:03.749122",
+     "exception": false,
+     "start_time": "2026-03-13T20:43:03.744289",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Compute"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "eea4bb5b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007901,
+     "end_time": "2026-03-13T20:43:03.761285",
+     "exception": false,
+     "start_time": "2026-03-13T20:43:03.753384",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "If nothing specified, by default, model computes after the last computed stage and compute all compute types (i.e. solids and groudwater)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "e4a66053",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:43:03.776028Z",
+     "iopub.status.busy": "2026-03-13T20:43:03.775630Z",
+     "iopub.status.idle": "2026-03-13T20:44:21.242033Z",
+     "shell.execute_reply": "2026-03-13T20:44:21.239960Z"
+    },
+    "papermill": {
+     "duration": 77.481323,
+     "end_time": "2026-03-13T20:44:21.248909",
+     "exception": false,
+     "start_time": "2026-03-13T20:43:03.767586",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Recovery: True\n",
+      "Stages Convergence:\n",
+      "Stage    Status  \n",
+      "----------------\n",
+      "1        Yes     \n",
+      "2        Yes     \n",
+      "3        Yes     \n",
+      "4        Yes     \n",
+      "5        Yes     \n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "(True, '')"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.Compute.compute()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0d0ed90f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007517,
+     "end_time": "2026-03-13T20:44:21.262969",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:21.255452",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Compute Groundwater Only"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ac87c7e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005525,
+     "end_time": "2026-03-13T20:44:21.275484",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:21.269959",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on groundwater mode in project settings."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "ce00f568",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:44:21.295947Z",
+     "iopub.status.busy": "2026-03-13T20:44:21.295060Z",
+     "iopub.status.idle": "2026-03-13T20:44:21.563896Z",
+     "shell.execute_reply": "2026-03-13T20:44:21.561542Z"
+    },
+    "papermill": {
+     "duration": 0.28221,
+     "end_time": "2026-03-13T20:44:21.567634",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:21.285424",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.ProjectSettings.Groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_SURFACES)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3546f0ac",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010137,
+     "end_time": "2026-03-13T20:44:21.587925",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:21.577788",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create a water surface."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "600afa3f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:44:21.618074Z",
+     "iopub.status.busy": "2026-03-13T20:44:21.616910Z",
+     "iopub.status.idle": "2026-03-13T20:44:22.017297Z",
+     "shell.execute_reply": "2026-03-13T20:44:22.010793Z"
+    },
+    "papermill": {
+     "duration": 0.419052,
+     "end_time": "2026-03-13T20:44:22.020949",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:21.601897",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "groundwaterName = \"Groundwater @ -5 m\"\n",
+    "model.createNewWaterByLocationProperty(groundwaterName)\n",
+    "waterSurface = model.getWaterByLocationPropertyByName(groundwaterName)\n",
+    "waterSurface.setWaterSurfaceLocation([(0, 0, -5), (0, 30, -5), (30, 30, -5), (30, 0, -5)])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "357265ac",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014327,
+     "end_time": "2026-03-13T20:44:22.047910",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:22.033583",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Assign the water surface to Material 1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "d10778bf",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:44:22.082386Z",
+     "iopub.status.busy": "2026-03-13T20:44:22.081020Z",
+     "iopub.status.idle": "2026-03-13T20:44:22.298153Z",
+     "shell.execute_reply": "2026-03-13T20:44:22.294461Z"
+    },
+    "papermill": {
+     "duration": 0.240541,
+     "end_time": "2026-03-13T20:44:22.300878",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:22.060337",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Soil'"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1 = model.getMaterialPropertiesInUseByStage(1)[0]\n",
+    "material1.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "c01f73db",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:44:22.325543Z",
+     "iopub.status.busy": "2026-03-13T20:44:22.324122Z",
+     "iopub.status.idle": "2026-03-13T20:44:22.634374Z",
+     "shell.execute_reply": "2026-03-13T20:44:22.628247Z"
+    },
+    "papermill": {
+     "duration": 0.326965,
+     "end_time": "2026-03-13T20:44:22.637740",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:22.310775",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Groundwater @ -5 m'"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.Hydraulic.StaticGroundwater.setStaticWaterMode(StaticWaterModes.WATER_SURFACE, groundwaterName)\n",
+    "material1.Hydraulic.StaticGroundwater.getStaticWaterMode()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "75302644",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013521,
+     "end_time": "2026-03-13T20:44:22.662144",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:22.648623",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Compute groundwater only from the beginning."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "c86d859a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:44:22.728547Z",
+     "iopub.status.busy": "2026-03-13T20:44:22.726573Z",
+     "iopub.status.idle": "2026-03-13T20:45:07.110695Z",
+     "shell.execute_reply": "2026-03-13T20:45:07.108237Z"
+    },
+    "papermill": {
+     "duration": 44.441535,
+     "end_time": "2026-03-13T20:45:07.120210",
+     "exception": false,
+     "start_time": "2026-03-13T20:44:22.678675",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Recovery: True\n",
+      "Stages Convergence:\n",
+      "Stage    Status  \n",
+      "----------------\n",
+      "1        Yes     \n",
+      "2        Yes     \n",
+      "3        Yes     \n",
+      "4        Yes     \n",
+      "5        Yes     \n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "(True, '')"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.Compute.compute(ComputeType.GROUNDWATER_ONLY, ComputeStart.FROM_BEGINNING)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011856,
+     "end_time": "2026-03-13T20:45:07.144312",
+     "exception": false,
+     "start_time": "2026-03-13T20:45:07.132456",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:45:07.180711Z",
+     "iopub.status.busy": "2026-03-13T20:45:07.179516Z",
+     "iopub.status.idle": "2026-03-13T20:45:10.474272Z",
+     "shell.execute_reply": "2026-03-13T20:45:10.472947Z"
+    },
+    "papermill": {
+     "duration": 3.313761,
+     "end_time": "2026-03-13T20:45:10.475369",
+     "exception": false,
+     "start_time": "2026-03-13T20:45:07.161608",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5d58c2a9",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007715,
+     "end_time": "2026-03-13T20:45:10.489326",
+     "exception": false,
+     "start_time": "2026-03-13T20:45:10.481611",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "875f6f99",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:45:10.510634Z",
+     "iopub.status.busy": "2026-03-13T20:45:10.510199Z",
+     "iopub.status.idle": "2026-03-13T20:45:17.315847Z",
+     "shell.execute_reply": "2026-03-13T20:45:17.311735Z"
+    },
+    "papermill": {
+     "duration": 6.820362,
+     "end_time": "2026-03-13T20:45:17.318087",
+     "exception": false,
+     "start_time": "2026-03-13T20:45:10.497725",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b318dcaa",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007182,
+     "end_time": "2026-03-13T20:45:17.335382",
+     "exception": false,
+     "start_time": "2026-03-13T20:45:17.328200",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "3ca21dbd",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:45:17.353796Z",
+     "iopub.status.busy": "2026-03-13T20:45:17.353341Z",
+     "iopub.status.idle": "2026-03-13T20:48:08.369392Z",
+     "shell.execute_reply": "2026-03-13T20:48:08.367794Z"
+    },
+    "papermill": {
+     "duration": 171.026665,
+     "end_time": "2026-03-13T20:48:08.371105",
+     "exception": false,
+     "start_time": "2026-03-13T20:45:17.344440",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:45:17,362 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60108...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Recovery: True\n",
+      "Stages Convergence:\n",
+      "Stage    Status  \n",
+      "----------------\n",
+      "1        Yes     \n",
+      "2        Yes     \n",
+      "3        Yes     \n",
+      "4        Yes     \n",
+      "5        Yes     \n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Recovery: True\n",
+      "Stages Convergence:\n",
+      "Stage    Status  \n",
+      "----------------\n",
+      "1        Yes     \n",
+      "2        Yes     \n",
+      "3        Yes     \n",
+      "4        Yes     \n",
+      "5        Yes     \n"
+     ]
+    }
+   ],
+   "source": [
+    "# Compute Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.projectSettings.ProjectSettingEnums import *\n",
+    "from rs3.ModelEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60108\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. \n",
+    "# You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\fullScriptCopiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Compute\n",
+    "# If nothing specified, by default, model computes after the last computed stage and \n",
+    "# compute all compute types (i.e. solids and groudwater).\n",
+    "model.Compute.compute()\n",
+    "\n",
+    "# 2. Compute Groundwater Only\n",
+    "# Turn on groundwater mode in project settings.\n",
+    "model.ProjectSettings.Groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_SURFACES)\n",
+    "# Create a water surface.\n",
+    "groundwaterName = \"Groundwater @ -5 m\"\n",
+    "model.createNewWaterByLocationProperty(groundwaterName)\n",
+    "waterSurface = model.getWaterByLocationPropertyByName(groundwaterName)\n",
+    "waterSurface.setWaterSurfaceLocation([(0, 0, -5), (0, 30, -5), (30, 30, -5), (30, 0, -5)])\n",
+    "# Assign the water surface to Material 1.\n",
+    "material1 = model.getMaterialPropertiesInUseByStage(1)[0]\n",
+    "material1.Hydraulic.StaticGroundwater.setStaticWaterMode(StaticWaterModes.WATER_SURFACE, groundwaterName)\n",
+    "# Compute groundwater only from the beginning.\n",
+    "model.Compute.compute(ComputeType.GROUNDWATER_ONLY, ComputeStart.FROM_BEGINNING)\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 356.014604,
+   "end_time": "2026-03-13T20:48:10.416848",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\compute_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\compute_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:42:14.402244",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -1,0 +1,17 @@
+rs3.properties.beam package
+===========================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.beam.Beam
+   rs3.properties.beam.BeamCommon
+   rs3.properties.beam.Standard
+   rs3.properties.beam.Truss
+
+
+.. automodule:: rs3.properties.beam
+   :members:
+   :undoc-members:
+   :show-inheritance:

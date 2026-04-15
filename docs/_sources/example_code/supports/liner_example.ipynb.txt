@@ -1,0 +1,1739 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009631,
+     "end_time": "2026-03-13T21:21:53.710883",
+     "exception": false,
+     "start_time": "2026-03-13T21:21:53.701252",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(liner_example)=\n",
+    "# Liner Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008529,
+     "end_time": "2026-03-13T21:21:53.729426",
+     "exception": false,
+     "start_time": "2026-03-13T21:21:53.720897",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:21:53.751405Z",
+     "iopub.status.busy": "2026-03-13T21:21:53.751037Z",
+     "iopub.status.idle": "2026-03-13T21:21:54.027302Z",
+     "shell.execute_reply": "2026-03-13T21:21:54.025863Z"
+    },
+    "papermill": {
+     "duration": 0.289872,
+     "end_time": "2026-03-13T21:21:54.028508",
+     "exception": false,
+     "start_time": "2026-03-13T21:21:53.738636",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008313,
+     "end_time": "2026-03-13T21:21:54.044693",
+     "exception": false,
+     "start_time": "2026-03-13T21:21:54.036380",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:21:54.064901Z",
+     "iopub.status.busy": "2026-03-13T21:21:54.064451Z",
+     "iopub.status.idle": "2026-03-13T21:21:54.068734Z",
+     "shell.execute_reply": "2026-03-13T21:21:54.067591Z"
+    },
+    "papermill": {
+     "duration": 0.017843,
+     "end_time": "2026-03-13T21:21:54.069917",
+     "exception": false,
+     "start_time": "2026-03-13T21:21:54.052074",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.abspath(\"\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007415,
+     "end_time": "2026-03-13T21:21:54.086315",
+     "exception": false,
+     "start_time": "2026-03-13T21:21:54.078900",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "39236a48",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:21:54.103650Z",
+     "iopub.status.busy": "2026-03-13T21:21:54.103164Z",
+     "iopub.status.idle": "2026-03-13T21:22:22.567528Z",
+     "shell.execute_reply": "2026-03-13T21:22:22.566151Z"
+    },
+    "papermill": {
+     "duration": 28.474799,
+     "end_time": "2026-03-13T21:22:22.568679",
+     "exception": false,
+     "start_time": "2026-03-13T21:21:54.093880",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:21:54,111 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60304...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60304\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f0b64bff",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006968,
+     "end_time": "2026-03-13T21:22:22.582778",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:22.575810",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "d0de3213",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:22.598228Z",
+     "iopub.status.busy": "2026-03-13T21:22:22.597840Z",
+     "iopub.status.idle": "2026-03-13T21:22:22.605974Z",
+     "shell.execute_reply": "2026-03-13T21:22:22.604227Z"
+    },
+    "papermill": {
+     "duration": 0.017968,
+     "end_time": "2026-03-13T21:22:22.607413",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:22.589445",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006865,
+     "end_time": "2026-03-13T21:22:22.621970",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:22.615105",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:22.637846Z",
+     "iopub.status.busy": "2026-03-13T21:22:22.637562Z",
+     "iopub.status.idle": "2026-03-13T21:22:22.659129Z",
+     "shell.execute_reply": "2026-03-13T21:22:22.657943Z"
+    },
+    "papermill": {
+     "duration": 0.032103,
+     "end_time": "2026-03-13T21:22:22.660418",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:22.628315",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006974,
+     "end_time": "2026-03-13T21:22:22.676738",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:22.669764",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:22.693050Z",
+     "iopub.status.busy": "2026-03-13T21:22:22.692639Z",
+     "iopub.status.idle": "2026-03-13T21:22:33.800210Z",
+     "shell.execute_reply": "2026-03-13T21:22:33.798025Z"
+    },
+    "papermill": {
+     "duration": 11.118516,
+     "end_time": "2026-03-13T21:22:33.803454",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:22.684938",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8178f89d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013189,
+     "end_time": "2026-03-13T21:22:33.826771",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:33.813582",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create and Get Liner"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "91094ee0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010334,
+     "end_time": "2026-03-13T21:22:33.848955",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:33.838621",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the first liner in the list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "f538154b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:33.876973Z",
+     "iopub.status.busy": "2026-03-13T21:22:33.876551Z",
+     "iopub.status.idle": "2026-03-13T21:22:34.334478Z",
+     "shell.execute_reply": "2026-03-13T21:22:34.333448Z"
+    },
+    "papermill": {
+     "duration": 0.475091,
+     "end_time": "2026-03-13T21:22:34.335713",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:33.860622",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Liner 1'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner1 = model.getAllLinerProperties()[0]\n",
+    "liner1.getLinerName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "592a6630",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00789,
+     "end_time": "2026-03-13T21:22:34.353021",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:34.345131",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create a new liner and get the liner by name."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "749fa49f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:34.373002Z",
+     "iopub.status.busy": "2026-03-13T21:22:34.372430Z",
+     "iopub.status.idle": "2026-03-13T21:22:34.528655Z",
+     "shell.execute_reply": "2026-03-13T21:22:34.525190Z"
+    },
+    "papermill": {
+     "duration": 0.16881,
+     "end_time": "2026-03-13T21:22:34.531453",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:34.362643",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Liner 2'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner2Name = \"Liner 2\"\n",
+    "model.createNewLinerProperty(liner2Name)\n",
+    "liner2 = model.getLinerPropertyByName(liner2Name)\n",
+    "liner2.getLinerName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e099dd78",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010185,
+     "end_time": "2026-03-13T21:22:34.554070",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:34.543885",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Set Liner Properties"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "54e32148",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:34.581997Z",
+     "iopub.status.busy": "2026-03-13T21:22:34.581530Z",
+     "iopub.status.idle": "2026-03-13T21:22:34.634955Z",
+     "shell.execute_reply": "2026-03-13T21:22:34.633194Z"
+    },
+    "papermill": {
+     "duration": 0.069304,
+     "end_time": "2026-03-13T21:22:34.636780",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:34.567476",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<LinerTypes.REINFORCED_CONCRETE: 'REINFORCED_CONCRETE'>"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner1.setLinerType(LinerTypes.REINFORCED_CONCRETE)\n",
+    "liner1.getLinerType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "d08f6b17",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:34.666831Z",
+     "iopub.status.busy": "2026-03-13T21:22:34.666429Z",
+     "iopub.status.idle": "2026-03-13T21:22:34.701694Z",
+     "shell.execute_reply": "2026-03-13T21:22:34.700288Z"
+    },
+    "papermill": {
+     "duration": 0.051866,
+     "end_time": "2026-03-13T21:22:34.702844",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:34.650978",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Spacing': 0.6,\n",
+       " 'SectionDepth': 0.162,\n",
+       " 'Area': 0.00474,\n",
+       " 'MomentOfInertia': 2.22e-05,\n",
+       " 'YoungsModulusReinforcement': 200000000.0,\n",
+       " 'PoissonsRatioReinforcement': 0.25,\n",
+       " 'ShearStrengthReinforcement': 400000.0,\n",
+       " 'CompressiveStrengthReinforcement': 400000.0,\n",
+       " 'TensileStrengthReinforcement': 400000.0,\n",
+       " 'UnitWeightReinforcement': 37.1,\n",
+       " 'Thickness': 0.2,\n",
+       " 'YoungsModulusConcrete': 30000000.0,\n",
+       " 'PoissonsRatioConcrete': 0.15,\n",
+       " 'ShearStrengthConcrete': 20000.0,\n",
+       " 'CompressiveStrengthConcrete': 40000.0,\n",
+       " 'TensileStrengthConcrete': 3000.0,\n",
+       " 'UnitWeightConcrete': 24.0,\n",
+       " 'ConcreteProperty': True,\n",
+       " 'ReinforcementProperty': True,\n",
+       " 'IncludeWeightInStressAnalysis': False}"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner1.ReinforcedConcrete.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "d43aa4c3",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:34.731272Z",
+     "iopub.status.busy": "2026-03-13T21:22:34.730861Z",
+     "iopub.status.idle": "2026-03-13T21:22:34.791709Z",
+     "shell.execute_reply": "2026-03-13T21:22:34.789211Z"
+    },
+    "papermill": {
+     "duration": 0.077144,
+     "end_time": "2026-03-13T21:22:34.795090",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:34.717946",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<MaterialType.PLASTIC: True>"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner1.ReinforcedConcrete.setMaterialType(MaterialType.PLASTIC)\n",
+    "liner1.ReinforcedConcrete.getMaterialType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "11b4011f",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:34.831593Z",
+     "iopub.status.busy": "2026-03-13T21:22:34.830833Z",
+     "iopub.status.idle": "2026-03-13T21:22:35.041177Z",
+     "shell.execute_reply": "2026-03-13T21:22:35.039096Z"
+    },
+    "papermill": {
+     "duration": 0.230635,
+     "end_time": "2026-03-13T21:22:35.042689",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:34.812054",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "liner1.ReinforcedConcrete.setProperties(ReinforcementProperty=True, ConcreteProperty=True, PoissonsRatioReinforcement=0.22, PoissonsRatioConcrete=0.28)\n",
+    "liner1Properties = liner1.ReinforcedConcrete.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "719207a0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009234,
+     "end_time": "2026-03-13T21:22:35.059649",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:35.050415",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Copy Liner Properties"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "5734fb77",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:35.082048Z",
+     "iopub.status.busy": "2026-03-13T21:22:35.081589Z",
+     "iopub.status.idle": "2026-03-13T21:22:35.124226Z",
+     "shell.execute_reply": "2026-03-13T21:22:35.122066Z"
+    },
+    "papermill": {
+     "duration": 0.059165,
+     "end_time": "2026-03-13T21:22:35.127975",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:35.068810",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<LinerTypes.REINFORCED_CONCRETE: 'REINFORCED_CONCRETE'>"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner2.setLinerType(LinerTypes.REINFORCED_CONCRETE)\n",
+    "liner2.getLinerType()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "ab017b80",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:35.155845Z",
+     "iopub.status.busy": "2026-03-13T21:22:35.155321Z",
+     "iopub.status.idle": "2026-03-13T21:22:35.183806Z",
+     "shell.execute_reply": "2026-03-13T21:22:35.182499Z"
+    },
+    "papermill": {
+     "duration": 0.0439,
+     "end_time": "2026-03-13T21:22:35.184947",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:35.141047",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Spacing': 0.6,\n",
+       " 'SectionDepth': 0.162,\n",
+       " 'Area': 0.00474,\n",
+       " 'MomentOfInertia': 2.22e-05,\n",
+       " 'YoungsModulusReinforcement': 200000000.0,\n",
+       " 'PoissonsRatioReinforcement': 0.25,\n",
+       " 'ShearStrengthReinforcement': 400000.0,\n",
+       " 'CompressiveStrengthReinforcement': 400000.0,\n",
+       " 'TensileStrengthReinforcement': 400000.0,\n",
+       " 'UnitWeightReinforcement': 37.1,\n",
+       " 'Thickness': 0.2,\n",
+       " 'YoungsModulusConcrete': 30000000.0,\n",
+       " 'PoissonsRatioConcrete': 0.15,\n",
+       " 'ShearStrengthConcrete': 20000.0,\n",
+       " 'CompressiveStrengthConcrete': 40000.0,\n",
+       " 'TensileStrengthConcrete': 3000.0,\n",
+       " 'UnitWeightConcrete': 24.0,\n",
+       " 'ConcreteProperty': True,\n",
+       " 'ReinforcementProperty': True,\n",
+       " 'IncludeWeightInStressAnalysis': False}"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner2.ReinforcedConcrete.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "86c2bc42",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:35.205241Z",
+     "iopub.status.busy": "2026-03-13T21:22:35.204618Z",
+     "iopub.status.idle": "2026-03-13T21:22:35.987414Z",
+     "shell.execute_reply": "2026-03-13T21:22:35.985912Z"
+    },
+    "papermill": {
+     "duration": 0.793821,
+     "end_time": "2026-03-13T21:22:35.988620",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:35.194799",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'Spacing': 0.6,\n",
+       " 'SectionDepth': 0.162,\n",
+       " 'Area': 0.00474,\n",
+       " 'MomentOfInertia': 2.22e-05,\n",
+       " 'YoungsModulusReinforcement': 200000000.0,\n",
+       " 'PoissonsRatioReinforcement': 0.22,\n",
+       " 'ShearStrengthReinforcement': 400000.0,\n",
+       " 'CompressiveStrengthReinforcement': 400000.0,\n",
+       " 'TensileStrengthReinforcement': 400000.0,\n",
+       " 'UnitWeightReinforcement': 37.1,\n",
+       " 'Thickness': 0.2,\n",
+       " 'YoungsModulusConcrete': 30000000.0,\n",
+       " 'PoissonsRatioConcrete': 0.28,\n",
+       " 'ShearStrengthConcrete': 20000.0,\n",
+       " 'CompressiveStrengthConcrete': 40000.0,\n",
+       " 'TensileStrengthConcrete': 3000.0,\n",
+       " 'UnitWeightConcrete': 24.0,\n",
+       " 'ConcreteProperty': True,\n",
+       " 'ReinforcementProperty': True,\n",
+       " 'IncludeWeightInStressAnalysis': False}"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner2.ReinforcedConcrete.setProperties(**liner1Properties)\n",
+    "liner2.ReinforcedConcrete.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5b6f07e6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00893,
+     "end_time": "2026-03-13T21:22:36.007456",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:35.998526",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 4. Set Stage Factors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c64ec2e5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012337,
+     "end_time": "2026-03-13T21:22:36.031626",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.019289",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on the stage factors of liners."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "c488dd48",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.056326Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.055916Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.088304Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.086128Z"
+    },
+    "papermill": {
+     "duration": 0.049681,
+     "end_time": "2026-03-13T21:22:36.091653",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.041972",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "liner1.setApplyStageFactors(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "78cf4674",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014379,
+     "end_time": "2026-03-13T21:22:36.120878",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.106499",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Now, create a stage factor for stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "5ea93281",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.147116Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.146629Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.195902Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.194741Z"
+    },
+    "papermill": {
+     "duration": 0.062705,
+     "end_time": "2026-03-13T21:22:36.197258",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.134553",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stageFactor_s2 = liner1.ReinforcedConcrete.StageFactorInterface.createStageFactor(2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "838e1e58",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010435,
+     "end_time": "2026-03-13T21:22:36.215512",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.205077",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current stage factor of concrete thickness."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "6b928a7c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.235817Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.235429Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.250923Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.249888Z"
+    },
+    "papermill": {
+     "duration": 0.028874,
+     "end_time": "2026-03-13T21:22:36.252214",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.223340",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.0"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stageFactor_s2.getThicknessFactor()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "32b46d31",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008861,
+     "end_time": "2026-03-13T21:22:36.270435",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.261574",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set stage factor of concrete thickness."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "a0243a17",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.294080Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.293455Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.308567Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.306792Z"
+    },
+    "papermill": {
+     "duration": 0.028774,
+     "end_time": "2026-03-13T21:22:36.310492",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.281718",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "stageFactor_s2.setThicknessFactor(1.5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0b2be899",
+   "metadata": {
+    "papermill": {
+     "duration": 0.008095,
+     "end_time": "2026-03-13T21:22:36.328964",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.320869",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get stage factors of all stages and check stage factor of concrete thickness at stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "19980170",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.351197Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.350810Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.369032Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.367890Z"
+    },
+    "papermill": {
+     "duration": 0.032557,
+     "end_time": "2026-03-13T21:22:36.370140",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.337583",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "1.5"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "stageFactors_s2 = liner1.ReinforcedConcrete.StageFactorInterface.getStageFactor(2)\n",
+    "stageFactors_s2.getThicknessFactor()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b4857a83",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009309,
+     "end_time": "2026-03-13T21:22:36.390771",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.381462",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create another stage factor for stage 4 and set the stage factor of concrete thickness."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "61507c97",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.413747Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.413159Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.438927Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.437570Z"
+    },
+    "papermill": {
+     "duration": 0.039917,
+     "end_time": "2026-03-13T21:22:36.440318",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.400401",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "2.1"
+      ]
+     },
+     "execution_count": 21,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner1.ReinforcedConcrete.StageFactorInterface.createStageFactor(4)\n",
+    "newLinerStageFactor_s4 = liner1.ReinforcedConcrete.StageFactorInterface.getDefinedStageFactors()[4]\n",
+    "newLinerStageFactor_s4.setThicknessFactor(2.1)\n",
+    "newLinerStageFactor_s4.getThicknessFactor()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ac8d4ff7",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01107,
+     "end_time": "2026-03-13T21:22:36.463494",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.452424",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the dictionary of all stage factors."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "a867906e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.487029Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.486688Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.494514Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.492822Z"
+    },
+    "papermill": {
+     "duration": 0.022316,
+     "end_time": "2026-03-13T21:22:36.495823",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.473507",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{2: <rs3.properties.liner.ReinforcedConcrete.ReinforcedConcreteDefinedStageFactor at 0x19031384640>,\n",
+       " 4: <rs3.properties.liner.ReinforcedConcrete.ReinforcedConcreteDefinedStageFactor at 0x19031394830>}"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "linerStageFactors = liner1.ReinforcedConcrete.StageFactorInterface.getDefinedStageFactors()\n",
+    "linerStageFactors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "010622c0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011195,
+     "end_time": "2026-03-13T21:22:36.515703",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.504508",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 4.1 Absolute Stage Factors"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "eba7639c",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.539488Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.539044Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.576206Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.575246Z"
+    },
+    "papermill": {
+     "duration": 0.052382,
+     "end_time": "2026-03-13T21:22:36.577415",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.525033",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "liner1.ReinforcedConcrete.StageFactorInterface.setDefinedStageFactors(StageFactorMethodType.ABSOLUTE_STAGE_FACTOR, linerStageFactors)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c920cf5d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010883,
+     "end_time": "2026-03-13T21:22:36.597851",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.586968",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 4.2 Relative Stage Factors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ee213da0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010166,
+     "end_time": "2026-03-13T21:22:36.617121",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.606955",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on relative stage factor by setting stageFactorMethodType to RELATIVE_STAGE_FACTOR."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "1d32d1af",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.641287Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.640887Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.650084Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.648514Z"
+    },
+    "papermill": {
+     "duration": 0.024506,
+     "end_time": "2026-03-13T21:22:36.651363",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.626857",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "liner1.ReinforcedConcrete.StageFactorInterface.setDefinedStageFactors(StageFactorMethodType.RELATIVE_STAGE_FACTOR, linerStageFactors)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "de1e5587",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009761,
+     "end_time": "2026-03-13T21:22:36.673795",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.664034",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 5. Delete Liner Stage Factor"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "21339b88",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.697304Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.696906Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.704587Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.703371Z"
+    },
+    "papermill": {
+     "duration": 0.020524,
+     "end_time": "2026-03-13T21:22:36.705674",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.685150",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{0: <rs3.properties.liner.ReinforcedConcrete.ReinforcedConcreteDefinedStageFactor at 0x1901f216690>,\n",
+       " 2: <rs3.properties.liner.ReinforcedConcrete.ReinforcedConcreteDefinedStageFactor at 0x1901f216ad0>,\n",
+       " 4: <rs3.properties.liner.ReinforcedConcrete.ReinforcedConcreteDefinedStageFactor at 0x1901f280250>}"
+      ]
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "linerStageFactors = liner1.ReinforcedConcrete.StageFactorInterface.getDefinedStageFactors()\n",
+    "linerStageFactors"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d898ef1b",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011068,
+     "end_time": "2026-03-13T21:22:36.727668",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.716600",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Remove stage factors at stage 4."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "7b063466",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.751760Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.751396Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.757346Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.756011Z"
+    },
+    "papermill": {
+     "duration": 0.020974,
+     "end_time": "2026-03-13T21:22:36.759335",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.738361",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<rs3.properties.liner.ReinforcedConcrete.ReinforcedConcreteDefinedStageFactor at 0x1901f280250>"
+      ]
+     },
+     "execution_count": 26,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "linerStageFactors.pop(4)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7af01f16",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010788,
+     "end_time": "2026-03-13T21:22:36.783793",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.773005",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the dictionary back and check the defined stage factors. Now only stage 2 has stage factors defined."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "38cd2bfb",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.808526Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.807897Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.818964Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.817682Z"
+    },
+    "papermill": {
+     "duration": 0.024674,
+     "end_time": "2026-03-13T21:22:36.820423",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.795749",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{0: <rs3.properties.liner.ReinforcedConcrete.ReinforcedConcreteDefinedStageFactor at 0x1901f280e50>,\n",
+       " 2: <rs3.properties.liner.ReinforcedConcrete.ReinforcedConcreteDefinedStageFactor at 0x1903129b7a0>}"
+      ]
+     },
+     "execution_count": 27,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "liner1.ReinforcedConcrete.StageFactorInterface.setDefinedStageFactors(StageFactorMethodType.RELATIVE_STAGE_FACTOR, linerStageFactors)\n",
+    "liner1.ReinforcedConcrete.StageFactorInterface.getDefinedStageFactors()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c9eaf85f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012216,
+     "end_time": "2026-03-13T21:22:36.844569",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.832353",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 6. Delete Liner"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5bc2abf2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011307,
+     "end_time": "2026-03-13T21:22:36.865962",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.854655",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Delete liner2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "60c835b7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.888534Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.888128Z",
+     "iopub.status.idle": "2026-03-13T21:22:36.942886Z",
+     "shell.execute_reply": "2026-03-13T21:22:36.939568Z"
+    },
+    "papermill": {
+     "duration": 0.07122,
+     "end_time": "2026-03-13T21:22:36.946145",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.874925",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.deleteLinerProperty(liner2Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "26128543",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011955,
+     "end_time": "2026-03-13T21:22:36.972227",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.960272",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Check if liner2 still exist in the liner list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "67d78560",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:36.998610Z",
+     "iopub.status.busy": "2026-03-13T21:22:36.998185Z",
+     "iopub.status.idle": "2026-03-13T21:22:37.008430Z",
+     "shell.execute_reply": "2026-03-13T21:22:37.006757Z"
+    },
+    "papermill": {
+     "duration": 0.024416,
+     "end_time": "2026-03-13T21:22:37.010580",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:36.986164",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Liner 1\n"
+     ]
+    }
+   ],
+   "source": [
+    "allLiners = model.getAllLinerProperties()\n",
+    "for liner in allLiners:\n",
+    "    print(liner.getLinerName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012366,
+     "end_time": "2026-03-13T21:22:37.033010",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:37.020644",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:37.053616Z",
+     "iopub.status.busy": "2026-03-13T21:22:37.053238Z",
+     "iopub.status.idle": "2026-03-13T21:22:40.864288Z",
+     "shell.execute_reply": "2026-03-13T21:22:40.861192Z"
+    },
+    "papermill": {
+     "duration": 3.823826,
+     "end_time": "2026-03-13T21:22:40.866113",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:37.042287",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b886b4a7",
+   "metadata": {
+    "papermill": {
+     "duration": 0.017358,
+     "end_time": "2026-03-13T21:22:40.900759",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:40.883401",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "1e88c169",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:40.941867Z",
+     "iopub.status.busy": "2026-03-13T21:22:40.941072Z",
+     "iopub.status.idle": "2026-03-13T21:22:46.166870Z",
+     "shell.execute_reply": "2026-03-13T21:22:46.162947Z"
+    },
+    "papermill": {
+     "duration": 5.247669,
+     "end_time": "2026-03-13T21:22:46.169633",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:40.921964",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8c3e2892",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015362,
+     "end_time": "2026-03-13T21:22:46.196616",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:46.181254",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "9ded64cb",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:22:46.227826Z",
+     "iopub.status.busy": "2026-03-13T21:22:46.227393Z",
+     "iopub.status.idle": "2026-03-13T21:23:46.519398Z",
+     "shell.execute_reply": "2026-03-13T21:23:46.517130Z"
+    },
+    "papermill": {
+     "duration": 60.310609,
+     "end_time": "2026-03-13T21:23:46.521081",
+     "exception": false,
+     "start_time": "2026-03-13T21:22:46.210472",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 17:22:46,240 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60304...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Liner 1\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Liner Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.abspath(\"\")\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60304\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{os.path.dirname(current_dir)}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create and Get Liner\n",
+    "# Get the first liner in the list.\n",
+    "liner1 = model.getAllLinerProperties()[0]\n",
+    "# Create a new liner and get the liner by name.\n",
+    "liner2Name = \"Liner 2\"\n",
+    "model.createNewLinerProperty(liner2Name)\n",
+    "liner2 = model.getLinerPropertyByName(liner2Name)\n",
+    "\n",
+    "# 2. Set Liner Properties\n",
+    "liner1.setLinerType(LinerTypes.REINFORCED_CONCRETE)\n",
+    "liner1.ReinforcedConcrete.setMaterialType(MaterialType.PLASTIC)\n",
+    "liner1.ReinforcedConcrete.setProperties(ReinforcementProperty=True, ConcreteProperty=True, \n",
+    "                                        PoissonsRatioReinforcement=0.22, PoissonsRatioConcrete=0.28)\n",
+    "\n",
+    "# 3. Copy Liner Properties\n",
+    "liner2.setLinerType(LinerTypes.REINFORCED_CONCRETE)\n",
+    "liner2.ReinforcedConcrete.setProperties(**liner1Properties)\n",
+    "\n",
+    "# 4. Set Stage Factors\n",
+    "# Turn on the stage factors of liners.\n",
+    "liner1.setApplyStageFactors(True)\n",
+    "# Now, create a stage factor for stage 2.\n",
+    "stageFactor_s2 = liner1.ReinforcedConcrete.StageFactorInterface.createStageFactor(2)\n",
+    "# Set stage factor of concrete thickness.\n",
+    "stageFactor_s2.setThicknessFactor(1.5)\n",
+    "# Get stage factors of all stages and check stage factor of concrete thickness at stage 2.\n",
+    "stageFactors_s2 = liner1.ReinforcedConcrete.StageFactorInterface.getStageFactor(2)\n",
+    "# Create another stage factor for stage 4 and set the stage factor of concrete thickness.\n",
+    "liner1.ReinforcedConcrete.StageFactorInterface.createStageFactor(4)\n",
+    "newLinerStageFactor_s4 = liner1.ReinforcedConcrete.StageFactorInterface.getDefinedStageFactors()[4]\n",
+    "newLinerStageFactor_s4.setThicknessFactor(2.1)\n",
+    "# Get the dictionary of all stage factors.\n",
+    "linerStageFactors = liner1.ReinforcedConcrete.StageFactorInterface.getDefinedStageFactors()\n",
+    "# 4.1 Absolute Stage Factors\n",
+    "liner1.ReinforcedConcrete.StageFactorInterface.setDefinedStageFactors(StageFactorMethodType.ABSOLUTE_STAGE_FACTOR, linerStageFactors)\n",
+    "# 4.2 Relative Stage Factors\n",
+    "# Turn on relative stage factor by setting stageFactorMethodType to RELATIVE_STAGE_FACTOR.\n",
+    "liner1.ReinforcedConcrete.StageFactorInterface.setDefinedStageFactors(StageFactorMethodType.RELATIVE_STAGE_FACTOR, linerStageFactors)\n",
+    "\n",
+    "# 5. Delete Liner Stage Factor\n",
+    "linerStageFactors = liner1.ReinforcedConcrete.StageFactorInterface.getDefinedStageFactors()\n",
+    "# Remove stage factors at stage 4.\n",
+    "linerStageFactors.pop(4)\n",
+    "# Set the dictionary back and check the defined stage factors. Now only stage 2 has stage factors defined.\n",
+    "liner1.ReinforcedConcrete.StageFactorInterface.setDefinedStageFactors(StageFactorMethodType.RELATIVE_STAGE_FACTOR, linerStageFactors)\n",
+    "liner1.ReinforcedConcrete.StageFactorInterface.getDefinedStageFactors()\n",
+    "\n",
+    "# 6. Delete Liner\n",
+    "# Delete liner2.\n",
+    "model.deleteLinerProperty(liner2Name)\n",
+    "# Check if liner2 still exist in the liner list.\n",
+    "allLiners = model.getAllLinerProperties()\n",
+    "for liner in allLiners:\n",
+    "    print(liner.getLinerName())\n",
+    "    \n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 116.091404,
+   "end_time": "2026-03-13T21:23:48.372293",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\supports\\liner_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\supports\\liner_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:21:52.280889",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

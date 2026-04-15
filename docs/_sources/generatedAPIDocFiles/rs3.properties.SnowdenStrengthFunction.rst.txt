@@ -1,0 +1,7 @@
+rs3.properties.SnowdenStrengthFunction module
+=============================================
+
+.. automodule:: rs3.properties.SnowdenStrengthFunction
+   :members:
+   :undoc-members:
+   :show-inheritance:

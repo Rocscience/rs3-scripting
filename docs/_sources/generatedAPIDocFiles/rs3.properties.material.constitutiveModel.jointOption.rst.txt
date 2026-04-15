@@ -1,0 +1,19 @@
+rs3.properties.material.constitutiveModel.jointOption package
+=============================================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.constitutiveModel.jointOption.BartonBandis
+   rs3.properties.material.constitutiveModel.jointOption.MaterialJoint
+   rs3.properties.material.constitutiveModel.jointOption.MaterialJointOptions
+   rs3.properties.material.constitutiveModel.jointOption.MohrCoulomb
+   rs3.properties.material.constitutiveModel.jointOption.PlaneOrientationBase
+   rs3.properties.material.constitutiveModel.jointOption.SimpleHyperbolic
+
+
+.. automodule:: rs3.properties.material.constitutiveModel.jointOption
+   :members:
+   :undoc-members:
+   :show-inheritance:

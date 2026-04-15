@@ -1,0 +1,7 @@
+rs3.properties.bolt.PlainStrandCable module
+===========================================
+
+.. automodule:: rs3.properties.bolt.PlainStrandCable
+   :members:
+   :undoc-members:
+   :show-inheritance:

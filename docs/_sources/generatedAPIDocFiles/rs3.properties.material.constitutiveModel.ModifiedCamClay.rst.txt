@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.ModifiedCamClay module
+================================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.ModifiedCamClay
+   :members:
+   :undoc-members:
+   :show-inheritance:

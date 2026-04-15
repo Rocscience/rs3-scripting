@@ -1,0 +1,17 @@
+rs3.properties.material.datum package
+=====================================
+
+
+.. toctree::
+   :maxdepth: 2
+
+   rs3.properties.material.datum.CohesionDatumDependency
+   rs3.properties.material.datum.Datum
+   rs3.properties.material.datum.FrictionAngleDatumDependency
+   rs3.properties.material.datum.YoungsModulusDatumDependency
+
+
+.. automodule:: rs3.properties.material.datum
+   :members:
+   :undoc-members:
+   :show-inheritance:

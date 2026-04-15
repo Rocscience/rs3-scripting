@@ -1,0 +1,7 @@
+rs3.results.SolidElementResults module
+======================================
+
+.. automodule:: rs3.results.SolidElementResults
+   :members:
+   :undoc-members:
+   :show-inheritance:

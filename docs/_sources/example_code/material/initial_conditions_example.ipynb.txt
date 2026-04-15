@@ -1,0 +1,1268 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006897,
+     "end_time": "2026-03-13T20:29:45.026936",
+     "exception": false,
+     "start_time": "2026-03-13T20:29:45.020039",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(material_initial_conditions_example)=\n",
+    "# Material Initial Conditions Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006064,
+     "end_time": "2026-03-13T20:29:45.037482",
+     "exception": false,
+     "start_time": "2026-03-13T20:29:45.031418",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:29:45.051970Z",
+     "iopub.status.busy": "2026-03-13T20:29:45.051452Z",
+     "iopub.status.idle": "2026-03-13T20:29:45.305737Z",
+     "shell.execute_reply": "2026-03-13T20:29:45.304665Z"
+    },
+    "papermill": {
+     "duration": 0.262853,
+     "end_time": "2026-03-13T20:29:45.306865",
+     "exception": false,
+     "start_time": "2026-03-13T20:29:45.044012",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.projectSettings.ProjectSettingEnums import *\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005947,
+     "end_time": "2026-03-13T20:29:45.318817",
+     "exception": false,
+     "start_time": "2026-03-13T20:29:45.312870",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:29:45.333993Z",
+     "iopub.status.busy": "2026-03-13T20:29:45.333566Z",
+     "iopub.status.idle": "2026-03-13T20:29:45.338917Z",
+     "shell.execute_reply": "2026-03-13T20:29:45.336935Z"
+    },
+    "papermill": {
+     "duration": 0.014713,
+     "end_time": "2026-03-13T20:29:45.340704",
+     "exception": false,
+     "start_time": "2026-03-13T20:29:45.325991",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007156,
+     "end_time": "2026-03-13T20:29:45.354404",
+     "exception": false,
+     "start_time": "2026-03-13T20:29:45.347248",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "f2f81aba",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:29:45.373112Z",
+     "iopub.status.busy": "2026-03-13T20:29:45.372599Z",
+     "iopub.status.idle": "2026-03-13T20:30:14.957482Z",
+     "shell.execute_reply": "2026-03-13T20:30:14.956124Z"
+    },
+    "papermill": {
+     "duration": 29.595878,
+     "end_time": "2026-03-13T20:30:14.958779",
+     "exception": false,
+     "start_time": "2026-03-13T20:29:45.362901",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:29:45,382 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60201...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60201\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0ec79f45",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00569,
+     "end_time": "2026-03-13T20:30:14.970629",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:14.964939",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "80b86abb",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:14.984233Z",
+     "iopub.status.busy": "2026-03-13T20:30:14.983776Z",
+     "iopub.status.idle": "2026-03-13T20:30:14.991715Z",
+     "shell.execute_reply": "2026-03-13T20:30:14.990339Z"
+    },
+    "papermill": {
+     "duration": 0.01742,
+     "end_time": "2026-03-13T20:30:14.992738",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:14.975318",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006426,
+     "end_time": "2026-03-13T20:30:15.004833",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:14.998407",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:15.018456Z",
+     "iopub.status.busy": "2026-03-13T20:30:15.018137Z",
+     "iopub.status.idle": "2026-03-13T20:30:15.040597Z",
+     "shell.execute_reply": "2026-03-13T20:30:15.039147Z"
+    },
+    "papermill": {
+     "duration": 0.031211,
+     "end_time": "2026-03-13T20:30:15.041621",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:15.010410",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012457,
+     "end_time": "2026-03-13T20:30:15.059112",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:15.046655",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:15.082202Z",
+     "iopub.status.busy": "2026-03-13T20:30:15.081387Z",
+     "iopub.status.idle": "2026-03-13T20:30:26.139303Z",
+     "shell.execute_reply": "2026-03-13T20:30:26.138186Z"
+    },
+    "papermill": {
+     "duration": 11.073625,
+     "end_time": "2026-03-13T20:30:26.141273",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:15.067648",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8178f89d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.010451,
+     "end_time": "2026-03-13T20:30:26.160902",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:26.150451",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create and Get Material"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "91094ee0",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009295,
+     "end_time": "2026-03-13T20:30:26.178026",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:26.168731",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the first material in the list."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "ab017b80",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:26.203380Z",
+     "iopub.status.busy": "2026-03-13T20:30:26.202913Z",
+     "iopub.status.idle": "2026-03-13T20:30:26.805074Z",
+     "shell.execute_reply": "2026-03-13T20:30:26.801907Z"
+    },
+    "papermill": {
+     "duration": 0.618178,
+     "end_time": "2026-03-13T20:30:26.807665",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:26.189487",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Soil'"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1 = model.getAllMaterialProperties()[0]\n",
+    "material1.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "ecc0192e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:26.831156Z",
+     "iopub.status.busy": "2026-03-13T20:30:26.830049Z",
+     "iopub.status.idle": "2026-03-13T20:30:27.252025Z",
+     "shell.execute_reply": "2026-03-13T20:30:27.250814Z"
+    },
+    "papermill": {
+     "duration": 0.433835,
+     "end_time": "2026-03-13T20:30:27.253250",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:26.819415",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'New Material'"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "newMaterialName = \"New Material\"\n",
+    "model.createNewMaterialProperty(newMaterialName)\n",
+    "newMaterial = model.getMaterialPropertyByName(newMaterialName)\n",
+    "newMaterial.getMaterialName()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2c63f598",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007808,
+     "end_time": "2026-03-13T20:30:27.267964",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:27.260156",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Set Initial Conditions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "b2553801",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:27.287541Z",
+     "iopub.status.busy": "2026-03-13T20:30:27.287079Z",
+     "iopub.status.idle": "2026-03-13T20:30:27.308921Z",
+     "shell.execute_reply": "2026-03-13T20:30:27.306803Z"
+    },
+    "papermill": {
+     "duration": 0.034382,
+     "end_time": "2026-03-13T20:30:27.311174",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:27.276792",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'UnitWeight': 20.0,\n",
+       " 'AccountForMoistureContentInUnitWeight': False,\n",
+       " 'DryUnitWeight': 17.06,\n",
+       " 'MoistureUnitWeight': 18.0,\n",
+       " 'SaturatedUnitWeight': 20.0}"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.InitialConditions.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "dc2045f7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:27.330356Z",
+     "iopub.status.busy": "2026-03-13T20:30:27.329874Z",
+     "iopub.status.idle": "2026-03-13T20:30:27.457583Z",
+     "shell.execute_reply": "2026-03-13T20:30:27.454544Z"
+    },
+    "papermill": {
+     "duration": 0.14068,
+     "end_time": "2026-03-13T20:30:27.459848",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:27.319168",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "19.8"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.InitialConditions.setUnitWeight(19.8)\n",
+    "material1.InitialConditions.getUnitWeight()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "36356fe1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:27.498437Z",
+     "iopub.status.busy": "2026-03-13T20:30:27.497296Z",
+     "iopub.status.idle": "2026-03-13T20:30:27.731343Z",
+     "shell.execute_reply": "2026-03-13T20:30:27.728984Z"
+    },
+    "papermill": {
+     "duration": 0.263074,
+     "end_time": "2026-03-13T20:30:27.733784",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:27.470710",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'UnitWeight': 19.8,\n",
+       " 'AccountForMoistureContentInUnitWeight': True,\n",
+       " 'DryUnitWeight': 17.06,\n",
+       " 'MoistureUnitWeight': 17.95,\n",
+       " 'SaturatedUnitWeight': 20.0}"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.InitialConditions.setProperties(AccountForMoistureContentInUnitWeight=True, MoistureUnitWeight=17.95)\n",
+    "material1.InitialConditions.getProperties()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4f955590",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00927,
+     "end_time": "2026-03-13T20:30:27.754874",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:27.745604",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Set Initial Water Conditions in FEA Groundwater Analysis"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d3fa5676",
+   "metadata": {
+    "papermill": {
+     "duration": 0.01285,
+     "end_time": "2026-03-13T20:30:27.778009",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:27.765159",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the project to transient analysis."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "0fb0bd7b",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:27.809077Z",
+     "iopub.status.busy": "2026-03-13T20:30:27.808079Z",
+     "iopub.status.idle": "2026-03-13T20:30:28.050011Z",
+     "shell.execute_reply": "2026-03-13T20:30:28.048342Z"
+    },
+    "papermill": {
+     "duration": 0.26158,
+     "end_time": "2026-03-13T20:30:28.051354",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:27.789774",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<GroundwaterMethodType.GW_TRANSIENT: 'GW_TRANSIENT'>"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "model.ProjectSettings.Groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_TRANSIENT)\n",
+    "model.ProjectSettings.Groundwater.getGroundwaterMethod()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e5e63b50",
+   "metadata": {
+    "papermill": {
+     "duration": 0.009522,
+     "end_time": "2026-03-13T20:30:28.069562",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:28.060040",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Turn on initial water conditions."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "b3cfa8ed",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:28.100496Z",
+     "iopub.status.busy": "2026-03-13T20:30:28.099504Z",
+     "iopub.status.idle": "2026-03-13T20:30:28.225583Z",
+     "shell.execute_reply": "2026-03-13T20:30:28.223938Z"
+    },
+    "papermill": {
+     "duration": 0.145886,
+     "end_time": "2026-03-13T20:30:28.226928",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:28.081042",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.InitialConditions.setApplyInitialWaterConditions(True)\n",
+    "material1.InitialConditions.getApplyInitialWaterConditions()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cf702ee5",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013407,
+     "end_time": "2026-03-13T20:30:28.248900",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:28.235493",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 3.1 Set Ru"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "046ab3da",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:28.281495Z",
+     "iopub.status.busy": "2026-03-13T20:30:28.280697Z",
+     "iopub.status.idle": "2026-03-13T20:30:28.474025Z",
+     "shell.execute_reply": "2026-03-13T20:30:28.472649Z"
+    },
+    "papermill": {
+     "duration": 0.21062,
+     "end_time": "2026-03-13T20:30:28.475181",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:28.264561",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Ru=1.2'"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "userDefinnedRuValueName = \"Ru=1.2\"\n",
+    "material1.InitialConditions.createNewWaterCondition(userDefinnedRuValueName, HydraulicParameterType.RU, 1.2)\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.USER_DEFINED_VALUE, userDefinnedRuValueName)\n",
+    "material1.InitialConditions.getInitialWaterCondition()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cb72f845",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006996,
+     "end_time": "2026-03-13T20:30:28.489639",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:28.482643",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 3.2 Set PWP"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "c5f77421",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:28.506248Z",
+     "iopub.status.busy": "2026-03-13T20:30:28.505868Z",
+     "iopub.status.idle": "2026-03-13T20:30:28.650979Z",
+     "shell.execute_reply": "2026-03-13T20:30:28.649016Z"
+    },
+    "papermill": {
+     "duration": 0.155566,
+     "end_time": "2026-03-13T20:30:28.652733",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:28.497167",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'PWP=98.1'"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "userDefinnedPWPValueName = \"PWP=98.1\"\n",
+    "material1.InitialConditions.createNewWaterCondition(userDefinnedPWPValueName, HydraulicParameterType.PWP, 98.1)\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.USER_DEFINED_VALUE, userDefinnedPWPValueName)\n",
+    "material1.InitialConditions.getInitialWaterCondition()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "175d439d",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012343,
+     "end_time": "2026-03-13T20:30:28.676047",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:28.663704",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 3.3 Set Water Surface"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "73aa5d47",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:28.696776Z",
+     "iopub.status.busy": "2026-03-13T20:30:28.696305Z",
+     "iopub.status.idle": "2026-03-13T20:30:28.988394Z",
+     "shell.execute_reply": "2026-03-13T20:30:28.986660Z"
+    },
+    "papermill": {
+     "duration": 0.303528,
+     "end_time": "2026-03-13T20:30:28.990269",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:28.686741",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Water Surface'"
+      ]
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "waterSurfaceName = \"Water Surface\"\n",
+    "model.createNewWaterByLocationProperty(waterSurfaceName)\n",
+    "waterSurface = model.getWaterByLocationPropertyByName(waterSurfaceName)\n",
+    "waterSurface.setWaterSurfaceLocation([(0, 0, -5), (0, 30, -5), (30, 30, -5), (30, 0, -5)])\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.WATER_SURFACE, waterSurfaceName)\n",
+    "material1.InitialConditions.getInitialWaterCondition()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f8591280",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012787,
+     "end_time": "2026-03-13T20:30:29.018151",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:29.005364",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 3.4 Set Water Grid"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "12142ed9",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:29.051534Z",
+     "iopub.status.busy": "2026-03-13T20:30:29.050879Z",
+     "iopub.status.idle": "2026-03-13T20:30:32.092657Z",
+     "shell.execute_reply": "2026-03-13T20:30:32.090306Z"
+    },
+    "papermill": {
+     "duration": 3.062053,
+     "end_time": "2026-03-13T20:30:32.094318",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:29.032265",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Water Grid'"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "waterGridName = \"Water Grid\"\n",
+    "model.createNewWaterGridProperty(waterGridName)\n",
+    "waterGrid = model.getWaterGridPropertyByName(waterGridName)\n",
+    "waterGrid.setIs3D(True)\n",
+    "waterGrid.setWaterGridPoints([(0, 0, 0, -5), (0, 30, 0, -5), (30, 30, 0, -5), (30, 0, 0, -5)])\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.PWP_POINT_SET, waterGridName)\n",
+    "material1.InitialConditions.getInitialWaterCondition()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ab22b98e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.021939,
+     "end_time": "2026-03-13T20:30:32.129271",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:32.107332",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "### 3.5 Set to Dry"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "5bdb647e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:32.156041Z",
+     "iopub.status.busy": "2026-03-13T20:30:32.155494Z",
+     "iopub.status.idle": "2026-03-13T20:30:32.434597Z",
+     "shell.execute_reply": "2026-03-13T20:30:32.431681Z"
+    },
+    "papermill": {
+     "duration": 0.297138,
+     "end_time": "2026-03-13T20:30:32.436674",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:32.139536",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Dry'"
+      ]
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.DRY)\n",
+    "material1.InitialConditions.getInitialWaterCondition()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0d27feab",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012264,
+     "end_time": "2026-03-13T20:30:32.461163",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:32.448899",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 4. Delete Materials"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "3711d783",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:32.489754Z",
+     "iopub.status.busy": "2026-03-13T20:30:32.489283Z",
+     "iopub.status.idle": "2026-03-13T20:30:32.964563Z",
+     "shell.execute_reply": "2026-03-13T20:30:32.960013Z"
+    },
+    "papermill": {
+     "duration": 0.493041,
+     "end_time": "2026-03-13T20:30:32.968066",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:32.475025",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.deleteMaterialProperty(newMaterialName)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "d10207c4",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:33.010120Z",
+     "iopub.status.busy": "2026-03-13T20:30:33.009245Z",
+     "iopub.status.idle": "2026-03-13T20:30:33.438338Z",
+     "shell.execute_reply": "2026-03-13T20:30:33.435829Z"
+    },
+    "papermill": {
+     "duration": 0.454417,
+     "end_time": "2026-03-13T20:30:33.440438",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:32.986021",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Soil\n",
+      "Concrete\n",
+      "Material 3\n",
+      "Material 4\n",
+      "Material 5\n"
+     ]
+    }
+   ],
+   "source": [
+    "allMaterials = model.getAllMaterialProperties()\n",
+    "for material in allMaterials:\n",
+    "    print(material.getMaterialName())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.02027,
+     "end_time": "2026-03-13T20:30:33.473519",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:33.453249",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:33.501519Z",
+     "iopub.status.busy": "2026-03-13T20:30:33.500698Z",
+     "iopub.status.idle": "2026-03-13T20:30:36.925443Z",
+     "shell.execute_reply": "2026-03-13T20:30:36.924150Z"
+    },
+    "papermill": {
+     "duration": 3.440995,
+     "end_time": "2026-03-13T20:30:36.926874",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:33.485879",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fe2a3ff9",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014641,
+     "end_time": "2026-03-13T20:30:36.955312",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:36.940671",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "de07deb8",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:36.979093Z",
+     "iopub.status.busy": "2026-03-13T20:30:36.978324Z",
+     "iopub.status.idle": "2026-03-13T20:30:42.568033Z",
+     "shell.execute_reply": "2026-03-13T20:30:42.565706Z"
+    },
+    "papermill": {
+     "duration": 5.603713,
+     "end_time": "2026-03-13T20:30:42.570397",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:36.966684",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561839db",
+   "metadata": {
+    "papermill": {
+     "duration": 0.011412,
+     "end_time": "2026-03-13T20:30:42.593555",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:42.582143",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "bcc357b7",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T20:30:42.627397Z",
+     "iopub.status.busy": "2026-03-13T20:30:42.626754Z",
+     "iopub.status.idle": "2026-03-13T20:31:36.409512Z",
+     "shell.execute_reply": "2026-03-13T20:31:36.408094Z"
+    },
+    "papermill": {
+     "duration": 53.805353,
+     "end_time": "2026-03-13T20:31:36.411200",
+     "exception": false,
+     "start_time": "2026-03-13T20:30:42.605847",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-03-13 16:30:42,639 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60201...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Soil\n",
+      "Concrete\n",
+      "Material 3\n",
+      "Material 4\n",
+      "Material 5\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Material Initial Conditions Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "from rs3.properties.PropertyEnums import *\n",
+    "from rs3.projectSettings.ProjectSettingEnums import *\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60201\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create and Get Material\n",
+    "# Get the first material in the list.\n",
+    "material1 = model.getAllMaterialProperties()[0]\n",
+    "newMaterialName = \"New Material\"\n",
+    "model.createNewMaterialProperty(newMaterialName)\n",
+    "newMaterial = model.getMaterialPropertyByName(newMaterialName)\n",
+    "\n",
+    "# 2. Set Initial Conditions\n",
+    "material1.InitialConditions.setUnitWeight(19.8)\n",
+    "material1.InitialConditions.setProperties(AccountForMoistureContentInUnitWeight=True, MoistureUnitWeight=17.95)\n",
+    "# 3. Set Initial Water Conditions in FEA Groundwater Analysis\n",
+    "# Set the project to transient analysis.\n",
+    "model.ProjectSettings.Groundwater.setGroundwaterMethod(GroundwaterMethodType.GW_TRANSIENT)\n",
+    "# Turn on initial water conditions.\n",
+    "material1.InitialConditions.setApplyInitialWaterConditions(True)\n",
+    "# 3.1 Set Ru\n",
+    "userDefinnedRuValueName = \"Ru=1.2\"\n",
+    "material1.InitialConditions.createNewWaterCondition(userDefinnedRuValueName, HydraulicParameterType.RU, 1.2)\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.USER_DEFINED_VALUE, userDefinnedRuValueName)\n",
+    "# 3.2 Set PWP\n",
+    "userDefinnedPWPValueName = \"PWP=98.1\"\n",
+    "material1.InitialConditions.createNewWaterCondition(userDefinnedPWPValueName, HydraulicParameterType.PWP, 98.1)\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.USER_DEFINED_VALUE, userDefinnedPWPValueName)\n",
+    "# 3.3 Set Water Surface\n",
+    "waterSurfaceName = \"Water Surface\"\n",
+    "model.createNewWaterByLocationProperty(waterSurfaceName)\n",
+    "waterSurface = model.getWaterByLocationPropertyByName(waterSurfaceName)\n",
+    "waterSurface.setWaterSurfaceLocation([(0, 0, -5), (0, 30, -5), (30, 30, -5), (30, 0, -5)])\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.WATER_SURFACE, waterSurfaceName)\n",
+    "# 3.4 Set Water Grid\n",
+    "waterGridName = \"Water Grid\"\n",
+    "model.createNewWaterGridProperty(waterGridName)\n",
+    "waterGrid = model.getWaterGridPropertyByName(waterGridName)\n",
+    "waterGrid.setIs3D(True)\n",
+    "waterGrid.setWaterGridPoints([(0, 0, 0, -5), (0, 30, 0, -5), (30, 30, 0, -5), (30, 0, 0, -5)])\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.PWP_POINT_SET, waterGridName)\n",
+    "# 3.5 Set to Dry\n",
+    "material1.InitialConditions.setInitialWaterCondition(StaticWaterModes.DRY)\n",
+    "\n",
+    "# 4. Delete Materials\n",
+    "model.deleteMaterialProperty(newMaterialName)\n",
+    "allMaterials = model.getAllMaterialProperties()\n",
+    "for material in allMaterials:\n",
+    "    print(material.getMaterialName())\n",
+    "    \n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 115.21406,
+   "end_time": "2026-03-13T20:31:38.438834",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\material\\initial_conditions_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\material\\initial_conditions_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T20:29:43.224774",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

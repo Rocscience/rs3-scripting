@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.BarcelonaBasic module
+===============================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.BarcelonaBasic
+   :members:
+   :undoc-members:
+   :show-inheritance:

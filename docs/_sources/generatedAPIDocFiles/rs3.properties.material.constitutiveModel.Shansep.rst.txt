@@ -1,0 +1,7 @@
+rs3.properties.material.constitutiveModel.Shansep module
+========================================================
+
+.. automodule:: rs3.properties.material.constitutiveModel.Shansep
+   :members:
+   :undoc-members:
+   :show-inheritance:
