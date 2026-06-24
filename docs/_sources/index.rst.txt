@@ -1,7 +1,7 @@
 RS3 Scripting Reference Manual
 ========================================================
 
-**Version: 4.042.0**
+**Version: 4.043.0**
 
 Prerequisites
 --------------------
