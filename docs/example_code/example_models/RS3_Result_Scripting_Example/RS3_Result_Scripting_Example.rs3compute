@@ -2,7 +2,7 @@
 model description:
 title: RS3 2 compute file
 version: 
-4.043
+4.044
 description: 
 option: 3D
 solver: auto fillin: 0 tolSolver: 0.001 dropTol: 1E-06 Accelerate: 1 nCurveFit: 5  maxiter: 500  miniter: 20  maxalpha: 10  minalpha: 0.1  maxDeltaForce: 1  minDeltaForce: 0.05  initialDeltaForce: 0.1  scaleUp: 1.3  scaleDown: 0.5  tolsolid: 0.001  tolfluid: 0.001  autoLoadStep: 0  steps: 0 autoLoadStep_GW: 0 steps_GW: 0
