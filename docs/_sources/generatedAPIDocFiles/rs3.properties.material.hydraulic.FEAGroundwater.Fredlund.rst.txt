@@ -3,5 +3,5 @@ rs3.properties.material.hydraulic.FEAGroundwater.Fredlund module
 
 .. automodule:: rs3.properties.material.hydraulic.FEAGroundwater.Fredlund
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -3,5 +3,5 @@ rs3.properties.pile.Linear module
 
 .. automodule:: rs3.properties.pile.Linear
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

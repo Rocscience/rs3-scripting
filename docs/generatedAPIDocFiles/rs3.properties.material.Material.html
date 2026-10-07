@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.properties.material.Material';</script>
@@ -423,6 +423,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.Group.html">rs3.properties.Group module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
@@ -526,15 +527,17 @@
 <span id="rs3-properties-material-material-module"></span><h1>rs3.properties.material.Material module<a class="headerlink" href="#module-rs3.properties.material.Material" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.properties.material.Material.MaterialProperty">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.properties.material.Material.</span></span><span class="sig-name descname"><span class="pre">MaterialProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">materialID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.properties.material.Material.MaterialProperty" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.properties.material.Material.</span></span><span class="sig-name descname"><span class="pre">MaterialProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">materialID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.properties.material.Material.MaterialProperty" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_ProxyObject</span></code></p>
 <p>Define material properties.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Standard</strong> (<a class="reference internal" href="rs3.properties.beam.Standard.html#rs3.properties.beam.Standard.Standard" title="rs3.properties.beam.Standard.Standard"><em>Standard</em></a>) – Reference object for modifying property.</p></li>
-<li><p><strong>Geosynthetic</strong> (<a class="reference internal" href="rs3.properties.liner.Geosynthetic.html#rs3.properties.liner.Geosynthetic.Geosynthetic" title="rs3.properties.liner.Geosynthetic.Geosynthetic"><em>Geosynthetic</em></a>) – Reference object for modifying property.</p></li>
-<li><p><strong>ReinforcedConcrete</strong> (<a class="reference internal" href="rs3.properties.liner.ReinforcedConcrete.html#rs3.properties.liner.ReinforcedConcrete.ReinforcedConcrete" title="rs3.properties.liner.ReinforcedConcrete.ReinforcedConcrete"><em>ReinforcedConcrete</em></a>) – Reference object for modifying property.</p></li>
+<li><p><strong>InitialConditions</strong> (<a class="reference internal" href="rs3.properties.material.initialConditions.InitialConditions.html#rs3.properties.material.initialConditions.InitialConditions.InitialConditions" title="rs3.properties.material.initialConditions.InitialConditions.InitialConditions"><em>InitialConditions</em></a>) – Reference object for modifying property.</p></li>
+<li><p><strong>ConstitutiveModel</strong> (<a class="reference internal" href="rs3.properties.material.constitutiveModel.ConstitutiveModel.html#rs3.properties.material.constitutiveModel.ConstitutiveModel.ConstitutiveModel" title="rs3.properties.material.constitutiveModel.ConstitutiveModel.ConstitutiveModel"><em>ConstitutiveModel</em></a>) – Reference object for modifying property.</p></li>
+<li><p><strong>Hydraulic</strong> (<a class="reference internal" href="rs3.properties.material.hydraulic.Hydraulic.html#rs3.properties.material.hydraulic.Hydraulic.Hydraulic" title="rs3.properties.material.hydraulic.Hydraulic.Hydraulic"><em>Hydraulic</em></a>) – Reference object for modifying property.</p></li>
+<li><p><strong>Datum</strong> (<a class="reference internal" href="rs3.properties.material.datum.Datum.html#rs3.properties.material.datum.Datum.Datum" title="rs3.properties.material.datum.Datum.Datum"><em>Datum</em></a>) – Reference object for modifying property.</p></li>
+<li><p><strong>StageFactors</strong> (<a class="reference internal" href="rs3.properties.material.stageFactors.StageFactors.html#rs3.properties.material.stageFactors.StageFactors.StageFactors" title="rs3.properties.material.stageFactors.StageFactors.StageFactors"><em>StageFactors</em></a>) – Reference object for modifying property.</p></li>
 </ul>
 </dd>
 </dl>
@@ -695,7 +698,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

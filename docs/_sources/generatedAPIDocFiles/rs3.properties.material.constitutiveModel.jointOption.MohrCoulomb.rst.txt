@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.jointOption.MohrCoulomb module
 
 .. automodule:: rs3.properties.material.constitutiveModel.jointOption.MohrCoulomb
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

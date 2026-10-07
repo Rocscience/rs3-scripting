@@ -22,6 +22,7 @@ rs3.properties package
    rs3.properties.CustomHydraulicModel
    rs3.properties.DiscreteFunction
    rs3.properties.GeneralizedAnisotropicFunction
+   rs3.properties.Group
    rs3.properties.IPropertyGroupAccessors
    rs3.properties.PropertyEnums
    rs3.properties.ShearNormalFunction
@@ -30,5 +31,5 @@ rs3.properties package
 
 .. automodule:: rs3.properties
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

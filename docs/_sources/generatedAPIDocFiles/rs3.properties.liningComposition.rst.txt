@@ -10,5 +10,5 @@ rs3.properties.liningComposition package
 
 .. automodule:: rs3.properties.liningComposition
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

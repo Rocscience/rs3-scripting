@@ -3,5 +3,5 @@ rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon modul
 
 .. automodule:: rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

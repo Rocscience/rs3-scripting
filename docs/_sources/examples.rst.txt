@@ -16,6 +16,8 @@ Model
    example_code/model/restraints_example
    example_code/model/mesh_example
    example_code/model/compute_example
+   example_code/model/grouping_example
+   example_code/model/support_control_example
 
 
 Material

@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.mesh.MeshEnums';</script>
@@ -423,6 +423,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.Group.html">rs3.properties.Group module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
@@ -523,63 +524,63 @@
 <span id="rs3-mesh-meshenums-module"></span><h1>rs3.mesh.MeshEnums module<a class="headerlink" href="#module-rs3.mesh.MeshEnums" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshElementType">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.mesh.MeshEnums.</span></span><span class="sig-name descname"><span class="pre">MeshElementType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshElementType" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.mesh.MeshEnums.</span></span><span class="sig-name descname"><span class="pre">MeshElementType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshElementType" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshElementType.MESH_4_NODED_TETRAHEDRA">
-<span class="sig-name descname"><span class="pre">MESH_4_NODED_TETRAHEDRA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TET4'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshElementType.MESH_4_NODED_TETRAHEDRA" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">MESH_4_NODED_TETRAHEDRA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TET4'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshElementType.MESH_4_NODED_TETRAHEDRA" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshElementType.MESH_10_NODED_TETRAHEDRA">
-<span class="sig-name descname"><span class="pre">MESH_10_NODED_TETRAHEDRA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TET10'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshElementType.MESH_10_NODED_TETRAHEDRA" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">MESH_10_NODED_TETRAHEDRA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TET10'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshElementType.MESH_10_NODED_TETRAHEDRA" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshElementType.MESH_MIXED_4_NODED_AND_10_NODED_TETRAHEDRA">
-<span class="sig-name descname"><span class="pre">MESH_MIXED_4_NODED_AND_10_NODED_TETRAHEDRA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TET4AND10'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshElementType.MESH_MIXED_4_NODED_AND_10_NODED_TETRAHEDRA" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">MESH_MIXED_4_NODED_AND_10_NODED_TETRAHEDRA</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TET4AND10'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshElementType.MESH_MIXED_4_NODED_AND_10_NODED_TETRAHEDRA" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshGradation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.mesh.MeshEnums.</span></span><span class="sig-name descname"><span class="pre">MeshGradation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshGradation" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.mesh.MeshEnums.</span></span><span class="sig-name descname"><span class="pre">MeshGradation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshGradation" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshGradation.GRADED">
-<span class="sig-name descname"><span class="pre">GRADED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GRADED'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshGradation.GRADED" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">GRADED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GRADED'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshGradation.GRADED" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshGradation.UNIFORM">
-<span class="sig-name descname"><span class="pre">UNIFORM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UNIFORM'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshGradation.UNIFORM" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">UNIFORM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UNIFORM'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshGradation.UNIFORM" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshDensity">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.mesh.MeshEnums.</span></span><span class="sig-name descname"><span class="pre">MeshDensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.mesh.MeshEnums.</span></span><span class="sig-name descname"><span class="pre">MeshDensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshDensity.LOW">
-<span class="sig-name descname"><span class="pre">LOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LOW'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity.LOW" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">LOW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LOW'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity.LOW" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshDensity.MEDIUM">
-<span class="sig-name descname"><span class="pre">MEDIUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MEDIUM'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity.MEDIUM" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">MEDIUM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MEDIUM'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity.MEDIUM" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshDensity.HIGH">
-<span class="sig-name descname"><span class="pre">HIGH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HIGH'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity.HIGH" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">HIGH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HIGH'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity.HIGH" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.mesh.MeshEnums.MeshDensity.USER_DEFINED">
-<span class="sig-name descname"><span class="pre">USER_DEFINED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'USERDEFINED'</span></em><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity.USER_DEFINED" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">USER_DEFINED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'USERDEFINED'</span></span><a class="headerlink" href="#rs3.mesh.MeshEnums.MeshDensity.USER_DEFINED" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -697,7 +698,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

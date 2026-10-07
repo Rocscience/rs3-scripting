@@ -3,5 +3,5 @@ rs3.properties.material.initialConditions.InitialConditions module
 
 .. automodule:: rs3.properties.material.initialConditions.InitialConditions
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.jointOption.MaterialJointOptions modul
 
 .. automodule:: rs3.properties.material.constitutiveModel.jointOption.MaterialJointOptions
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

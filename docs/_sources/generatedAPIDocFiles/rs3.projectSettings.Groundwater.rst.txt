@@ -3,5 +3,5 @@ rs3.projectSettings.Groundwater module
 
 .. automodule:: rs3.projectSettings.Groundwater
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

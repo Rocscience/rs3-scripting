@@ -1,0 +1,770 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.012405,
+     "end_time": "2026-09-16T19:21:28.453996",
+     "exception": false,
+     "start_time": "2026-09-16T19:21:28.441591",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(grouping_example)=\n",
+    "# Grouping Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.002481,
+     "end_time": "2026-09-16T19:21:28.462663",
+     "exception": false,
+     "start_time": "2026-09-16T19:21:28.460182",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-09-16T19:21:28.471457Z",
+     "iopub.status.busy": "2026-09-16T19:21:28.471102Z",
+     "iopub.status.idle": "2026-09-16T19:21:28.830699Z",
+     "shell.execute_reply": "2026-09-16T19:21:28.829714Z"
+    },
+    "papermill": {
+     "duration": 0.36571,
+     "end_time": "2026-09-16T19:21:28.831761",
+     "exception": false,
+     "start_time": "2026-09-16T19:21:28.466051",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "import os\n",
+    "import shutil"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003807,
+     "end_time": "2026-09-16T19:21:28.839965",
+     "exception": false,
+     "start_time": "2026-09-16T19:21:28.836158",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-09-16T19:21:28.848791Z",
+     "iopub.status.busy": "2026-09-16T19:21:28.848361Z",
+     "iopub.status.idle": "2026-09-16T19:21:28.853536Z",
+     "shell.execute_reply": "2026-09-16T19:21:28.852292Z"
+    },
+    "papermill": {
+     "duration": 0.011798,
+     "end_time": "2026-09-16T19:21:28.855331",
+     "exception": false,
+     "start_time": "2026-09-16T19:21:28.843533",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004961,
+     "end_time": "2026-09-16T19:21:28.869462",
+     "exception": false,
+     "start_time": "2026-09-16T19:21:28.864501",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "e1cd52e0",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-09-16T19:21:28.881487Z",
+     "iopub.status.busy": "2026-09-16T19:21:28.881061Z",
+     "iopub.status.idle": "2026-09-16T19:21:29.367553Z",
+     "shell.execute_reply": "2026-09-16T19:21:29.366236Z"
+    },
+    "papermill": {
+     "duration": 0.494205,
+     "end_time": "2026-09-16T19:21:29.369313",
+     "exception": true,
+     "start_time": "2026-09-16T19:21:28.875108",
+     "status": "failed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-09-16 16:19:04,179 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60112...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60112\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6ed62e23",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "b54d76b1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:55.943868Z",
+     "iopub.status.busy": "2026-03-13T21:02:55.943535Z",
+     "iopub.status.idle": "2026-03-13T21:02:55.950211Z",
+     "shell.execute_reply": "2026-03-13T21:02:55.949180Z"
+    },
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:55.973062Z",
+     "iopub.status.busy": "2026-03-13T21:02:55.972507Z",
+     "iopub.status.idle": "2026-03-13T21:02:56.000135Z",
+     "shell.execute_reply": "2026-03-13T21:02:55.998961Z"
+    },
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:56.023676Z",
+     "iopub.status.busy": "2026-03-13T21:02:56.023278Z",
+     "iopub.status.idle": "2026-03-13T21:03:09.299437Z",
+     "shell.execute_reply": "2026-03-13T21:03:09.297394Z"
+    },
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1915e04e",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Create a Group"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fb6b3f0d",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Create an exacavation group with the name \"Excavation Group\". Get the excavation group object."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "8bcadf0e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:03:09.333642Z",
+     "iopub.status.busy": "2026-03-13T21:03:09.333113Z",
+     "iopub.status.idle": "2026-03-13T21:03:09.340537Z",
+     "shell.execute_reply": "2026-03-13T21:03:09.338020Z"
+    },
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "excavationGroupName = \"Excavation Group\"\n",
+    "model.createNewGroupProperty(excavationGroupName)\n",
+    "exacationGroup = model.getGroupByName(excavationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "90f37cdc",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 2. Define Group Properties"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fc70ba6b",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the group color."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "1419bc4d",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "exacationGroup.setColor(\"#D6AE2A\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "44ba1718",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the group transparency."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "ebf6f0d5",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "exacationGroup.setGroupSetsTransparency(True)\n",
+    "exacationGroup.setGroupTransparency(0.1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3328ed9b",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 3. Set the Group of an External Volume"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2af5bea2",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the tunnel volume and set the grouping to the Excavation Group from stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "e3b7b76e",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "tunnelVolume = model.getExternalVolumeByName(\"Underground Tunnel\")\n",
+    "tunnelVolume.setGrouping(2, excavationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6d9df283",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the foundation volume and set the grouping to the Excavation Group from stage 3."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "27334563",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "foundationVolume = model.getExternalVolumeByName(\"Foundation\")\n",
+    "foundationVolume.setGrouping(3, excavationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0d03aabc",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Set the foundation volume and set the grouping back to Ungrouped."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "06f18d92",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "foundationVolume.setGrouping(4, \"Ungrouped\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:03:11.050057Z",
+     "iopub.status.busy": "2026-03-13T21:03:11.049103Z",
+     "iopub.status.idle": "2026-03-13T21:03:16.273947Z",
+     "shell.execute_reply": "2026-03-13T21:03:16.271587Z"
+    },
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "667cb451",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "12d52e8c",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "43eeab6f",
+   "metadata": {
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9290ac37",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:03:24.642230Z",
+     "iopub.status.busy": "2026-03-13T21:03:24.641374Z",
+     "iopub.status.idle": "2026-03-13T21:04:35.020253Z",
+     "shell.execute_reply": "2026-03-13T21:04:35.018256Z"
+    },
+    "papermill": {
+     "duration": null,
+     "end_time": null,
+     "exception": null,
+     "start_time": null,
+     "status": "pending"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-09-16 16:20:16,278 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60112...\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Grouping Script Examples\n",
+    "# Download the [blankModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "import os\n",
+    "import shutil\n",
+    "# Get the current folder directory.\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "# Specify a port number that is not in use and start the RS3 program.\n",
+    "port = 60112\n",
+    "RS3Modeler.startApplication(port)\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "# For the demonstration purposes only, the model is copied for reuse. \n",
+    "# You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Create an Excavation Group\n",
+    "# Create an excavation group with the name \"Excavation Group\". Get the excavation group object.\n",
+    "excavationGroupName = \"Excavation Group\"\n",
+    "model.createNewGroupProperty(excavationGroupName)\n",
+    "exacationGroup = model.getGroupByName(excavationGroupName)\n",
+    "\n",
+    "# 2. Define Group Properties\n",
+    "# Set the group color\n",
+    "exacationGroup.setColor(\"#D6AE2A\")\n",
+    "# Set the group transparency\n",
+    "exacationGroup.setGroupSetsTransparency(True)\n",
+    "exacationGroup.setGroupTransparency(0.1)\n",
+    "\n",
+    "# 3. Set the Group of an External Volume\n",
+    "# Get the tunnel volume and set the grouping to the Excavation Group from stage 2.\n",
+    "tunnelVolume = model.getExternalVolumeByName(\"Underground Tunnel\")\n",
+    "tunnelVolume.setGrouping(2, excavationGroupName)\n",
+    "# Get the foundation volume and set the grouping to the Excavation Group from stage 3.\n",
+    "foundationVolume = model.getExternalVolumeByName(\"Foundation\")\n",
+    "foundationVolume.setGrouping(3, excavationGroupName)\n",
+    "# Set the foundation volume and set the grouping back to Ungrouped.\n",
+    "foundationVolume.setGrouping(4, \"Ungrouped\")\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 2.481085,
+   "end_time": "2026-09-16T19:21:29.616817",
+   "environment_variables": {},
+   "exception": true,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Documentation\\docs\\example_code\\model\\grouping_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Documentation\\docs\\example_code\\model\\grouping_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-09-16T19:21:27.135732",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

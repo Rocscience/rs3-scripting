@@ -3,5 +3,5 @@ rs3.results.BoltResults module
 
 .. automodule:: rs3.results.BoltResults
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -15,5 +15,5 @@ rs3.properties.bolt package
 
 .. automodule:: rs3.properties.bolt
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

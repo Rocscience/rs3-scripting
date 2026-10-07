@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.HoekBrown module
 
 .. automodule:: rs3.properties.material.constitutiveModel.HoekBrown
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -3,5 +3,5 @@ rs3.properties.joint.BartonBandis module
 
 .. automodule:: rs3.properties.joint.BartonBandis
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

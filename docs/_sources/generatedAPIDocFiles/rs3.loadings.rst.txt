@@ -17,5 +17,5 @@ rs3.loadings package
 
 .. automodule:: rs3.loadings
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

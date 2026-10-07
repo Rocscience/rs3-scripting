@@ -3,5 +3,5 @@ rs3.properties.joint.GeosyntheticHyperbolic module
 
 .. automodule:: rs3.properties.joint.GeosyntheticHyperbolic
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

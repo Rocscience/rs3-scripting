@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.results.JointResults';</script>
@@ -423,6 +423,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.Group.html">rs3.properties.Group module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
@@ -523,7 +524,7 @@
 <span id="rs3-results-jointresults-module"></span><h1>rs3.results.JointResults module<a class="headerlink" href="#module-rs3.results.JointResults" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointNodalResults">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.results.JointResults.</span></span><span class="sig-name descname"><span class="pre">JointNodalResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcNodalResults</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.results.JointResults.</span></span><span class="sig-name descname"><span class="pre">JointNodalResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcNodalResults</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Nodal result wrapper with per-material data access.</p>
 <p class="rubric">Notes</p>
@@ -532,39 +533,39 @@
 </ul>
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointNodalResults.EntityName">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EntityName</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.EntityName" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">EntityName</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.EntityName" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointNodalResults.EntityID">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EntityID</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.EntityID" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">EntityID</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.EntityID" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointNodalResults.NodeID">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NodeID</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.NodeID" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">NodeID</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.NodeID" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointNodalResults.XCoordinate">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">XCoordinate</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.XCoordinate" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">XCoordinate</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.XCoordinate" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointNodalResults.YCoordinate">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">YCoordinate</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.YCoordinate" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">YCoordinate</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.YCoordinate" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointNodalResults.ZCoordinate">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ZCoordinate</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.ZCoordinate" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ZCoordinate</span></span><a class="headerlink" href="#rs3.results.JointResults.JointNodalResults.ZCoordinate" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointElementResults">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.results.JointResults.</span></span><span class="sig-name descname"><span class="pre">JointElementResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcElementResults</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.results.JointResults.</span></span><span class="sig-name descname"><span class="pre">JointElementResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcElementResults</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Element-level results wrapper for a specific stage/SRF context.</p>
 <p class="rubric">Notes</p>
@@ -573,27 +574,27 @@
 </ul>
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointElementResults.ElementID">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ElementID</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.ElementID" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ElementID</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.ElementID" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointElementResults.AttachedNodeIDs">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AttachedNodeIDs</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.AttachedNodeIDs" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">AttachedNodeIDs</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.AttachedNodeIDs" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointElementResults.EntityName">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EntityName</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.EntityName" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">EntityName</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.EntityName" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointElementResults.EntityID">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EntityID</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.EntityID" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">EntityID</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.EntityID" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointElementResults.FailureType">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FailureType</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.FailureType" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">FailureType</span></span><a class="headerlink" href="#rs3.results.JointResults.JointElementResults.FailureType" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -605,7 +606,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.results.JointResults.JointResults">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.results.JointResults.</span></span><span class="sig-name descname"><span class="pre">JointResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stageNumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srfResultIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.JointResults.JointResults" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.results.JointResults.</span></span><span class="sig-name descname"><span class="pre">JointResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stageNumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srfResultIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.JointResults.JointResults" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_ProxyObject</span></code></p>
 <p>Entry point to query joint nodal/element results for a given stage and SRF.</p>
 <dl class="field-list simple">
@@ -754,7 +755,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

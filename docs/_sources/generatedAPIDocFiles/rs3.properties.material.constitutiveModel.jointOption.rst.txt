@@ -15,5 +15,5 @@ rs3.properties.material.constitutiveModel.jointOption package
 
 .. automodule:: rs3.properties.material.constitutiveModel.jointOption
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -3,5 +3,5 @@ rs3.properties.beam.Truss module
 
 .. automodule:: rs3.properties.beam.Truss
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

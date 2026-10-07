@@ -22,5 +22,5 @@ rs3.properties.material.constitutiveModel.stiffness package
 
 .. automodule:: rs3.properties.material.constitutiveModel.stiffness
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

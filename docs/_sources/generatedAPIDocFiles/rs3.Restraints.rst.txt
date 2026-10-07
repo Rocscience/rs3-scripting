@@ -3,5 +3,5 @@ rs3.Restraints module
 
 .. automodule:: rs3.Restraints
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

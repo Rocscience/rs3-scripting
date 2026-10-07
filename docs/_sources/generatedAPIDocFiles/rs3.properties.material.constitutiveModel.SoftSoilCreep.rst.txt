@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.SoftSoilCreep module
 
 .. automodule:: rs3.properties.material.constitutiveModel.SoftSoilCreep
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

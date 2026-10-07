@@ -3,5 +3,5 @@ rs3.properties.pile.EndCondition module
 
 .. automodule:: rs3.properties.pile.EndCondition
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

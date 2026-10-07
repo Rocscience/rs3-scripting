@@ -3,5 +3,5 @@ rs3.properties.PropertyEnums module
 
 .. automodule:: rs3.properties.PropertyEnums
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

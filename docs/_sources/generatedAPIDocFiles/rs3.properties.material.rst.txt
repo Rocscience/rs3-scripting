@@ -20,5 +20,5 @@ rs3.properties.material package
 
 .. automodule:: rs3.properties.material
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

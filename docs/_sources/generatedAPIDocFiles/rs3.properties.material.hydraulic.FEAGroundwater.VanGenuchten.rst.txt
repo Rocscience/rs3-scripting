@@ -3,5 +3,5 @@ rs3.properties.material.hydraulic.FEAGroundwater.VanGenuchten module
 
 .. automodule:: rs3.properties.material.hydraulic.FEAGroundwater.VanGenuchten
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

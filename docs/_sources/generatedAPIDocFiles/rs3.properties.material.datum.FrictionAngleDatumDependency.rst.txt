@@ -3,5 +3,5 @@ rs3.properties.material.datum.FrictionAngleDatumDependency module
 
 .. automodule:: rs3.properties.material.datum.FrictionAngleDatumDependency
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

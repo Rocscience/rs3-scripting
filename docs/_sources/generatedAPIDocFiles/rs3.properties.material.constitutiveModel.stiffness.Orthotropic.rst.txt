@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.stiffness.Orthotropic module
 
 .. automodule:: rs3.properties.material.constitutiveModel.stiffness.Orthotropic
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

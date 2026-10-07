@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.BaseConstitutiveModel module
 
 .. automodule:: rs3.properties.material.constitutiveModel.BaseConstitutiveModel
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

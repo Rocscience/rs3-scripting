@@ -53,5 +53,5 @@ rs3.properties.material.constitutiveModel package
 
 .. automodule:: rs3.properties.material.constitutiveModel
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

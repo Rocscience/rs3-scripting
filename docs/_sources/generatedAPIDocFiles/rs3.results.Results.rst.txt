@@ -3,5 +3,5 @@ rs3.results.Results module
 
 .. automodule:: rs3.results.Results
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

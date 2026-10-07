@@ -14,5 +14,5 @@ rs3.loadings.fieldStress package
 
 .. automodule:: rs3.loadings.fieldStress
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

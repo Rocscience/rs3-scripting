@@ -147,7 +147,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "2026-03-13 16:51:54,882 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60107...\n"
+      "2026-09-16 15:27:14,537 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60107...\n"
      ]
     }
    ],
@@ -1222,7 +1222,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 27,
    "id": "7d6bd4ea",
    "metadata": {
     "execution": {
@@ -1245,7 +1245,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "2026-03-13 16:52:49,009 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60107...\n"
+      "2026-09-16 15:28:07,650 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60107...\n"
      ]
     }
    ],

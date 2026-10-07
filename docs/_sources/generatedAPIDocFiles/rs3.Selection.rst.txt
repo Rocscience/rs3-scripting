@@ -3,5 +3,5 @@ rs3.Selection module
 
 .. automodule:: rs3.Selection
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

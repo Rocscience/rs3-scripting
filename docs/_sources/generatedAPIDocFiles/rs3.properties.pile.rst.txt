@@ -15,5 +15,5 @@ rs3.properties.pile package
 
 .. automodule:: rs3.properties.pile
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

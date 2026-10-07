@@ -3,5 +3,5 @@ rs3.properties.liner.ReinforcedConcrete module
 
 .. automodule:: rs3.properties.liner.ReinforcedConcrete
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

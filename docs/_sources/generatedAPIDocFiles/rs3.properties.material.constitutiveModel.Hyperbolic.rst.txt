@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.Hyperbolic module
 
 .. automodule:: rs3.properties.material.constitutiveModel.Hyperbolic
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

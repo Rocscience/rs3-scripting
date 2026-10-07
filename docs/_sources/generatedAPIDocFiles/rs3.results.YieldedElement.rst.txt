@@ -3,5 +3,5 @@ rs3.results.YieldedElement module
 
 .. automodule:: rs3.results.YieldedElement
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

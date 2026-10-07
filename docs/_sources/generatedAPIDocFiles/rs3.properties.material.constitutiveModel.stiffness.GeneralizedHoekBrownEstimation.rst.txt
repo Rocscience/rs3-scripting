@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.stiffness.GeneralizedHoekBrownEstimati
 
 .. automodule:: rs3.properties.material.constitutiveModel.stiffness.GeneralizedHoekBrownEstimation
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

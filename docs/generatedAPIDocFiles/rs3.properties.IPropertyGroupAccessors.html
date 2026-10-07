@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.properties.IPropertyGroupAccessors';</script>
@@ -50,7 +50,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="rs3.properties.PropertyEnums module" href="rs3.properties.PropertyEnums.html" />
-    <link rel="prev" title="rs3.properties.GeneralizedAnisotropicFunction module" href="rs3.properties.GeneralizedAnisotropicFunction.html" />
+    <link rel="prev" title="rs3.properties.Group module" href="rs3.properties.Group.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -423,6 +423,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.Group.html">rs3.properties.Group module</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">rs3.properties.IPropertyGroupAccessors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
@@ -523,17 +524,17 @@
 <span id="rs3-properties-ipropertygroupaccessors-module"></span><h1>rs3.properties.IPropertyGroupAccessors module<a class="headerlink" href="#module-rs3.properties.IPropertyGroupAccessors" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.properties.IPropertyGroupAccessors.</span></span><span class="sig-name descname"><span class="pre">IPropertyGroupAccessors</span></span><a class="headerlink" href="#rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.properties.IPropertyGroupAccessors.</span></span><span class="sig-name descname"><span class="pre">IPropertyGroupAccessors</span></span><a class="headerlink" href="#rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors.getProperties">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors.getProperties" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">getProperties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors.getProperties" title="Link to this definition">#</a></dt>
 <dd><p>Retrieve properties as a dictionary.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors.setProperties">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">setProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors.setProperties" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">setProperties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors.setProperties" title="Link to this definition">#</a></dt>
 <dd><p>Set properties using keyword arguments.</p>
 </dd></dl>
 
@@ -552,12 +553,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="rs3.properties.GeneralizedAnisotropicFunction.html"
+       href="rs3.properties.Group.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">rs3.properties.GeneralizedAnisotropicFunction module</p>
+        <p class="prev-next-title">rs3.properties.Group module</p>
       </div>
     </a>
     <a class="right-next"
@@ -639,7 +640,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

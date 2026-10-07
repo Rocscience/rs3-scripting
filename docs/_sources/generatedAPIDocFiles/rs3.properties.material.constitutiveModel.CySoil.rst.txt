@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.CySoil module
 
 .. automodule:: rs3.properties.material.constitutiveModel.CySoil
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -3,5 +3,5 @@ rs3.results.BeamResults module
 
 .. automodule:: rs3.results.BeamResults
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

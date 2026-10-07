@@ -3,5 +3,5 @@ rs3.properties.beam.Beam module
 
 .. automodule:: rs3.properties.beam.Beam
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

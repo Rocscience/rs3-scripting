@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.stiffness.LinearIsotropic module
 
 .. automodule:: rs3.properties.material.constitutiveModel.stiffness.LinearIsotropic
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

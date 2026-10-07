@@ -3,5 +3,5 @@ rs3.properties.material.Material module
 
 .. automodule:: rs3.properties.material.Material
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

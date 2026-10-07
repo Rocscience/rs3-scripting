@@ -3,5 +3,5 @@ rs3.properties.groundwater.WaterGrid module
 
 .. automodule:: rs3.properties.groundwater.WaterGrid
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

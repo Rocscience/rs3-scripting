@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'example_code/results/joint_result_example';</script>
@@ -270,6 +270,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../model/restraints_example.html">Restraints Script Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/mesh_example.html">Mesh Script Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/compute_example.html">Compute Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/grouping_example.html">Grouping Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/support_control_example.html">Support Control Script Examples</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../material/initial_conditions_example.html">Material Initial Conditions Script Examples</a></li>
@@ -387,7 +389,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 17:09:42,439 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60504...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-09-16 14:32:53,669 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60504...
 </pre></div>
 </div>
 </div>
@@ -490,9 +492,9 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nodal results for joint element ID 81231:
-  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.00013422658477781323, 8.194546454307267e-05)
-  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.00012989772319076887, 8.430580903496631e-05)
-  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0001075489087358885, 8.155018914220158e-06)
+  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.00013422658477780968, 8.194546454307246e-05)
+  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.00012989772319076435, 8.430580903496534e-05)
+  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.00010754890873588295, 8.155018914221459e-06)
 </pre></div>
 </div>
 </div>
@@ -548,9 +550,9 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nodal results for joint element ID 81231:
-  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.0005128569233693311, 0.000252546207422967)
-  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.0005480472002880548, 0.00027645215759602125)
-  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0004961965421816254, 0.0002630609019895012)
+  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.0005128569233692565, 0.00025254620742293926)
+  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.00054804720028799, 0.00027645215759601084)
+  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0004961965421817654, 0.00026306090198953934)
 </pre></div>
 </div>
 </div>
@@ -669,20 +671,22 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 17:10:29,993 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60504...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-09-16 14:34:00,454 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60504...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Joint: total node results for stage 4: 458
 Joint: element results in region for stage 4: 50
 Nodal results for joint element ID 81231:
-  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.00013422658477781323, 8.194546454307267e-05)
-  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.00012989772319076887, 8.430580903496631e-05)
-  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0001075489087358885, 8.155018914220158e-06)
-Joint: total node results for stage 5: 458
+  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.00013422658477780968, 8.194546454307246e-05)
+  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.00012989772319076435, 8.430580903496534e-05)
+  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.00010754890873588295, 8.155018914221459e-06)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Joint: total node results for stage 5: 458
 Nodal results for joint element ID 81231:
-  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.0005128569233693311, 0.000252546207422967)
-  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.0005480472002880548, 0.00027645215759602125)
-  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0004961965421816254, 0.0002630609019895012)
+  Node Pair (4948, 14880): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 13.258816860594816, -3.552713678800501e-15, 0.0005128569233692565, 0.00025254620742293926)
+  Node Pair (4949, 14881): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (25.6535873692461, 15.0, -1.7763568394002505e-15, 0.00054804720028799, 0.00027645215759601084)
+  Node Pair (4932, 14872): (x, y, z, Relative Shear Disp., Relative Normal Disp.) = (24.52229989882357, 14.12610331963225, -1.0618840689177063, 0.0004961965421817654, 0.00026306090198953934)
 </pre></div>
 </div>
 </div>
@@ -789,7 +793,7 @@ Nodal results for joint element ID 81231:
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

@@ -3,5 +3,5 @@ rs3.loadings.Loadings module
 
 .. automodule:: rs3.loadings.Loadings
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.Geometry';</script>
@@ -423,6 +423,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.Group.html">rs3.properties.Group module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
@@ -520,27 +521,27 @@
 <span id="rs3-geometry-module"></span><h1>rs3.Geometry module<a class="headerlink" href="#module-rs3.Geometry" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Geometry.Geometry">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Geometry</span></span><a class="headerlink" href="#rs3.Geometry.Geometry" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Geometry</span></span><a class="headerlink" href="#rs3.Geometry.Geometry" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Geometry.Point">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Point" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Point" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rs3.Geometry.Geometry" title="rs3.Geometry.Geometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Point.x">
-<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#rs3.Geometry.Point.x" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">x</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#rs3.Geometry.Point.x" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Point.y">
-<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#rs3.Geometry.Point.y" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">y</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#rs3.Geometry.Point.y" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Point.z">
-<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#rs3.Geometry.Point.z" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">z</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#rs3.Geometry.Point.z" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -552,11 +553,11 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Geometry.Polyline">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Polyline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">rs3.Geometry.Point</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Polyline" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Polyline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">rs3.Geometry.Point</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Polyline" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rs3.Geometry.Geometry" title="rs3.Geometry.Geometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Polyline.points">
-<span class="sig-name descname"><span class="pre">points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#rs3.Geometry.Polyline.points" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">points</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#rs3.Geometry.Polyline.points" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -568,7 +569,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Geometry.Cube">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Cube</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corner1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">corner2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAboutX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAboutY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAboutZ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Cube" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Cube</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corner1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">corner2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAboutX</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAboutY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotationAboutZ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Cube" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rs3.Geometry.Geometry" title="rs3.Geometry.Geometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry</span></code></a></p>
 <p>Represents a 3D cube defined by two opposite corners and optional rotations.</p>
 <p>The rotation angles (rotationAboutX, rotationAboutY, rotationAboutZ) are in degrees
@@ -576,27 +577,27 @@ and follow the <strong>right-hand rule</strong> for positive direction. i.e., po
 is counterclockwise when looking along the axis toward the origin.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Cube.corner1">
-<span class="sig-name descname"><span class="pre">corner1</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#rs3.Geometry.Cube.corner1" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">corner1</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span><a class="headerlink" href="#rs3.Geometry.Cube.corner1" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Cube.corner2">
-<span class="sig-name descname"><span class="pre">corner2</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#rs3.Geometry.Cube.corner2" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">corner2</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span><a class="headerlink" href="#rs3.Geometry.Cube.corner2" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Cube.rotationAboutX">
-<span class="sig-name descname"><span class="pre">rotationAboutX</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#rs3.Geometry.Cube.rotationAboutX" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rotationAboutX</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#rs3.Geometry.Cube.rotationAboutX" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Cube.rotationAboutY">
-<span class="sig-name descname"><span class="pre">rotationAboutY</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#rs3.Geometry.Cube.rotationAboutY" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rotationAboutY</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#rs3.Geometry.Cube.rotationAboutY" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Cube.rotationAboutZ">
-<span class="sig-name descname"><span class="pre">rotationAboutZ</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#rs3.Geometry.Cube.rotationAboutZ" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">rotationAboutZ</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></span><a class="headerlink" href="#rs3.Geometry.Cube.rotationAboutZ" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -604,25 +605,30 @@ is counterclockwise when looking along the axis toward the origin.</p>
 <span class="sig-name descname"><span class="pre">toCommonGeometryObject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Cube.toCommonGeometryObject" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Geometry.Cube.toCommonVolumeGeometryObject">
+<span class="sig-name descname"><span class="pre">toCommonVolumeGeometryObject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Cube.toCommonVolumeGeometryObject" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Geometry.Cylinder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Cylinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axisStartPoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">rs3.Geometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">axisEndPoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">rs3.Geometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Cylinder" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Cylinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axisStartPoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">rs3.Geometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">axisEndPoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">rs3.Geometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Cylinder" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rs3.Geometry.Geometry" title="rs3.Geometry.Geometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Cylinder.axisStartPoint">
-<span class="sig-name descname"><span class="pre">axisStartPoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#rs3.Geometry.Cylinder.axisStartPoint" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">axisStartPoint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span><a class="headerlink" href="#rs3.Geometry.Cylinder.axisStartPoint" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Cylinder.axisEndPoint">
-<span class="sig-name descname"><span class="pre">axisEndPoint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#rs3.Geometry.Cylinder.axisEndPoint" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">axisEndPoint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span><a class="headerlink" href="#rs3.Geometry.Cylinder.axisEndPoint" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Cylinder.radius">
-<span class="sig-name descname"><span class="pre">radius</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#rs3.Geometry.Cylinder.radius" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">radius</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#rs3.Geometry.Cylinder.radius" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -630,25 +636,35 @@ is counterclockwise when looking along the axis toward the origin.</p>
 <span class="sig-name descname"><span class="pre">toCommonGeometryObject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Cylinder.toCommonGeometryObject" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Geometry.Cylinder.toCommonVolumeGeometryObject">
+<span class="sig-name descname"><span class="pre">toCommonVolumeGeometryObject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Cylinder.toCommonVolumeGeometryObject" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Geometry.Sphere">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Sphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">rs3.Geometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Sphere" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Geometry.</span></span><span class="sig-name descname"><span class="pre">Sphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">rs3.Geometry.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Sphere" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rs3.Geometry.Geometry" title="rs3.Geometry.Geometry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Sphere.center">
-<span class="sig-name descname"><span class="pre">center</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#rs3.Geometry.Sphere.center" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">center</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#rs3.Geometry.Point" title="rs3.Geometry.Point"><span class="pre">Point</span></a></span><a class="headerlink" href="#rs3.Geometry.Sphere.center" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="rs3.Geometry.Sphere.radius">
-<span class="sig-name descname"><span class="pre">radius</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#rs3.Geometry.Sphere.radius" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">radius</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#rs3.Geometry.Sphere.radius" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="rs3.Geometry.Sphere.toCommonGeometryObject">
 <span class="sig-name descname"><span class="pre">toCommonGeometryObject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Sphere.toCommonGeometryObject" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Geometry.Sphere.toCommonVolumeGeometryObject">
+<span class="sig-name descname"><span class="pre">toCommonVolumeGeometryObject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Geometry.Sphere.toCommonVolumeGeometryObject" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -722,6 +738,7 @@ is counterclockwise when looking along the axis toward the origin.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cube.rotationAboutY"><code class="docutils literal notranslate"><span class="pre">Cube.rotationAboutY</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cube.rotationAboutZ"><code class="docutils literal notranslate"><span class="pre">Cube.rotationAboutZ</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cube.toCommonGeometryObject"><code class="docutils literal notranslate"><span class="pre">Cube.toCommonGeometryObject()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cube.toCommonVolumeGeometryObject"><code class="docutils literal notranslate"><span class="pre">Cube.toCommonVolumeGeometryObject()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cylinder"><code class="docutils literal notranslate"><span class="pre">Cylinder</span></code></a><ul class="nav section-nav flex-column">
@@ -729,12 +746,14 @@ is counterclockwise when looking along the axis toward the origin.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cylinder.axisEndPoint"><code class="docutils literal notranslate"><span class="pre">Cylinder.axisEndPoint</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cylinder.radius"><code class="docutils literal notranslate"><span class="pre">Cylinder.radius</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cylinder.toCommonGeometryObject"><code class="docutils literal notranslate"><span class="pre">Cylinder.toCommonGeometryObject()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Cylinder.toCommonVolumeGeometryObject"><code class="docutils literal notranslate"><span class="pre">Cylinder.toCommonVolumeGeometryObject()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Sphere"><code class="docutils literal notranslate"><span class="pre">Sphere</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Sphere.center"><code class="docutils literal notranslate"><span class="pre">Sphere.center</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Sphere.radius"><code class="docutils literal notranslate"><span class="pre">Sphere.radius</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Sphere.toCommonGeometryObject"><code class="docutils literal notranslate"><span class="pre">Sphere.toCommonGeometryObject()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Geometry.Sphere.toCommonVolumeGeometryObject"><code class="docutils literal notranslate"><span class="pre">Sphere.toCommonVolumeGeometryObject()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -783,7 +802,7 @@ is counterclockwise when looking along the axis toward the origin.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

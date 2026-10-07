@@ -3,5 +3,5 @@ rs3.projectSettings.Units module
 
 .. automodule:: rs3.projectSettings.Units
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

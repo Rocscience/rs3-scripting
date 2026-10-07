@@ -13,5 +13,5 @@ rs3.properties.liner package
 
 .. automodule:: rs3.properties.liner
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

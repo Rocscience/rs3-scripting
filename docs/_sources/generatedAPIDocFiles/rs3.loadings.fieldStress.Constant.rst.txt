@@ -3,5 +3,5 @@ rs3.loadings.fieldStress.Constant module
 
 .. automodule:: rs3.loadings.fieldStress.Constant
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

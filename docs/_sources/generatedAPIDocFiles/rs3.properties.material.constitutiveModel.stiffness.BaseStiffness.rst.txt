@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.stiffness.BaseStiffness module
 
 .. automodule:: rs3.properties.material.constitutiveModel.stiffness.BaseStiffness
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

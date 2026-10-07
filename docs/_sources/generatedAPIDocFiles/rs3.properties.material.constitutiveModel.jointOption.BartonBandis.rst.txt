@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.jointOption.BartonBandis module
 
 .. automodule:: rs3.properties.material.constitutiveModel.jointOption.BartonBandis
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

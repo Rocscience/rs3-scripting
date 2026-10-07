@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'example_code/supports/pile_example';</script>
@@ -270,6 +270,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../model/restraints_example.html">Restraints Script Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/mesh_example.html">Mesh Script Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/compute_example.html">Compute Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/grouping_example.html">Grouping Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/support_control_example.html">Support Control Script Examples</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../material/initial_conditions_example.html">Material Initial Conditions Script Examples</a></li>
@@ -387,7 +389,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 17:23:50,055 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60305...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-09-16 14:57:20,092 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60305...
 </pre></div>
 </div>
 </div>
@@ -681,8 +683,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{2: &lt;rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x1bcc1944ef0&gt;,
- 4: &lt;rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x1bcb1b7b130&gt;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{2: &lt;rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x165a9f77650&gt;,
+ 4: &lt;rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x165a9f9f9b0&gt;}
 </pre></div>
 </div>
 </div>
@@ -695,7 +697,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x1bcb1b7b130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x165a9f9f9b0&gt;
 </pre></div>
 </div>
 </div>
@@ -709,7 +711,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{2: &lt;rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x1bcb1b7b460&gt;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{2: &lt;rs3.properties.pile.MultiLinear.MultiLinearDefinedStageFactor at 0x165a9f9ff00&gt;}
 </pre></div>
 </div>
 </div>
@@ -848,7 +850,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 17:24:41,951 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60305...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-09-16 14:58:36,271 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60305...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pile 1
@@ -959,7 +961,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

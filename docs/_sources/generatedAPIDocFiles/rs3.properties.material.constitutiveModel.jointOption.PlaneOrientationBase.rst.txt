@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.jointOption.PlaneOrientationBase modul
 
 .. automodule:: rs3.properties.material.constitutiveModel.jointOption.PlaneOrientationBase
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

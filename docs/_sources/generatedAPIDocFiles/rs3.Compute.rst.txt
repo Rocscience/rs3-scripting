@@ -3,5 +3,5 @@ rs3.Compute module
 
 .. automodule:: rs3.Compute
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

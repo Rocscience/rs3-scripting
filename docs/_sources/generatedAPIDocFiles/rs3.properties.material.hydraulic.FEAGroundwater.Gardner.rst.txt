@@ -3,5 +3,5 @@ rs3.properties.material.hydraulic.FEAGroundwater.Gardner module
 
 .. automodule:: rs3.properties.material.hydraulic.FEAGroundwater.Gardner
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

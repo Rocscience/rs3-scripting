@@ -3,5 +3,5 @@ rs3.properties.material.datum.CohesionDatumDependency module
 
 .. automodule:: rs3.properties.material.datum.CohesionDatumDependency
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

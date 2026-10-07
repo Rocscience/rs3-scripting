@@ -3,5 +3,5 @@ rs3.properties.DiscreteFunction module
 
 .. automodule:: rs3.properties.DiscreteFunction
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.stiffness.DuncanChangHyperbolic module
 
 .. automodule:: rs3.properties.material.constitutiveModel.stiffness.DuncanChangHyperbolic
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

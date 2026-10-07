@@ -3,5 +3,5 @@ rs3.CommonEnums module
 
 .. automodule:: rs3.CommonEnums
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

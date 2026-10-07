@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'example_code/results/solid_result_example';</script>
@@ -270,6 +270,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../model/restraints_example.html">Restraints Script Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/mesh_example.html">Mesh Script Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../model/compute_example.html">Compute Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/grouping_example.html">Grouping Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/support_control_example.html">Support Control Script Examples</a></li>
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../material/initial_conditions_example.html">Material Initial Conditions Script Examples</a></li>
@@ -387,7 +389,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 17:13:04,201 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60501...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-09-16 14:37:21,124 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60501...
 </pre></div>
 </div>
 </div>
@@ -490,7 +492,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solid Stage 3, node ID 4186: 
-(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 6.675997053055459, 0.002066942381766267)
+(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 6.675997053055426, 0.00206694238176626)
 </pre></div>
 </div>
 </div>
@@ -520,7 +522,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solid Stage 4, node index 4186: 
-(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 16.424762113798238, 0.003212314938373181)
+(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 16.424762113798252, 0.0032123149383731036)
 </pre></div>
 </div>
 </div>
@@ -546,7 +548,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solid Stage 5, node index 4186: 
-(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 254.35987140434497, 0.06947488469160908)
+(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 254.35987140434645, 0.06947488469160579)
 </pre></div>
 </div>
 </div>
@@ -808,17 +810,19 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-03-13 17:14:00,140 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60501...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-09-16 14:38:45,754 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60501...
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solid Stage 3, node ID 4186: 
-(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 6.675997053055459, 0.002066942381766267)
-Solid Stage 4, node index 4186: 
-(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 16.424762113798238, 0.003212314938373181)
+(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 6.675997053055426, 0.00206694238176626)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solid Stage 4, node index 4186: 
+(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 16.424762113798252, 0.0032123149383731036)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solid Stage 5, node index 4186: 
-(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 254.35987140434497, 0.06947488469160908)
+(x, y, z, Sigma1 Effective, Total Displacement) = (17.07288177072756, 14.566208748458658, -0.5, 254.35987140434645, 0.06947488469160579)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solid Stage 3, element ID 20156 with attached node ids [7415, 2586, 2822, 2821] has 1 failure point(s):
@@ -940,7 +944,7 @@ Solid Stage 4, node index 4186:
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

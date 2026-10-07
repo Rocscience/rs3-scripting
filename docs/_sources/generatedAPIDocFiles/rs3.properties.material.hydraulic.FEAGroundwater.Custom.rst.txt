@@ -3,5 +3,5 @@ rs3.properties.material.hydraulic.FEAGroundwater.Custom module
 
 .. automodule:: rs3.properties.material.hydraulic.FEAGroundwater.Custom
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

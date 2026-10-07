@@ -3,5 +3,5 @@ rs3.mesh.Uniform module
 
 .. automodule:: rs3.mesh.Uniform
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

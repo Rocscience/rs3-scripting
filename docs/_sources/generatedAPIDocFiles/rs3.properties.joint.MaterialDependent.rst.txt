@@ -3,5 +3,5 @@ rs3.properties.joint.MaterialDependent module
 
 .. automodule:: rs3.properties.joint.MaterialDependent
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

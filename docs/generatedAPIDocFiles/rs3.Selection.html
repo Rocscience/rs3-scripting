@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.Selection';</script>
@@ -423,6 +423,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.Group.html">rs3.properties.Group module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
@@ -520,7 +521,7 @@
 <span id="rs3-selection-module"></span><h1>rs3.Selection module<a class="headerlink" href="#module-rs3.Selection" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Selection.Selection">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Selection.</span></span><span class="sig-name descname"><span class="pre">Selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Selection.Selection" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Selection.</span></span><span class="sig-name descname"><span class="pre">Selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Selection.Selection" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rs3.Selection.Selection.getExternalVolumes">
@@ -606,6 +607,69 @@ Returns an empty list if no volumes are found.</p>
 <p>See <a class="reference internal" href="../example_code/model/external_volume_and_selection_example.html#external-volume-and-selection-example"><span class="std std-ref">External Volume and Selection Script Examples</span></a>.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Selection.Selection.getSupportEntities">
+<span class="sig-name descname"><span class="pre">getSupportEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entityType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="rs3.CommonEnums.html#rs3.CommonEnums.SupportTypes" title="rs3.CommonEnums.SupportTypes"><span class="pre">SupportTypes</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampleRegion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="rs3.Geometry.html#rs3.Geometry.Cube" title="rs3.Geometry.Cube"><span class="pre">Cube</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="rs3.Geometry.html#rs3.Geometry.Cylinder" title="rs3.Geometry.Cylinder"><span class="pre">Cylinder</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="rs3.Geometry.html#rs3.Geometry.Sphere" title="rs3.Geometry.Sphere"><span class="pre">Sphere</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">includeIntersecting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stageNumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Selection.Selection.getSupportEntities" title="Link to this definition">#</a></dt>
+<dd><p>Returns support entities of a specified type that are located within a sampling region.</p>
+<p>The sampling region can be defined by one of the supported volume geometries (cube,
+cylinder, or sphere). By default, support entities that intersect the sampling region
+are included in the results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entityType</strong> (<a class="reference internal" href="rs3.CommonEnums.html#rs3.CommonEnums.SupportTypes" title="rs3.CommonEnums.SupportTypes"><em>SupportTypes</em></a>) – The type of support entity to retrieve.</p></li>
+<li><p><strong>sampleRegion</strong> (<a class="reference internal" href="rs3.Geometry.html#rs3.Geometry.Cube" title="rs3.Geometry.Cube"><em>Cube</em></a><em> | </em><a class="reference internal" href="rs3.Geometry.html#rs3.Geometry.Cylinder" title="rs3.Geometry.Cylinder"><em>Cylinder</em></a><em> | </em><a class="reference internal" href="rs3.Geometry.html#rs3.Geometry.Sphere" title="rs3.Geometry.Sphere"><em>Sphere</em></a>) – The geometry used to define the sampling region.</p></li>
+<li><p><strong>includeIntersecting</strong> (<em>bool</em><em>, </em><em>optional</em>) – <p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> (default), support entities that intersect the sampling region
+are included. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, only support entities that are completely
+contained within the sampling region are returned.</p>
+<p>For support entities composed of multiple components, the intersection test
+is performed against the overall extent of the entity rather than each
+individual component. Consequently:</p>
+<ul>
+<li><p>A beam entity consisting of multiple beam edges is returned even if the sampling region intersects only the space enclosed by the beam edges.</p></li>
+<li><p>A bolt group or pile group is returned even if the sampling region intersects only the space between the bolts or piles in the group.</p></li>
+</ul>
+</p></li>
+<li><p><strong>stageNumber</strong> (<em>int</em><em>, </em><em>optional</em>) – The stage number from which to retrieve the support entities.
+Specify <code class="docutils literal notranslate"><span class="pre">-1</span></code> (default) to get all support entities that are used in the
+model regardless of stage.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A list of support entity objects corresponding to the specified
+<code class="docutils literal notranslate"><span class="pre">entityType</span></code>. The returned list contains one of the following
+object types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Beam</span></code> for <code class="docutils literal notranslate"><span class="pre">SupportTypes.BEAM</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bolt</span></code> for <code class="docutils literal notranslate"><span class="pre">SupportTypes.BOLT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Joint</span></code> for <code class="docutils literal notranslate"><span class="pre">SupportTypes.JOINT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LiningComposition</span></code> for <code class="docutils literal notranslate"><span class="pre">SupportTypes.COMPOSITE_LINER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pile</span></code> for <code class="docutils literal notranslate"><span class="pre">SupportTypes.PILE</span></code></p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Retrieve all bolts intersecting a sphere:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sphere</span> <span class="o">=</span> <span class="n">Sphere</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bolts</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">BOLT</span><span class="p">,</span> <span class="n">sphere</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Retrieve beams completely contained within a cube at stage 3:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cube</span> <span class="o">=</span> <span class="n">Cube</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beams</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">SupportTypes</span><span class="o">.</span><span class="n">BEAM</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cube</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">includeIntersecting</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">stageNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -661,6 +725,7 @@ Returns an empty list if no volumes are found.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Selection.Selection.getExternalVolumes"><code class="docutils literal notranslate"><span class="pre">Selection.getExternalVolumes()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Selection.Selection.getAttachedExternalVolumes"><code class="docutils literal notranslate"><span class="pre">Selection.getAttachedExternalVolumes()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Selection.Selection.getAttachedExternalVolumesByVolumeName"><code class="docutils literal notranslate"><span class="pre">Selection.getAttachedExternalVolumesByVolumeName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Selection.Selection.getSupportEntities"><code class="docutils literal notranslate"><span class="pre">Selection.getSupportEntities()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -709,7 +774,7 @@ Returns an empty list if no volumes are found.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

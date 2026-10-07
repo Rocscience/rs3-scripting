@@ -1,0 +1,1607 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4997d777",
+   "metadata": {
+    "papermill": {
+     "duration": 0.003926,
+     "end_time": "2026-03-13T21:02:26.380249",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:26.376323",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "(support_control_example)=\n",
+    "# Support Control Script Examples"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "652c41de",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004985,
+     "end_time": "2026-03-13T21:02:26.390747",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:26.385762",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Download the [blankSupportModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankSupportModel.rs3v3) for this example."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f3288b4a",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:26.406906Z",
+     "iopub.status.busy": "2026-03-13T21:02:26.406475Z",
+     "iopub.status.idle": "2026-03-13T21:02:26.672606Z",
+     "shell.execute_reply": "2026-03-13T21:02:26.671135Z"
+    },
+    "papermill": {
+     "duration": 0.27699,
+     "end_time": "2026-03-13T21:02:26.674005",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:26.397015",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "import os\n",
+    "import shutil\n",
+    "from rs3.CommonEnums import SupportTypes\n",
+    "from rs3.Geometry import *"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdd2f737",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005751,
+     "end_time": "2026-03-13T21:02:26.685884",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:26.680133",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Get the current folder directory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5fceeae1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:26.698810Z",
+     "iopub.status.busy": "2026-03-13T21:02:26.698347Z",
+     "iopub.status.idle": "2026-03-13T21:02:26.703702Z",
+     "shell.execute_reply": "2026-03-13T21:02:26.702301Z"
+    },
+    "papermill": {
+     "duration": 0.014302,
+     "end_time": "2026-03-13T21:02:26.704816",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:26.690514",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "561e8648",
+   "metadata": {
+    "papermill": {
+     "duration": 0.006719,
+     "end_time": "2026-03-13T21:02:26.715599",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:26.708880",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Specify a port number that is not in use and start the RS3 program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "e1cd52e0",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:26.727503Z",
+     "iopub.status.busy": "2026-03-13T21:02:26.727128Z",
+     "iopub.status.idle": "2026-03-13T21:02:55.921899Z",
+     "shell.execute_reply": "2026-03-13T21:02:55.920259Z"
+    },
+    "papermill": {
+     "duration": 29.202543,
+     "end_time": "2026-03-13T21:02:55.923241",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:26.720698",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-09-16 16:49:04,158 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60111...\n"
+     ]
+    }
+   ],
+   "source": [
+    "port = 60111\n",
+    "RS3Modeler.startApplication(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6ed62e23",
+   "metadata": {
+    "papermill": {
+     "duration": 0.00466,
+     "end_time": "2026-03-13T21:02:55.933188",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:55.928528",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Connect with the RS3 Modeler."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "b54d76b1",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:55.943868Z",
+     "iopub.status.busy": "2026-03-13T21:02:55.943535Z",
+     "iopub.status.idle": "2026-03-13T21:02:55.950211Z",
+     "shell.execute_reply": "2026-03-13T21:02:55.949180Z"
+    },
+    "papermill": {
+     "duration": 0.013492,
+     "end_time": "2026-03-13T21:02:55.951378",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:55.937886",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler = RS3Modeler(port)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "558842a6",
+   "metadata": {
+    "papermill": {
+     "duration": 0.005041,
+     "end_time": "2026-03-13T21:02:55.961225",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:55.956184",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "8e5cba89",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:55.973062Z",
+     "iopub.status.busy": "2026-03-13T21:02:55.972507Z",
+     "iopub.status.idle": "2026-03-13T21:02:56.000135Z",
+     "shell.execute_reply": "2026-03-13T21:02:55.998961Z"
+    },
+    "papermill": {
+     "duration": 0.035138,
+     "end_time": "2026-03-13T21:02:56.001239",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:55.966101",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankSupportModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedSupportModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b6e405e2",
+   "metadata": {
+    "papermill": {
+     "duration": 0.004569,
+     "end_time": "2026-03-13T21:02:56.010779",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:56.006210",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Open the copied model file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "12597746",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:02:56.023676Z",
+     "iopub.status.busy": "2026-03-13T21:02:56.023278Z",
+     "iopub.status.idle": "2026-03-13T21:03:09.299437Z",
+     "shell.execute_reply": "2026-03-13T21:03:09.297394Z"
+    },
+    "papermill": {
+     "duration": 13.285805,
+     "end_time": "2026-03-13T21:03:09.301945",
+     "exception": false,
+     "start_time": "2026-03-13T21:02:56.016140",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model = modeler.openFile(copiedModelPath)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1915e04e",
+   "metadata": {
+    "papermill": {
+     "duration": 0.007108,
+     "end_time": "2026-03-13T21:03:09.315943",
+     "exception": false,
+     "start_time": "2026-03-13T21:03:09.308835",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## 1. Beam Control"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a19a5259",
+   "metadata": {},
+   "source": [
+    "### 1.1 Select Beam Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3c03aa7a",
+   "metadata": {},
+   "source": [
+    "Select beams in the model by defining a region and by name."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "72b690d9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cylinderRegion = Cylinder(Point(10, -1, -10), Point(10, 1, -10), 2)\n",
+    "beam_0 = model.Selection.getSupportEntities(SupportTypes.BEAM, cylinderRegion, includeIntersecting=False)[0]\n",
+    "beam_10 = model.Entity.getSupportEntityByName(SupportTypes.BEAM, \"Beam 2\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c69099f4",
+   "metadata": {},
+   "source": [
+    "### 1.2 Rename Beam Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e2155076",
+   "metadata": {},
+   "source": [
+    "Rename both beams."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "f14a7207",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "beam_0.setName(\"Beam at Y=0\")\n",
+    "beam_10.setName(\"Beam at Y=10\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8eb7617d",
+   "metadata": {},
+   "source": [
+    "### 1.3 Set Beam Property to Beam Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "987d19c2",
+   "metadata": {},
+   "source": [
+    "Create a new beam."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "f09241c8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "newBeamName = \"New Beam\"\n",
+    "model.createNewBeamProperty(newBeamName)\n",
+    "newBeamProperty = model.getBeamPropertyByName(newBeamName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9e64dd44",
+   "metadata": {},
+   "source": [
+    "Set beam properties of \"Beam at Y=0\" to the new beam property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "8bcadf0e",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:03:09.333642Z",
+     "iopub.status.busy": "2026-03-13T21:03:09.333113Z",
+     "iopub.status.idle": "2026-03-13T21:03:09.340537Z",
+     "shell.execute_reply": "2026-03-13T21:03:09.338020Z"
+    },
+    "papermill": {
+     "duration": 0.019726,
+     "end_time": "2026-03-13T21:03:09.342594",
+     "exception": false,
+     "start_time": "2026-03-13T21:03:09.322868",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "beam_0.setProperty(newBeamProperty)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e3630195",
+   "metadata": {},
+   "source": [
+    "### 1.4 Set Beam Entity's Installation Stage and Removal Stage"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "927571b3",
+   "metadata": {},
+   "source": [
+    "Currently, both beams are installed at stage 1. Install the beam at stage 2 and remove at stage 4. Beams can be installed or removed by stage number or by stage name."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "1c375490",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# install by stage number\n",
+    "beam_0.setInstallationStageByStageNumber(2)\n",
+    "beam_0.setRemovalStageByStageNumber(4)\n",
+    "\n",
+    "# install by stage name\n",
+    "stage2Name = model.ProjectSettings.Stages.getName(2)\n",
+    "stage4Name = model.ProjectSettings.Stages.getName(4)\n",
+    "beam_10.setInstallationStageByStageName(stage2Name)\n",
+    "beam_10.setRemovalStageByStageName(stage4Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "11d8453a",
+   "metadata": {},
+   "source": [
+    "### 1.5 Set the Grouping of Beam Entities"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7d5114ea",
+   "metadata": {},
+   "source": [
+    "Create a group called \"Beam Installation Group\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "d0e17a90",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "beamInstallationGroup = model.getAllGroups()[0]\n",
+    "beamInstallationGroupName = \"Beam Installation Group\"\n",
+    "beamInstallationGroup.setGroupName(beamInstallationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "46eb05a4",
+   "metadata": {},
+   "source": [
+    "Set both beams to this group at stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "83678d2a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "beam_0.setGrouping(2, beamInstallationGroupName)\n",
+    "beam_10.setGrouping(2, beamInstallationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e57b923d",
+   "metadata": {},
+   "source": [
+    "## 2. Bolt Control"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4d069318",
+   "metadata": {},
+   "source": [
+    "### 2.1 Select Bolt Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fd38830e",
+   "metadata": {},
+   "source": [
+    "Select bolts in the model by the same region for selecting the beams and include intersecting entities. All bolts in a bolt entity pattern will be selected together and the properties will be updated together."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "3b3b2155",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "bolts = model.Selection.getSupportEntities(SupportTypes.BOLT, cylinderRegion)\n",
+    "boltPattern1 = bolts[0]\n",
+    "boltPattern2 = bolts[1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0430c514",
+   "metadata": {},
+   "source": [
+    "### 2.2 Rename Bolt Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "aa1dce3a",
+   "metadata": {},
+   "source": [
+    "Rename both beams."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "d31d0649",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "boltPattern1.setName(\"Tunnel Bolt Pattern 1\")\n",
+    "boltPattern2.setName(\"Tunnel Bolt Pattern 2\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "87ab2236",
+   "metadata": {},
+   "source": [
+    "### 2.3 Set Bolt Property to Bolt Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7802fa0e",
+   "metadata": {},
+   "source": [
+    "Create a new bolt property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "9374c18b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "newBoltName = \"New Bolt\"\n",
+    "model.createNewBoltProperty(newBoltName)\n",
+    "newBoltProperty = model.getBoltPropertyByName(newBoltName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "636f6c5e",
+   "metadata": {},
+   "source": [
+    "Set both bolts with the new bolt property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "6bc3096b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "boltPattern1.setProperty(newBoltProperty)\n",
+    "boltPattern2.setProperty(newBoltProperty)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8cf4466f",
+   "metadata": {},
+   "source": [
+    "### 2.4 Set Bolt Entity's Installation Stage and Removal Stage"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0f251cbf",
+   "metadata": {},
+   "source": [
+    "Currently, both bolts are installed at stage 1. Install the bolts at stage 4. Bolts can be installed by stage number or by stage name."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "be0e36ef",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# install by stage number\n",
+    "boltPattern1.setInstallationStageByStageNumber(4)\n",
+    "\n",
+    "# install by stage name\n",
+    "boltPattern2.setInstallationStageByStageName(stage4Name)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c7c77bb2",
+   "metadata": {},
+   "source": [
+    "### 2.5 Set the Grouping of Bolt Entities"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7382722a",
+   "metadata": {},
+   "source": [
+    "Create a group called \"Bolt Installation Group\"."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "a0258545",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "boltInstallationGroup = model.getAllGroups()[1]\n",
+    "boltInstallationGroupName = \"Bolt Installation Group\"\n",
+    "boltInstallationGroup.setGroupName(boltInstallationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "09558b08",
+   "metadata": {},
+   "source": [
+    "Set both bolts to this group at stage 4."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "cfe3d969",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "boltPattern1.setGrouping(4, boltInstallationGroupName)\n",
+    "boltPattern2.setGrouping(4, boltInstallationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "af54fe5f",
+   "metadata": {},
+   "source": [
+    "## 3. Joint Control"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1347b914",
+   "metadata": {},
+   "source": [
+    "### 3.1 Select Joint Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "abb1c722",
+   "metadata": {},
+   "source": [
+    "There is only one joint in the model, so index 0 will select the only joint."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "2c1040dd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "joint = model.Entity.getAllSupportEntities(SupportTypes.JOINT)[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "edd9c8e6",
+   "metadata": {},
+   "source": [
+    "### 3.2 Rename Joint Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ff06ae86",
+   "metadata": {},
+   "source": [
+    "Rename the joint surface."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "9669173d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "joint.setName(\"Joint Surface\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e33d3189",
+   "metadata": {},
+   "source": [
+    "### 3.3 Set Joint Property to Joint Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ccb5a0ba",
+   "metadata": {},
+   "source": [
+    "Get the joint 2 property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "7c293d9a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "joint2Property = model.getAllJointProperties()[1]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5d6b8d35",
+   "metadata": {},
+   "source": [
+    "Set the joint entity with joint 2 property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "825e66bb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "joint.setProperty(joint2Property)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d252ee08",
+   "metadata": {},
+   "source": [
+    "### 3.4 Set Joint Entity's Installation Stage and Removal Stage"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6ded3f21",
+   "metadata": {},
+   "source": [
+    "Currently, joint is installed at stage 5. Now, install joint from stage 1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "0d0a0f29",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# install by stage number\n",
+    "joint.setInstallationStageByStageNumber(1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5d194105",
+   "metadata": {},
+   "source": [
+    "### 3.5 Set the Grouping of Joint Entities"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "01f4a149",
+   "metadata": {},
+   "source": [
+    "Create a group called \"Joint Group\"."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "eec7a672",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "jointGroup = model.getAllGroups()[2]\n",
+    "jointGroupName = \"Joint Group\"\n",
+    "jointGroup.setGroupName(jointGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "661f1651",
+   "metadata": {},
+   "source": [
+    "Set the joint to be in this group from stage 1."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "id": "6c4398fe",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "joint.setGrouping(1, jointGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3786d008",
+   "metadata": {},
+   "source": [
+    "## 4. Composite Liner Control"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1aef33f4",
+   "metadata": {},
+   "source": [
+    "### 4.1 Select Composite Liner Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0785149d",
+   "metadata": {},
+   "source": [
+    "Select composite liners in the model by defining a region. The same cylinderRegion can be reused."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "id": "bf89fc7d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "compositeLiner = model.Selection.getSupportEntities(SupportTypes.COMPOSITE_LINER, cylinderRegion)[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "aecea3a6",
+   "metadata": {},
+   "source": [
+    "### 4.2 Rename Composite Liner Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "77f0123e",
+   "metadata": {},
+   "source": [
+    "Rename the composite liner to \"Tunnel Composite Liner\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "8c356c93",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "compositeLiner.setName(\"Tunnel Composite Liner\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "da171970",
+   "metadata": {},
+   "source": [
+    "### 4.3 Set Composite Liner Property to Composite Liner Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "06c84d10",
+   "metadata": {},
+   "source": [
+    "Create a new composite liner property for the tunnel."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 30,
+   "id": "1453b033",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "newCompositeLinerName = \"Tunnel Liner\"\n",
+    "model.createNewLiningCompositionProperty(newCompositeLinerName)\n",
+    "newCompositeLinerProperty = model.getLiningCompositionPropertyByName(newCompositeLinerName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a185d43e",
+   "metadata": {},
+   "source": [
+    "Set \"Tunnel Liner\" property to the new composite liner."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "57fd171c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "compositeLiner.setProperty(newCompositeLinerProperty)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "596c2ad2",
+   "metadata": {},
+   "source": [
+    "### 4.4 Set Composite Liner Entity's Installation Stage and Removal Stage"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "950fb84e",
+   "metadata": {},
+   "source": [
+    "Install composite liner at stage 3."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "c9db6f41",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# install by stage number\n",
+    "compositeLiner.setInstallationStageByStageNumber(3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dc8d4e14",
+   "metadata": {},
+   "source": [
+    "### 4.5 Set the Grouping of Composite Liner Entities"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fef9cb7e",
+   "metadata": {},
+   "source": [
+    "Create a group called \"Composite Liner Installation Group\"."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "f1f87ec2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "compositeLinerInstallationGroup = model.getAllGroups()[3]\n",
+    "compositeLinerInstallationGroupName = \"Composite Liner Installation Group\"\n",
+    "compositeLinerInstallationGroup.setGroupName(compositeLinerInstallationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "31bc6545",
+   "metadata": {},
+   "source": [
+    "Set both beams to this group at stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 34,
+   "id": "9698a5d1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "compositeLiner.setGrouping(2, compositeLinerInstallationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9584e59a",
+   "metadata": {},
+   "source": [
+    "## 5. Pile Control"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "55f2fe1b",
+   "metadata": {},
+   "source": [
+    "### 5.1 Select Pile Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9afc9431",
+   "metadata": {},
+   "source": [
+    "Select beams in the model by defining a region and by name. The group pile is currently installed at stage 1. After defining the region, providing the stage number can further filter the piles. Single pile can be filtered by stage number as well."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "a52759dc",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "groupPile = model.Selection.getSupportEntities(SupportTypes.PILE, Cube(Point(10, 8, -10), Point(25, 22, 2)), stageNumber=1)[0]\n",
+    "singlePile = model.Selection.getSupportEntities(SupportTypes.PILE, Cube(Point(10, 8, -10), Point(25, 22, 2)), stageNumber=2)[0]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d37805c7",
+   "metadata": {},
+   "source": [
+    "### 5.2 Rename Pile Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1b319e76",
+   "metadata": {},
+   "source": [
+    "Rename both beams."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 36,
+   "id": "6c46d6fd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "groupPile.setName(\"Pile Pattern\")\n",
+    "singlePile.setName(\"Single Pile\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "7dc06b91",
+   "metadata": {},
+   "source": [
+    "### 5.3 Set Pile Property to Pile Entity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bdec7fc1",
+   "metadata": {},
+   "source": [
+    "Get Pile 2 property."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "id": "5e69c415",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "newPileProperty = model.getPilePropertyByName(\"Pile 2\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "36cb1994",
+   "metadata": {},
+   "source": [
+    "Set the new pile property to the pile group."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 38,
+   "id": "a708fce6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "groupPile.setProperty(newPileProperty)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2d1d7e8f",
+   "metadata": {},
+   "source": [
+    "### 5.4 Set Pile Entity's Installation Stage and Removal Stage"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3dc4beb8",
+   "metadata": {},
+   "source": [
+    "Set all piles to be installed at stage 5."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "c6710361",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# install by stage number\n",
+    "groupPile.setInstallationStageByStageNumber(5)\n",
+    "singlePile.setInstallationStageByStageNumber(5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b74f26c7",
+   "metadata": {},
+   "source": [
+    "### 5.5 Set the Grouping of Pile Entities"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "58a2d9b0",
+   "metadata": {},
+   "source": [
+    "Create a group called \"Pile Installation Group\"."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "id": "c803cd7e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pileInstallationGroupName = \"Pile Installation Group\"\n",
+    "pileInstallationGroup = model.createNewGroupProperty(pileInstallationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a3e1ab99",
+   "metadata": {},
+   "source": [
+    "Set both beams to this group at stage 2."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
+   "id": "081d5482",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "groupPile.setGrouping(5, pileInstallationGroupName)\n",
+    "singlePile.setGrouping(5, pileInstallationGroupName)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3852fe39",
+   "metadata": {
+    "papermill": {
+     "duration": 0.014406,
+     "end_time": "2026-03-13T21:03:11.014903",
+     "exception": false,
+     "start_time": "2026-03-13T21:03:11.000497",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Save and close the model."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 42,
+   "id": "0cf5fc5d",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:03:11.050057Z",
+     "iopub.status.busy": "2026-03-13T21:03:11.049103Z",
+     "iopub.status.idle": "2026-03-13T21:03:16.273947Z",
+     "shell.execute_reply": "2026-03-13T21:03:16.271587Z"
+    },
+    "papermill": {
+     "duration": 5.243518,
+     "end_time": "2026-03-13T21:03:16.275668",
+     "exception": false,
+     "start_time": "2026-03-13T21:03:11.032150",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "model.close(True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "667cb451",
+   "metadata": {
+    "papermill": {
+     "duration": 0.013632,
+     "end_time": "2026-03-13T21:03:16.299931",
+     "exception": false,
+     "start_time": "2026-03-13T21:03:16.286299",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "Close the program."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "id": "fff2d9ca",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:03:16.327027Z",
+     "iopub.status.busy": "2026-03-13T21:03:16.326067Z",
+     "iopub.status.idle": "2026-03-13T21:03:24.575082Z",
+     "shell.execute_reply": "2026-03-13T21:03:24.569960Z"
+    },
+    "papermill": {
+     "duration": 8.269437,
+     "end_time": "2026-03-13T21:03:24.580313",
+     "exception": false,
+     "start_time": "2026-03-13T21:03:16.310876",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "modeler.closeProgram()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "43eeab6f",
+   "metadata": {
+    "papermill": {
+     "duration": 0.015454,
+     "end_time": "2026-03-13T21:03:24.610015",
+     "exception": false,
+     "start_time": "2026-03-13T21:03:24.594561",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "source": [
+    "## Full Script"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "9290ac37",
+   "metadata": {
+    "execution": {
+     "iopub.execute_input": "2026-03-13T21:03:24.642230Z",
+     "iopub.status.busy": "2026-03-13T21:03:24.641374Z",
+     "iopub.status.idle": "2026-03-13T21:04:35.020253Z",
+     "shell.execute_reply": "2026-03-13T21:04:35.018256Z"
+    },
+    "papermill": {
+     "duration": 70.397692,
+     "end_time": "2026-03-13T21:04:35.022117",
+     "exception": false,
+     "start_time": "2026-03-13T21:03:24.624425",
+     "status": "completed"
+    },
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-09-16 16:51:54,904 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60111...\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Support Control Script Examples\n",
+    "# Download the [blankSupportModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankSupportModel.rs3v3) for this example.\n",
+    "from rs3.RS3Modeler import RS3Modeler\n",
+    "import os\n",
+    "import shutil\n",
+    "from rs3.CommonEnums import SupportTypes\n",
+    "from rs3.Geometry import *\n",
+    "\n",
+    "\n",
+    "current_dir = os.path.dirname(os.path.abspath(\"\"))\n",
+    "\n",
+    "port = 60111\n",
+    "RS3Modeler.startApplication(port)\n",
+    "\n",
+    "# Connect with the RS3 Modeler.\n",
+    "modeler = RS3Modeler(port)\n",
+    "\n",
+    "# For the demonstration purposes only, the model is copied for reuse. \n",
+    "# You may change the model path to your own model path.\n",
+    "blankModelPath = rf\"{current_dir}\\example_models\\blankSupportModel.rs3v3\"\n",
+    "copiedModelPath = rf\"{current_dir}\\example_models\\copiedSupportModel.rs3v3\"\n",
+    "_ = shutil.copy(blankModelPath, copiedModelPath)\n",
+    "\n",
+    "# Open the copied model file.\n",
+    "model = modeler.openFile(copiedModelPath)\n",
+    "\n",
+    "# 1. Beam Control\n",
+    "# 1.1 Select Beam Entity\n",
+    "# Select beams in the model by defining a region and by name.\n",
+    "cylinderRegion = Cylinder(Point(10, -1, -10), Point(10, 1, -10), 2)\n",
+    "beam_0 = model.Selection.getSupportEntities(SupportTypes.BEAM, cylinderRegion, includeIntersecting=False)[0]\n",
+    "beam_10 = model.Entity.getSupportEntityByName(SupportTypes.BEAM, \"Beam 2\")\n",
+    "\n",
+    "# 1.2 Rename Beam Entity\n",
+    "# Rename both beams.\n",
+    "beam_0.setName(\"Beam at Y=0\")\n",
+    "beam_10.setName(\"Beam at Y=10\")\n",
+    "\n",
+    "# 1.3 Set Beam Property to Beam Entity\n",
+    "# Create a new beam.\n",
+    "newBeamName = \"New Beam\"\n",
+    "model.createNewBeamProperty(newBeamName)\n",
+    "newBeamProperty = model.getBeamPropertyByName(newBeamName)\n",
+    "\n",
+    "# Set beam properties of \"Beam at Y=0\" to the new beam property.\n",
+    "beam_0.setProperty(newBeamProperty)\n",
+    "\n",
+    "# 1.4 Set Beam Entity's Installation Stage and Removal Stage\n",
+    "# Currently, both beams are installed at stage 1. Install the beam at stage 2 \n",
+    "# and remove at stage 4. Beams can be installed or removed by stage number or\n",
+    "# by stage name.\n",
+    "# install by stage number\n",
+    "beam_0.setInstallationStageByStageNumber(2)\n",
+    "beam_0.setRemovalStageByStageNumber(4)\n",
+    "\n",
+    "# install by stage name\n",
+    "stage2Name = model.ProjectSettings.Stages.getName(2)\n",
+    "stage4Name = model.ProjectSettings.Stages.getName(4)\n",
+    "beam_10.setInstallationStageByStageName(stage2Name)\n",
+    "beam_10.setRemovalStageByStageName(stage4Name)\n",
+    "\n",
+    "# 1.5 Set the Grouping of Beam Entities\n",
+    "# Create a group called \"Beam Installation Group\"\n",
+    "beamInstallationGroup = model.getAllGroups()[0]\n",
+    "beamInstallationGroupName = \"Beam Installation Group\"\n",
+    "beamInstallationGroup.setGroupName(beamInstallationGroupName)\n",
+    "\n",
+    "# Set both beams to this group at stage 2.\n",
+    "beam_0.setGrouping(2, beamInstallationGroupName)\n",
+    "beam_10.setGrouping(2, beamInstallationGroupName)\n",
+    "\n",
+    "# 2. Bolt Control\n",
+    "# 2.1 Select Bolt Entity\n",
+    "# Select bolts in the model by the same region for selecting the beams and include \n",
+    "# intersecting entities. All bolts in a bolt entity pattern will be selected together \n",
+    "# and the properties will be updated together.\n",
+    "bolts = model.Selection.getSupportEntities(SupportTypes.BOLT, cylinderRegion)\n",
+    "boltPattern1 = bolts[0]\n",
+    "boltPattern2 = bolts[1]\n",
+    "\n",
+    "# 2.2 Rename Bolt Entity\n",
+    "# Rename both beams.\n",
+    "boltPattern1.setName(\"Tunnel Bolt Pattern 1\")\n",
+    "boltPattern2.setName(\"Tunnel Bolt Pattern 2\")\n",
+    "\n",
+    "# 2.3 Set Bolt Property to Bolt Entity\n",
+    "# Create a new bolt property.\n",
+    "\n",
+    "newBoltName = \"New Bolt\"\n",
+    "model.createNewBoltProperty(newBoltName)\n",
+    "newBoltProperty = model.getBoltPropertyByName(newBoltName)\n",
+    "\n",
+    "# Set both bolts with the new bolt property.\n",
+    "boltPattern1.setProperty(newBoltProperty)\n",
+    "boltPattern2.setProperty(newBoltProperty)\n",
+    "\n",
+    "# 2.4 Set Bolt Entity's Installation Stage and Removal Stage\n",
+    "# Currently, both bolts are installed at stage 1. Install the bolts at stage 4. \n",
+    "# Bolts can be installed by stage number or by stage name.\n",
+    "# install by stage number\n",
+    "boltPattern1.setInstallationStageByStageNumber(4)\n",
+    "\n",
+    "# install by stage name\n",
+    "boltPattern2.setInstallationStageByStageName(stage4Name)\n",
+    "\n",
+    "# 2.5 Set the Grouping of Bolt Entities\n",
+    "# Create a group called \"Bolt Installation Group\".\n",
+    "boltInstallationGroup = model.getAllGroups()[1]\n",
+    "boltInstallationGroupName = \"Bolt Installation Group\"\n",
+    "boltInstallationGroup.setGroupName(boltInstallationGroupName)\n",
+    "\n",
+    "# Set both bolts to this group at stage 4.\n",
+    "boltPattern1.setGrouping(4, boltInstallationGroupName)\n",
+    "boltPattern2.setGrouping(4, boltInstallationGroupName)\n",
+    "\n",
+    "# 3. Joint Control\n",
+    "# 3.1 Select Joint Entity\n",
+    "# There is only one joint in the model, so index 0 will select the only joint.\n",
+    "joint = model.Entity.getAllSupportEntities(SupportTypes.JOINT)[0]\n",
+    "\n",
+    "# 3.2 Rename Joint Entity\n",
+    "# Rename the joint surface.\n",
+    "joint.setName(\"Joint Surface\")\n",
+    "\n",
+    "# 3.3 Set Joint Property to Joint Entity\n",
+    "# Get the joint 2 property.\n",
+    "joint2Property = model.getAllJointProperties()[1]\n",
+    "\n",
+    "# Set the joint entity with joint 2 property.\n",
+    "joint.setProperty(joint2Property)\n",
+    "\n",
+    "# 3.4 Set Joint Entity's Installation Stage and Removal Stage\n",
+    "# Currently, joint is installed at stage 5. Now, install joint from stage 1.\n",
+    "# install by stage number\n",
+    "joint.setInstallationStageByStageNumber(1)\n",
+    "\n",
+    "# 3.5 Set the Grouping of Joint Entities\n",
+    "# Create a group called \"Joint Group\".\n",
+    "jointGroup = model.getAllGroups()[2]\n",
+    "jointGroupName = \"Joint Group\"\n",
+    "jointGroup.setGroupName(jointGroupName)\n",
+    "\n",
+    "# Set the joint to be in this group from stage 1.\n",
+    "joint.setGrouping(1, jointGroupName)\n",
+    "\n",
+    "# 4. Composite Liner Control\n",
+    "# 4.1 Select Composite Liner Entity\n",
+    "# Select composite liners in the model by defining a region. The same cylinderRegion can be reused.\n",
+    "compositeLiner = model.Selection.getSupportEntities(SupportTypes.COMPOSITE_LINER, cylinderRegion)[0]\n",
+    "\n",
+    "# 4.2 Rename Composite Liner Entity\n",
+    "# Rename the composite liner to \"Tunnel Composite Liner\"\n",
+    "compositeLiner.setName(\"Tunnel Composite Liner\")\n",
+    "\n",
+    "# 4.3 Set Composite Liner Property to Composite Liner Entity\n",
+    "# Create a new composite liner property for the tunnel.\n",
+    "newCompositeLinerName = \"Tunnel Liner\"\n",
+    "model.createNewLiningCompositionProperty(newCompositeLinerName)\n",
+    "newCompositeLinerProperty = model.getLiningCompositionPropertyByName(newCompositeLinerName)\n",
+    "\n",
+    "# Set \"Tunnel Liner\" property to the new composite liner.\n",
+    "compositeLiner.setProperty(newCompositeLinerProperty)\n",
+    "\n",
+    "# 4.4 Set Composite Liner Entity's Installation Stage and Removal Stage\n",
+    "# Install composite liner at stage 3.\n",
+    "\n",
+    "# install by stage number\n",
+    "compositeLiner.setInstallationStageByStageNumber(3)\n",
+    "\n",
+    "# 4.5 Set the Grouping of Composite Liner Entities\n",
+    "# Create a group called \"Composite Liner Installation Group\".\n",
+    "compositeLinerInstallationGroup = model.getAllGroups()[3]\n",
+    "compositeLinerInstallationGroupName = \"Composite Liner Installation Group\"\n",
+    "compositeLinerInstallationGroup.setGroupName(compositeLinerInstallationGroupName)\n",
+    "\n",
+    "# Set both beams to this group at stage 2.\n",
+    "compositeLiner.setGrouping(2, compositeLinerInstallationGroupName)\n",
+    "\n",
+    "# 5. Pile Control\n",
+    "# 5.1 Select Pile Entity\n",
+    "# Select beams in the model by defining a region and by name. The group pile is currently installed \n",
+    "# at stage 1. After defining the region, providing the stage number can further filter the piles. \n",
+    "# Single pile can be filtered by stage number as well.\n",
+    "groupPile = model.Selection.getSupportEntities(SupportTypes.PILE, Cube(Point(10, 8, -10), Point(25, 22, 2)), stageNumber=1)[0]\n",
+    "singlePile = model.Selection.getSupportEntities(SupportTypes.PILE, Cube(Point(10, 8, -10), Point(25, 22, 2)), stageNumber=2)[0]\n",
+    "\n",
+    "# 5.2 Rename Pile Entity\n",
+    "# Rename both beams.\n",
+    "groupPile.setName(\"Pile Pattern\")\n",
+    "singlePile.setName(\"Single Pile\")\n",
+    "\n",
+    "# 5.3 Set Pile Property to Pile Entity\n",
+    "# Get Pile 2 property.\n",
+    "newPileProperty = model.getPilePropertyByName(\"Pile 2\")\n",
+    "\n",
+    "# Set the new pile property to the pile group.\n",
+    "groupPile.setProperty(newPileProperty)\n",
+    "\n",
+    "# 5.4 Set Pile Entity's Installation Stage and Removal Stage\n",
+    "# Set all piles to be installed at stage 5.\n",
+    "# install by stage number\n",
+    "groupPile.setInstallationStageByStageNumber(5)\n",
+    "singlePile.setInstallationStageByStageNumber(5)\n",
+    "\n",
+    "# 5.5 Set the Grouping of Pile Entities\n",
+    "# Create a group called \"Pile Installation Group\".\n",
+    "pileInstallationGroupName = \"Pile Installation Group\"\n",
+    "pileInstallationGroup = model.createNewGroupProperty(pileInstallationGroupName)\n",
+    "\n",
+    "# Set both beams to this group at stage 2.\n",
+    "groupPile.setGrouping(5, pileInstallationGroupName)\n",
+    "singlePile.setGrouping(5, pileInstallationGroupName)\n",
+    "\n",
+    "# Save and close the model.\n",
+    "model.close(True)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.0"
+  },
+  "papermill": {
+   "default_parameters": {},
+   "duration": 132.181803,
+   "end_time": "2026-03-13T21:04:37.079250",
+   "environment_variables": {},
+   "exception": null,
+   "input_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\restraints_example.ipynb",
+   "output_path": "C:\\Users\\GraceHu\\source\\repos\\RS3Scripting_Compute\\docs\\example_code\\model\\restraints_example.ipynb",
+   "parameters": {},
+   "start_time": "2026-03-13T21:02:24.897447",
+   "version": "2.6.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -3,5 +3,5 @@ rs3.properties.IPropertyGroupAccessors module
 
 .. automodule:: rs3.properties.IPropertyGroupAccessors
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

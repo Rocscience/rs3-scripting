@@ -3,5 +3,5 @@ rs3.properties.material.datum.Datum module
 
 .. automodule:: rs3.properties.material.datum.Datum
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

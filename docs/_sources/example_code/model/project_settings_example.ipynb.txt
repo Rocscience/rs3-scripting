@@ -149,7 +149,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "2026-03-13 17:00:36,601 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60103...\n"
+      "2026-09-16 16:12:48,150 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60103...\n"
      ]
     }
    ],
@@ -2721,7 +2721,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "2026-03-13 17:01:35,239 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60103...\n"
+      "2026-09-16 16:14:15,991 - Rocscience.RS3 - INFO - Attempting to start the application at C:\\Program Files\\Rocscience\\RS3\\RS3 and binding server to port 60103...\n"
      ]
     },
     {
@@ -2730,13 +2730,7 @@
      "text": [
       "The new stage name of stage 1 is Initial Conditions\n",
       "The new stage name of stage 2 is Excavate Tunnel\n",
-      "The new stage name of stage 3 is Excavate Foundation\n"
-     ]
-    },
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
+      "The new stage name of stage 3 is Excavate Foundation\n",
       "The new stage name of stage 4 is Pour Concrete Foundation\n",
       "The new stage name of stage 5 is Loading Foundation\n"
      ]

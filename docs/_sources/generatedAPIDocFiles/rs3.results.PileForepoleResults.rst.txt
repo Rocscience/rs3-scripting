@@ -3,5 +3,5 @@ rs3.results.PileForepoleResults module
 
 .. automodule:: rs3.results.PileForepoleResults
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

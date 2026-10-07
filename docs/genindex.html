@@ -31,7 +31,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -40,8 +40,8 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
@@ -530,6 +530,8 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.stiffness.BaseStiffness.html#rs3.properties.material.constitutiveModel.stiffness.BaseStiffness.BaseStiffness">BaseStiffness (class in rs3.properties.material.constitutiveModel.stiffness.BaseStiffness)</a>
 </li>
+      <li><a href="generatedAPIDocFiles/rs3.CommonEnums.html#rs3.CommonEnums.SupportTypes.BEAM">BEAM (rs3.CommonEnums.SupportTypes attribute)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.beam.Beam.html#rs3.properties.beam.Beam.BeamBase">BeamBase (class in rs3.properties.beam.Beam)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.beam.BeamCommon.html#rs3.properties.beam.BeamCommon.BeamCommon">BeamCommon (class in rs3.properties.beam.BeamCommon)</a>
@@ -577,6 +579,8 @@
       <li><a href="generatedAPIDocFiles/rs3.ColorPicker.html#rs3.ColorPicker.ColorType.Blue_Grey">Blue_Grey (rs3.ColorPicker.ColorType attribute)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.InitialElementLoadingType.BODY_FORCE_ONLY">BODY_FORCE_ONLY (rs3.properties.PropertyEnums.InitialElementLoadingType attribute)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.CommonEnums.html#rs3.CommonEnums.SupportTypes.BOLT">BOLT (rs3.CommonEnums.SupportTypes attribute)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.results.ResultEnums.html#rs3.results.ResultEnums.BoltDataType">BoltDataType (class in rs3.results.ResultEnums)</a>
 </li>
@@ -706,6 +710,8 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.GroundwaterInterpolationMethodType.COMPACTLY_SUPPORTED">COMPACTLY_SUPPORTED (rs3.properties.PropertyEnums.GroundwaterInterpolationMethodType attribute)</a>
 </li>
+      <li><a href="generatedAPIDocFiles/rs3.CommonEnums.html#rs3.CommonEnums.SupportTypes.COMPOSITE_LINER">COMPOSITE_LINER (rs3.CommonEnums.SupportTypes attribute)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.liningComposition.LiningComposition.html#rs3.properties.liningComposition.LiningComposition.CompositeLinerLayer">CompositeLinerLayer (class in rs3.properties.liningComposition.LiningComposition)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.results.CompositeLinerResults.html#rs3.results.CompositeLinerResults.CompositeLinerResults">CompositeLinerResults (class in rs3.results.CompositeLinerResults)</a>
@@ -775,6 +781,8 @@
       <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.createNewDiscreteFunction">createNewDiscreteFunction() (rs3.Model.ModelBase method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.createNewGeneralizedAnisotropicFunction">createNewGeneralizedAnisotropicFunction() (rs3.Model.ModelBase method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.createNewGroupProperty">createNewGroupProperty() (rs3.Model.ModelBase method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.createNewJointProperty">createNewJointProperty() (rs3.Model.ModelBase method)</a>
 </li>
@@ -881,6 +889,8 @@
       <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.deleteDiscreteFunction">deleteDiscreteFunction() (rs3.Model.ModelBase method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.deleteGeneralizedAnisotropicFunction">deleteGeneralizedAnisotropicFunction() (rs3.Model.ModelBase method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.deleteGroupProperty">deleteGroupProperty() (rs3.Model.ModelBase method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.deleteJointProperty">deleteJointProperty() (rs3.Model.ModelBase method)</a>
 </li>
@@ -1544,6 +1554,12 @@
         <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.getAllExternalVolumes">(rs3.Model.ModelBase method)</a>
 </li>
       </ul></li>
+      <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.Model.getAllGroups">getAllGroups() (rs3.Model.Model method)</a>
+
+      <ul>
+        <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.getAllGroups">(rs3.Model.ModelBase method)</a>
+</li>
+      </ul></li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.initialConditions.InitialConditions.html#rs3.properties.material.initialConditions.InitialConditions.InitialConditions.getAllInitialWaterConditionProperties">getAllInitialWaterConditionProperties() (rs3.properties.material.initialConditions.InitialConditions.InitialConditions method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.Model.getAllJointProperties">getAllJointProperties() (rs3.Model.Model method)</a>
@@ -2050,6 +2066,8 @@
         <li><a href="generatedAPIDocFiles/rs3.properties.groundwater.WaterByLocation.html#rs3.properties.groundwater.WaterByLocation.WaterByLocationProperty.getColor">(rs3.properties.groundwater.WaterByLocation.WaterByLocationProperty method)</a>
 </li>
         <li><a href="generatedAPIDocFiles/rs3.properties.groundwater.WaterGrid.html#rs3.properties.groundwater.WaterGrid.WaterGridProperty.getColor">(rs3.properties.groundwater.WaterGrid.WaterGridProperty method)</a>
+</li>
+        <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.getColor">(rs3.properties.Group.Group method)</a>
 </li>
       </ul></li>
       <li><a href="generatedAPIDocFiles/rs3.ColorPicker.html#rs3.ColorPicker.ColorPicker.getColorFromRGB">getColorFromRGB() (rs3.ColorPicker.ColorPicker method)</a>
@@ -2604,6 +2622,20 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.joint.Joint.html#rs3.properties.joint.Joint.JointStageFactorBase.getGroundwaterPressureFactor">getGroundwaterPressureFactor() (rs3.properties.joint.Joint.JointStageFactorBase method)</a>
 </li>
+      <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.Model.getGroupByName">getGroupByName() (rs3.Model.Model method)</a>
+
+      <ul>
+        <li><a href="generatedAPIDocFiles/rs3.Model.html#rs3.Model.ModelBase.getGroupByName">(rs3.Model.ModelBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="generatedAPIDocFiles/rs3.ExternalVolume.html#rs3.ExternalVolume.ExternalVolume.getGrouping">getGrouping() (rs3.ExternalVolume.ExternalVolume method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.getGroupName">getGroupName() (rs3.properties.Group.Group method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.getGroupSetsTransparency">getGroupSetsTransparency() (rs3.properties.Group.Group method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.getGroupTransparency">getGroupTransparency() (rs3.properties.Group.Group method)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.html#rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.GeneralizedHoekBrownBase.getGSI">getGSI() (rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.GeneralizedHoekBrownBase method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.ManzariAndDafalias.html#rs3.properties.material.constitutiveModel.ManzariAndDafalias.ManzariAndDafaliasBase.getH0Parameter">getH0Parameter() (rs3.properties.material.constitutiveModel.ManzariAndDafalias.ManzariAndDafaliasBase method)</a>
@@ -3152,6 +3184,8 @@
         <li><a href="generatedAPIDocFiles/rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon.html#rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon.HydraulicParametersCommonBase.getMv">(rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon.HydraulicParametersCommonBase method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon.html#rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon.HydraulicParametersCommonStageFactorBase.getMvFactor">getMvFactor() (rs3.properties.material.hydraulic.FEAGroundwater.HydraulicParametersCommon.HydraulicParametersCommonStageFactorBase method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.hydraulic.FEAGroundwater.Gardner.html#rs3.properties.material.hydraulic.FEAGroundwater.Gardner.GardnerBase.getN">getN() (rs3.properties.material.hydraulic.FEAGroundwater.Gardner.GardnerBase method)</a>
@@ -3160,8 +3194,6 @@
         <li><a href="generatedAPIDocFiles/rs3.properties.material.hydraulic.FEAGroundwater.VanGenuchten.html#rs3.properties.material.hydraulic.FEAGroundwater.VanGenuchten.VanGenuchtenBase.getN">(rs3.properties.material.hydraulic.FEAGroundwater.VanGenuchten.VanGenuchtenBase method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generatedAPIDocFiles/rs3.ExternalVolume.html#rs3.ExternalVolume.ExternalVolume.getName">getName() (rs3.ExternalVolume.ExternalVolume method)</a>
 
       <ul>
@@ -3574,6 +3606,8 @@
         <li><a href="generatedAPIDocFiles/rs3.properties.bolt.Swellex.html#rs3.properties.bolt.Swellex.SwellexBase.getProperties">(rs3.properties.bolt.Swellex.SwellexBase method)</a>
 </li>
         <li><a href="generatedAPIDocFiles/rs3.properties.bolt.Tieback.html#rs3.properties.bolt.Tieback.TiebackBase.getProperties">(rs3.properties.bolt.Tieback.TiebackBase method)</a>
+</li>
+        <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.getProperties">(rs3.properties.Group.Group method)</a>
 </li>
         <li><a href="generatedAPIDocFiles/rs3.properties.IPropertyGroupAccessors.html#rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors.getProperties">(rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors method)</a>
 </li>
@@ -4378,6 +4412,8 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.Shansep.html#rs3.properties.material.constitutiveModel.Shansep.Shansep.getStressHistoryTypeMethod">getStressHistoryTypeMethod() (rs3.properties.material.constitutiveModel.Shansep.Shansep method)</a>
 </li>
+      <li><a href="generatedAPIDocFiles/rs3.Selection.html#rs3.Selection.Selection.getSupportEntities">getSupportEntities() (rs3.Selection.Selection method)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase.html#rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase.AnisotropicLinearPlanarBase.getSurface">getSurface() (rs3.properties.material.constitutiveModel.AnisotropicLinearPlanarBase.AnisotropicLinearPlanarBase method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.GeneralizedAnisotropicFunction.html#rs3.properties.GeneralizedAnisotropicFunction.GeneralizedAnisotropicFunction.getSurfaceFunctionPoints">getSurfaceFunctionPoints() (rs3.properties.GeneralizedAnisotropicFunction.GeneralizedAnisotropicFunction method)</a>
@@ -4912,6 +4948,8 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.GroundwaterResolutionMethodType">GroundwaterResolutionMethodType (class in rs3.properties.PropertyEnums)</a>
 </li>
+      <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group">Group (class in rs3.properties.Group)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.GeneralizedHoekBrownDefinedType.GSIType">GSIType (rs3.properties.PropertyEnums.GeneralizedHoekBrownDefinedType attribute)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.UnsaturatedSingleEffectiveStressMethod.GUDEHUS_1995">GUDEHUS_1995 (rs3.properties.PropertyEnums.UnsaturatedSingleEffectiveStressMethod attribute)</a>
@@ -5138,6 +5176,8 @@
 <h2 id="J">J</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generatedAPIDocFiles/rs3.CommonEnums.html#rs3.CommonEnums.SupportTypes.JOINT">JOINT (rs3.CommonEnums.SupportTypes attribute)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.joint.Joint.html#rs3.properties.joint.Joint.JointBase">JointBase (class in rs3.properties.joint.Joint)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.JointConstitutiveModelTypes">JointConstitutiveModelTypes (class in rs3.properties.PropertyEnums)</a>
@@ -5543,6 +5583,8 @@
         <li><a href="generatedAPIDocFiles/rs3.properties.groundwater.WaterByLocation.html#module-rs3.properties.groundwater.WaterByLocation">rs3.properties.groundwater.WaterByLocation</a>
 </li>
         <li><a href="generatedAPIDocFiles/rs3.properties.groundwater.WaterGrid.html#module-rs3.properties.groundwater.WaterGrid">rs3.properties.groundwater.WaterGrid</a>
+</li>
+        <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#module-rs3.properties.Group">rs3.properties.Group</a>
 </li>
         <li><a href="generatedAPIDocFiles/rs3.properties.IPropertyGroupAccessors.html#module-rs3.properties.IPropertyGroupAccessors">rs3.properties.IPropertyGroupAccessors</a>
 </li>
@@ -6127,6 +6169,8 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.AdditionalPressureType.PIEZOMETRIC_SURFACE">PIEZOMETRIC_SURFACE (rs3.properties.PropertyEnums.AdditionalPressureType attribute)</a>
 </li>
+      <li><a href="generatedAPIDocFiles/rs3.CommonEnums.html#rs3.CommonEnums.SupportTypes.PILE">PILE (rs3.CommonEnums.SupportTypes attribute)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.pile.Pile.html#rs3.properties.pile.Pile.PileBase">PileBase (class in rs3.properties.pile.Pile)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.pile.PileCommon.html#rs3.properties.pile.PileCommon.PileCommon">PileCommon (class in rs3.properties.pile.PileCommon)</a>
@@ -6171,10 +6215,10 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.PlanarDirectionType">PlanarDirectionType (class in rs3.properties.PropertyEnums)</a>
 </li>
-      <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.Plane2DType">Plane2DType (class in rs3.properties.PropertyEnums)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.Plane2DType">Plane2DType (class in rs3.properties.PropertyEnums)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.AnisotropyDefinitionType.PLANE_DEFINITION">PLANE_DEFINITION (rs3.properties.PropertyEnums.AnisotropyDefinitionType attribute)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.jointOption.PlaneOrientationBase.html#rs3.properties.material.constitutiveModel.jointOption.PlaneOrientationBase.PlaneOrientationBase">PlaneOrientationBase (class in rs3.properties.material.constitutiveModel.jointOption.PlaneOrientationBase)</a>
@@ -6710,6 +6754,13 @@
 </li>
       </ul></li>
       <li>
+    rs3.properties.Group
+
+      <ul>
+        <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#module-rs3.properties.Group">module</a>
+</li>
+      </ul></li>
+      <li>
     rs3.properties.IPropertyGroupAccessors
 
       <ul>
@@ -6926,6 +6977,8 @@
         <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.GeneralizedAnisotropic.html#module-rs3.properties.material.constitutiveModel.GeneralizedAnisotropic">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     rs3.properties.material.constitutiveModel.GeneralizedHoekBrown
 
@@ -6933,8 +6986,6 @@
         <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.html#module-rs3.properties.material.constitutiveModel.GeneralizedHoekBrown">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     rs3.properties.material.constitutiveModel.HardeningSoil
 
@@ -8107,6 +8158,8 @@
 </li>
         <li><a href="generatedAPIDocFiles/rs3.properties.groundwater.WaterGrid.html#rs3.properties.groundwater.WaterGrid.WaterGridProperty.setColor">(rs3.properties.groundwater.WaterGrid.WaterGridProperty method)</a>
 </li>
+        <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.setColor">(rs3.properties.Group.Group method)</a>
+</li>
       </ul></li>
       <li><a href="generatedAPIDocFiles/rs3.properties.liningComposition.LiningComposition.html#rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty.setCompositeName">setCompositeName() (rs3.properties.liningComposition.LiningComposition.LiningCompositionProperty method)</a>
 </li>
@@ -8611,6 +8664,14 @@
       <li><a href="generatedAPIDocFiles/rs3.projectSettings.Groundwater.html#rs3.projectSettings.Groundwater.Groundwater.setGroundwaterMethod">setGroundwaterMethod() (rs3.projectSettings.Groundwater.Groundwater method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.joint.Joint.html#rs3.properties.joint.Joint.JointDefinedStageFactorBase.setGroundwaterPressureFactor">setGroundwaterPressureFactor() (rs3.properties.joint.Joint.JointDefinedStageFactorBase method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.ExternalVolume.html#rs3.ExternalVolume.ExternalVolume.setGrouping">setGrouping() (rs3.ExternalVolume.ExternalVolume method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.setGroupName">setGroupName() (rs3.properties.Group.Group method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.setGroupSetsTransparency">setGroupSetsTransparency() (rs3.properties.Group.Group method)</a>
+</li>
+      <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.setGroupTransparency">setGroupTransparency() (rs3.properties.Group.Group method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.html#rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.GeneralizedHoekBrownBase.setGSI">setGSI() (rs3.properties.material.constitutiveModel.GeneralizedHoekBrown.GeneralizedHoekBrownBase method)</a>
 </li>
@@ -9480,6 +9541,8 @@
         <li><a href="generatedAPIDocFiles/rs3.properties.bolt.Swellex.html#rs3.properties.bolt.Swellex.SwellexBase.setProperties">(rs3.properties.bolt.Swellex.SwellexBase method)</a>
 </li>
         <li><a href="generatedAPIDocFiles/rs3.properties.bolt.Tieback.html#rs3.properties.bolt.Tieback.TiebackBase.setProperties">(rs3.properties.bolt.Tieback.TiebackBase method)</a>
+</li>
+        <li><a href="generatedAPIDocFiles/rs3.properties.Group.html#rs3.properties.Group.Group.setProperties">(rs3.properties.Group.Group method)</a>
 </li>
         <li><a href="generatedAPIDocFiles/rs3.properties.IPropertyGroupAccessors.html#rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors.setProperties">(rs3.properties.IPropertyGroupAccessors.IPropertyGroupAccessors method)</a>
 </li>
@@ -10992,6 +11055,8 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.StressHistoryTypes">StressHistoryTypes (class in rs3.properties.PropertyEnums)</a>
 </li>
+      <li><a href="generatedAPIDocFiles/rs3.CommonEnums.html#rs3.CommonEnums.SupportTypes">SupportTypes (class in rs3.CommonEnums)</a>
+</li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.AnisotropyDefinitionType.SURFACE">SURFACE (rs3.properties.PropertyEnums.AnisotropyDefinitionType attribute)</a>
 
       <ul>
@@ -11082,8 +11147,6 @@
 </li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.BeamElementFormulation.TIMOSHENKO">TIMOSHENKO (rs3.properties.PropertyEnums.BeamElementFormulation attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generatedAPIDocFiles/rs3.properties.liningComposition.LiningComposition.html#rs3.properties.liningComposition.LiningComposition.CompositeLinerLayer.to_tuple">to_tuple() (rs3.properties.liningComposition.LiningComposition.CompositeLinerLayer method)</a>
 </li>
       <li><a href="generatedAPIDocFiles/rs3.Geometry.html#rs3.Geometry.Cube.toCommonGeometryObject">toCommonGeometryObject() (rs3.Geometry.Cube method)</a>
@@ -11096,6 +11159,16 @@
         <li><a href="generatedAPIDocFiles/rs3.Geometry.html#rs3.Geometry.Polyline.toCommonGeometryObject">(rs3.Geometry.Polyline method)</a>
 </li>
         <li><a href="generatedAPIDocFiles/rs3.Geometry.html#rs3.Geometry.Sphere.toCommonGeometryObject">(rs3.Geometry.Sphere method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generatedAPIDocFiles/rs3.Geometry.html#rs3.Geometry.Cube.toCommonVolumeGeometryObject">toCommonVolumeGeometryObject() (rs3.Geometry.Cube method)</a>
+
+      <ul>
+        <li><a href="generatedAPIDocFiles/rs3.Geometry.html#rs3.Geometry.Cylinder.toCommonVolumeGeometryObject">(rs3.Geometry.Cylinder method)</a>
+</li>
+        <li><a href="generatedAPIDocFiles/rs3.Geometry.html#rs3.Geometry.Sphere.toCommonVolumeGeometryObject">(rs3.Geometry.Sphere method)</a>
 </li>
       </ul></li>
       <li><a href="generatedAPIDocFiles/rs3.properties.PropertyEnums.html#rs3.properties.PropertyEnums.EndConditionPlacementPoint.TOP">TOP (rs3.properties.PropertyEnums.EndConditionPlacementPoint attribute)</a>
@@ -11469,7 +11542,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

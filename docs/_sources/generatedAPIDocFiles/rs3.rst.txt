@@ -30,5 +30,5 @@ rs3 package
 
 .. automodule:: rs3
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

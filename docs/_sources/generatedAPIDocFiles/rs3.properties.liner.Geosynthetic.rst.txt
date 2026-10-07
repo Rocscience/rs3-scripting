@@ -3,5 +3,5 @@ rs3.properties.liner.Geosynthetic module
 
 .. automodule:: rs3.properties.liner.Geosynthetic
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

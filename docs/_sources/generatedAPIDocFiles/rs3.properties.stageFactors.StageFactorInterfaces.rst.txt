@@ -3,5 +3,5 @@ rs3.properties.stageFactors.StageFactorInterfaces module
 
 .. automodule:: rs3.properties.stageFactors.StageFactorInterfaces
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

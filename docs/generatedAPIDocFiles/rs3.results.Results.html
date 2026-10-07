@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.results.Results';</script>
@@ -423,6 +423,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.Group.html">rs3.properties.Group module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
@@ -523,81 +524,81 @@
 <span id="rs3-results-results-module"></span><h1>rs3.results.Results module<a class="headerlink" href="#module-rs3.results.Results" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.results.Results.NodeInformation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">NodeInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcNodeInfo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.NodeInformation" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">NodeInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcNodeInfo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.NodeInformation" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.NodeInformation.nodeID">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodeID</span></span><a class="headerlink" href="#rs3.results.Results.NodeInformation.nodeID" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">nodeID</span></span><a class="headerlink" href="#rs3.results.Results.NodeInformation.nodeID" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.NodeInformation.location">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">location</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#rs3.results.Results.NodeInformation.location" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">location</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#rs3.results.Results.NodeInformation.location" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.results.Results.ElementInformation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">ElementInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcElementInfo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.ElementInformation" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">ElementInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcElementInfo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.ElementInformation" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.ElementInformation.elementID">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">elementID</span></span><a class="headerlink" href="#rs3.results.Results.ElementInformation.elementID" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">elementID</span></span><a class="headerlink" href="#rs3.results.Results.ElementInformation.elementID" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.ElementInformation.nodeIDs">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodeIDs</span></span><a class="headerlink" href="#rs3.results.Results.ElementInformation.nodeIDs" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">nodeIDs</span></span><a class="headerlink" href="#rs3.results.Results.ElementInformation.nodeIDs" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.results.Results.PileForepoleElementInformation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">PileForepoleElementInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcPileForepoleElementInfo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.PileForepoleElementInformation" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">PileForepoleElementInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcPileForepoleElementInfo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.PileForepoleElementInformation" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.PileForepoleElementInformation.beamElementID">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">beamElementID</span></span><a class="headerlink" href="#rs3.results.Results.PileForepoleElementInformation.beamElementID" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">beamElementID</span></span><a class="headerlink" href="#rs3.results.Results.PileForepoleElementInformation.beamElementID" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.PileForepoleElementInformation.interfaceElementID">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">interfaceElementID</span></span><a class="headerlink" href="#rs3.results.Results.PileForepoleElementInformation.interfaceElementID" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">interfaceElementID</span></span><a class="headerlink" href="#rs3.results.Results.PileForepoleElementInformation.interfaceElementID" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.PileForepoleElementInformation.nodeIDs">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nodeIDs</span></span><a class="headerlink" href="#rs3.results.Results.PileForepoleElementInformation.nodeIDs" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">nodeIDs</span></span><a class="headerlink" href="#rs3.results.Results.PileForepoleElementInformation.nodeIDs" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.results.Results.SRFValue">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">SRFValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcSRFValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.SRFValue" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">SRFValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grpcSRFValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.SRFValue" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.SRFValue.SRF">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SRF</span></span><a class="headerlink" href="#rs3.results.Results.SRFValue.SRF" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">SRF</span></span><a class="headerlink" href="#rs3.results.Results.SRFValue.SRF" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.SRFValue.MaxTotalDisplacement">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MaxTotalDisplacement</span></span><a class="headerlink" href="#rs3.results.Results.SRFValue.MaxTotalDisplacement" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MaxTotalDisplacement</span></span><a class="headerlink" href="#rs3.results.Results.SRFValue.MaxTotalDisplacement" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.results.Results.SRFValue.Converged">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Converged</span></span><a class="headerlink" href="#rs3.results.Results.SRFValue.Converged" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Converged</span></span><a class="headerlink" href="#rs3.results.Results.SRFValue.Converged" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.results.Results.Results">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">Results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.Results" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.results.Results.</span></span><span class="sig-name descname"><span class="pre">Results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.Results" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_ProxyObject</span></code></p>
 <p>Entry point for querying analysis results (nodes, elements, SRF) by stage and SRF value.</p>
 <p class="rubric">Examples</p>
@@ -605,10 +606,12 @@
 <a class="reference internal" href="../example_code/results/pile_result_example.html#pile-result-example"><span class="std std-ref">Pile Result Script Example</span></a>, <a class="reference internal" href="../example_code/results/composite_liner_result_example.html#composite-liner-result-example"><span class="std std-ref">Composite Liner Result Script Example</span></a>, <a class="reference internal" href="../example_code/results/joint_result_example.html#joint-result-example"><span class="std std-ref">Joint Result Script Example</span></a>.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rs3.results.Results.Results.getResultsAvailability">
-<span class="sig-name descname"><span class="pre">getResultsAvailability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srfResultIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.Results.getResultsAvailability" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">getResultsAvailability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stageNumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srfResultIndex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">material_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">_MaterialType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">_MaterialType.SOLIDS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.results.Results.Results.getResultsAvailability" title="Link to this definition">#</a></dt>
 <dd><p>Read cached results for a specific stage and SRF value.
 :param stageNumber: int: The analysis stage index (1-based) at which to perform the query.
-:param srfResultIndex: int: The SRF result index. Defaults to 0 to query SRF-None.</p>
+:param srfResultIndex: int: The SRF result index. Defaults to 0 to query SRF-None.
+:param material_type: Result cache category; sent as materialType (enum .value string).
+:type material_type: _MaterialType</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>Exception if</strong> – <ul class="simple">
@@ -1000,10 +1003,7 @@
 <dd><p>Get the mesh results for specific stages and SRF value.
 :param srfResultIndex: int: The SRF result index. Defaults to 0 to query SRF-None.
 :param stageNumber: list[int]: The stage number list. Defaults to [1].
-:param requiredDataTypes: Optional[set[SolidsDataType]]: Optional set of SolidsDataType enum values to check availability for.</p>
-<blockquote>
-<div><p>If None or empty, all data types are queried.</p>
-</div></blockquote>
+:param requiredDataTypes: Optional[set[SolidsDataType]]: Optional set of SolidsDataType enum values to check availability for. If None or empty, all data types are queried.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>Exception if</strong> – <ul class="simple">
@@ -1294,7 +1294,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

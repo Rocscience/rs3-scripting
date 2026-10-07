@@ -12,5 +12,5 @@ rs3.properties.stageFactors package
 
 .. automodule:: rs3.properties.stageFactors
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

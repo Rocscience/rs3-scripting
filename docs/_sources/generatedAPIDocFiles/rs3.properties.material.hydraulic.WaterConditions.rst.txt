@@ -3,5 +3,5 @@ rs3.properties.material.hydraulic.WaterConditions module
 
 .. automodule:: rs3.properties.material.hydraulic.WaterConditions
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

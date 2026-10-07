@@ -3,5 +3,5 @@ rs3.properties.joint.Joint module
 
 .. automodule:: rs3.properties.joint.Joint
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

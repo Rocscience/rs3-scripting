@@ -18,5 +18,5 @@ rs3.properties.material.hydraulic.FEAGroundwater package
 
 .. automodule:: rs3.properties.material.hydraulic.FEAGroundwater
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

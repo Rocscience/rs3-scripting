@@ -11,5 +11,5 @@ rs3.properties.groundwater package
 
 .. automodule:: rs3.properties.groundwater
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

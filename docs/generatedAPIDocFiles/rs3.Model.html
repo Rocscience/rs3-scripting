@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -41,8 +41,8 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'generatedAPIDocFiles/rs3.Model';</script>
@@ -423,6 +423,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.CustomHydraulicModel.html">rs3.properties.CustomHydraulicModel module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.DiscreteFunction.html">rs3.properties.DiscreteFunction module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.GeneralizedAnisotropicFunction.html">rs3.properties.GeneralizedAnisotropicFunction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rs3.properties.Group.html">rs3.properties.Group module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.IPropertyGroupAccessors.html">rs3.properties.IPropertyGroupAccessors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.PropertyEnums.html">rs3.properties.PropertyEnums module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rs3.properties.ShearNormalFunction.html">rs3.properties.ShearNormalFunction module</a></li>
@@ -520,7 +521,7 @@
 <span id="rs3-model-module"></span><h1>rs3.Model module<a class="headerlink" href="#module-rs3.Model" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Model.ModelBase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Model.</span></span><span class="sig-name descname"><span class="pre">ModelBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Model.ModelBase" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Model.</span></span><span class="sig-name descname"><span class="pre">ModelBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Model.ModelBase" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="rs3.Model.ModelBase.save">
@@ -613,6 +614,11 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getGroupByName">
+<span class="sig-name descname"><span class="pre">getGroupByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getGroupByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="rs3.Model.ModelBase.getDiscreteFunctionByName">
 <span class="sig-name descname"><span class="pre">getDiscreteFunctionByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discreteFunctionName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getDiscreteFunctionByName" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -685,6 +691,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllExternalVolumes">
 <span class="sig-name descname"><span class="pre">getAllExternalVolumes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllExternalVolumes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.getAllGroups">
+<span class="sig-name descname"><span class="pre">getAllGroups</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getAllGroups" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -848,6 +859,16 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.createNewGroupProperty">
+<span class="sig-name descname"><span class="pre">createNewGroupProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.createNewGroupProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.ModelBase.deleteGroupProperty">
+<span class="sig-name descname"><span class="pre">deleteGroupProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupName</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.deleteGroupProperty" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="rs3.Model.ModelBase.getDiscreteFunctions">
 <span class="sig-name descname"><span class="pre">getDiscreteFunctions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.ModelBase.getDiscreteFunctions" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -916,13 +937,13 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="rs3.Model.Model">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">rs3.Model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Model.Model" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">rs3.Model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projectId</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#rs3.Model.Model" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#rs3.Model.ModelBase" title="rs3.Model.ModelBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBase</span></code></a></p>
 <p class="rubric">Examples</p>
 <p>See <a class="reference internal" href="../example_code/model/model_example.html#model-example"><span class="std std-ref">Model Script Examples</span></a>.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="rs3.Model.Model.results">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">results</span></span><a class="headerlink" href="#rs3.Model.Model.results" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">results</span></span><a class="headerlink" href="#rs3.Model.Model.results" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1031,6 +1052,11 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getGroupByName">
+<span class="sig-name descname"><span class="pre">getGroupByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groupName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.Group.html#rs3.properties.Group.Group" title="rs3.properties.Group.Group"><span class="pre">Group</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getGroupByName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="rs3.Model.Model.getDiscreteFunctionByName">
 <span class="sig-name descname"><span class="pre">getDiscreteFunctionByName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">discreteFunctionName</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="rs3.properties.DiscreteFunction.html#rs3.properties.DiscreteFunction.DiscreteFunction" title="rs3.properties.DiscreteFunction.DiscreteFunction"><span class="pre">DiscreteFunction</span></a></span></span><a class="headerlink" href="#rs3.Model.Model.getDiscreteFunctionByName" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1098,6 +1124,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="rs3.Model.Model.getAllExternalVolumes">
 <span class="sig-name descname"><span class="pre">getAllExternalVolumes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.ExternalVolume.html#rs3.ExternalVolume.ExternalVolume" title="rs3.ExternalVolume.ExternalVolume"><span class="pre">ExternalVolume</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllExternalVolumes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="rs3.Model.Model.getAllGroups">
+<span class="sig-name descname"><span class="pre">getAllGroups</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="rs3.properties.Group.html#rs3.properties.Group.Group" title="rs3.properties.Group.Group"><span class="pre">Group</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#rs3.Model.Model.getAllGroups" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1255,6 +1286,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getWaterByLocationPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getWaterByLocationPropertyByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getWaterGridPropertyByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getWaterGridPropertyByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getExternalVolumeByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getExternalVolumeByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getGroupByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getGroupByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getDiscreteFunctionByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getDiscreteFunctionByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getShearNormalFunctionByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getShearNormalFunctionByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getGeneralizedAnisotropicFunctionByName"><code class="docutils literal notranslate"><span class="pre">ModelBase.getGeneralizedAnisotropicFunctionByName()</span></code></a></li>
@@ -1270,6 +1302,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllWaterGridProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllWaterGridProperties()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllCustomHydraulicModelProperties"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllCustomHydraulicModelProperties()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllExternalVolumes"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllExternalVolumes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllGroups"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllGroups()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllBoltPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllBoltPropertiesInUse()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllBeamPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllBeamPropertiesInUse()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getAllLinerPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">ModelBase.getAllLinerPropertiesInUse()</span></code></a></li>
@@ -1302,6 +1335,8 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteWaterByLocationProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteWaterByLocationProperty()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewWaterGridProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewWaterGridProperty()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteWaterGridProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteWaterGridProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.createNewGroupProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.createNewGroupProperty()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.deleteGroupProperty"><code class="docutils literal notranslate"><span class="pre">ModelBase.deleteGroupProperty()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getDiscreteFunctions"><code class="docutils literal notranslate"><span class="pre">ModelBase.getDiscreteFunctions()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getShearNormalFunctions"><code class="docutils literal notranslate"><span class="pre">ModelBase.getShearNormalFunctions()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.ModelBase.getGeneralizedAnisotropicFunctions"><code class="docutils literal notranslate"><span class="pre">ModelBase.getGeneralizedAnisotropicFunctions()</span></code></a></li>
@@ -1334,6 +1369,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getWaterByLocationPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getWaterByLocationPropertyByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getWaterGridPropertyByName"><code class="docutils literal notranslate"><span class="pre">Model.getWaterGridPropertyByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getExternalVolumeByName"><code class="docutils literal notranslate"><span class="pre">Model.getExternalVolumeByName()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getGroupByName"><code class="docutils literal notranslate"><span class="pre">Model.getGroupByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getDiscreteFunctionByName"><code class="docutils literal notranslate"><span class="pre">Model.getDiscreteFunctionByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getShearNormalFunctionByName"><code class="docutils literal notranslate"><span class="pre">Model.getShearNormalFunctionByName()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getGeneralizedAnisotropicFunctionByName"><code class="docutils literal notranslate"><span class="pre">Model.getGeneralizedAnisotropicFunctionByName()</span></code></a></li>
@@ -1348,6 +1384,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllWaterGridProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllWaterGridProperties()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllCustomHydraulicModelProperties"><code class="docutils literal notranslate"><span class="pre">Model.getAllCustomHydraulicModelProperties()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllExternalVolumes"><code class="docutils literal notranslate"><span class="pre">Model.getAllExternalVolumes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllGroups"><code class="docutils literal notranslate"><span class="pre">Model.getAllGroups()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllBoltPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllBoltPropertiesInUse()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllBeamPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllBeamPropertiesInUse()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rs3.Model.Model.getAllLinerPropertiesInUse"><code class="docutils literal notranslate"><span class="pre">Model.getAllLinerPropertiesInUse()</span></code></a></li>
@@ -1413,7 +1450,7 @@
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     <br/>
   </p>
 </div>

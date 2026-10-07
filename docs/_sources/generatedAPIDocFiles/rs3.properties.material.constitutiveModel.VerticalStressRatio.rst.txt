@@ -3,5 +3,5 @@ rs3.properties.material.constitutiveModel.VerticalStressRatio module
 
 .. automodule:: rs3.properties.material.constitutiveModel.VerticalStressRatio
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

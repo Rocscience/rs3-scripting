@@ -1,0 +1,1241 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Support Control Script Examples &#8212; RS3 Scripting Reference Manual  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'example_code/model/support_control_example';</script>
+    <link rel="icon" href="../../_static/rocscience_favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Material Initial Conditions Script Examples" href="../material/initial_conditions_example.html" />
+    <link rel="prev" title="Grouping Script Examples" href="grouping_example.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/rocscience-logo-primary.png" class="logo__image only-light" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+    <img src="../../_static/rocscience-logo-primary.png" class="logo__image only-dark pst-js-only" alt="RS3 Scripting Reference Manual  documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../generatedAPIDocFiles/rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../generatedAPIDocFiles/rs3.html">
+    rs3 package
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../examples.html">
+    Python Script Examples
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="model_example.html">Model Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open_and_close_model_example.html">Open and Close Model Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_settings_example.html">Project Settings Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_volume_and_selection_example.html">External Volume and Selection Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="field_stress_example.html">Field Stress Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restraints_example.html">Restraints Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mesh_example.html">Mesh Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute_example.html">Compute Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grouping_example.html">Grouping Script Examples</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Support Control Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../material/initial_conditions_example.html">Material Initial Conditions Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/constitutive_models_example.html">Material Constitutive Models Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/hydraulic_example.html">Material Hydraulic Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/datum_example.html">Material Datum Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../material/material_stage_factors_example.html">Material Stage Factors Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../supports/beam_example.html">Beam Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/bolt_example.html">Bolt Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/joint_example.html">Joint Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/liner_example.html">Liner Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/pile_example.html">Pile Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supports/composite_liner_example.html">Composite Liner Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../groundwater/water_by_location_example.html">Water By Location Script Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groundwater/water_grid_example.html">Water Grid Script Examples</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../results/solid_result_example.html">Solid Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/beam_result_example.html">Beam Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/bolt_result_example.html">Bolt Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/joint_result_example.html">Joint Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/pile_result_example.html">Pile Result Script Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../results/composite_liner_result_example.html">Composite Liner Result Script Example</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../examples.html" class="nav-link">Python Script Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Support Control Script Examples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="support-control-script-examples">
+<span id="support-control-example"></span><h1>Support Control Script Examples<a class="headerlink" href="#support-control-script-examples" title="Link to this heading">#</a></h1>
+<p>Download the <a class="reference external" href="https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankSupportModel.rs3v3">blankSupportModel.rs3v3</a> for this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rs3.RS3Modeler</span> <span class="kn">import</span> <span class="n">RS3Modeler</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">rs3.CommonEnums</span> <span class="kn">import</span> <span class="n">SupportTypes</span>
+<span class="kn">from</span> <span class="nn">rs3.Geometry</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get the current folder directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Specify a port number that is not in use and start the RS3 program.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="mi">60111</span>
+<span class="n">RS3Modeler</span><span class="o">.</span><span class="n">startApplication</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-09-16 16:49:04,158 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60111...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Connect with the RS3 Modeler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modeler</span> <span class="o">=</span> <span class="n">RS3Modeler</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the demonstration purposes only, the model is copied for reuse. You may change the model path to your own model path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blankModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\blankSupportModel.rs3v3&quot;</span>
+<span class="n">copiedModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\copiedSupportModel.rs3v3&quot;</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">blankModelPath</span><span class="p">,</span> <span class="n">copiedModelPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Open the copied model file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="n">copiedModelPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="beam-control">
+<h2>1. Beam Control<a class="headerlink" href="#beam-control" title="Link to this heading">#</a></h2>
+<section id="select-beam-entity">
+<h3>1.1 Select Beam Entity<a class="headerlink" href="#select-beam-entity" title="Link to this heading">#</a></h3>
+<p>Select beams in the model by defining a region and by name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cylinderRegion</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">beam_0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">BEAM</span><span class="p">,</span> <span class="n">cylinderRegion</span><span class="p">,</span> <span class="n">includeIntersecting</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">beam_10</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Entity</span><span class="o">.</span><span class="n">getSupportEntityByName</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">BEAM</span><span class="p">,</span> <span class="s2">&quot;Beam 2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rename-beam-entity">
+<h3>1.2 Rename Beam Entity<a class="headerlink" href="#rename-beam-entity" title="Link to this heading">#</a></h3>
+<p>Rename both beams.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beam_0</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Beam at Y=0&quot;</span><span class="p">)</span>
+<span class="n">beam_10</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Beam at Y=10&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-beam-property-to-beam-entity">
+<h3>1.3 Set Beam Property to Beam Entity<a class="headerlink" href="#set-beam-property-to-beam-entity" title="Link to this heading">#</a></h3>
+<p>Create a new beam.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newBeamName</span> <span class="o">=</span> <span class="s2">&quot;New Beam&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">createNewBeamProperty</span><span class="p">(</span><span class="n">newBeamName</span><span class="p">)</span>
+<span class="n">newBeamProperty</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getBeamPropertyByName</span><span class="p">(</span><span class="n">newBeamName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set beam properties of “Beam at Y=0” to the new beam property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beam_0</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newBeamProperty</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-beam-entity-s-installation-stage-and-removal-stage">
+<h3>1.4 Set Beam Entity’s Installation Stage and Removal Stage<a class="headerlink" href="#set-beam-entity-s-installation-stage-and-removal-stage" title="Link to this heading">#</a></h3>
+<p>Currently, both beams are installed at stage 1. Install the beam at stage 2 and remove at stage 4. Beams can be installed or removed by stage number or by stage name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install by stage number</span>
+<span class="n">beam_0</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">beam_0</span><span class="o">.</span><span class="n">setRemovalStageByStageNumber</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># install by stage name</span>
+<span class="n">stage2Name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Stages</span><span class="o">.</span><span class="n">getName</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">stage4Name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Stages</span><span class="o">.</span><span class="n">getName</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">beam_10</span><span class="o">.</span><span class="n">setInstallationStageByStageName</span><span class="p">(</span><span class="n">stage2Name</span><span class="p">)</span>
+<span class="n">beam_10</span><span class="o">.</span><span class="n">setRemovalStageByStageName</span><span class="p">(</span><span class="n">stage4Name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-grouping-of-beam-entities">
+<h3>1.5 Set the Grouping of Beam Entities<a class="headerlink" href="#set-the-grouping-of-beam-entities" title="Link to this heading">#</a></h3>
+<p>Create a group called “Beam Installation Group”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beamInstallationGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllGroups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">beamInstallationGroupName</span> <span class="o">=</span> <span class="s2">&quot;Beam Installation Group&quot;</span>
+<span class="n">beamInstallationGroup</span><span class="o">.</span><span class="n">setGroupName</span><span class="p">(</span><span class="n">beamInstallationGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set both beams to this group at stage 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beam_0</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">beamInstallationGroupName</span><span class="p">)</span>
+<span class="n">beam_10</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">beamInstallationGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bolt-control">
+<h2>2. Bolt Control<a class="headerlink" href="#bolt-control" title="Link to this heading">#</a></h2>
+<section id="select-bolt-entity">
+<h3>2.1 Select Bolt Entity<a class="headerlink" href="#select-bolt-entity" title="Link to this heading">#</a></h3>
+<p>Select bolts in the model by the same region for selecting the beams and include intersecting entities. All bolts in a bolt entity pattern will be selected together and the properties will be updated together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bolts</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">BOLT</span><span class="p">,</span> <span class="n">cylinderRegion</span><span class="p">)</span>
+<span class="n">boltPattern1</span> <span class="o">=</span> <span class="n">bolts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">boltPattern2</span> <span class="o">=</span> <span class="n">bolts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rename-bolt-entity">
+<h3>2.2 Rename Bolt Entity<a class="headerlink" href="#rename-bolt-entity" title="Link to this heading">#</a></h3>
+<p>Rename both beams.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boltPattern1</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Tunnel Bolt Pattern 1&quot;</span><span class="p">)</span>
+<span class="n">boltPattern2</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Tunnel Bolt Pattern 2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-bolt-property-to-bolt-entity">
+<h3>2.3 Set Bolt Property to Bolt Entity<a class="headerlink" href="#set-bolt-property-to-bolt-entity" title="Link to this heading">#</a></h3>
+<p>Create a new bolt property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newBoltName</span> <span class="o">=</span> <span class="s2">&quot;New Bolt&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">createNewBoltProperty</span><span class="p">(</span><span class="n">newBoltName</span><span class="p">)</span>
+<span class="n">newBoltProperty</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getBoltPropertyByName</span><span class="p">(</span><span class="n">newBoltName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set both bolts with the new bolt property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boltPattern1</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newBoltProperty</span><span class="p">)</span>
+<span class="n">boltPattern2</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newBoltProperty</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-bolt-entity-s-installation-stage-and-removal-stage">
+<h3>2.4 Set Bolt Entity’s Installation Stage and Removal Stage<a class="headerlink" href="#set-bolt-entity-s-installation-stage-and-removal-stage" title="Link to this heading">#</a></h3>
+<p>Currently, both bolts are installed at stage 1. Install the bolts at stage 4. Bolts can be installed by stage number or by stage name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install by stage number</span>
+<span class="n">boltPattern1</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># install by stage name</span>
+<span class="n">boltPattern2</span><span class="o">.</span><span class="n">setInstallationStageByStageName</span><span class="p">(</span><span class="n">stage4Name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-grouping-of-bolt-entities">
+<h3>2.5 Set the Grouping of Bolt Entities<a class="headerlink" href="#set-the-grouping-of-bolt-entities" title="Link to this heading">#</a></h3>
+<p>Create a group called “Bolt Installation Group”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boltInstallationGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllGroups</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">boltInstallationGroupName</span> <span class="o">=</span> <span class="s2">&quot;Bolt Installation Group&quot;</span>
+<span class="n">boltInstallationGroup</span><span class="o">.</span><span class="n">setGroupName</span><span class="p">(</span><span class="n">boltInstallationGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set both bolts to this group at stage 4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">boltPattern1</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">boltInstallationGroupName</span><span class="p">)</span>
+<span class="n">boltPattern2</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">boltInstallationGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="joint-control">
+<h2>3. Joint Control<a class="headerlink" href="#joint-control" title="Link to this heading">#</a></h2>
+<section id="select-joint-entity">
+<h3>3.1 Select Joint Entity<a class="headerlink" href="#select-joint-entity" title="Link to this heading">#</a></h3>
+<p>There is only one joint in the model, so index 0 will select the only joint.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Entity</span><span class="o">.</span><span class="n">getAllSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">JOINT</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rename-joint-entity">
+<h3>3.2 Rename Joint Entity<a class="headerlink" href="#rename-joint-entity" title="Link to this heading">#</a></h3>
+<p>Rename the joint surface.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Joint Surface&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-joint-property-to-joint-entity">
+<h3>3.3 Set Joint Property to Joint Entity<a class="headerlink" href="#set-joint-property-to-joint-entity" title="Link to this heading">#</a></h3>
+<p>Get the joint 2 property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint2Property</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllJointProperties</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the joint entity with joint 2 property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">joint2Property</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-joint-entity-s-installation-stage-and-removal-stage">
+<h3>3.4 Set Joint Entity’s Installation Stage and Removal Stage<a class="headerlink" href="#set-joint-entity-s-installation-stage-and-removal-stage" title="Link to this heading">#</a></h3>
+<p>Currently, joint is installed at stage 5. Now, install joint from stage 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install by stage number</span>
+<span class="n">joint</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-grouping-of-joint-entities">
+<h3>3.5 Set the Grouping of Joint Entities<a class="headerlink" href="#set-the-grouping-of-joint-entities" title="Link to this heading">#</a></h3>
+<p>Create a group called “Joint Group”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jointGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllGroups</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">jointGroupName</span> <span class="o">=</span> <span class="s2">&quot;Joint Group&quot;</span>
+<span class="n">jointGroup</span><span class="o">.</span><span class="n">setGroupName</span><span class="p">(</span><span class="n">jointGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the joint to be in this group from stage 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">jointGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="composite-liner-control">
+<h2>4. Composite Liner Control<a class="headerlink" href="#composite-liner-control" title="Link to this heading">#</a></h2>
+<section id="select-composite-liner-entity">
+<h3>4.1 Select Composite Liner Entity<a class="headerlink" href="#select-composite-liner-entity" title="Link to this heading">#</a></h3>
+<p>Select composite liners in the model by defining a region. The same cylinderRegion can be reused.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compositeLiner</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">COMPOSITE_LINER</span><span class="p">,</span> <span class="n">cylinderRegion</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rename-composite-liner-entity">
+<h3>4.2 Rename Composite Liner Entity<a class="headerlink" href="#rename-composite-liner-entity" title="Link to this heading">#</a></h3>
+<p>Rename the composite liner to “Tunnel Composite Liner”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compositeLiner</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Tunnel Composite Liner&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-composite-liner-property-to-composite-liner-entity">
+<h3>4.3 Set Composite Liner Property to Composite Liner Entity<a class="headerlink" href="#set-composite-liner-property-to-composite-liner-entity" title="Link to this heading">#</a></h3>
+<p>Create a new composite liner property for the tunnel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newCompositeLinerName</span> <span class="o">=</span> <span class="s2">&quot;Tunnel Liner&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">createNewLiningCompositionProperty</span><span class="p">(</span><span class="n">newCompositeLinerName</span><span class="p">)</span>
+<span class="n">newCompositeLinerProperty</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getLiningCompositionPropertyByName</span><span class="p">(</span><span class="n">newCompositeLinerName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set “Tunnel Liner” property to the new composite liner.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compositeLiner</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newCompositeLinerProperty</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-composite-liner-entity-s-installation-stage-and-removal-stage">
+<h3>4.4 Set Composite Liner Entity’s Installation Stage and Removal Stage<a class="headerlink" href="#set-composite-liner-entity-s-installation-stage-and-removal-stage" title="Link to this heading">#</a></h3>
+<p>Install composite liner at stage 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install by stage number</span>
+<span class="n">compositeLiner</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-grouping-of-composite-liner-entities">
+<h3>4.5 Set the Grouping of Composite Liner Entities<a class="headerlink" href="#set-the-grouping-of-composite-liner-entities" title="Link to this heading">#</a></h3>
+<p>Create a group called “Composite Liner Installation Group”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compositeLinerInstallationGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllGroups</span><span class="p">()[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">compositeLinerInstallationGroupName</span> <span class="o">=</span> <span class="s2">&quot;Composite Liner Installation Group&quot;</span>
+<span class="n">compositeLinerInstallationGroup</span><span class="o">.</span><span class="n">setGroupName</span><span class="p">(</span><span class="n">compositeLinerInstallationGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set both beams to this group at stage 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compositeLiner</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">compositeLinerInstallationGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pile-control">
+<h2>5. Pile Control<a class="headerlink" href="#pile-control" title="Link to this heading">#</a></h2>
+<section id="select-pile-entity">
+<h3>5.1 Select Pile Entity<a class="headerlink" href="#select-pile-entity" title="Link to this heading">#</a></h3>
+<p>Select beams in the model by defining a region and by name. The group pile is currently installed at stage 1. After defining the region, providing the stage number can further filter the piles. Single pile can be filtered by stage number as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupPile</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">PILE</span><span class="p">,</span> <span class="n">Cube</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">stageNumber</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">singlePile</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">PILE</span><span class="p">,</span> <span class="n">Cube</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">stageNumber</span><span class="o">=</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rename-pile-entity">
+<h3>5.2 Rename Pile Entity<a class="headerlink" href="#rename-pile-entity" title="Link to this heading">#</a></h3>
+<p>Rename both beams.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupPile</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Pile Pattern&quot;</span><span class="p">)</span>
+<span class="n">singlePile</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Single Pile&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-pile-property-to-pile-entity">
+<h3>5.3 Set Pile Property to Pile Entity<a class="headerlink" href="#set-pile-property-to-pile-entity" title="Link to this heading">#</a></h3>
+<p>Get Pile 2 property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newPileProperty</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getPilePropertyByName</span><span class="p">(</span><span class="s2">&quot;Pile 2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set the new pile property to the pile group.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupPile</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newPileProperty</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-pile-entity-s-installation-stage-and-removal-stage">
+<h3>5.4 Set Pile Entity’s Installation Stage and Removal Stage<a class="headerlink" href="#set-pile-entity-s-installation-stage-and-removal-stage" title="Link to this heading">#</a></h3>
+<p>Set all piles to be installed at stage 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># install by stage number</span>
+<span class="n">groupPile</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">singlePile</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-grouping-of-pile-entities">
+<h3>5.5 Set the Grouping of Pile Entities<a class="headerlink" href="#set-the-grouping-of-pile-entities" title="Link to this heading">#</a></h3>
+<p>Create a group called “Pile Installation Group”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pileInstallationGroupName</span> <span class="o">=</span> <span class="s2">&quot;Pile Installation Group&quot;</span>
+<span class="n">pileInstallationGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">createNewGroupProperty</span><span class="p">(</span><span class="n">pileInstallationGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set both beams to this group at stage 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupPile</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">pileInstallationGroupName</span><span class="p">)</span>
+<span class="n">singlePile</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">pileInstallationGroupName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Save and close the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Close the program.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modeler</span><span class="o">.</span><span class="n">closeProgram</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="full-script">
+<h2>Full Script<a class="headerlink" href="#full-script" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Support Control Script Examples</span>
+<span class="c1"># Download the [blankSupportModel.rs3v3](https://github.com/Rocscience/rs3-scripting/tree/main/docs/example_code/example_models/blankSupportModel.rs3v3) for this example.</span>
+<span class="kn">from</span> <span class="nn">rs3.RS3Modeler</span> <span class="kn">import</span> <span class="n">RS3Modeler</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">rs3.CommonEnums</span> <span class="kn">import</span> <span class="n">SupportTypes</span>
+<span class="kn">from</span> <span class="nn">rs3.Geometry</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">current_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="mi">60111</span>
+<span class="n">RS3Modeler</span><span class="o">.</span><span class="n">startApplication</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+
+<span class="c1"># Connect with the RS3 Modeler.</span>
+<span class="n">modeler</span> <span class="o">=</span> <span class="n">RS3Modeler</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+
+<span class="c1"># For the demonstration purposes only, the model is copied for reuse. </span>
+<span class="c1"># You may change the model path to your own model path.</span>
+<span class="n">blankModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\blankSupportModel.rs3v3&quot;</span>
+<span class="n">copiedModelPath</span> <span class="o">=</span> <span class="sa">rf</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">\example_models\copiedSupportModel.rs3v3&quot;</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">blankModelPath</span><span class="p">,</span> <span class="n">copiedModelPath</span><span class="p">)</span>
+
+<span class="c1"># Open the copied model file.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">modeler</span><span class="o">.</span><span class="n">openFile</span><span class="p">(</span><span class="n">copiedModelPath</span><span class="p">)</span>
+
+<span class="c1"># 1. Beam Control</span>
+<span class="c1"># 1.1 Select Beam Entity</span>
+<span class="c1"># Select beams in the model by defining a region and by name.</span>
+<span class="n">cylinderRegion</span> <span class="o">=</span> <span class="n">Cylinder</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">beam_0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">BEAM</span><span class="p">,</span> <span class="n">cylinderRegion</span><span class="p">,</span> <span class="n">includeIntersecting</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">beam_10</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Entity</span><span class="o">.</span><span class="n">getSupportEntityByName</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">BEAM</span><span class="p">,</span> <span class="s2">&quot;Beam 2&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1.2 Rename Beam Entity</span>
+<span class="c1"># Rename both beams.</span>
+<span class="n">beam_0</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Beam at Y=0&quot;</span><span class="p">)</span>
+<span class="n">beam_10</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Beam at Y=10&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1.3 Set Beam Property to Beam Entity</span>
+<span class="c1"># Create a new beam.</span>
+<span class="n">newBeamName</span> <span class="o">=</span> <span class="s2">&quot;New Beam&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">createNewBeamProperty</span><span class="p">(</span><span class="n">newBeamName</span><span class="p">)</span>
+<span class="n">newBeamProperty</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getBeamPropertyByName</span><span class="p">(</span><span class="n">newBeamName</span><span class="p">)</span>
+
+<span class="c1"># Set beam properties of &quot;Beam at Y=0&quot; to the new beam property.</span>
+<span class="n">beam_0</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newBeamProperty</span><span class="p">)</span>
+
+<span class="c1"># 1.4 Set Beam Entity&#39;s Installation Stage and Removal Stage</span>
+<span class="c1"># Currently, both beams are installed at stage 1. Install the beam at stage 2 </span>
+<span class="c1"># and remove at stage 4. Beams can be installed or removed by stage number or</span>
+<span class="c1"># by stage name.</span>
+<span class="c1"># install by stage number</span>
+<span class="n">beam_0</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">beam_0</span><span class="o">.</span><span class="n">setRemovalStageByStageNumber</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># install by stage name</span>
+<span class="n">stage2Name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Stages</span><span class="o">.</span><span class="n">getName</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">stage4Name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ProjectSettings</span><span class="o">.</span><span class="n">Stages</span><span class="o">.</span><span class="n">getName</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">beam_10</span><span class="o">.</span><span class="n">setInstallationStageByStageName</span><span class="p">(</span><span class="n">stage2Name</span><span class="p">)</span>
+<span class="n">beam_10</span><span class="o">.</span><span class="n">setRemovalStageByStageName</span><span class="p">(</span><span class="n">stage4Name</span><span class="p">)</span>
+
+<span class="c1"># 1.5 Set the Grouping of Beam Entities</span>
+<span class="c1"># Create a group called &quot;Beam Installation Group&quot;</span>
+<span class="n">beamInstallationGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllGroups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">beamInstallationGroupName</span> <span class="o">=</span> <span class="s2">&quot;Beam Installation Group&quot;</span>
+<span class="n">beamInstallationGroup</span><span class="o">.</span><span class="n">setGroupName</span><span class="p">(</span><span class="n">beamInstallationGroupName</span><span class="p">)</span>
+
+<span class="c1"># Set both beams to this group at stage 2.</span>
+<span class="n">beam_0</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">beamInstallationGroupName</span><span class="p">)</span>
+<span class="n">beam_10</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">beamInstallationGroupName</span><span class="p">)</span>
+
+<span class="c1"># 2. Bolt Control</span>
+<span class="c1"># 2.1 Select Bolt Entity</span>
+<span class="c1"># Select bolts in the model by the same region for selecting the beams and include </span>
+<span class="c1"># intersecting entities. All bolts in a bolt entity pattern will be selected together </span>
+<span class="c1"># and the properties will be updated together.</span>
+<span class="n">bolts</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">BOLT</span><span class="p">,</span> <span class="n">cylinderRegion</span><span class="p">)</span>
+<span class="n">boltPattern1</span> <span class="o">=</span> <span class="n">bolts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">boltPattern2</span> <span class="o">=</span> <span class="n">bolts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 2.2 Rename Bolt Entity</span>
+<span class="c1"># Rename both beams.</span>
+<span class="n">boltPattern1</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Tunnel Bolt Pattern 1&quot;</span><span class="p">)</span>
+<span class="n">boltPattern2</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Tunnel Bolt Pattern 2&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2.3 Set Bolt Property to Bolt Entity</span>
+<span class="c1"># Create a new bolt property.</span>
+
+<span class="n">newBoltName</span> <span class="o">=</span> <span class="s2">&quot;New Bolt&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">createNewBoltProperty</span><span class="p">(</span><span class="n">newBoltName</span><span class="p">)</span>
+<span class="n">newBoltProperty</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getBoltPropertyByName</span><span class="p">(</span><span class="n">newBoltName</span><span class="p">)</span>
+
+<span class="c1"># Set both bolts with the new bolt property.</span>
+<span class="n">boltPattern1</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newBoltProperty</span><span class="p">)</span>
+<span class="n">boltPattern2</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newBoltProperty</span><span class="p">)</span>
+
+<span class="c1"># 2.4 Set Bolt Entity&#39;s Installation Stage and Removal Stage</span>
+<span class="c1"># Currently, both bolts are installed at stage 1. Install the bolts at stage 4. </span>
+<span class="c1"># Bolts can be installed by stage number or by stage name.</span>
+<span class="c1"># install by stage number</span>
+<span class="n">boltPattern1</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># install by stage name</span>
+<span class="n">boltPattern2</span><span class="o">.</span><span class="n">setInstallationStageByStageName</span><span class="p">(</span><span class="n">stage4Name</span><span class="p">)</span>
+
+<span class="c1"># 2.5 Set the Grouping of Bolt Entities</span>
+<span class="c1"># Create a group called &quot;Bolt Installation Group&quot;.</span>
+<span class="n">boltInstallationGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllGroups</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">boltInstallationGroupName</span> <span class="o">=</span> <span class="s2">&quot;Bolt Installation Group&quot;</span>
+<span class="n">boltInstallationGroup</span><span class="o">.</span><span class="n">setGroupName</span><span class="p">(</span><span class="n">boltInstallationGroupName</span><span class="p">)</span>
+
+<span class="c1"># Set both bolts to this group at stage 4.</span>
+<span class="n">boltPattern1</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">boltInstallationGroupName</span><span class="p">)</span>
+<span class="n">boltPattern2</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">boltInstallationGroupName</span><span class="p">)</span>
+
+<span class="c1"># 3. Joint Control</span>
+<span class="c1"># 3.1 Select Joint Entity</span>
+<span class="c1"># There is only one joint in the model, so index 0 will select the only joint.</span>
+<span class="n">joint</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Entity</span><span class="o">.</span><span class="n">getAllSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">JOINT</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 3.2 Rename Joint Entity</span>
+<span class="c1"># Rename the joint surface.</span>
+<span class="n">joint</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Joint Surface&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3.3 Set Joint Property to Joint Entity</span>
+<span class="c1"># Get the joint 2 property.</span>
+<span class="n">joint2Property</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllJointProperties</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Set the joint entity with joint 2 property.</span>
+<span class="n">joint</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">joint2Property</span><span class="p">)</span>
+
+<span class="c1"># 3.4 Set Joint Entity&#39;s Installation Stage and Removal Stage</span>
+<span class="c1"># Currently, joint is installed at stage 5. Now, install joint from stage 1.</span>
+<span class="c1"># install by stage number</span>
+<span class="n">joint</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 3.5 Set the Grouping of Joint Entities</span>
+<span class="c1"># Create a group called &quot;Joint Group&quot;.</span>
+<span class="n">jointGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllGroups</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">jointGroupName</span> <span class="o">=</span> <span class="s2">&quot;Joint Group&quot;</span>
+<span class="n">jointGroup</span><span class="o">.</span><span class="n">setGroupName</span><span class="p">(</span><span class="n">jointGroupName</span><span class="p">)</span>
+
+<span class="c1"># Set the joint to be in this group from stage 1.</span>
+<span class="n">joint</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">jointGroupName</span><span class="p">)</span>
+
+<span class="c1"># 4. Composite Liner Control</span>
+<span class="c1"># 4.1 Select Composite Liner Entity</span>
+<span class="c1"># Select composite liners in the model by defining a region. The same cylinderRegion can be reused.</span>
+<span class="n">compositeLiner</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">COMPOSITE_LINER</span><span class="p">,</span> <span class="n">cylinderRegion</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 4.2 Rename Composite Liner Entity</span>
+<span class="c1"># Rename the composite liner to &quot;Tunnel Composite Liner&quot;</span>
+<span class="n">compositeLiner</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Tunnel Composite Liner&quot;</span><span class="p">)</span>
+
+<span class="c1"># 4.3 Set Composite Liner Property to Composite Liner Entity</span>
+<span class="c1"># Create a new composite liner property for the tunnel.</span>
+<span class="n">newCompositeLinerName</span> <span class="o">=</span> <span class="s2">&quot;Tunnel Liner&quot;</span>
+<span class="n">model</span><span class="o">.</span><span class="n">createNewLiningCompositionProperty</span><span class="p">(</span><span class="n">newCompositeLinerName</span><span class="p">)</span>
+<span class="n">newCompositeLinerProperty</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getLiningCompositionPropertyByName</span><span class="p">(</span><span class="n">newCompositeLinerName</span><span class="p">)</span>
+
+<span class="c1"># Set &quot;Tunnel Liner&quot; property to the new composite liner.</span>
+<span class="n">compositeLiner</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newCompositeLinerProperty</span><span class="p">)</span>
+
+<span class="c1"># 4.4 Set Composite Liner Entity&#39;s Installation Stage and Removal Stage</span>
+<span class="c1"># Install composite liner at stage 3.</span>
+
+<span class="c1"># install by stage number</span>
+<span class="n">compositeLiner</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 4.5 Set the Grouping of Composite Liner Entities</span>
+<span class="c1"># Create a group called &quot;Composite Liner Installation Group&quot;.</span>
+<span class="n">compositeLinerInstallationGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getAllGroups</span><span class="p">()[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">compositeLinerInstallationGroupName</span> <span class="o">=</span> <span class="s2">&quot;Composite Liner Installation Group&quot;</span>
+<span class="n">compositeLinerInstallationGroup</span><span class="o">.</span><span class="n">setGroupName</span><span class="p">(</span><span class="n">compositeLinerInstallationGroupName</span><span class="p">)</span>
+
+<span class="c1"># Set both beams to this group at stage 2.</span>
+<span class="n">compositeLiner</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">compositeLinerInstallationGroupName</span><span class="p">)</span>
+
+<span class="c1"># 5. Pile Control</span>
+<span class="c1"># 5.1 Select Pile Entity</span>
+<span class="c1"># Select beams in the model by defining a region and by name. The group pile is currently installed </span>
+<span class="c1"># at stage 1. After defining the region, providing the stage number can further filter the piles. </span>
+<span class="c1"># Single pile can be filtered by stage number as well.</span>
+<span class="n">groupPile</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">PILE</span><span class="p">,</span> <span class="n">Cube</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">stageNumber</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">singlePile</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Selection</span><span class="o">.</span><span class="n">getSupportEntities</span><span class="p">(</span><span class="n">SupportTypes</span><span class="o">.</span><span class="n">PILE</span><span class="p">,</span> <span class="n">Cube</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">stageNumber</span><span class="o">=</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 5.2 Rename Pile Entity</span>
+<span class="c1"># Rename both beams.</span>
+<span class="n">groupPile</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Pile Pattern&quot;</span><span class="p">)</span>
+<span class="n">singlePile</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Single Pile&quot;</span><span class="p">)</span>
+
+<span class="c1"># 5.3 Set Pile Property to Pile Entity</span>
+<span class="c1"># Get Pile 2 property.</span>
+<span class="n">newPileProperty</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">getPilePropertyByName</span><span class="p">(</span><span class="s2">&quot;Pile 2&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set the new pile property to the pile group.</span>
+<span class="n">groupPile</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="n">newPileProperty</span><span class="p">)</span>
+
+<span class="c1"># 5.4 Set Pile Entity&#39;s Installation Stage and Removal Stage</span>
+<span class="c1"># Set all piles to be installed at stage 5.</span>
+<span class="c1"># install by stage number</span>
+<span class="n">groupPile</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">singlePile</span><span class="o">.</span><span class="n">setInstallationStageByStageNumber</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 5.5 Set the Grouping of Pile Entities</span>
+<span class="c1"># Create a group called &quot;Pile Installation Group&quot;.</span>
+<span class="n">pileInstallationGroupName</span> <span class="o">=</span> <span class="s2">&quot;Pile Installation Group&quot;</span>
+<span class="n">pileInstallationGroup</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">createNewGroupProperty</span><span class="p">(</span><span class="n">pileInstallationGroupName</span><span class="p">)</span>
+
+<span class="c1"># Set both beams to this group at stage 2.</span>
+<span class="n">groupPile</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">pileInstallationGroupName</span><span class="p">)</span>
+<span class="n">singlePile</span><span class="o">.</span><span class="n">setGrouping</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">pileInstallationGroupName</span><span class="p">)</span>
+
+<span class="c1"># Save and close the model.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2026-09-16 16:51:54,904 - Rocscience.RS3 - INFO - Attempting to start the application at C:\Program Files\Rocscience\RS3\RS3 and binding server to port 60111...
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="grouping_example.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Grouping Script Examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../material/initial_conditions_example.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Material Initial Conditions Script Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beam-control">1. Beam Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-beam-entity">1.1 Select Beam Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-beam-entity">1.2 Rename Beam Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-beam-property-to-beam-entity">1.3 Set Beam Property to Beam Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-beam-entity-s-installation-stage-and-removal-stage">1.4 Set Beam Entity’s Installation Stage and Removal Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-grouping-of-beam-entities">1.5 Set the Grouping of Beam Entities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bolt-control">2. Bolt Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-bolt-entity">2.1 Select Bolt Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-bolt-entity">2.2 Rename Bolt Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-bolt-property-to-bolt-entity">2.3 Set Bolt Property to Bolt Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-bolt-entity-s-installation-stage-and-removal-stage">2.4 Set Bolt Entity’s Installation Stage and Removal Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-grouping-of-bolt-entities">2.5 Set the Grouping of Bolt Entities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-control">3. Joint Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-joint-entity">3.1 Select Joint Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-joint-entity">3.2 Rename Joint Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-joint-property-to-joint-entity">3.3 Set Joint Property to Joint Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-joint-entity-s-installation-stage-and-removal-stage">3.4 Set Joint Entity’s Installation Stage and Removal Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-grouping-of-joint-entities">3.5 Set the Grouping of Joint Entities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-liner-control">4. Composite Liner Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-composite-liner-entity">4.1 Select Composite Liner Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-composite-liner-entity">4.2 Rename Composite Liner Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-composite-liner-property-to-composite-liner-entity">4.3 Set Composite Liner Property to Composite Liner Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-composite-liner-entity-s-installation-stage-and-removal-stage">4.4 Set Composite Liner Entity’s Installation Stage and Removal Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-grouping-of-composite-liner-entities">4.5 Set the Grouping of Composite Liner Entities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pile-control">5. Pile Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-pile-entity">5.1 Select Pile Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rename-pile-entity">5.2 Rename Pile Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-pile-property-to-pile-entity">5.3 Set Pile Property to Pile Entity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-pile-entity-s-installation-stage-and-removal-stage">5.4 Set Pile Entity’s Installation Stage and Removal Stage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-grouping-of-pile-entities">5.5 Set the Grouping of Pile Entities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-script">Full Script</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/example_code/model/support_control_example.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Rocscience Inc..
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
